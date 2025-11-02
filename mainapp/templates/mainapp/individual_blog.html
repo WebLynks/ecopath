@@ -1,0 +1,38 @@
+{% extends 'mainapp/navbar_footer.html' %}
+
+{% block title %}{{ blog.title }} - EcoPath Blog{% endblock %}
+
+{% block extra_head %}
+<meta name="description" content="{{ blog.meta_description }}">
+<meta name="keywords" content="{{ blog.meta_keywords }}">
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8">
+            <!-- Post header-->
+            <header class="mb-4">
+                <!-- Post title-->
+                <h1 class="fw-bolder mb-1">{{ blog.title }}</h1>
+                <!-- Post meta content-->
+                <div class="text-muted fst-italic mb-2">Posted on {{ blog.published_date|date:"F j, Y" }}</div>
+                <!-- Post tags-->
+                {% if blog.tags %}
+                    {% for tag in blog.tags.split|slice:":5" %}
+                        <a class="badge bg-secondary text-decoration-none link-light" href="#!">{{ tag }}</a>
+                    {% endfor %}
+                {% endif %}
+            </header>
+            <!-- Preview image figure-->
+            <figure class="mb-4">
+                <img class="img-fluid rounded" src="{{ blog.header_image_desktop.url }}" alt="{{ blog.title }}" />
+            </figure>
+            <!-- Post content-->
+            <section class="mb-5 ck-content">
+                {{ blog.content|safe }}
+            </section>
+        </div>
+    </div>
+</div>
+{% endblock %}

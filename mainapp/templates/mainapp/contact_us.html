@@ -1,0 +1,56 @@
+{% extends 'mainapp/navbar_footer.html' %}
+
+{% block title %}Contact Us - EcoPath{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <h1 class="pb-2 border-bottom">Contact Us</h1>
+            <p class="lead">Have a question or a project in mind? We'd love to hear from you.</p>
+
+            {% if 'success=1' in request.get_full_path %}
+            <div class="alert alert-success" role="alert">
+                Thank you for your message! We will get back to you shortly.
+            </div>
+            {% endif %}
+
+            <div class="card">
+                <div class="card-body">
+                    <form method="post" novalidate>
+                        {% csrf_token %}
+                        {{ form.honeypot }}
+                        
+                        <div class="mb-3">
+                            {{ form.first_name.label_tag }}
+                            {{ form.first_name }}
+                        </div>
+                        <div class="mb-3">
+                            {{ form.last_name.label_tag }}
+                            {{ form.last_name }}
+                        </div>
+                        <div class="mb-3">
+                            {{ form.email.label_tag }}
+                            {{ form.email }}
+                        </div>
+                        <div class="mb-3">
+                            {{ form.mobile_number.label_tag }}
+                            {{ form.mobile_number }}
+                        </div>
+                        <div class="mb-3">
+                            {{ form.service_inquiry.label_tag }}
+                            {{ form.service_inquiry }}
+                        </div>
+                        <div class="mb-3">
+                            {{ form.message.label_tag }}
+                            {{ form.message }}
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

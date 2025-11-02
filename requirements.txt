@@ -1,0 +1,11 @@
+Django>=4.2
+gunicorn
+python-decouple
+django-jazzmin
+django-admin-charts
+django-nvd3
+django-ckeditor
+Pillow
+whitenoise
+django-extensions
+pytest-django
