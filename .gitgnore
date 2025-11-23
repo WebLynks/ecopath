@@ -206,5 +206,11 @@ marimo/_static/
 marimo/_lsp/
 __marimo__/
 
+<<<<<<< HEAD:.gitignore
 dev_test/
 mainapp/static/videos/
+=======
+
+dev_test/
+mainapp/static/videos/
+>>>>>>> cf8b9f70e2beb6940b8f3e255b0bd7ea99a433e0:.gitgnore
