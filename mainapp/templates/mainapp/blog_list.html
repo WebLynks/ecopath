@@ -1,0 +1,353 @@
+{% extends 'mainapp/navbar_footer.html' %}
+{% load static %}
+
+{% block title %}Our Blogs - EcoPath{% endblock %}
+
+{% block extra_head %}
+<!-- GSAP -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<style>
+    /* Custom styles */
+    .ecopath-card {
+        will-change: flex;
+    }
+
+    .card-content {
+        will-change: transform;
+    }
+
+    .heading,
+    .description {
+        will-change: opacity, max-width, max-height;
+    }
+
+    /* Hero Section Styles */
+    .hero-slide {
+        opacity: 0;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+
+    .text-shadow {
+        text-shadow: 0px 2px 8px rgba(0, 0, 0, 0.5);
+    }
+
+    .hero-dot {
+        background-color: rgba(255, 255, 255, 0.3);
+        transition: background-color 0.3s ease;
+    }
+
+    .hero-dot.active {
+        background-color: rgba(255, 255, 255, 1);
+    }
+
+    .hero-nav-item-slot {
+        display: inline-block;
+    }
+
+    .hero-nav-group {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        display: flex;
+        justify-content: center;
+        gap: 1.5rem;
+        /* 24px */
+        opacity: 0;
+    }
+
+    /* Carousel Styles */
+    .carousel-slide {
+        transition: opacity 0.5s ease-in-out;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(10px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .animate-fade-in {
+        animation: fadeIn 0.4s ease;
+    }
+</style>
+<script>
+    // Custom Tailwind configuration
+    tailwind.config = {
+        theme: {
+            extend: {
+                colors: {
+                    'custom-green': '#276B2B',
+                    'custom-yellow': '#F0ED2F',
+                    'card-bg-green': '#A0DEA7'
+                },
+                fontFamily: {
+                    'montserrat': ['Montserrat', 'sans-serif'],
+                    'product-sans': ['Product Sans', 'sans-serif'],
+                    'playfair-display': ['Playfair Display', 'serif']
+                },
+                fontSize: {
+                    'sm': '14px', // 14px
+                    'lg': '18px', // 18px
+                    '5xl': '48px', // 48px
+                }
+            }
+        }
+    }
+</script>
+{% endblock %}
+
+{% block content %}
+<section class="relative h-screen w-full bg-cover bg-center text-white pt-24"
+    style="background-image: url('{% static 'images/Services Hero Header image.webp' %}');">
+    <div class="absolute inset-0 bg-black/40"></div>
+    <div class="relative h-full flex flex-col justify-between p-8 sm:p-12 md:p-16 lg:p-24">
+        <h1 class="text-6xl sm:text-7xl md:text-8xl font-product-sans font-black uppercase">
+            BLOGS
+        </h1>
+        <p class="text-4xl sm:text-5xl md:text-6xl font-playfair-display max-w-4xl leading-tight">
+            Insights and thought leadership on sustainable infrastructure and road design.
+        </p>
+    </div>
+</section>
+
+<!-- Blog Posts Section -->
+<section class="py-16 md:py-24 px-6 sm:px-8 lg:px-12 bg-white">
+    <div class="container mx-auto">
+        <h2 class="text-3xl md:text-4xl lg:text-5xl font-product-sans text-custom-green mb-12 md:mb-16 text-center">
+            Latest Articles
+        </h2>
+
+        <div id="blog-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+            <!-- Blog Post 1 -->
+            <div
+                class="blog-card hidden bg-white rounded-tl-2xl rounded-br-2xl overflow-hidden transition-transform duration-300 hover:scale-[1.02] shadow-none mx-2 sm:mx-0">
+                <img class="w-full h-[25rem] object-cover"
+                    src="https://images.unsplash.com/photo-1511497584788-876760111969?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80"
+                    alt="Aerial view of a road through a lush green forest"
+                    onerror="this.src='https://placehold.co/400x300/1E402F/FFFFFF?text=Forest+Road'; this.onerror=null;">
+                <div class="flex items-stretch">
+                    <div class="flex-grow p-5 flex items-center">
+                        <h3 class="text-lg sm:text-xl font-product-sans font-bold text-gray-900 text-center w-full">
+                            Ecopath expands
+                        </h3>
+                    </div>
+                    <div
+                        class="flex-shrink-0 bg-custom-green text-white p-5 flex flex-col justify-center items-center min-w-[90px]">
+                        <span class="text-lg font-montserrat font-semibold">22nd May</span>
+                        <span class="text-lg font-montserrat font-semibold">2025</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Blog Post 2 -->
+            <div
+                class="blog-card hidden bg-white rounded-tl-2xl rounded-br-2xl overflow-hidden transition-transform duration-300 hover:scale-[1.02] shadow-none mx-2 sm:mx-0">
+                <img class="w-full h-[25rem] object-cover"
+                    src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80"
+                    alt="Construction site with heavy machinery"
+                    onerror="this.src='https://placehold.co/400x300/1E402F/FFFFFF?text=Construction+Site'; this.onerror=null;">
+                <div class="flex items-stretch">
+                    <div class="flex-grow p-5 flex items-center">
+                        <h3 class="text-lg sm:text-xl font-product-sans font-bold text-gray-900 text-center w-full">
+                            Sustainable Construction
+                        </h3>
+                    </div>
+                    <div
+                        class="flex-shrink-0 bg-custom-green text-white p-5 flex flex-col justify-center items-center min-w-[90px]">
+                        <span class="text-lg font-montserrat font-semibold">15th May</span>
+                        <span class="text-lg font-montserrat font-semibold">2025</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Blog Post 3 -->
+            <div
+                class="blog-card hidden bg-white rounded-tl-2xl rounded-br-2xl overflow-hidden transition-transform duration-300 hover:scale-[1.02] shadow-none mx-2 sm:mx-0">
+                <img class="w-full h-[25rem] object-cover"
+                    src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80"
+                    alt="Construction site with heavy machinery"
+                    onerror="this.src='https://placehold.co/400x300/1E402F/FFFFFF?text=Construction+Site'; this.onerror=null;">
+                <div class="flex items-stretch">
+                    <div class="flex-grow p-5 flex items-center">
+                        <h3 class="text-lg sm:text-xl font-product-sans font-bold text-gray-900 text-center w-full">
+                            Sustainable Construction
+                        </h3>
+                    </div>
+                    <div
+                        class="flex-shrink-0 bg-custom-green text-white p-5 flex flex-col justify-center items-center min-w-[90px]">
+                        <span class="text-lg font-montserrat font-semibold">15th May</span>
+                        <span class="text-lg font-montserrat font-semibold">2025</span>
+                    </div>
+                </div>
+            </div>
+
+            <div
+                class="blog-card hidden bg-white rounded-tl-2xl rounded-br-2xl overflow-hidden transition-transform duration-300 hover:scale-[1.02] shadow-none mx-2 sm:mx-0">
+                <img class="w-full h-[25rem] object-cover"
+                    src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80"
+                    alt="Construction site with heavy machinery"
+                    onerror="this.src='https://placehold.co/400x300/1E402F/FFFFFF?text=Construction+Site'; this.onerror=null;">
+                <div class="flex items-stretch">
+                    <div class="flex-grow p-5 flex items-center">
+                        <h3 class="text-lg sm:text-xl font-product-sans font-bold text-gray-900 text-center w-full">
+                            Sustainable Construction
+                        </h3>
+                    </div>
+                    <div
+                        class="flex-shrink-0 bg-custom-green text-white p-5 flex flex-col justify-center items-center min-w-[90px]">
+                        <span class="text-lg font-montserrat font-semibold">15th May</span>
+                        <span class="text-lg font-montserrat font-semibold">2025</span>
+                    </div>
+                </div>
+            </div>
+
+            <div
+                class="blog-card hidden bg-white rounded-tl-2xl rounded-br-2xl overflow-hidden transition-transform duration-300 hover:scale-[1.02] shadow-none mx-2 sm:mx-0">
+                <img class="w-full h-[25rem] object-cover"
+                    src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80"
+                    alt="Construction site with heavy machinery"
+                    onerror="this.src='https://placehold.co/400x300/1E402F/FFFFFF?text=Construction+Site'; this.onerror=null;">
+                <div class="flex items-stretch">
+                    <div class="flex-grow p-5 flex items-center">
+                        <h3 class="text-lg sm:text-xl font-product-sans font-bold text-gray-900 text-center w-full">
+                            Sustainable Construction
+                        </h3>
+                    </div>
+                    <div
+                        class="flex-shrink-0 bg-custom-green text-white p-5 flex flex-col justify-center items-center min-w-[90px]">
+                        <span class="text-lg font-montserrat font-semibold">15th May</span>
+                        <span class="text-lg font-montserrat font-semibold">2025</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- View More Button -->
+        <div class="text-center mt-12">
+            <button id="view-more-btn"
+                class="bg-custom-green hover:bg-opacity-90 text-white font-montserrat font-semibold py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105">
+                View More Articles
+            </button>
+        </div>
+    </div>
+</section>
+
+<!-- Latest News Section -->
+<section class="py-16 bg-gray-50">
+    <div class="container mx-auto px-6 sm:px-8 lg:px-12">
+        <h2 class="text-3xl md:text-4xl font-product-sans font-bold text-custom-green mb-12 relative pb-4">
+            Sneak Peak: Ecopath Projects Driving Sustainable Change
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <!-- News Card 1 -->
+            <div class="h-[30rem] rounded-lg bg-blue-100 flex items-center justify-center">
+                <span class="text-custom-green font-montserrat font-semibold">News Card 1</span>
+            </div>
+
+            <!-- News Card 2 -->
+            <div class="h-[30rem] rounded-lg bg-green-100 flex items-center justify-center">
+                <span class="text-custom-green font-montserrat font-semibold">News Card 1</span>
+            </div>
+
+            <!-- News Card 3 -->
+            <div class="h-[30rem] rounded-lg bg-red-100 flex items-center justify-center">
+                <span class="text-custom-green font-montserrat font-semibold">News Card 1</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    function debounce(fn, delay = 200) {
+        let timeout;
+        return (...args) => {
+            clearTimeout(timeout);
+            timeout = setTimeout(() => fn(...args), delay);
+        };
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const cards = Array.from(document.querySelectorAll('.blog-card'));
+        const viewMoreBtn = document.getElementById('view-more-btn');
+        if (!cards.length || !viewMoreBtn) return;
+
+        let desiredVisibleCount = 0;
+        const mediumQuery = window.matchMedia('(min-width: 768px)');
+
+        const getConfig = () => {
+            const isMediumUp = mediumQuery.matches;
+            return {
+                initial: Math.min(isMediumUp ? 4 : 3, cards.length),
+                step: isMediumUp ? 4 : 3
+            };
+        };
+
+        const updateButtonState = () => {
+            if (desiredVisibleCount >= cards.length) {
+                viewMoreBtn.disabled = true;
+                viewMoreBtn.classList.add('opacity-60', 'cursor-not-allowed');
+                viewMoreBtn.textContent = 'No More Articles';
+            } else {
+                viewMoreBtn.disabled = false;
+                viewMoreBtn.classList.remove('opacity-60', 'cursor-not-allowed');
+                viewMoreBtn.textContent = 'View More Articles';
+            }
+        };
+
+        const applyVisibility = () => {
+            cards.forEach((card, index) => {
+                if (index < desiredVisibleCount) {
+                    card.classList.remove('hidden');
+                    card.classList.add('animate-fade-in');
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
+            updateButtonState();
+        };
+
+        const initialize = () => {
+            desiredVisibleCount = getConfig().initial;
+            applyVisibility();
+        };
+
+        viewMoreBtn.addEventListener('click', () => {
+            const { step } = getConfig();
+            const previousVisible = desiredVisibleCount;
+            desiredVisibleCount = Math.min(desiredVisibleCount + step, cards.length);
+            applyVisibility();
+
+            const newlyVisibleCard = cards[desiredVisibleCount - 1];
+            if (newlyVisibleCard && desiredVisibleCount > previousVisible) {
+                newlyVisibleCard.scrollIntoView({ behavior: 'smooth', block: 'end' });
+            }
+        });
+
+        const handleResize = () => {
+            const { initial } = getConfig();
+            if (desiredVisibleCount < initial) {
+                desiredVisibleCount = initial;
+            }
+            applyVisibility();
+        };
+
+        const debouncedResize = debounce(handleResize, 200);
+        window.addEventListener('resize', debouncedResize);
+
+        initialize();
+    });
+</script>
+{% endblock %}

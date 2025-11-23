@@ -1,0 +1,982 @@
+{% extends 'mainapp/navbar_footer.html' %}
+{% load static %}
+
+{% block title %}Technology & Products - EcoPath{% endblock %}
+
+{% block extra_head %}
+<!-- GSAP -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script>
+    tailwind.config = {
+        theme: {
+            extend: {
+                colors: {
+                    'custom-green': '#276B2B',
+                    'custom-yellow': '#F0ED2F',
+                    'card-bg-green': '#A0DEA7'
+                },
+                fontFamily: {
+                    'montserrat': ['Montserrat', 'sans-serif'],
+                    'product-sans': ['Product Sans', 'sans-serif'],
+                    'playfair-display': ['Playfair Display', 'serif']
+                }
+            }
+        }
+    }
+</script>
+<style>
+    .card {
+        transform: translateZ(0);
+        will-change: width, height;
+    }
+
+    .card-bg {
+        transition: transform 0.7s ease;
+    }
+
+    .card:hover .card-bg {
+        transform: scale(1.05);
+    }
+
+    /* Ensure title scales from the correct anchor point */
+    .card-title {
+        transform-origin: bottom left;
+    }
+
+    .no-scrollbar::-webkit-scrollbar {
+        display: none;
+    }
+
+    .no-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+
+    .card-item {
+        position: relative;
+        overflow: hidden;
+        border-radius: 1rem;
+        cursor: pointer;
+        /* GPU acceleration fix for smoother image scaling */
+        transform: translateZ(0);
+    }
+
+    .card-overlay {
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.3) 60%, rgba(0, 0, 0, 0) 100%);
+    }
+
+    /* List styling */
+    .card-list {
+        list-style-type: disc;
+        padding-left: 1.2rem;
+    }
+
+    .card-list li {
+        margin-bottom: 0.5rem;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<section class="relative h-screen w-full bg-cover bg-center text-white pt-24"
+    style="background-image: url('{% static 'images/Tech Hero Header Image.webp' %}');">
+    <div class="absolute inset-0 bg-black/40"></div>
+    <div class="relative h-full flex flex-col justify-between p-8 sm:p-12 md:p-16 lg:p-24">
+        <h1 class="text-5xl sm:text-6xl md:text-8xl font-product-sans font-black uppercase">
+            Our Advanced Sustainable Materials & Technology
+        </h1>
+        <p class="text-5xl sm:text-6xl md:text-6xl font-playfair-display max-w-4xl leading-tight">
+            Cement built civilization. Now it’s time to build something better.
+        </p>
+    </div>
+</section>
+
+<section class="py-16 md:py-24 px-4 sm:px-6 lg:px-8">
+    <div class="container mx-auto">
+        <div class="flex flex-col md:flex-row gap-12">
+            <!-- Text Column -->
+            <div class="w-full md:w-1/2 pt-12">
+                <h2 class="text-3xl md:text-4xl lg:text-5xl font-product-sans font-black text-custom-green mb-6">
+                    Cement Industry Challenges
+                </h2>
+                <p class="font-montserrat text-lg md:text-xl text-gray-700 leading-relaxed">
+                    The construction sector is heavily reliant on cement, a material with a devastating
+                    environmental footprint. Globally, cement manufacturing is responsible for around 8% of CO₂
+                    emissions — more than the emissions of all commercial aviation combined.
+                    <br><br>
+                    Beyond emissions, cement production also leads to high energy consumption (fossil fuels and
+                    electricity), depletion of natural resources, especially limestone and water-intensive
+                    processes.
+                    <br><br>
+                    Over 4.1 billion tonnes of cement are produced annually worldwide. Each tonne of cement releases
+                    approximately 0.9 tonnes of CO₂ into the atmosphere.
+                </p>
+            </div>
+
+            <!-- Image Column -->
+            <div class="w-full md:w-1/2 items-center flex justify-center">
+                <img src="{% static 'images/Cement issue image.webp' %}" alt="Maintenance Services"
+                    class="w-[30rem] h-auto">
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="min-h-screen bg-[#E6E6DF] py-16 md:py-24 px-4 sm:px-6 lg:px-8 flex items-center">
+    <div class="container mx-auto">
+        <h2 class="text-3xl md:text-4xl lg:text-5xl font-product-sans font-black text-center mb-16 text-custom-green">
+            India’s Cement Footprint</h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 max-w-6xl mx-auto items-start">
+            <!-- Feature 1 -->
+            <div class="h-full flex flex-col items-center text-center">
+                <div class="p-8 rounded-2xl shadow-sm w-full h-full flex flex-col items-center">
+                    <img src="{% static 'images/concrete-mixer 1.webp' %}" alt="Planning" class="h-24 mb-6">
+                    <p class="font-product-sans font-black text-2xl mb-4">400 million tonnes.</p>
+                    <p class="font-montserrat text-lg text-gray-700">India is the second-largest cement producer
+                        globally, with an annual output of over 400 million tonnes.</p>
+                </div>
+            </div>
+
+            <!-- Feature 2 -->
+            <div class="h-full flex flex-col items-center text-center">
+                <div class="p-8 rounded-2xl shadow-sm w-full h-full flex flex-col items-center">
+                    <img src="{% static 'images/carbon-dioxide 1.webp' %}" alt="Eco-Friendly" class="h-24 mb-6">
+                    <p class="font-product-sans font-black text-2xl mb-4">220 million tonnes</p>
+                    <p class="font-montserrat text-lg text-gray-700">The Indian cement industry contributes more
+                        than 220 million tonnes of CO₂ per year.</p>
+                </div>
+            </div>
+
+            <!-- Feature 3 -->
+            <div class="h-full flex flex-col items-center text-center">
+                <div class="p-8 rounded-2xl shadow-sm w-full h-full flex flex-col items-center">
+                    <img src="{% static 'images/skyline 1.webp' %}" alt="Implementation" class="h-24 mb-6">
+                    <p class="font-product-sans font-black text-2xl mb-4">250 million homes</p>
+                    <p class="font-montserrat text-lg text-gray-700">With over 250 million new homes needed by 2030
+                        and rapid infrastructure expansion, India’s cement consumption is expected to double in the
+                        next decade.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-16 md:py-24 px-4 sm:px-6 lg:px-8 md:h-screen">
+    <div class="container mx-auto">
+        <div class="flex flex-col md:flex-row gap-12">
+
+            <div class="w-full md:w-1/2 items-center flex justify-center">
+                <img src="{% static 'images/Eco Concrete.webp' %}" alt="Maintenance Services" class="w-[30rem] h-auto">
+            </div>
+
+            <div class="w-full md:w-1/2 ">
+                <h2 class="text-3xl md:text-4xl lg:text-5xl font-product-sans font-black text-custom-green mb-6">
+                    CoEvolve Estates
+                </h2>
+                <p class="font-montserrat text-lg md:text-xl text-gray-700 leading-relaxed">
+                    At CoEvolve Estates, sustainability and smart engineering go hand-in-hand. So when it was time
+                    to build the internal roads at their Whitefield property, they weren’t looking for a typical
+                    solution. They wanted strength, longevity, and harmony with the earth—without compromising on
+                    performance. That’s where EcoPath came in. Our team was tasked with building a road that could
+                    withstand the test of time and weather while aligning with CoEvolve’s thoughtful living
+                    philosophy.
+                </p>
+                <a href="" class="font-montserrat text-[#0C96EC] text-xl mt-6 inline-block">
+                    Explore Project <span>&rarr;</span>
+                </a>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<div class="w-full mx-auto px-4 md:px-12 py-8 shrink-0">
+    <h1 class="font-bold tracking-tight text-custom-green font-product-sans text-3xl md:text-4xl lg:text-5xl">
+        Composition & Availability</h1>
+</div>
+
+<div id="card-container"
+    class="relative w-full mx-auto px-4 md:px-12 lg:px-24 h-[75vh] md:h-[80vh] flex flex-col justify-between mb-10">
+
+    <!-- CARD 1: Fly Ash -->
+    <div class="card group relative overflow-hidden cursor-pointer shadow-xl rounded-sm self-start" data-index="0">
+        <div class="absolute inset-0 w-full h-full">
+            <img src="{% static 'images/Fly ash expanded.webp' %}"
+                class="card-bg w-full h-full object-cover transition-all duration-500 rounded-2xl" alt="Fly Ash">
+            <!-- <div class="absolute inset-0 bg-gradient-to-t from-white/30 via-white/20 to-white/10"></div> -->
+        </div>
+
+        <div class="relative z-10 h-full w-full">
+            <!-- Content Box: Centered Vertically, Left Aligned Horizontally -->
+            <!-- Added padding-bottom to ensure text doesn't hit the title -->
+            <div class="content-box absolute inset-0 flex flex-col justify-center items-start px-8 pb-20 opacity-0">
+                <ul class="space-y-3 text-white/90 text-lg md:text-xl leading-relaxed text-left">
+                    <li class="flex items-start gap-3">
+                        <span class="mt-2 w-2 h-2 bg-white rounded-full shrink-0"></span>
+                        <span><strong>180+ million tonnes</strong> generated annually</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <span class="mt-2 w-2 h-2 bg-white rounded-full shrink-0"></span>
+                        <span>~70% utilized, <strong>54 million tonnes</strong> unused</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <span class="mt-2 w-2 h-2 bg-white rounded-full shrink-0"></span>
+                        <span>Rich in <strong>alumino-silicates</strong></span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <span class="mt-2 w-2 h-2 bg-white rounded-full shrink-0"></span>
+                        <span>Sources: NTPC, Chhattisgarh, Odisha</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Title: Pinned Bottom Left -->
+            <h2
+                class="card-title absolute bottom-8 right-8 text-3xl md:text-5xl text-white font-bold uppercase tracking-widest drop-shadow-lg transition-all duration-300">
+                Fly Ash
+            </h2>
+        </div>
+    </div>
+
+    <!-- CARD 2: Steel Slag -->
+    <div class="card group relative overflow-hidden cursor-pointer shadow-xl rounded-sm self-center" data-index="1">
+        <div class="absolute inset-0 w-full h-full">
+            <img src="{% static 'images/Steel slag frame.webp' %}"
+                class="card-bg w-full h-full object-cover brightness-75 group-hover:brightness-90 transition-all duration-500 rounded-2xl"
+                alt="Steel Slag">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-black/20"></div>
+        </div>
+
+        <div class="relative z-10 h-full w-full">
+            <div class="content-box absolute inset-0 flex flex-col justify-center items-start px-8 pb-20 opacity-0">
+                <ul class="space-y-3 text-white/90 text-lg md:text-xl leading-relaxed text-left">
+                    <li class="flex items-start gap-3">
+                        <span class="mt-2 w-2 h-2 bg-white rounded-full shrink-0"></span>
+                        <span><strong>20-25 million tonnes</strong> annually</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <span class="mt-2 w-2 h-2 bg-white rounded-full shrink-0"></span>
+                        <span>30% utilized (High Potential)</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <span class="mt-2 w-2 h-2 bg-white rounded-full shrink-0"></span>
+                        <span>Rich in <strong>calcium, silica, alumina</strong></span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <span class="mt-2 w-2 h-2 bg-white rounded-full shrink-0"></span>
+                        <span>Sources: SAIL, JSW, Tata Steel</span>
+                    </li>
+                </ul>
+            </div>
+
+            <h2
+                class="card-title absolute bottom-8 right-8 text-3xl md:text-5xl text-white font-bold uppercase tracking-widest drop-shadow-lg transition-all duration-300">
+                Steel Slag
+            </h2>
+        </div>
+    </div>
+
+    <!-- CARD 3: Chemicals -->
+    <div class="card group relative overflow-hidden cursor-pointer shadow-xl rounded-sm self-end" data-index="2">
+        <div class="absolute inset-0 w-full h-full">
+            <img src="{% static 'images/Chemicals frame.webp' %}"
+                class="card-bg w-full h-full object-cover brightness-75 group-hover:brightness-90 transition-all duration-500 rounded-2xl"
+                alt="Chemicals">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-black/20"></div>
+        </div>
+
+        <div class="relative z-10 h-full w-full">
+            <div class="content-box absolute inset-0 flex flex-col justify-center items-start px-8 pb-20 opacity-0">
+                <ul class="space-y-3 text-white/90 text-lg md:text-xl leading-relaxed text-left">
+                    <li class="flex items-start gap-3">
+                        <span class="mt-2 w-2 h-2 bg-white rounded-full shrink-0"></span>
+                        <span>Enables <strong>ambient curing</strong></span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <span class="mt-2 w-2 h-2 bg-white rounded-full shrink-0"></span>
+                        <span><strong>Sodium silicate & hydroxide</strong></span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <span class="mt-2 w-2 h-2 bg-white rounded-full shrink-0"></span>
+                        <span>"One-part" activators for safety</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <span class="mt-2 w-2 h-2 bg-white rounded-full shrink-0"></span>
+                        <span>Saves <strong>60-80% water</strong></span>
+                    </li>
+                </ul>
+            </div>
+
+            <h2
+                class="card-title absolute bottom-8 right-8 text-3xl md:text-5xl text-white font-bold uppercase tracking-widest drop-shadow-lg transition-all duration-300">
+                Chemicals
+            </h2>
+        </div>
+    </div>
+
+</div>
+
+<!-- Product Ecosystem Section -->
+<section class="py-16 md:py-24 overflow-hidden">
+    <!-- Master Heading -->
+    <h2 class="text-3xl md:text-5xl font-product-sans font-bold text-center text-custom-green mb-16 md:mb-24 px-4">
+        The Ecopath Product Ecosystem
+    </h2>
+
+    <!-- Section 1: Pavers (Text Left, Image Right) -->
+    <div class="flex flex-col md:flex-row-reverse items-center gap-8 md:gap-0 my-24">
+
+        <!-- Image Side (Right on Desktop) -->
+        <div class="w-full md:w-1/2">
+            <img src="{% static 'images/Pavers image.webp' %}" alt="Pavers Main"
+                class="w-full h-[20rem] md:h-[30rem] ml-4 object-cover rounded-l-[3rem] md:rounded-l-[4rem] shadow-lg">
+        </div>
+
+        <!-- Text Side (Left on Desktop) -->
+        <div class="w-full md:w-1/2 px-6 md:px-12 lg:pr-24 lg:pl-32">
+            <h3 class="text-3xl md:text-[40px] font-product-sans font-bold text-black mb-6">
+                Pavers
+            </h3>
+            <p class="font-montserrat text-lg text-gray-700 mb-10 leading-relaxed">
+                Available in a wide range of shapes, sizes, and finishes, our pavers are ideal for roads, driveways,
+                sidewalks, and landscapes. Both thickness and color can be customized to meet specific project
+                requirements, ensuring flexibility in design and application.
+            </p>
+
+            <!-- Small Boxes Grid -->
+            <div class="grid grid-cols-3 gap-y-8 gap-x-4 md:gap-x-8 max-w-md">
+                <!-- Item 1 -->
+                <div class="flex flex-col items-center">
+                    <div
+                        class="w-20 h-20 md:w-24 md:h-24 bg-gray-200 shadow-[0_10px_20px_rgba(0,0,0,0.25)] rounded-md overflow-hidden transition-transform hover:scale-105">
+                        <img src="https://placehold.co/150x150" alt="Square" class="w-full h-full object-cover">
+                    </div>
+                    <span class="font-montserrat font-bold text-sm md:text-base mt-4 text-center">Square</span>
+                </div>
+                <!-- Item 2 -->
+                <div class="flex flex-col items-center">
+                    <div
+                        class="w-20 h-20 md:w-24 md:h-24 bg-gray-200 shadow-[0_10px_20px_rgba(0,0,0,0.25)] rounded-md overflow-hidden transition-transform hover:scale-105">
+                        <img src="https://placehold.co/150x150" alt="I Shape" class="w-full h-full object-cover">
+                    </div>
+                    <span class="font-montserrat font-bold text-sm md:text-base mt-4 text-center">I Shape</span>
+                </div>
+                <!-- Item 3 -->
+                <div class="flex flex-col items-center">
+                    <div
+                        class="w-20 h-20 md:w-24 md:h-24 bg-gray-200 shadow-[0_10px_20px_rgba(0,0,0,0.25)] rounded-md overflow-hidden transition-transform hover:scale-105">
+                        <img src="https://placehold.co/150x150" alt="Zig Zag" class="w-full h-full object-cover">
+                    </div>
+                    <span class="font-montserrat font-bold text-sm md:text-base mt-4 text-center">Zig Zag</span>
+                </div>
+                <!-- Item 4 -->
+                <div class="flex flex-col items-center">
+                    <div
+                        class="w-20 h-20 md:w-24 md:h-24 bg-gray-200 shadow-[0_10px_20px_rgba(0,0,0,0.25)] rounded-md overflow-hidden transition-transform hover:scale-105">
+                        <img src="https://placehold.co/150x150" alt="Rectangle" class="w-full h-full object-cover">
+                    </div>
+                    <span class="font-montserrat font-bold text-sm md:text-base mt-4 text-center">Rectangle</span>
+                </div>
+                <!-- Item 5 -->
+                <div class="flex flex-col items-center">
+                    <div
+                        class="w-20 h-20 md:w-24 md:h-24 bg-gray-200 shadow-[0_10px_20px_rgba(0,0,0,0.25)] rounded-md overflow-hidden transition-transform hover:scale-105">
+                        <img src="https://placehold.co/150x150" alt="Grass" class="w-full h-full object-cover">
+                    </div>
+                    <span class="font-montserrat font-bold text-sm md:text-base mt-4 text-center">Grass</span>
+                </div>
+                <!-- Item 6 -->
+                <div class="flex flex-col items-center">
+                    <div
+                        class="w-20 h-20 md:w-24 md:h-24 bg-gray-200 shadow-[0_10px_20px_rgba(0,0,0,0.25)] rounded-md overflow-hidden transition-transform hover:scale-105">
+                        <img src="https://placehold.co/150x150" alt="Cobble" class="w-full h-full object-cover">
+                    </div>
+                    <span class="font-montserrat font-bold text-sm md:text-base mt-4 text-center">Cobble</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Section 2: Kerbstones (Image Left, Text Right) -->
+    <div class="flex flex-col md:flex-row items-center gap-8 md:gap-0 my-24">
+
+        <!-- Image Side (Left on Desktop) -->
+        <div class="w-full md:w-1/2">
+            <img src="{% static 'images/Kerbstones image.webp' %}" alt="Kerbstones Main"
+                class="w-full h-[20rem] md:h-[30rem] object-cover rounded-r-[3rem] md:rounded-r-[4rem] mr-4 shadow-lg">
+        </div>
+
+        <!-- Text Side (Right on Desktop) -->
+        <div class="w-full md:w-1/2 px-6 md:px-12 lg:pl-24 lg:pr-32">
+            <h3 class="text-3xl md:text-[40px] font-product-sans font-bold text-black mb-6">
+                Pavers
+            </h3>
+            <p class="font-montserrat text-lg text-gray-700 mb-10 leading-relaxed">
+                Available in a wide range of shapes, sizes, and finishes, our pavers are ideal for roads, driveways,
+                sidewalks, and landscapes. Both thickness and color can be customized to meet specific project
+                requirements, ensuring flexibility in design and application.
+            </p>
+
+            <!-- Small Boxes Grid -->
+            <div class="grid grid-cols-3 gap-y-8 gap-x-4 md:gap-x-8 max-w-md">
+                <!-- Item 1 -->
+                <div class="flex flex-col items-center">
+                    <div
+                        class="w-20 h-20 md:w-24 md:h-24 bg-gray-200 shadow-[0_10px_20px_rgba(0,0,0,0.25)] rounded-md overflow-hidden transition-transform hover:scale-105">
+                        <img src="https://placehold.co/150x150" alt="Square" class="w-full h-full object-cover">
+                    </div>
+                    <span class="font-montserrat font-bold text-sm md:text-base mt-4 text-center">Square</span>
+                </div>
+                <!-- Item 2 -->
+                <div class="flex flex-col items-center">
+                    <div
+                        class="w-20 h-20 md:w-24 md:h-24 bg-gray-200 shadow-[0_10px_20px_rgba(0,0,0,0.25)] rounded-md overflow-hidden transition-transform hover:scale-105">
+                        <img src="https://placehold.co/150x150" alt="I Shape" class="w-full h-full object-cover">
+                    </div>
+                    <span class="font-montserrat font-bold text-sm md:text-base mt-4 text-center">I Shape</span>
+                </div>
+                <!-- Item 3 -->
+                <div class="flex flex-col items-center">
+                    <div
+                        class="w-20 h-20 md:w-24 md:h-24 bg-gray-200 shadow-[0_10px_20px_rgba(0,0,0,0.25)] rounded-md overflow-hidden transition-transform hover:scale-105">
+                        <img src="https://placehold.co/150x150" alt="Zig Zag" class="w-full h-full object-cover">
+                    </div>
+                    <span class="font-montserrat font-bold text-sm md:text-base mt-4 text-center">Zig Zag</span>
+                </div>
+                <!-- Item 4 -->
+                <div class="flex flex-col items-center">
+                    <div
+                        class="w-20 h-20 md:w-24 md:h-24 bg-gray-200 shadow-[0_10px_20px_rgba(0,0,0,0.25)] rounded-md overflow-hidden transition-transform hover:scale-105">
+                        <img src="https://placehold.co/150x150" alt="Rectangle" class="w-full h-full object-cover">
+                    </div>
+                    <span class="font-montserrat font-bold text-sm md:text-base mt-4 text-center">Rectangle</span>
+                </div>
+                <!-- Item 5 -->
+                <div class="flex flex-col items-center">
+                    <div
+                        class="w-20 h-20 md:w-24 md:h-24 bg-gray-200 shadow-[0_10px_20px_rgba(0,0,0,0.25)] rounded-md overflow-hidden transition-transform hover:scale-105">
+                        <img src="https://placehold.co/150x150" alt="Grass" class="w-full h-full object-cover">
+                    </div>
+                    <span class="font-montserrat font-bold text-sm md:text-base mt-4 text-center">Grass</span>
+                </div>
+                <!-- Item 6 -->
+                <div class="flex flex-col items-center">
+                    <div
+                        class="w-20 h-20 md:w-24 md:h-24 bg-gray-200 shadow-[0_10px_20px_rgba(0,0,0,0.25)] rounded-md overflow-hidden transition-transform hover:scale-105">
+                        <img src="https://placehold.co/150x150" alt="Cobble" class="w-full h-full object-cover">
+                    </div>
+                    <span class="font-montserrat font-bold text-sm md:text-base mt-4 text-center">Cobble</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="flex flex-col md:flex-row-reverse items-center mb-24 gap-8 md:gap-0 my-24">
+
+        <!-- Image Side (Right on Desktop) -->
+        <div class="w-full md:w-1/2">
+            <img src="{% static 'images/ecopath.webp' %}" alt="RMC"
+                class="w-full h-[20rem] md:h-[30rem] ml-4 object-cover rounded-l-[3rem] md:rounded-l-[4rem] shadow-lg">
+        </div>
+
+        <!-- Text Side (Left on Desktop) -->
+        <div class="w-full md:w-1/2 px-6 md:px-12 lg:pr-24 lg:pl-32">
+            <h3 class="text-3xl md:text-[40px] font-product-sans font-bold text-black mb-6">
+                RMC (Ready-Mix Concrete)
+            </h3>
+            <p class="font-montserrat text-lg text-gray-700 mb-10 leading-relaxed">
+                Introducing India’s first Zero-Cement Ready-Mix Concrete (RMC)—a revolutionary mix for on-site
+                construction of external built environments.<br><br>Ready-Mix Concrete (RMC) in grades ranging from
+                M20 to M50 is poured on-site to deliver consistent quality, higher workability, and long-lasting
+                performance. <br><br>Designed for projects that demand sustainability without compromise, our RMC
+                eliminates cement use while ensuring the same—or better—performance standards.
+            </p>
+
+        </div>
+    </div>
+
+    <div class="flex flex-col md:flex-row items-center gap-8 md:gap-0 my-24">
+
+        <!-- Image Side (Right on Desktop) -->
+        <div class="w-full md:w-1/2">
+            <img src="{% static 'images/Bricks & Blocks image.webp' %}" alt="Bricks & Blocks Main"
+                class="w-full h-[20rem] md:h-[30rem] object-cover rounded-r-[3rem] md:rounded-r-[4rem] mr-4 shadow-lg">
+        </div>
+
+        <!-- Text Side (Left on Desktop) -->
+        <div class="w-full md:w-1/2 px-6 md:px-12 lg:pr-24 lg:pl-32">
+            <h3 class="text-3xl md:text-[40px] font-product-sans font-bold text-black mb-6">
+                Precast Roads
+            </h3>
+            <p class="font-montserrat text-lg text-gray-700 mb-10 leading-relaxed">
+                Our precast road panels are a breakthrough in speed, quality, and design. Each panel is
+                custom-designed, allowing decorative finishes—like cobblestones or texture patterns—to be cast
+                directly into the slab.<br><br> These roads are installed directly on the ground, enabling immediate
+                use and drastically reducing construction time.
+            </p>
+
+        </div>
+    </div>
+
+</section>
+
+<script>
+    let mm = gsap.matchMedia();
+    const cards = document.querySelectorAll('.card');
+    let activeIndex = -1;
+
+    // --- DESKTOP LOGIC (md: 768px and up) ---
+    mm.add("(min-width: 768px)", () => {
+
+        // 1. INITIAL STATE
+        gsap.set(cards, {
+            width: "60%",
+            height: "30%",
+            marginBottom: "0"
+        });
+
+        // Use visibility hidden via autoAlpha so it doesn't block interaction
+        gsap.set(".content-box", { autoAlpha: 0 });
+
+        // 2. CLICK HANDLER
+        cards.forEach((card, index) => {
+            card.onclick = () => {
+                if (activeIndex === index) {
+                    resetCards();
+                    activeIndex = -1;
+                } else {
+                    animateToActive(index);
+                    activeIndex = index;
+                }
+            };
+        });
+
+        function animateToActive(index) {
+            cards.forEach((c, i) => {
+                const isActive = (i === index);
+                const content = c.querySelector('.content-box');
+                const title = c.querySelector('.card-title');
+
+                if (isActive) {
+                    // ACTIVE
+                    gsap.to(c, {
+                        width: "100%",
+                        height: "60%",
+                        duration: 0.6,
+                        ease: "power3.inOut"
+                    });
+
+                    // Fade in list content
+                    gsap.to(content, {
+                        autoAlpha: 1,
+                        duration: 0.6,
+                        delay: 0.1, // slight delay to start appearing as it opens
+                        ease: "power2.out"
+                    });
+
+                    // Scale Title (anchored bottom left via CSS)
+                    gsap.to(title, { scale: 0.8, duration: 0.5 });
+
+                } else {
+                    // INACTIVE
+                    gsap.to(c, {
+                        width: "60%",
+                        height: "15%",
+                        duration: 0.6,
+                        ease: "power3.inOut"
+                    });
+
+                    // Hide Content
+                    gsap.to(content, {
+                        autoAlpha: 0,
+                        duration: 0.2
+                    });
+
+                    // Reset Title
+                    gsap.to(title, { scale: 0.7, duration: 0.5 });
+                }
+            });
+        }
+
+        function resetCards() {
+            gsap.to(cards, {
+                width: "60%",
+                height: "30%",
+                duration: 0.6,
+                ease: "power3.inOut"
+            });
+
+            gsap.to(".content-box", {
+                autoAlpha: 0,
+                duration: 0.3
+            });
+
+            gsap.to(".card-title", { scale: 1, duration: 0.5 });
+        }
+
+        return () => {
+            cards.forEach(c => c.onclick = null);
+        };
+    });
+
+    // --- MOBILE LOGIC (< 768px) ---
+    mm.add("(max-width: 767px)", () => {
+
+        gsap.set(cards, {
+            width: "100%",
+            height: "30%",
+            marginBottom: "1rem"
+        });
+
+        // On mobile, titles should be visible, content hidden
+        gsap.set(".card-title", { scale: 1 });
+
+        cards.forEach((card, index) => {
+            card.onclick = () => {
+                const content = card.querySelector('.content-box');
+
+                if (activeIndex === index) {
+                    // Close
+                    gsap.to(card, { height: "30%", duration: 0.4 });
+                    gsap.to(content, { autoAlpha: 0, duration: 0.3 });
+                    activeIndex = -1;
+                } else {
+                    // Close others
+                    if (activeIndex !== -1) {
+                        gsap.to(cards[activeIndex], { height: "30%", duration: 0.4 });
+                        gsap.to(cards[activeIndex].querySelector('.content-box'), { autoAlpha: 0, duration: 0.3 });
+                    }
+                    // Open active
+                    gsap.to(card, { height: "60%", duration: 0.5 });
+                    gsap.to(content, { autoAlpha: 1, duration: 0.4, delay: 0.1 });
+                    activeIndex = index;
+                }
+            };
+        });
+
+        return () => {
+            cards.forEach(c => c.onclick = null);
+        };
+    });
+
+</script>
+
+<div class="w-full max-w-7xl mx-auto space-y-4 px-5">
+
+    <!-- SECTION HEADER -->
+    <div class="mb-8">
+        <h2 class="text-3xl md:text-5xl font-product-sans font-bold text-custom-green mb-4">Innovation Engineered:
+            Performance, Parity, & Planet.</h2>
+        <p class="font-montserrat text-lg text-gray-700">Creating a product as ambitious as Eco-Concrete required us
+            to invest heavily in research, field testing, and chemical engineering.</p>
+    </div>
+
+    <!-- TOP ROW: 3 Columns -->
+    <div class="flex flex-col md:flex-row gap-4 w-full h-auto " id="row-top">
+
+        <!-- Card 1 -->
+        <div class="card-item group relative w-full md:w-1/3 h-[20rem]" data-row="top">
+            <img src="{% static 'images/card_animation (1).webp' %}" alt="Abstract 1"
+                class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+            <div class="card-overlay absolute inset-0 pointer-events-none"></div>
+
+            <!-- Content Wrapper: Positioned Top-Left, but animated -->
+            <div class="absolute top-0 left-0 w-full h-full p-8 text-white flex flex-col card-text-wrapper">
+                <h3 class="text-2xl font-semibold mb-4 card-title origin-left font-product-sans text-black">Material
+                    Optimization</h3>
+                <ul class="card-list text-lg leading-relaxed opacity-0 translate-y-4 text-black text-black">
+                    <li>Mapping waste variability across India. </li>
+                    <li>Designing blends tailored to each location’s waste.</li>
+                </ul>
+                <!-- Mobile Expand Icon -->
+                <div class="md:hidden mt-4 text-xs uppercase tracking-wider text-green-300 font-semibold mobile-hint">
+                    Tap to read</div>
+            </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="card-item group relative w-full md:w-1/3 h-[20rem]" data-row="top">
+            <img src="{% static 'images/card_animation (2).webp' %}" alt="Abstract 2"
+                class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+            <div class="card-overlay absolute inset-0 pointer-events-none"></div>
+
+            <div class="absolute top-0 left-0 w-full h-full p-8 text-white flex flex-col card-text-wrapper">
+                <h3 class="text-2xl font-semibold mb-4 card-title origin-left font-product-sans text-black">Curing
+                    Innovation</h3>
+                <ul class="card-list text-lg leading-relaxed opacity-0 translate-y-4 text-black text-black">
+                    <li>Developing ambient temperature curing. </li>
+                    <li>Avoiding energy-intensive autoclaves or ovens.</li>
+                </ul>
+                <div class="md:hidden mt-4 text-xs uppercase tracking-wider text-green-300 font-semibold mobile-hint">
+                    Tap to read</div>
+            </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="card-item group relative w-full md:w-1/3 h-[20rem]" data-row="top">
+            <img src="{% static 'images/card_animation (3).webp' %}" alt="Abstract 3"
+                class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+            <div class="card-overlay absolute inset-0 pointer-events-none"></div>
+
+            <div class="absolute top-0 left-0 w-full h-full p-8 text-white flex flex-col card-text-wrapper">
+                <h3 class="text-2xl font-semibold mb-4 card-title origin-left font-product-sans text-black">
+                    Performance Engineering</h3>
+                <ul class="card-list text-lg leading-relaxed opacity-0 translate-y-4 text-black text-black">
+                    <li> Achieving high early and long-term strength </li>
+                    <li>Matching or exceeding IS code standards.</li>
+                </ul>
+                <div class="md:hidden mt-4 text-xs uppercase tracking-wider text-green-300 font-semibold mobile-hint">
+                    Tap to read</div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- BOTTOM ROW: 2 Columns -->
+    <div class="flex flex-col md:flex-row gap-4 w-full h-auto" id="row-bottom">
+
+        <!-- Card 4 -->
+        <div class="card-item group relative w-full md:w-1/2 h-[25rem]" data-row="bottom">
+            <img src="{% static 'images/card_animation (4).webp' %}" alt="Abstract 4"
+                class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+            <div class="card-overlay absolute inset-0 pointer-events-none"></div>
+
+            <div class="absolute top-0 left-0 w-full h-full p-8 text-white flex flex-col card-text-wrapper">
+                <h3 class="text-2xl font-semibold mb-4 card-title origin-left font-product-sans text-black">Cost
+                    Parity</h3>
+                <ul class="card-list text-lg leading-relaxed opacity-0 translate-y-4 text-black text-black">
+                    <li>Iterating formulas to match traditional concrete’s cost per cubic meter.   </li>
+                    <li>Adapting manufacturing to existing batching plants without retrofitting.</li>
+                </ul>
+                <div class="md:hidden mt-4 text-xs uppercase tracking-wider text-green-300 font-semibold mobile-hint">
+                    Tap to read</div>
+            </div>
+        </div>
+
+        <!-- Card 5 -->
+        <div class="card-item group relative w-full md:w-1/2 h-[25rem]" data-row="bottom">
+            <img src="{% static 'images/card_animation (5).webp' %}" alt="Abstract 5"
+                class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+            <div class="card-overlay absolute inset-0 pointer-events-none"></div>
+
+            <div class="absolute top-0 left-0 w-full h-full p-8 text-white flex flex-col card-text-wrapper">
+                <h3 class="text-2xl font-semibold mb-4 card-title origin-left font-product-sans text-black">Testing
+                    Parameters</h3>
+                <ul class="card-list text-lg leading-relaxed opacity-0 translate-y-4 text-black text-black">
+                    <li>All our products are tested for compressive strength, abrasion resistance, water absorption,
+                        fire and thermal resistance.</li>
+                </ul>
+                <div class="md:hidden mt-4 text-xs uppercase tracking-wider text-green-300 font-semibold mobile-hint">
+                    Tap to read</div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const mobileBreakpoint = 768; // md in Tailwind
+        let isMobile = window.innerWidth < mobileBreakpoint;
+
+        // Select elements
+        const allCards = document.querySelectorAll('.card-item');
+
+        // --- CALCULATION HELPER ---
+        // Calculate "Resting" positions when card is in its default state.
+        // We store this value on the element itself to use during the mouseleave event.
+        function setAndStoreInitialTextPositions(card) {
+            const wrapper = card.querySelector('.card-text-wrapper');
+            const title = card.querySelector('.card-title');
+
+            if (isMobile) {
+                gsap.set(wrapper, { y: 0 });
+                return;
+            }
+
+            // Calculate distance to move title to bottom based on CURRENT dimensions
+            const cardHeight = card.offsetHeight;
+            const wrapperPaddingTop = 32; // p-8 = 2rem
+            const titleHeight = title.offsetHeight;
+
+            // Distance to push down so title is at bottom
+            const yOffset = cardHeight - wrapperPaddingTop - titleHeight - 40;
+
+            // Store this value as the 'true' resting place
+            card.defaultY = yOffset;
+
+            // Apply immediately
+            gsap.set(wrapper, { y: yOffset });
+        }
+
+        // --- DESKTOP ANIMATION FUNCTIONS ---
+
+        function initDesktopHover() {
+            // Group by Row
+            const rows = [
+                { id: 'row-top', widthExpanded: '60%', widthShrunk: '20%', default: '33.333%' },
+                { id: 'row-bottom', widthExpanded: '80%', widthShrunk: '20%', default: '50%' }
+            ];
+
+            rows.forEach(rowConfig => {
+                const row = document.getElementById(rowConfig.id);
+                const cards = row.querySelectorAll('.card-item');
+
+                cards.forEach(card => {
+
+                    card.addEventListener('mouseenter', () => {
+                        if (isMobile) return;
+
+                        // 1. Handle Widths
+                        cards.forEach(c => {
+                            if (c === card) {
+                                // ACTIVE CARD
+                                gsap.to(c, {
+                                    width: rowConfig.widthExpanded,
+                                    duration: 0.5,
+                                    ease: "power2.out"
+                                });
+
+                                const wrapper = c.querySelector('.card-text-wrapper');
+                                const list = c.querySelector('.card-list');
+
+                                // Move Title Up (y:0)
+                                gsap.to(wrapper, { y: 0, duration: 0.5, ease: "power2.out" });
+
+                                // Fade In List
+                                gsap.to(list, {
+                                    autoAlpha: 1,
+                                    y: 0,
+                                    duration: 0.4,
+                                    delay: 0.1
+                                });
+
+                            } else {
+                                // INACTIVE CARD (Sibling)
+                                gsap.to(c, {
+                                    width: rowConfig.widthShrunk,
+                                    duration: 0.5,
+                                    ease: "power2.out"
+                                });
+
+                                const wrapper = c.querySelector('.card-text-wrapper');
+                                const list = c.querySelector('.card-list');
+
+                                // Calculate temporary offset for the shrunk state
+                                // (Title might wrap, so we recalculate purely for this animation frame, 
+                                // but we DO NOT overwrite the stored card.defaultY)
+                                const cardHeight = c.offsetHeight;
+                                const title = c.querySelector('.card-title');
+                                // Note: offsetHeight might be stale immediately, but GSAP handles interpolation well enough usually.
+                                // For 20% width, titles might wrap.
+                                const currentYOffset = cardHeight - 32 - title.offsetHeight - 40;
+
+                                gsap.to(wrapper, { y: currentYOffset, duration: 0.5, ease: "power2.out" });
+                                gsap.to(list, { autoAlpha: 0, y: 20, duration: 0.3 });
+                            }
+                        });
+                    });
+                });
+
+                // Reset Row on Mouse Leave
+                row.addEventListener('mouseleave', () => {
+                    if (isMobile) return;
+
+                    cards.forEach(c => {
+                        // Reset Width
+                        gsap.to(c, {
+                            width: rowConfig.default,
+                            duration: 0.5,
+                            ease: "power2.out"
+                        });
+
+                        // Reset Text to PRE-CALCULATED default position
+                        const wrapper = c.querySelector('.card-text-wrapper');
+                        const list = c.querySelector('.card-list');
+
+                        // Use the stored defaultY! This ensures perfect alignment.
+                        const targetY = c.defaultY || 0;
+
+                        gsap.to(wrapper, { y: targetY, duration: 0.5, ease: "power2.out" });
+                        gsap.to(list, { autoAlpha: 0, y: 20, duration: 0.3 });
+                    });
+                });
+            });
+        }
+
+        // --- MOBILE INTERACTION FUNCTIONS ---
+
+        function handleMobileClick(card) {
+            const list = card.querySelector('.card-list');
+            const hint = card.querySelector('.mobile-hint');
+
+            const isClosed = gsap.getProperty(list, "opacity") === 0;
+
+            allCards.forEach(c => {
+                if (c !== card) {
+                    const l = c.querySelector('.card-list');
+                    const h = c.querySelector('.mobile-hint');
+                    gsap.to(l, { height: 0, opacity: 0, duration: 0.3 });
+                    gsap.to(h, { opacity: 1, duration: 0.3 });
+                }
+            });
+
+            if (isClosed) {
+                gsap.set(list, { height: "auto" });
+                gsap.from(list, { height: 0, duration: 0.3 });
+                gsap.to(list, { opacity: 1, y: 0, duration: 0.3 });
+                gsap.to(hint, { opacity: 0, duration: 0.2 });
+            } else {
+                gsap.to(list, { height: 0, opacity: 0, duration: 0.3 });
+                gsap.to(hint, { opacity: 1, duration: 0.3 });
+            }
+        }
+
+        // --- INITIALIZATION & RESIZE ---
+
+        function setupLayout() {
+            isMobile = window.innerWidth < mobileBreakpoint;
+
+            allCards.forEach(card => {
+                gsap.killTweensOf(card);
+                gsap.killTweensOf(card.querySelector('.card-text-wrapper'));
+                gsap.killTweensOf(card.querySelector('.card-list'));
+
+                gsap.set(card, { clearProps: "width" });
+
+                const wrapper = card.querySelector('.card-text-wrapper');
+                const list = card.querySelector('.card-list');
+
+                if (isMobile) {
+                    card.onclick = () => handleMobileClick(card);
+                    card.onmouseenter = null;
+
+                    gsap.set(wrapper, { y: 0, clearProps: "y" });
+                    gsap.set(list, { height: 0, opacity: 0, overflow: 'hidden' });
+                } else {
+                    card.onclick = null;
+                    gsap.set(list, { autoAlpha: 0, y: 20, height: 'auto', overflow: 'visible' });
+
+                    // IMPORTANT: We calculate positions based on the DEFAULT state (un-hovered)
+                    // We use a timeout to ensure DOM has settled the default widths (33% / 50%)
+                    setTimeout(() => setAndStoreInitialTextPositions(card), 100);
+                }
+            });
+
+            if (!isMobile) {
+                initDesktopHover();
+            }
+        }
+
+        setupLayout();
+
+        let resizeTimer;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(setupLayout, 200);
+        });
+    });
+</script>
+{% endblock %}

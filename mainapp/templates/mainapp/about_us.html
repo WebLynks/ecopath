@@ -3,11 +3,13 @@
 {% block title %}About Us - EcoPath{% endblock %}
 
 {% block content %}
-<div class="container">
+<div class="container pt-24">
     <div class="p-5 mb-4 bg-light rounded-3">
         <div class="container-fluid py-5">
             <h1 class="display-5 fw-bold">Our Mission</h1>
-            <p class="col-md-8 fs-4">We are a team of innovators, engineers, and strategists committed to creating a sustainable future through technology and responsible development. Our path is one of ecological integrity and progress.</p>
+            <p class="col-md-8 fs-4">We are a team of innovators, engineers, and strategists committed to creating a
+                sustainable future through technology and responsible development. Our path is one of ecological
+                integrity and progress.</p>
         </div>
     </div>
 
@@ -16,13 +18,14 @@
         {% for member in team_members %}
         <div class="col-lg-4 col-md-6 mb-4">
             <div class="card h-100 text-center">
-                <img src="{{ member.photo.url }}" class="card-img-top" alt="{{ member.name }}" style="width: 100%; height: 300px; object-fit: cover;">
+                <img src="{{ member.photo.url }}" class="card-img-top" alt="{{ member.name }}"
+                    style="width: 100%; height: 300px; object-fit: cover;">
                 <div class="card-body">
                     <h5 class="card-title">{{ member.name }}</h5>
                     <h6 class="card-subtitle mb-2 text-muted">{{ member.role }}</h6>
                     <p class="card-text">{{ member.bio|truncatewords:20 }}</p>
                     {% if member.linkedin_url %}
-                        <a href="{{ member.linkedin_url }}" target="_blank" class="btn btn-primary">LinkedIn</a>
+                    <a href="{{ member.linkedin_url }}" target="_blank" class="btn btn-primary">LinkedIn</a>
                     {% endif %}
                 </div>
             </div>

@@ -29,7 +29,7 @@ class HomepageView(TemplateView):
 
 class ProjectListView(ListView):
     model = Project
-    template_name = "mainapp/our_projects.html"
+    template_name = "mainapp/project_list.html"
     context_object_name = "projects"
     paginate_by = 12
 
@@ -38,7 +38,7 @@ class ProjectListView(ListView):
 
 class ProjectDetailView(DetailView):
     model = Project
-    template_name = "mainapp/individual_project.html"
+    template_name = "mainapp/project_detail.html"
     context_object_name = "project"
 
     def get_queryset(self):
@@ -52,7 +52,7 @@ class ProjectDetailView(DetailView):
 
 class BlogListView(ListView):
     model = Blog
-    template_name = "mainapp/blog_home.html"
+    template_name = "mainapp/blog_list.html"
     context_object_name = "blogs"
     paginate_by = 10
 
@@ -61,7 +61,7 @@ class BlogListView(ListView):
 
 class BlogDetailView(DetailView):
     model = Blog
-    template_name = "mainapp/individual_blog.html"
+    template_name = "mainapp/blog_detail.html"
     context_object_name = "blog"
 
     def get_queryset(self):
@@ -75,7 +75,7 @@ class BlogDetailView(DetailView):
 class ContactView(CreateView):
     model = ContactSubmission
     form_class = ContactForm
-    template_name = "mainapp/contact_us.html"
+    template_name = "mainapp/contact.html"
     def get_success_url(self):
         return reverse_lazy('mainapp:contact') + '?success=1'
 
@@ -115,7 +115,7 @@ class ContactView(CreateView):
         return HttpResponseRedirect(self.get_success_url())
 
 class AboutUsView(TemplateView):
-    template_name = "mainapp/about_us.html"
+    template_name = "mainapp/about.html"
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

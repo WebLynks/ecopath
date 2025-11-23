@@ -1,0 +1,383 @@
+{% extends 'mainapp/navbar_footer.html' %}
+{% load static %}
+
+{% block title %}Our Services - EcoPath{% endblock %}
+
+{% block extra_head %}
+<!-- GSAP -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<style>
+    /* Custom styles */
+    .ecopath-card {
+        will-change: flex;
+    }
+
+    .card-content {
+        will-change: transform;
+    }
+
+    .heading,
+    .description {
+        will-change: opacity, max-width, max-height;
+    }
+
+    /* Hero Section Styles */
+    .hero-slide {
+        opacity: 0;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+
+    .text-shadow {
+        text-shadow: 0px 2px 8px rgba(0, 0, 0, 0.5);
+    }
+
+    .hero-dot {
+        background-color: rgba(255, 255, 255, 0.3);
+        transition: background-color 0.3s ease;
+    }
+
+    .hero-dot.active {
+        background-color: rgba(255, 255, 255, 1);
+    }
+
+    .hero-nav-item-slot {
+        display: inline-block;
+    }
+
+    .hero-nav-group {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        display: flex;
+        justify-content: center;
+        gap: 1.5rem;
+        /* 24px */
+        opacity: 0;
+    }
+</style>
+<script>
+    // Custom Tailwind configuration
+    tailwind.config = {
+        theme: {
+            extend: {
+                colors: {
+                    'custom-green': '#276B2B',
+                    'custom-yellow': '#F0ED2F',
+                    'card-bg-green': '#A0DEA7'
+                },
+                fontFamily: {
+                    'montserrat': ['Montserrat', 'sans-serif'],
+                    'product-sans': ['Product Sans', 'sans-serif'],
+                    'playfair-display': ['Playfair Display', 'serif']
+                },
+                fontSize: {
+                    'sm': '14px', // 14px
+                    'lg': '18px', // 18px
+                    '5xl': '48px', // 48px
+                }
+            }
+        }
+    }
+</script>
+{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="relative h-screen w-full bg-cover bg-center text-white pt-24"
+    style="background-image: url('{% static 'images/Services Hero Header image.webp' %}');">
+    <div class="absolute inset-0 bg-black/40"></div>
+    <div class="relative h-full flex flex-col justify-between p-8 sm:p-12 md:p-16 lg:p-24">
+        <h1 class="text-6xl sm:text-7xl md:text-8xl font-product-sans font-black uppercase">
+            Our <br> Services
+        </h1>
+        <p class="text-4xl sm:text-5xl md:text-6xl font-playfair-display max-w-4xl leading-tight">
+            Sustainable road solutions: <br> Carbon-negative, end-to-end, and design-led.
+        </p>
+    </div>
+</section>
+
+<!-- Maintenance Section -->
+<section class="py-16 md:py-24 px-4 sm:px-6 lg:px-8">
+    <div class="container mx-auto">
+        <div class="flex flex-col md:flex-row gap-12">
+            <!-- Text Column -->
+            <div class="w-full md:w-1/2 pt-12">
+                <h2 class="text-3xl md:text-4xl lg:text-5xl font-product-sans font-black text-custom-green mb-6">
+                    End to End Road Design
+                </h2>
+                <p class="font-montserrat text-lg md:text-xl text-gray-700 leading-relaxed">
+                    Our maintenance services are designed to extend the lifespan of your infrastructure while
+                    minimizing environmental impact. Using sustainable materials and eco-friendly techniques, we
+                    ensure your roads remain in optimal condition with minimal carbon footprint.
+                </p>
+            </div>
+
+            <!-- Image Column -->
+            <div class="w-full md:w-1/2 items-center flex justify-center">
+                <img src="{% static 'images/Maintenance Frame small.webp' %}" alt="Maintenance Services"
+                    class="w-[30rem] h-auto">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Features Section -->
+<section class="min-h-screen bg-[#E6E6DF] py-16 md:py-24 px-4 sm:px-6 lg:px-8 flex items-center">
+    <div class="container mx-auto">
+        <h2 class="text-3xl md:text-4xl lg:text-5xl font-product-sans font-black text-center mb-16 text-custom-green">
+            We specialize in</h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 max-w-6xl mx-auto items-start">
+            <!-- Feature 1 -->
+            <div class="h-full flex flex-col items-center text-center">
+                <div class="p-8 rounded-2xl shadow-sm w-full h-full flex flex-col items-center">
+                    <img src="{% static 'images/cell 1.webp' %}" alt="Planning" class="w-24 h-24 mb-6">
+                    <p class="font-montserrat text-lg text-gray-700">Soil stabilization for subgrade strengthening.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Feature 2 -->
+            <div class="h-full flex flex-col items-center text-center">
+                <div class="p-8 rounded-2xl shadow-sm w-full h-full flex flex-col items-center">
+                    <img src="{% static 'images/plant 1.webp' %}" alt="Eco-Friendly" class="w-24 h-24 mb-6">
+                    <p class="font-montserrat text-lg text-gray-700">Geo-cell reinforcement for extreme soil
+                        conditions.</p>
+                </div>
+            </div>
+
+            <!-- Feature 3 -->
+            <div class="h-full flex flex-col items-center text-center">
+                <div class="p-8 rounded-2xl shadow-sm w-full h-full flex flex-col items-center">
+                    <img src="{% static 'images/road-with-broken-line 1.webp' %}" alt="Implementation"
+                        class="w-24 h-24 mb-6">
+                    <p class="font-montserrat text-lg text-gray-700">Precision design, delivering unbreakable,
+                        long-lasting roads.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Services Overview Section -->
+<section class="py-16 md:py-24 px-4 sm:px-6 lg:px-8">
+    <div class="container mx-auto">
+        <h2 class="text-3xl md:text-4xl lg:text-[48px] font-product-sans font-black mb-16 text-custom-green">
+            Traction & Milestones
+        </h2>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+            <!-- Service Card 1 -->
+            <div
+                class="bg-card-bg-green rounded-2xl p-8 shadow-md flex flex-col items-center justify-center text-center">
+                <h3 class="text-3xl md:text-4xl font-product-sans font-black mb-4">$ 300K</h3>
+                <p class="font-montserrat text-lg md:text-xl ">
+                    revenue generated in FY25
+                </p>
+            </div>
+
+            <!-- Service Card 2 -->
+            <div
+                class="bg-card-bg-green rounded-2xl p-8 shadow-md  flex flex-col items-center justify-center text-center">
+                <h3 class="text-3xl md:text-4xl font-product-sans font-black mb-4">$ 1M+</h3>
+                <p class="font-montserrat text-lg md:text-xl ">
+                    signed PO's with real estate developers.
+                </p>
+            </div>
+
+            <!-- Service Card 3 -->
+            <div
+                class="bg-card-bg-green rounded-2xl p-8 shadow-md  flex flex-col items-center justify-center text-center">
+                <h3 class="text-3xl md:text-4xl font-product-sans font-black mb-4">4</h3>
+                <p class="font-montserrat text-lg md:text-xl ">
+                    manufacturing partners in Bangalore.
+                </p>
+            </div>
+
+            <!-- Service Card 4 -->
+            <div
+                class="bg-card-bg-green rounded-2xl p-8 shadow-md  flex flex-col items-center justify-center text-center">
+                <h3 class="text-3xl md:text-4xl font-product-sans font-black mb-4">R&D</h3>
+                <p class="font-montserrat text-lg md:text-xl ">
+                    Filed 2 Process & 1 Design Patent for Eco-Concrete.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-16 px-4 sm:px-6 lg:px-8 bg-[#E6E6DF]">
+    <div class="max-w-7xl mx-auto">
+        <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-8 md:gap-16">
+            <!-- Content Column (Left on large screens) -->
+            <div class="md:w-1/2">
+                <h2 class="text-4xl font-product-sans font-black text-custom-green mb-4">
+                    Road Construction
+                </h2>
+
+                <!-- Navigation List -->
+                <div class="flex justify-center lg:justify-start">
+                    <ul id="infra-nav" class="relative space-y-4 w-full max-w-xs">
+                        <!-- Active Item Indicator Bar -->
+                        <li id="active-bar"
+                            class="absolute left-0 w-1 h-6 bg-custom-green transition-all duration-200 ease-in-out"
+                            style="top: 0px;"></li>
+
+                        <!-- List Items -->
+                        <li class="nav-item text-lg font-product-sans font-black text-gray-800 pl-6 cursor-pointer transition-colors duration-200 hover:text-custom-green"
+                            data-index="0">
+                            Carbon Negative Bitumen Roads
+                        </li>
+                        <li class="nav-item text-lg font-product-sans font-black text-gray-800 pl-6 cursor-pointer transition-colors duration-200 hover:text-custom-green"
+                            data-index="1">
+                            Precast Concrete Roads
+                        </li>
+                        <li class="nav-item text-lg font-product-sans font-black text-gray-800 pl-6 cursor-pointer transition-colors duration-200 hover:text-custom-green"
+                            data-index="2">
+                            Paver Based Roads for Villas & Resorts
+                        </li>
+                    </ul>
+                </div>
+
+                <p class="text-lg font-montserrat mt-12 max-w-3xl">
+                    The biggest pain point for delays & losses is multiple vendors & lack of coordination.
+                    Eco Path takes care of everything. All concrete products without using cement.
+                </p>
+            </div>
+
+            <!-- Image Stack (Right on large screens) -->
+            <div class="w-full md:w-1/2 lg:h-[40rem] h-[35rem] flex items-center justify-center mt-8 md:mt-0">
+                <div class="image-stack-container w-full h-full">
+                    <img src="{% static 'images/Drain.webp' %}" alt="Drain"
+                        class="image-card data-[index='0'] absolute md:w-1/4 w-3/4 h-auto rounded-2xl" data-index="0">
+                    <img src="{% static 'images/Footpath.webp' %}" alt="Footpath"
+                        class="image-card data-[index='1'] absolute md:w-1/4 w-3/4 h-auto rounded-2xl" data-index="1">
+                    <img src="{% static 'images/Sewer Line.webp' %}" alt="Sewer Line"
+                        class="image-card data-[index='2'] absolute md:w-1/4 w-3/4 h-auto rounded-2xl" data-index="2">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    // Drain Animation Script
+    document.addEventListener('DOMContentLoaded', () => {
+        const navItems = gsap.utils.toArray('.nav-item');
+        const imageCards = gsap.utils.toArray('.image-card');
+        const activeBar = document.getElementById('active-bar');
+
+        let activeIndex = 0; // Default active item
+
+        const animProps = {
+            duration: 0.7,
+            ease: 'power3.inOut'
+        };
+
+        // Function to update the image stack based on the active index
+        function updateActiveState(newIndex) {
+            if (newIndex === activeIndex) return; // Do nothing if already active
+
+            // Update active nav item styles
+            navItems[activeIndex].classList.remove('text-custom-green');
+            navItems[newIndex].classList.add('text-custom-green');
+
+            activeIndex = newIndex;
+
+            // Update Active Bar Immediately
+            const activeNavItem = navItems[activeIndex];
+            gsap.set(activeBar, {
+                top: activeNavItem.offsetTop,
+                height: activeNavItem.offsetHeight
+            });
+
+            // Apply subtle animation for visual feedback
+            gsap.fromTo(activeBar,
+                { scaleY: 0.8, opacity: 0.7 },
+                {
+                    scaleY: 1,
+                    opacity: 1,
+                    duration: 0.2,
+                    ease: 'power2.out'
+                }
+            );
+
+            // Animate Image Stack
+            imageCards.forEach((card, index) => {
+                const stackPosition = index - activeIndex;
+                const stackPositionAbs = Math.abs(stackPosition);
+
+                if (stackPosition === 0) {
+                    // Animate TO Active State
+                    gsap.to(card, {
+                        zIndex: 10,
+                        x: '0%',
+                        y: '0%',
+                        z: 0,
+                        rotate: '0deg',
+                        scale: 1,
+                        ...animProps
+                    });
+                } else {
+                    // Animate TO Inactive State (Vertical Staircase)
+                    gsap.to(card, {
+                        zIndex: 5 - stackPositionAbs,
+                        x: (stackPositionAbs * 5) + '%',
+                        y: (stackPositionAbs * 15) + '%',
+                        z: -(stackPositionAbs * 150),
+                        scale: 1,
+                        ...animProps
+                    });
+                }
+            });
+        }
+
+        // Set Initial State
+        function setInitialState() {
+            // Set bar to first item
+            gsap.set(activeBar, {
+                top: navItems[0].offsetTop,
+                height: navItems[0].offsetHeight
+            });
+
+            // Set initial card positions
+            imageCards.forEach((card, index) => {
+                const stackPosition = index - activeIndex;
+                const stackPositionAbs = Math.abs(stackPosition);
+
+                if (stackPosition === 0) {
+                    gsap.set(card, {
+                        zIndex: 10, x: '0%', y: '0%', z: 0, rotate: '0deg', scale: 1
+                    });
+                } else {
+                    gsap.set(card, {
+                        zIndex: 5 - stackPositionAbs,
+                        x: (stackPositionAbs * 5) + '%',
+                        y: (stackPositionAbs * 15) + '%',
+                        z: -(stackPositionAbs * 150),
+                        scale: 1
+                    });
+                }
+            });
+        }
+
+        // Add Event Listeners
+        navItems.forEach((item, index) => {
+            item.addEventListener('click', () => {
+                updateActiveState(index);
+            });
+        });
+
+        // Initialize the component
+        setInitialState();
+
+        // Set first nav item as active
+        navItems[0].classList.add('text-custom-green');
+    });
+</script>
+{% endblock %}

@@ -1,0 +1,191 @@
+{% extends 'mainapp/navbar_footer.html' %}
+{% load static %}
+
+{% block title %}Contact Us - EcoPath{% endblock %}
+
+{% block extra_head %}
+<!-- GSAP -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script>
+    tailwind.config = {
+        theme: {
+            extend: {
+                colors: {
+                    'custom-green': '#276B2B',
+                    'custom-yellow': '#F0ED2F',
+                    'card-bg-green': '#A0DEA7'
+                },
+                fontFamily: {
+                    'montserrat': ['Montserrat', 'sans-serif'],
+                    'product-sans': ['Product Sans', 'sans-serif'],
+                    'playfair-display': ['Playfair Display', 'serif']
+                }
+            }
+        }
+    }
+</script>
+{% endblock %}
+
+{% block content %}
+<section class="py-16 md:py-24 px-6 sm:px-10 lg:px-20 xl:px-32 pt-24">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
+        <!-- Left Content -->
+        <div>
+            <div class="space-y-6">
+                <h1
+                    class="text-5xl sm:text-6xl md:text-8xl lg:text-9xl xl:text-[120px] font-product-sans font-black text-custom-green leading-none uppercase">
+                    <span class="block">Contact</span>
+                    <span class="block">Us</span>
+                </h1>
+                <p class="text-base sm:text-lg md:text-xl lg:text-[22px] text-gray-700 leading-relaxed">
+                    We'd love to hear from you! Whether you have questions about our sustainable road solutions, want to
+                    explore a partnership, or need support on a project, our team at EcoPath is here to help. Reach out
+                    to us, and let's pave the way to a greener, more resilient future together.
+                </p>
+            </div>
+
+            <div class="mt-12 grid grid-cols-1 lg:grid-cols-2 gap-10">
+                <div>
+                    <h3 class="text-xl sm:text-2xl lg:text-[24px] font-product-sans font-black text-gray-900 mb-4">Visit
+                        us</h3>
+                    <p class="text-base sm:text-[18px] text-gray-700 leading-relaxed">
+                        Concept Classic Converge, 3rd Floor,<br>
+                        Teachers Colony, HSR Layout Sector 5,<br>
+                        Bengaluru, Karnataka 560034, IN
+                    </p>
+                </div>
+                <div class="flex flex-col gap-8">
+                    <div>
+                        <h3 class="text-xl sm:text-2xl lg:text-[24px] font-product-sans font-black text-gray-900 mb-2">
+                            Phone</h3>
+                        <p class="text-base sm:text-[18px] text-gray-700 leading-relaxed">+91 88803 90470</p>
+                    </div>
+                    <div>
+                        <h3 class="text-xl sm:text-2xl lg:text-[24px] font-product-sans font-black text-gray-900 mb-2">
+                            Email</h3>
+                        <p class="text-base sm:text-[18px] text-gray-700 leading-relaxed">sourabh@ecopath.earth</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Image -->
+        <div class="hidden lg:flex justify-center">
+            <img src="{% static 'images/Contact Hero Image.png' %}" alt="Eco-friendly vertical garden"
+                class="h-full object-cover rounded-3xl object-cover">
+        </div>
+    </div>
+</section>
+
+<!-- Inquiry Form Section -->
+<section class="py-4"
+    style="background-image: url('{% static 'images/About timeline background.webp' %}'); background-repeat: repeat; background-size: 520px;">
+    <div class="max-w-5xl mx-auto px-6 sm:px-10">
+        <div class="p-8 sm:p-12">
+            <h2 class="text-3xl sm:text-4xl font-product-sans font-black text-gray-900 mb-10">Tell Us What You Need</h2>
+            <form class="space-y-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block text-base sm:text-lg font-semibold text-gray-900 mb-2">First Name <span
+                                class="text-red-500">*</span></label>
+                        <div class="relative">
+                            <span class="absolute inset-y-0 left-4 flex items-center text-gray-400">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                        d="M5.121 17.804A12.07 12.07 0 0112 15c2.1 0 4.063.54 5.879 1.5M15 9a3 3 0 11-6 0 3 3 0 016 0z" />
+                                </svg>
+                            </span>
+                            <input type="text" placeholder="Enter your first name"
+                                class="w-full border border-gray-300 rounded-2xl py-3 pl-12 pr-4 text-base focus:outline-none focus:ring-2 focus:ring-custom-green focus:border-custom-green">
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-base sm:text-lg font-semibold text-gray-900 mb-2">Last Name <span
+                                class="text-red-500">*</span></label>
+                        <div class="relative">
+                            <span class="absolute inset-y-0 left-4 flex items-center text-gray-400">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                        d="M5.121 17.804A12.07 12.07 0 0112 15c2.1 0 4.063.54 5.879 1.5M15 9a3 3 0 11-6 0 3 3 0 016 0z" />
+                                </svg>
+                            </span>
+                            <input type="text" placeholder="Enter your last name"
+                                class="w-full border border-gray-300 rounded-2xl py-3 pl-12 pr-4 text-base focus:outline-none focus:ring-2 focus:ring-custom-green focus:border-custom-green">
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-base sm:text-lg font-semibold text-gray-900 mb-2">Email ID <span
+                            class="text-red-500">*</span></label>
+                    <div class="relative">
+                        <span class="absolute inset-y-0 left-4 flex items-center text-gray-400">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                    d="M3 8l9 6 9-6M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                            </svg>
+                        </span>
+                        <input type="email" placeholder="Enter your email address"
+                            class="w-full border border-gray-300 rounded-2xl py-3 pl-12 pr-4 text-base focus:outline-none focus:ring-2 focus:ring-custom-green focus:border-custom-green">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-base sm:text-lg font-semibold text-gray-900 mb-2">Mobile Number <span
+                            class="text-red-500">*</span></label>
+                    <div class="flex flex-col sm:flex-row gap-3">
+                        <div
+                            class="flex items-center border border-gray-300 rounded-2xl px-4 py-3 text-base text-gray-700 bg-white">
+                            <span class="text-xl">🇮🇳</span>
+                            <span class="ml-2 font-semibold">+91</span>
+                        </div>
+                        <div class="relative flex-1">
+                            <span class="absolute inset-y-0 left-4 flex items-center text-gray-400">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                        d="M3 5h2l3 10h8l3-10h2" />
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                        d="M16 5a4 4 0 01-8 0" />
+                                </svg>
+                            </span>
+                            <input type="tel" placeholder="Enter your 10 digit mobile number"
+                                class="w-full border border-gray-300 rounded-2xl py-3 pl-12 pr-4 text-base focus:outline-none focus:ring-2 focus:ring-custom-green focus:border-custom-green">
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-base sm:text-lg font-semibold text-gray-900 mb-2">Message</label>
+                    <div class="relative">
+                        <textarea id="inquiry-message" maxlength="1000" placeholder="Type your message here..."
+                            class="w-full border border-gray-300 rounded-2xl py-3 px-4 text-base min-h-[180px] focus:outline-none focus:ring-2 focus:ring-custom-green focus:border-custom-green"></textarea>
+                        <div class="text-right text-sm text-gray-500 mt-2" id="message-counter">0/1000</div>
+                    </div>
+                </div>
+
+                <button type="button"
+                    class="w-full bg-custom-green hover:bg-[#1f5223] text-white font-product-sans font-semibold text-lg tracking-wide py-4 rounded-2xl transition-colors">Send
+                    Inquiry</button>
+            </form>
+        </div>
+    </div>
+</section>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const messageInput = document.getElementById('inquiry-message');
+        const counter = document.getElementById('message-counter');
+        if (messageInput && counter) {
+            const updateCounter = () => {
+                counter.textContent = `${messageInput.value.length}/1000`;
+            };
+            updateCounter();
+            messageInput.addEventListener('input', updateCounter);
+        }
+    });
+</script>
+{% endblock %}

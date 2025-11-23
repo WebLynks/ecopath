@@ -3,7 +3,7 @@
 {% block title %}Our Projects - EcoPath{% endblock %}
 
 {% block content %}
-<div class="container">
+<div class="container pt-24">
     <h1 class="pb-2 border-bottom">Our Projects</h1>
     <div class="row row-cols-1 row-cols-md-3 g-4 mb-4">
         {% for project in projects %}
@@ -13,7 +13,8 @@
                 <div class="card-body">
                     <h5 class="card-title">{{ project.title }}</h5>
                     <p class="card-text">{{ project.brief_description|truncatewords:20 }}</p>
-                    <a href="{% url 'mainapp:project_detail' project.slug %}" class="btn btn-outline-primary">View Project</a>
+                    <a href="{% url 'mainapp:project_detail' project.slug %}" class="btn btn-outline-primary">View
+                        Project</a>
                 </div>
             </div>
         </div>

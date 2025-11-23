@@ -1,0 +1,554 @@
+{% extends 'mainapp/navbar_footer.html' %}
+{% load static %}
+
+{% block title %}Sustainability - EcoPath{% endblock %}
+
+{% block extra_head %}
+<!-- GSAP -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script>
+    tailwind.config = {
+        theme: {
+            extend: {
+                colors: {
+                    'custom-green': '#276B2B',
+                    'custom-yellow': '#F0ED2F',
+                    'card-bg-green': '#A0DEA7'
+                },
+                fontFamily: {
+                    'montserrat': ['Montserrat', 'sans-serif'],
+                    'product-sans': ['Product Sans', 'sans-serif'],
+                    'playfair-display': ['Playfair Display', 'serif']
+                }
+            }
+        }
+    }
+</script>
+{% endblock %}
+
+{% block content %}
+<section class="relative h-screen w-full bg-cover bg-center text-white pt-24 pb-12"
+    style="background-image: url('{% static 'images/Tech Hero Header Image.webp' %}');">
+    <div class="absolute inset-0 bg-black/40"></div>
+    <div class="relative h-full flex flex-col justify-between p-4 sm:p-12 md:p-16 lg:p-24">
+        <h1 class="text-5xl sm:text-6xl md:text-7xl font-product-sans font-black uppercase">
+            SUSTAINABILITY
+        </h1>
+        <p class="text-4xl sm:text-5xl md:text-6xl font-playfair-display max-w-4xl leading-tight">
+            We’re rebuilding the world — without cement.
+        </p>
+    </div>
+</section>
+
+<section class="py-16 md:py-24 px-4 sm:px-6 lg:px-8">
+    <div class="container mx-auto">
+        <div class="flex flex-col md:flex-row gap-12">
+            <!-- Text Column -->
+            <div class="w-full md:w-1/2 pt-12">
+                <h2 class="text-3xl md:text-4xl lg:text-5xl font-product-sans font-black text-custom-green mb-6">
+                    Building the Future Responsibly
+                </h2>
+                <p class="font-montserrat text-lg md:text-xl text-gray-700 leading-relaxed">
+                    At EcoPath, we’re transforming infrastructure with materials that cut carbon, reuse waste, and
+                    protect the planet’s future.
+                    <br><br>
+                    EcoPath’s mission is to redefine how roads and infrastructure are built — by replacing
+                    high-emission
+                    materials with sustainable, circular alternatives. Sustainability sits at the heart of our
+                    innovation, shaping every design, product, and process we create.
+                    <br><br>
+                    Our goal is simple: engineering progress that doesn’t come at the planet’s expense.
+                </p>
+            </div>
+
+            <!-- Image Column -->
+            <div class="w-full md:w-1/2 items-center flex justify-center">
+                <img src="{% static 'images/Cement issue image(2).png' %}" alt="Maintenance Services"
+                    class="w-[30rem] h-auto">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Sustainability in Action Section with Carousel -->
+<section class="py-16 md:py-24 px-4 sm:px-6 lg:px-8">
+    <div class="container mx-auto flex flex-col md:flex-row gap-10 md:gap-16 items-center">
+
+        <!-- Text Column -->
+        <div class="w-full md:w-5/12 lg:w-4/12">
+
+            <h2 class="text-3xl md:text-4xl lg:text-5xl font-product-sans font-black text-custom-green mb-4">
+                Sustainability in Action
+            </h2>
+            <p class="font-montserrat text-base md:text-lg lg:text-xl text-gray-700 leading-relaxed">
+                Behind every EcoPath road is a cleaner, smarter process — from collecting industrial by-products
+                to reusing aggregates and cutting emissions on-site.
+            </p>
+        </div>
+
+        <!-- Carousel Column -->
+        <div class="w-full md:w-7/12 lg:w-8/12">
+            <div class="flex justify-end mb-4">
+                <div class="flex items-center gap-4">
+                    <button id="sustainability-prev" class="text-4xl md:text-5xl text-black  transition-colors">
+                        &#8249;
+                    </button>
+                    <button id="sustainability-next" class="text-4xl md:text-5xl text-black  transition-colors">
+                        &#8250;
+                    </button>
+                </div>
+            </div>
+            <div class="relative overflow-hidden rounded-3xl" id="sustainability-carousel">
+                <div class="flex space-x-4" id="sustainability-track">
+                    <div class="basis-[80%] flex-shrink-0 carousel-slide relative">
+                        <img src="{% static 'images/ecopath.webp' %}" alt="Sustainability slide 1"
+                            class="w-full h-full object-cover rounded-3xl">
+                        <div
+                            class="absolute inset-0 bg-black/40 rounded-3xl opacity-0 pointer-events-none peek-overlay">
+                        </div>
+                    </div>
+                    <div class="basis-[80%] flex-shrink-0 carousel-slide relative">
+                        <img src="{% static 'images/ecopath.webp' %}" alt="Sustainability slide 2"
+                            class="w-full h-full object-cover rounded-3xl">
+                        <div
+                            class="absolute inset-0 bg-black/40 rounded-3xl opacity-0 pointer-events-none peek-overlay">
+                        </div>
+                    </div>
+                    <div class="basis-[80%] flex-shrink-0 carousel-slide relative">
+                        <img src="{% static 'images/ecopath.webp' %}" alt="Sustainability slide 3"
+                            class="w-full h-full object-cover rounded-3xl">
+                        <div
+                            class="absolute inset-0 bg-black/40 rounded-3xl opacity-0 pointer-events-none peek-overlay">
+                        </div>
+                    </div>
+                    <div class="basis-[80%] flex-shrink-0 carousel-slide relative">
+                        <img src="{% static 'images/ecopath.webp' %}" alt="Sustainability slide 4"
+                            class="w-full h-full object-cover rounded-3xl">
+                        <div
+                            class="absolute inset-0 bg-black/40 rounded-3xl opacity-0 pointer-events-none peek-overlay">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- Services Overview Section -->
+<section class="py-16 md:py-24 px-4 sm:px-6 lg:px-8">
+    <div class="container mx-auto">
+        <h2 class="text-3xl md:text-4xl lg:text-[48px] font-product-sans font-black mb-16 text-custom-green">
+            Measurable Progress. Real Impact.
+        </h2>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+            <!-- Service Card 1 -->
+            <div
+                class="bg-card-bg-green rounded-2xl p-8 shadow-md flex flex-col items-center justify-center text-center">
+                <h3 class="text-3xl md:text-4xl font-product-sans font-black mb-4">75 - 80%</h3>
+                <p class="font-montserrat text-lg md:text-xl ">
+                    less CO2 emissions than traditional concrete.
+                </p>
+            </div>
+
+            <!-- Service Card 2 -->
+            <div
+                class="bg-card-bg-green rounded-2xl p-8 shadow-md  flex flex-col items-center justify-center text-center">
+                <h3 class="text-3xl md:text-4xl font-product-sans font-black mb-4">30%</h3>
+                <p class="font-montserrat text-lg md:text-xl ">
+                    water saved during production.
+                </p>
+            </div>
+
+            <!-- Service Card 3 -->
+            <div
+                class="bg-card-bg-green rounded-2xl p-8 shadow-md  flex flex-col items-center justify-center text-center">
+                <h3 class="text-3xl md:text-4xl font-product-sans font-black mb-4">10,000+ tonnes</h3>
+                <p class="font-montserrat text-lg md:text-xl ">
+                    of industrial waste reused.
+                </p>
+            </div>
+
+            <!-- Service Card 4 -->
+            <div
+                class="bg-card-bg-green rounded-2xl p-8 shadow-md  flex flex-col items-center justify-center text-center">
+                <h3 class="text-3xl md:text-4xl font-product-sans font-black mb-4">2x</h3>
+                <p class="font-montserrat text-lg md:text-xl ">
+                    road lifespan compared to cement-based ones.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const slides = document.querySelectorAll('#sustainability-carousel .carousel-slide');
+        const overlays = document.querySelectorAll('#sustainability-carousel .peek-overlay');
+        const track = document.getElementById('sustainability-track');
+        const carousel = document.getElementById('sustainability-carousel');
+        const prevBtn = document.getElementById('sustainability-prev');
+        const nextBtn = document.getElementById('sustainability-next');
+        if (!slides.length || !track || !carousel || !prevBtn || !nextBtn) return;
+
+        let currentIndex = 0;
+        const disabledClasses = ['text-gray-400', 'opacity-40', 'cursor-not-allowed'];
+
+        const getStep = () => {
+            const gap = 16; // matches space-x-4 (1rem ~ 16px)
+            return carousel.clientWidth * 0.8 + gap;
+        };
+
+        const updateArrows = () => {
+            if (currentIndex === 0) {
+                prevBtn.classList.add(...disabledClasses);
+                prevBtn.style.pointerEvents = 'none';
+
+            } else {
+                prevBtn.classList.remove(...disabledClasses);
+                prevBtn.style.pointerEvents = '';
+            }
+
+            if (currentIndex === slides.length - 1) {
+                nextBtn.classList.add(...disabledClasses);
+                nextBtn.style.pointerEvents = 'none';
+            } else {
+                nextBtn.classList.remove(...disabledClasses);
+                nextBtn.style.pointerEvents = '';
+            }
+        };
+
+        const updatePeekOverlay = () => {
+            overlays.forEach((overlay, i) => {
+                const isPeek = i === currentIndex + 1;
+                gsap.to(overlay, {
+                    opacity: isPeek ? 1 : 0,
+                    duration: 0.3,
+                    ease: 'power2.out'
+                });
+            });
+        };
+
+        const goToSlide = (index) => {
+            const clampedIndex = Math.max(0, Math.min(index, slides.length - 1));
+            if (clampedIndex === currentIndex) return;
+            currentIndex = clampedIndex;
+            const step = getStep();
+            gsap.to(track, {
+                x: -step * currentIndex,
+                duration: 0.6,
+                ease: 'power3.inOut'
+            });
+            updateArrows();
+            updatePeekOverlay();
+        };
+
+        // initial state
+        updateArrows();
+        updatePeekOverlay();
+
+        prevBtn.addEventListener('click', () => {
+            goToSlide(currentIndex - 1);
+        });
+        nextBtn.addEventListener('click', () => {
+            goToSlide(currentIndex + 1);
+        });
+    });
+</script>
+
+<section class="py-32 px-4 sm:px-6 lg:px-8 bg-[#E6E6DF]">
+    <div class="max-w-7xl mx-auto">
+        <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-8 md:gap-16">
+            <!-- Content Column (Left on large screens) -->
+            <div class="md:w-1/2">
+                <h2 class="text-4xl font-product-sans font-black text-custom-green mb-4">
+                    Our Commitment in Documents
+                </h2>
+
+                <!-- Navigation List -->
+                <div class="flex justify-center lg:justify-start">
+                    <ul id="infra-nav" class="relative space-y-4 w-full max-w-xs">
+                        <!-- Active Item Indicator Bar -->
+                        <li id="active-bar"
+                            class="absolute left-0 w-1 h-6 bg-custom-green transition-all duration-200 ease-in-out"
+                            style="top: 0px;"></li>
+
+                        <!-- List Items -->
+                        <li class="nav-item text-lg font-product-sans font-black text-gray-800 pl-6 cursor-pointer transition-colors duration-200 hover:text-custom-green"
+                            data-index="0">
+                            Sustainability Reports
+                        </li>
+                        <li class="nav-item text-lg font-product-sans font-black text-gray-800 pl-6 cursor-pointer transition-colors duration-200 hover:text-custom-green"
+                            data-index="1">
+                            Patents
+                        </li>
+                        <li class="nav-item text-lg font-product-sans font-black text-gray-800 pl-6 cursor-pointer transition-colors duration-200 hover:text-custom-green"
+                            data-index="2">
+                            Awards & Recognition
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <!-- Documents Panel (Right on large screens) -->
+            <div class="w-full md:w-1/2 flex items-start justify-center md:justify-end mt-8 md:mt-0">
+                <div class="w-full max-w-md space-y-4" id="documents-panels">
+                    <!-- Panel 0: Sustainability Reports -->
+                    <div class="doc-panel" data-index="0">
+                        <a href="#"
+                            class="flex items-center gap-3 text-sm md:text-base font-montserrat text-gray-800 hover:text-custom-green">
+                            <span class="text-red-600 text-lg">📄</span>
+                            <span>FY24 Ecopath Sustainability Data</span>
+                        </a>
+                        <a href="#"
+                            class="mt-2 flex items-center gap-3 text-sm md:text-base font-montserrat text-gray-800 hover:text-custom-green">
+                            <span class="text-red-600 text-lg">📄</span>
+                            <span>FY23 Ecopath Sustainability Data</span>
+                        </a>
+                    </div>
+
+                    <!-- Panel 1: Patents -->
+                    <div class="doc-panel" data-index="1">
+                        <a href="#"
+                            class="flex items-center gap-3 text-sm md:text-base font-montserrat text-gray-800 hover:text-custom-green">
+                            <span class="text-red-600 text-lg">📄</span>
+                            <span>EcoPath Core Binder Patent Filing</span>
+                        </a>
+                        <a href="#"
+                            class="mt-2 flex items-center gap-3 text-sm md:text-base font-montserrat text-gray-800 hover:text-custom-green">
+                            <span class="text-red-600 text-lg">📄</span>
+                            <span>Precast Road Panel System Patent</span>
+                        </a>
+                    </div>
+
+                    <!-- Panel 2: Awards & Recognition -->
+                    <div class="doc-panel" data-index="2">
+                        <a href="#"
+                            class="flex items-center gap-3 text-sm md:text-base font-montserrat text-gray-800 hover:text-custom-green">
+                            <span class="text-red-600 text-lg">📄</span>
+                            <span>National Green Infrastructure Award 2024</span>
+                        </a>
+                        <a href="#"
+                            class="mt-2 flex items-center gap-3 text-sm md:text-base font-montserrat text-gray-800 hover:text-custom-green">
+                            <span class="text-red-600 text-lg">📄</span>
+                            <span>Circular Economy Innovation Grant Report</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    // Documents tab behavior
+    document.addEventListener('DOMContentLoaded', () => {
+        const navItems = gsap.utils.toArray('.nav-item');
+        const panels = gsap.utils.toArray('.doc-panel');
+        const activeBar = document.getElementById('active-bar');
+
+        if (!navItems.length || !panels.length || !activeBar) return;
+
+        let activeIndex = 0;
+
+        const showPanel = (newIndex, animate = false) => {
+            const currentPanel = panels[activeIndex];
+            const nextPanel = panels[newIndex];
+
+            if (!nextPanel) return;
+
+            // Instantly hide all non-target panels to avoid overlap
+            panels.forEach((panel, i) => {
+                if (i !== newIndex) {
+                    gsap.set(panel, { autoAlpha: 0, y: 10, display: 'none' });
+                }
+            });
+
+            if (!animate) {
+                gsap.set(nextPanel, { autoAlpha: 1, y: 0, display: 'block' });
+                return;
+            }
+
+            // Optional small fade-out of current before showing next
+            const tl = gsap.timeline();
+
+            if (currentPanel && currentPanel !== nextPanel) {
+                tl.to(currentPanel, {
+                    autoAlpha: 0,
+                    y: 10,
+                    duration: 0.15,
+                    ease: 'power2.in',
+                    onComplete: () => gsap.set(currentPanel, { display: 'none' })
+                });
+            }
+
+            tl.fromTo(nextPanel,
+                { autoAlpha: 0, y: 10, display: 'block' },
+                {
+                    autoAlpha: 1,
+                    y: 0,
+                    duration: 0.25,
+                    ease: 'power2.out'
+                }
+            );
+        };
+
+        const updateActiveState = (newIndex) => {
+            if (newIndex === activeIndex) return;
+
+            navItems[activeIndex].classList.remove('text-custom-green');
+            navItems[newIndex].classList.add('text-custom-green');
+            activeIndex = newIndex;
+
+            const activeNavItem = navItems[activeIndex];
+            gsap.set(activeBar, {
+                top: activeNavItem.offsetTop,
+                height: activeNavItem.offsetHeight
+            });
+
+            gsap.fromTo(activeBar,
+                { scaleY: 0.8, opacity: 0.7 },
+                {
+                    scaleY: 1,
+                    opacity: 1,
+                    duration: 0.2,
+                    ease: 'power2.out'
+                }
+            );
+
+            showPanel(activeIndex, true);
+        };
+
+        // Initial state
+        gsap.set(activeBar, {
+            top: navItems[0].offsetTop,
+            height: navItems[0].offsetHeight
+        });
+        navItems[0].classList.add('text-custom-green');
+        panels.forEach((panel, i) => {
+            gsap.set(panel, {
+                autoAlpha: i === 0 ? 1 : 0,
+                y: i === 0 ? 0 : 10,
+                display: i === 0 ? 'block' : 'none'
+            });
+        });
+
+        navItems.forEach((item, index) => {
+            item.addEventListener('click', () => updateActiveState(index));
+        });
+    });
+</script>
+
+<!-- Measure Your Impact Section -->
+<section class="py-20 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-6xl mx-auto">
+        <div class="rounded-3xl shadow-lg px-6 sm:px-10 lg:px-14 py-10 sm:py-12 lg:py-14 flex flex-col gap-8 lg:gap-10"
+            style="background-image: url('{% static 'images/About timeline background.webp' %}'); background-size: cover; background-position: center;">
+
+            <!-- Heading & Description (full width) -->
+            <div class="w-full">
+                <h2 class="text-3xl md:text-4xl font-product-sans font-black text-custom-green mb-3">
+                    Measure your Impact
+                </h2>
+                <p class="font-montserrat text-sm md:text-base text-gray-700 max-w-3xl">
+                    Compare EcoConcrete with traditional materials and see the carbon savings for your project with
+                    our Carbon Calculator.
+                </p>
+            </div>
+
+            <!-- Main content: form + metrics -->
+            <div class="w-full flex flex-col lg:flex-row gap-10 lg:gap-16">
+
+                <!-- Left: Form UI -->
+                <div class="w-full lg:w-1/2">
+                    <form class="space-y-6">
+                        <!-- Road Type -->
+                        <div>
+                            <label class="block text-sm font-montserrat text-gray-700 mb-2">Select road type</label>
+                            <div class="relative">
+                                <select
+                                    class="w-full border border-gray-300 rounded-lg py-2.5 px-3 pr-10 text-sm md:text-base font-montserrat text-gray-800 focus:outline-none focus:ring-2 focus:ring-custom-green focus:border-custom-green appearance-none bg-white">
+                                    <option>Select the type of road you want to construct</option>
+                                </select>
+                                <span
+                                    class="pointer-events-none absolute inset-y-0 right-3 flex items-center text-gray-500 text-xs md:text-sm">▾</span>
+                            </div>
+                        </div>
+
+                        <!-- Dimensions -->
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-montserrat text-gray-700 mb-2">Length (in
+                                    km)</label>
+                                <input type="text"
+                                    class="w-full border border-gray-300 rounded-lg py-2.5 px-3 text-sm md:text-base font-montserrat text-gray-800 focus:outline-none focus:ring-2 focus:ring-custom-green focus:border-custom-green">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-montserrat text-gray-700 mb-2">Width (in m)</label>
+                                <input type="text"
+                                    class="w-full border border-gray-300 rounded-lg py-2.5 px-3 text-sm md:text-base font-montserrat text-gray-800 focus:outline-none focus:ring-2 focus:ring-custom-green focus:border-custom-green">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-montserrat text-gray-700 mb-2">Thickness (in m)</label>
+                            <input type="text"
+                                class="w-full border border-gray-300 rounded-lg py-2.5 px-3 text-sm md:text-base font-montserrat text-gray-800 focus:outline-none focus:ring-2 focus:ring-custom-green focus:border-custom-green">
+                        </div>
+
+                        <!-- Buttons -->
+                        <div class="flex flex-col sm:flex-row gap-4 mt-4">
+                            <button type="button"
+                                class="flex-1 bg-custom-green text-white font-montserrat font-semibold py-2.5 rounded-lg text-sm md:text-base">
+                                Calculate
+                            </button>
+                            <button type="button"
+                                class="flex-1 bg-gray-200 text-gray-800 font-montserrat font-semibold py-2.5 rounded-lg text-sm md:text-base">
+                                Reset
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Right: Summary Cards -->
+                <div class="w-full lg:w-1/2 flex flex-col">
+                    <div class="grid grid-cols-1 gap-4 sm:gap-5">
+                        <div
+                            class="grid grid-cols-2 gap-2 bg-[#9ED6A8] rounded-xl py-6 px-5 text-white font-montserrat text-sm md:text-base">
+                            <span class="font-semibold">CO saved</span>
+                            <span class="font-semibold text-right">16.38 tonnes</span>
+                        </div>
+                        <div
+                            class="grid grid-cols-2 gap-2 bg-[#9ED6A8] rounded-xl py-6 px-5 text-white font-montserrat text-sm md:text-base">
+                            <span class="font-semibold">Water saved</span>
+                            <span class="font-semibold text-right">6,552 litres</span>
+                        </div>
+                        <div
+                            class="grid grid-cols-2 gap-2 bg-[#3A8F45] rounded-xl py-6 px-5 text-white font-montserrat text-sm md:text-base">
+                            <span class="font-semibold">Industrial waste used</span>
+                            <span class="font-semibold text-right">19.11 tonnes</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Bottom savings bar (full width, at bottom) -->
+            <div
+                class="mt-4 bg-white/95 rounded-xl py-3 px-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 text-xs md:text-sm font-montserrat text-gray-800">
+                <div class="flex items-center gap-2">
+                    <span class="text-lg">🌳</span>
+                    <span>Equivalent to planting 780 trees per year.</span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <span class="text-lg">🚗</span>
+                    <span>Comparable to eliminating monthly emissions of 91 cars.</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -1,56 +1,262 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}EcoPath{% endblock %}</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="{% static 'css/ckeditor_custom.css' %}">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Montserrat -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{% static 'css/navbar_footer.css' %}">
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        // Custom Tailwind configuration
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'custom-green': '#276B2B',
+                    },
+                    fontFamily: {
+                        'montserrat': ['Montserrat', 'sans-serif'],
+                        'product-sans': ['Product Sans', 'sans-serif'],
+                        'playfair-display'
+                    },
+                    fontSize: {
+                        'sm': '14px', // 14px
+                        'lg': '18px', // 18px
+                        '5xl': '48px', // 48px
+                    }
+                }
+            }
+        }
+    </script>
     {% block extra_head %}{% endblock %}
 </head>
+
 <body>
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="{% url 'mainapp:homepage' %}">EcoPath</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+    <!-- Navbar -->
+    <header class="shadow-md">
+        <nav
+            class="mx-auto px-4 py-3 flex justify-between items-center fixed top-0 left-0 right-0 z-50 bg-white w-full">
+            <!-- Logo -->
+            <a href="{% url 'mainapp:homepage' %}" class="flex items-center">
+                <svg class="h-12 w-12" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="50" cy="50" r="45" fill="none" stroke="#276B2B" stroke-width="5" />
+                    <text x="50" y="55" font-family="Montserrat, sans-serif" font-size="20" fill="#276B2B"
+                        text-anchor="middle">EcoPath</text>
+                    <!-- This is a placeholder SVG. Replace with your actual logo.svg -->
+                </svg>
+
+            </a>
+
+            <!-- Desktop Menu -->
+            <ul
+                class="hidden md:flex items-center space-x-10 text-sm text-custom-green font-montserrat font-semibold desktop-nav">
+                <li class="{% if request.resolver_match.url_name == 'homepage' %}active{% endif %}"><a
+                        href="{% url 'mainapp:homepage' %}" class="nav-link">Home</a></li>
+                <li class="relative group">
+                    <a href="#" class="nav-link flex items-center">What we do <svg class="w-4 h-4 ml-1" fill="none"
+                            stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7">
+                            </path>
+                        </svg></a>
+                    <!-- Dropdown Placeholder -->
+                    <div
+                        class="absolute left-0 mt-2 w-48 bg-white rounded-md shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
+                        <a href="{% url 'mainapp:technology_products' %}"
+                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Technology &
+                            Products</a>
+                        <a href="{% url 'mainapp:services' %}"
+                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Services</a>
+                        <a href="{% url 'mainapp:project_list' %}"
+                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Our Projects</a>
+                    </div>
+                </li>
+                <li class="{% if request.resolver_match.url_name == 'sustainability' %}active{% endif %}"><a
+                        href="{% url 'mainapp:sustainability' %}" class="nav-link">Sustainability</a></li>
+                <li class="{% if request.resolver_match.url_name == 'about' %}active{% endif %}"><a
+                        href="{% url 'mainapp:about' %}" class="nav-link">About Us</a></li>
+                <li class="{% if request.resolver_match.url_name == 'blog_list' %}active{% endif %}"><a
+                        href="{% url 'mainapp:blog_list' %}" class="nav-link">Blogs</a></li>
+                <li class="{% if request.resolver_match.url_name == 'contact' %}active{% endif %}"><a
+                        href="{% url 'mainapp:contact' %}" class="nav-link">Contact Us</a></li>
+            </ul>
+
+            <!-- Hamburger Menu Button -->
+            <div class="md:hidden">
+                <button id="hamburger-btn" class="text-custom-green focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h16m-7 6h7"></path>
+                    </svg>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+
+
+    <!-- Mobile Overlay Menu -->
+    <div id="mobile-menu"
+        class="fixed inset-0 bg-white z-50 transform translate-x-full transition-transform duration-300 ease-in-out overflow-y-auto">
+        <div class="flex justify-end p-4">
+            <button id="close-btn" class="text-custom-green focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
+                    </path>
+                </svg>
             </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'mainapp:homepage' %}">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'mainapp:project_list' %}">Projects</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'mainapp:blog_list' %}">Blog</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'mainapp:about' %}">About Us</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'mainapp:contact' %}">Contact</a>
-                    </li>
-                </ul>
+        </div>
+        <ul
+            class="flex flex-col items-center justify-start pt-10 pb-10 w-full space-y-8 text-xl text-custom-green font-montserrat font-semibold">
+            <li><a href="{% url 'mainapp:homepage' %}">Home</a></li>
+
+            <!-- Mobile Dropdown -->
+            <li class="w-full flex flex-col items-center px-4">
+                <button id="mobile-dropdown-btn" class="flex items-center justify-center focus:outline-none w-full">
+                    What we do
+                    <svg id="mobile-dropdown-icon" class="w-4 h-4 ml-2 transition-transform duration-300" fill="none"
+                        stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                    </svg>
+                </button>
+                <div id="mobile-dropdown-content"
+                    class="max-h-0 opacity-0 overflow-hidden transition-all duration-500 ease-in-out flex flex-col items-center space-y-4 text-lg text-gray-600 bg-gray-50 w-full rounded-lg">
+                    <div class="py-4 flex flex-col items-center space-y-4 w-full">
+                        <a href="{% url 'mainapp:technology_products' %}" class="hover:text-custom-green">Technology &
+                            Products</a>
+                        <a href="{% url 'mainapp:services' %}" class="hover:text-custom-green">Services</a>
+                        <a href="{% url 'mainapp:project_list' %}" class="hover:text-custom-green">Our Projects</a>
+                    </div>
+                </div>
+            </li>
+
+            <li><a href="{% url 'mainapp:sustainability' %}">Sustainability</a></li>
+            <li><a href="{% url 'mainapp:about' %}">About Us</a></li>
+            <li><a href="{% url 'mainapp:blog_list' %}">Blogs</a></li>
+            <li><a href="{% url 'mainapp:contact' %}">Contact Us</a></li>
+        </ul>
+    </div>
+
+    {% block content %}
+    {% endblock %}
+
+    <!-- Footer -->
+    <footer class="bg-[#1C1C1C] text-white">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+                <!-- Column 1: Logo -->
+                <div class="flex flex-col items-center md:items-start">
+                    <div class="flex items-center gap-x-3">
+                        <img src="{% static 'images/logo.webp' %}" alt="EcoPath Logo" class="h-12 w-12">
+                        <span class="font-product-sans text-xl font-bold">Eco Path</span>
+                    </div>
+                </div>
+
+                <!-- Column 2: Services -->
+                <div>
+                    <h3 class="font-product-sans font-bold text-lg mb-4">Services</h3>
+                    <ul class="space-y-3 font-montserrat text-gray-400">
+                        <li><a href="#" class="hover:text-white transition-colors">Road Infra</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Design Consultancy</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Asphalt Road</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 3: Explore -->
+                <div>
+                    <h3 class="font-product-sans font-bold text-lg mb-4">Explore</h3>
+                    <ul class="space-y-3 font-montserrat text-gray-400">
+                        <li><a href="{% url 'mainapp:homepage' %}" class="hover:text-white transition-colors">Home</a>
+                        </li>
+                        <li><a href="{% url 'mainapp:about' %}" class="hover:text-white transition-colors">About Us</a>
+                        </li>
+                        <li><a href="#" class="hover:text-white transition-colors">Events</a></li>
+                        <li><a href="{% url 'mainapp:blog_list' %}" class="hover:text-white transition-colors">Blogs</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Column 4: Follow Us -->
+                <div>
+                    <h3 class="font-product-sans font-bold text-lg mb-4">Follow Us</h3>
+                    <ul class="space-y-4 font-montserrat text-gray-400">
+                        <li class="flex items-center gap-x-3">
+                            <img src="{% static 'images/instagram.webp' %}" alt="Instagram" class="w-5 h-5">
+                            <a href="#" class="hover:text-white transition-colors">Instagram</a>
+                        </li>
+                        <li class="flex items-center gap-x-3">
+                            <img src="{% static 'images/linkedin.webp' %}" alt="LinkedIn" class="w-5 h-5">
+                            <a href="#" class="hover:text-white transition-colors">LinkedIn</a>
+                        </li>
+                        <li class="flex items-center gap-x-3">
+                            <img src="{% static 'images/email.webp' %}" alt="Email" class="w-5 h-5">
+                            <a href="mailto:ecopath@gmail.com"
+                                class="hover:text-white transition-colors">ecopath@gmail.com</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Bottom Divider & Info -->
+            <div
+                class="mt-16 pt-8 border-t border-gray-700 flex flex-col md:flex-row justify-between items-center text-center md:text-left gap-y-6">
+                <p class="font-montserrat text-sm text-gray-500">We respect for your privacy</p>
+                <p class="font-montserrat text-sm text-gray-400">Give us a call at <span
+                        class="font-bold text-white">+91 93733 24053</span></p>
             </div>
         </div>
-    </nav>
 
-    <main class="container mt-4">
-        {% block content %}
-        {% endblock %}
-    </main>
-
-    <footer class="bg-light text-center text-lg-start mt-5">
-        <div class="container p-4">
-            <p class="text-center">© 2025 EcoPath. All Rights Reserved.</p>
+        <!-- Sub-Footer -->
+        <div class="bg-custom-green py-4 px-4 sm:px-6 lg:px-8">
+            <div
+                class="container mx-auto flex flex-col sm:flex-row justify-between items-center text-sm font-montserrat text-center">
+                <p>Copyright by EcoPath - All rights reserved</p>
+                <p>Designed And Developed by <a href="#" class="font-bold underline">WebLynks</a></p>
+            </div>
         </div>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    {% block extra_scripts %}{% endblock %}
+    <script>
+        $(document).ready(function () {
+            // Mobile Menu Toggle
+            $('#hamburger-btn').click(function () {
+                $('#mobile-menu').removeClass('translate-x-full');
+                $('body').addClass('overflow-hidden'); // Prevent background scrolling
+            });
+
+            $('#close-btn').click(function () {
+                $('#mobile-menu').addClass('translate-x-full');
+                $('body').removeClass('overflow-hidden');
+            });
+
+            // Mobile Dropdown Toggle
+            $('#mobile-dropdown-btn').click(function () {
+                const content = $('#mobile-dropdown-content');
+                const icon = $('#mobile-dropdown-icon');
+
+                if (content.hasClass('max-h-0')) {
+                    content.removeClass('max-h-0 opacity-0').addClass('max-h-[500px] opacity-100 mt-4');
+                    icon.addClass('rotate-180');
+                } else {
+                    content.addClass('max-h-0 opacity-0').removeClass('max-h-[500px] opacity-100 mt-4');
+                    icon.removeClass('rotate-180');
+                }
+            });
+        });
+    </script>
+
 </body>
+
 </html>
