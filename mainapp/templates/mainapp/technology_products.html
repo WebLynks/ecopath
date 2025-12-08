@@ -11,7 +11,7 @@
         theme: {
             extend: {
                 colors: {
-                    'custom-green': '#276B2B',
+                    'custom-green': '#17411A',
                     'custom-yellow': '#F0ED2F',
                     'card-bg-green': '#A0DEA7'
                 },
@@ -74,6 +74,20 @@
     .card-list li {
         margin-bottom: 0.5rem;
     }
+
+    /* Content box used for the text that appears when a card opens. */
+    .content-box {
+        transition: background 0.3s ease, backdrop-filter 0.3s ease, opacity 0.25s ease, transform 0.25s ease;
+        padding: 1.5rem;
+        border-radius: 0.75rem;
+    }
+
+    /* Glass overlay applied when card is active */
+    .glass-active {
+        background: rgba(255, 255, 255, 0.15); /* transparent white */
+  backdrop-filter: blur(8px);            /* glass blur */
+  -webkit-backdrop-filter: blur(8px);    
+    }
 </style>
 {% endblock %}
 
@@ -81,11 +95,11 @@
 <section class="relative h-screen w-full bg-cover bg-center text-white pt-24"
     style="background-image: url('{% static 'images/Tech Hero Header Image.webp' %}');">
     <div class="absolute inset-0 bg-black/40"></div>
-    <div class="relative h-full flex flex-col justify-between p-8 sm:p-12 md:p-16 lg:p-24">
-        <h1 class="text-5xl sm:text-6xl md:text-8xl font-product-sans font-black uppercase">
+    <div class="relative h-full flex flex-col justify-between p-8 sm:px-16 py-">
+        <h1 class="text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-product-sans font-black uppercase">
             Our Advanced Sustainable Materials & Technology
         </h1>
-        <p class="text-5xl sm:text-6xl md:text-6xl font-playfair-display max-w-4xl leading-tight">
+        <p class="text-5xl lg:text-6xl font-playfair-display max-w-4xl leading-tight">
             Cement built civilization. Now it’s time to build something better.
         </p>
     </div>
@@ -99,7 +113,7 @@
                 <h2 class="text-3xl md:text-4xl lg:text-5xl font-product-sans font-black text-custom-green mb-6">
                     Cement Industry Challenges
                 </h2>
-                <p class="font-montserrat text-lg md:text-xl text-gray-700 leading-relaxed">
+                <p class="font-montserrat text-[1rem] text-gray-700 leading-relaxed">
                     The construction sector is heavily reliant on cement, a material with a devastating
                     environmental footprint. Globally, cement manufacturing is responsible for around 8% of CO₂
                     emissions — more than the emissions of all commercial aviation combined.
@@ -132,7 +146,7 @@
             <div class="h-full flex flex-col items-center text-center">
                 <div class="p-8 rounded-2xl shadow-sm w-full h-full flex flex-col items-center">
                     <img src="{% static 'images/concrete-mixer 1.webp' %}" alt="Planning" class="h-24 mb-6">
-                    <p class="font-product-sans font-black text-2xl mb-4">400 million tonnes.</p>
+                    <p class="font-product-sans font-black text-3xl mb-4">400 million tonnes.</p>
                     <p class="font-montserrat text-lg text-gray-700">India is the second-largest cement producer
                         globally, with an annual output of over 400 million tonnes.</p>
                 </div>
@@ -142,7 +156,7 @@
             <div class="h-full flex flex-col items-center text-center">
                 <div class="p-8 rounded-2xl shadow-sm w-full h-full flex flex-col items-center">
                     <img src="{% static 'images/carbon-dioxide 1.webp' %}" alt="Eco-Friendly" class="h-24 mb-6">
-                    <p class="font-product-sans font-black text-2xl mb-4">220 million tonnes</p>
+                    <p class="font-product-sans font-black text-3xl mb-4">220 million tonnes</p>
                     <p class="font-montserrat text-lg text-gray-700">The Indian cement industry contributes more
                         than 220 million tonnes of CO₂ per year.</p>
                 </div>
@@ -152,7 +166,7 @@
             <div class="h-full flex flex-col items-center text-center">
                 <div class="p-8 rounded-2xl shadow-sm w-full h-full flex flex-col items-center">
                     <img src="{% static 'images/skyline 1.webp' %}" alt="Implementation" class="h-24 mb-6">
-                    <p class="font-product-sans font-black text-2xl mb-4">250 million homes</p>
+                    <p class="font-product-sans font-black text-3xl mb-4">250 million homes</p>
                     <p class="font-montserrat text-lg text-gray-700">With over 250 million new homes needed by 2030
                         and rapid infrastructure expansion, India’s cement consumption is expected to double in the
                         next decade.</p>
@@ -172,18 +186,13 @@
 
             <div class="w-full md:w-1/2 ">
                 <h2 class="text-3xl md:text-4xl lg:text-5xl font-product-sans font-black text-custom-green mb-6">
-                    CoEvolve Estates
+                    Eco Concrete
                 </h2>
                 <p class="font-montserrat text-lg md:text-xl text-gray-700 leading-relaxed">
-                    At CoEvolve Estates, sustainability and smart engineering go hand-in-hand. So when it was time
-                    to build the internal roads at their Whitefield property, they weren’t looking for a typical
-                    solution. They wanted strength, longevity, and harmony with the earth—without compromising on
-                    performance. That’s where EcoPath came in. Our team was tasked with building a road that could
-                    withstand the test of time and weather while aligning with CoEvolve’s thoughtful living
-                    philosophy.
+                    Eco-Concrete is a geopolymer concrete solution that fully eliminates the use of cement. We use GGBS (Ground Granulated Blast-furnace Slag) — an industrial byproduct from steel plants. GGBS helps us build eco-friendly, cost-effective, and durable precast products. GGBS is mixed with our proprietary binders to replicate the property of cement.
                 </p>
                 <a href="" class="font-montserrat text-[#0C96EC] text-xl mt-6 inline-block">
-                    Explore Project <span>&rarr;</span>
+                    Technical Details <span>&rarr;</span>
                 </a>
             </div>
 
@@ -197,7 +206,7 @@
 </div>
 
 <div id="card-container"
-    class="relative w-full mx-auto px-4 md:px-12 lg:px-24 h-[75vh] md:h-[80vh] flex flex-col justify-between mb-10">
+    class="relative w-full mx-auto px-4 md:px-12 lg:px-24 h-[75vh] md:h-[90vh] flex flex-col justify-between">
 
     <!-- CARD 1: Fly Ash -->
     <div class="card group relative overflow-hidden cursor-pointer shadow-xl rounded-sm self-start" data-index="0">
@@ -233,7 +242,7 @@
 
             <!-- Title: Pinned Bottom Left -->
             <h2
-                class="card-title absolute bottom-8 right-8 text-3xl md:text-5xl text-white font-bold uppercase tracking-widest drop-shadow-lg transition-all duration-300">
+                class="card-title absolute bottom-8 right-8 text-3xl md:text-4xl text-white font-bold uppercase tracking-widest drop-shadow-lg transition-all duration-300">
                 Fly Ash
             </h2>
         </div>
@@ -249,8 +258,8 @@
         </div>
 
         <div class="relative z-10 h-full w-full">
-            <div class="content-box absolute inset-0 flex flex-col justify-center items-start px-8 pb-20 opacity-0">
-                <ul class="space-y-3 text-white/90 text-lg md:text-xl leading-relaxed text-left">
+            <div class="content-box absolute inset-0 flex flex-col justify-center items-center px-8 pb-20 opacity-0">
+                <ul class="space-y-3 text-white/90 text-lg md:text-xl leading-relaxed">
                     <li class="flex items-start gap-3">
                         <span class="mt-2 w-2 h-2 bg-white rounded-full shrink-0"></span>
                         <span><strong>20-25 million tonnes</strong> annually</span>
@@ -271,7 +280,7 @@
             </div>
 
             <h2
-                class="card-title absolute bottom-8 right-8 text-3xl md:text-5xl text-white font-bold uppercase tracking-widest drop-shadow-lg transition-all duration-300">
+                class="card-title absolute bottom-8 right-8 text-3xl md:text-4xl text-white font-bold uppercase tracking-widest drop-shadow-lg transition-all duration-300">
                 Steel Slag
             </h2>
         </div>
@@ -287,7 +296,7 @@
         </div>
 
         <div class="relative z-10 h-full w-full">
-            <div class="content-box absolute inset-0 flex flex-col justify-center items-start px-8 pb-20 opacity-0">
+            <div class="content-box absolute inset-0 flex flex-col justify-center items-end px-8 pb-20 opacity-0">
                 <ul class="space-y-3 text-white/90 text-lg md:text-xl leading-relaxed text-left">
                     <li class="flex items-start gap-3">
                         <span class="mt-2 w-2 h-2 bg-white rounded-full shrink-0"></span>
@@ -309,7 +318,7 @@
             </div>
 
             <h2
-                class="card-title absolute bottom-8 right-8 text-3xl md:text-5xl text-white font-bold uppercase tracking-widest drop-shadow-lg transition-all duration-300">
+                class="card-title absolute bottom-8 right-8 text-3xl md:text-4xl text-white font-bold uppercase tracking-widest drop-shadow-lg transition-all duration-300">
                 Chemicals
             </h2>
         </div>
@@ -330,7 +339,7 @@
         <!-- Image Side (Right on Desktop) -->
         <div class="w-full md:w-1/2">
             <img src="{% static 'images/Pavers image.webp' %}" alt="Pavers Main"
-                class="w-full h-[20rem] md:h-[30rem] ml-4 object-cover rounded-l-[3rem] md:rounded-l-[4rem] shadow-lg">
+                class="w-full h-[20rem] md:h-[30rem] lg:h-[75vh] ml-4 object-cover rounded-l-[1rem] md:rounded-l-[1rem] shadow-lg">
         </div>
 
         <!-- Text Side (Left on Desktop) -->
@@ -404,7 +413,7 @@
         <!-- Image Side (Left on Desktop) -->
         <div class="w-full md:w-1/2">
             <img src="{% static 'images/Kerbstones image.webp' %}" alt="Kerbstones Main"
-                class="w-full h-[20rem] md:h-[30rem] object-cover rounded-r-[3rem] md:rounded-r-[4rem] mr-4 shadow-lg">
+                class="w-full h-[20rem] md:h-[30rem] lg:h-[75vh] object-cover rounded-r-[1rem] md:rounded-r-[1rem] mr-4 shadow-lg">
         </div>
 
         <!-- Text Side (Right on Desktop) -->
@@ -477,7 +486,7 @@
         <!-- Image Side (Right on Desktop) -->
         <div class="w-full md:w-1/2">
             <img src="{% static 'images/ecopath.webp' %}" alt="RMC"
-                class="w-full h-[20rem] md:h-[30rem] ml-4 object-cover rounded-l-[3rem] md:rounded-l-[4rem] shadow-lg">
+                class="w-full h-[20rem] md:h-[30rem] lg:h-[75vh] ml-4 object-cover rounded-l-[1rem] md:rounded-l-[1rem] shadow-lg">
         </div>
 
         <!-- Text Side (Left on Desktop) -->
@@ -501,7 +510,7 @@
         <!-- Image Side (Right on Desktop) -->
         <div class="w-full md:w-1/2">
             <img src="{% static 'images/Bricks & Blocks image.webp' %}" alt="Bricks & Blocks Main"
-                class="w-full h-[20rem] md:h-[30rem] object-cover rounded-r-[3rem] md:rounded-r-[4rem] mr-4 shadow-lg">
+                class="w-full h-[20rem] md:h-[30rem] lg:h-[75vh] object-cover rounded-r-[1rem] md:rounded-r-[1rem] mr-4 shadow-lg">
         </div>
 
         <!-- Text Side (Left on Desktop) -->
@@ -662,13 +671,13 @@
 
 </script>
 
-<div class="w-full max-w-7xl mx-auto space-y-4 px-5">
+<div class="w-full max-w-7xl mx-auto space-y-4 px-5 mb-5">
 
     <!-- SECTION HEADER -->
     <div class="mb-8">
         <h2 class="text-3xl md:text-5xl font-product-sans font-bold text-custom-green mb-4">Innovation Engineered:
             Performance, Parity, & Planet.</h2>
-        <p class="font-montserrat text-lg text-gray-700">Creating a product as ambitious as Eco-Concrete required us
+        <p class="font-montserrat text-lg text-gray-700 w-3/4">Creating a product as ambitious as Eco-Concrete required us
             to invest heavily in research, field testing, and chemical engineering.</p>
     </div>
 
@@ -814,7 +823,7 @@
         // --- DESKTOP ANIMATION FUNCTIONS ---
 
         function initDesktopHover() {
-            // Group by Row
+            // Group by Row — changed to click-to-toggle behavior on desktop
             const rows = [
                 { id: 'row-top', widthExpanded: '60%', widthShrunk: '20%', default: '33.333%' },
                 { id: 'row-bottom', widthExpanded: '80%', widthShrunk: '20%', default: '50%' }
@@ -823,85 +832,74 @@
             rows.forEach(rowConfig => {
                 const row = document.getElementById(rowConfig.id);
                 const cards = row.querySelectorAll('.card-item');
+                let activeCard = null;
 
                 cards.forEach(card => {
-
-                    card.addEventListener('mouseenter', () => {
+                    card.addEventListener('click', () => {
                         if (isMobile) return;
 
-                        // 1. Handle Widths
+                        // If clicking the already-active card, reset the row
+                        if (activeCard === card) {
+                            cards.forEach(c => {
+                                gsap.to(c, { width: rowConfig.default, duration: 0.5, ease: 'power2.out' });
+
+                                const wrapper = c.querySelector('.card-text-wrapper');
+                                const list = c.querySelector('.card-list');
+                                const targetY = c.defaultY || 0;
+
+                                gsap.to(wrapper, { y: targetY, duration: 0.5, ease: 'power2.out' });
+                                gsap.to(list, { autoAlpha: 0, y: 20, duration: 0.3 });
+
+                                // remove glass overlay
+                                if (wrapper) wrapper.classList.remove('glass-active');
+                            });
+                            activeCard = null;
+                            return;
+                        }
+
+                        // Otherwise, set this card active and shrink siblings
                         cards.forEach(c => {
-                            if (c === card) {
-                                // ACTIVE CARD
-                                gsap.to(c, {
-                                    width: rowConfig.widthExpanded,
-                                    duration: 0.5,
-                                    ease: "power2.out"
-                                });
+                            const isActive = (c === card);
+                            const wrapper = c.querySelector('.card-text-wrapper');
+                            const list = c.querySelector('.card-list');
 
-                                const wrapper = c.querySelector('.card-text-wrapper');
-                                const list = c.querySelector('.card-list');
-
-                                // Move Title Up (y:0)
-                                gsap.to(wrapper, { y: 0, duration: 0.5, ease: "power2.out" });
-
-                                // Fade In List
-                                gsap.to(list, {
-                                    autoAlpha: 1,
-                                    y: 0,
-                                    duration: 0.4,
-                                    delay: 0.1
-                                });
-
+                            if (isActive) {
+                                gsap.to(c, { width: rowConfig.widthExpanded, duration: 0.5, ease: 'power2.out' });
+                                gsap.to(wrapper, { y: 0, duration: 0.5, ease: 'power2.out' });
+                                gsap.to(list, { autoAlpha: 1, y: 0, duration: 0.4, delay: 0.1 });
+                                if (wrapper) wrapper.classList.add('glass-active');
                             } else {
-                                // INACTIVE CARD (Sibling)
-                                gsap.to(c, {
-                                    width: rowConfig.widthShrunk,
-                                    duration: 0.5,
-                                    ease: "power2.out"
-                                });
+                                gsap.to(c, { width: rowConfig.widthShrunk, duration: 0.5, ease: 'power2.out' });
 
-                                const wrapper = c.querySelector('.card-text-wrapper');
-                                const list = c.querySelector('.card-list');
-
-                                // Calculate temporary offset for the shrunk state
-                                // (Title might wrap, so we recalculate purely for this animation frame, 
-                                // but we DO NOT overwrite the stored card.defaultY)
                                 const cardHeight = c.offsetHeight;
                                 const title = c.querySelector('.card-title');
-                                // Note: offsetHeight might be stale immediately, but GSAP handles interpolation well enough usually.
-                                // For 20% width, titles might wrap.
-                                const currentYOffset = cardHeight - 32 - title.offsetHeight - 40;
+                                const currentYOffset = cardHeight - 32 - (title ? title.offsetHeight : 0) - 40;
 
-                                gsap.to(wrapper, { y: currentYOffset, duration: 0.5, ease: "power2.out" });
+                                gsap.to(wrapper, { y: currentYOffset, duration: 0.5, ease: 'power2.out' });
                                 gsap.to(list, { autoAlpha: 0, y: 20, duration: 0.3 });
+                                if (wrapper) wrapper.classList.remove('glass-active');
                             }
                         });
+
+                        activeCard = card;
                     });
                 });
 
-                // Reset Row on Mouse Leave
+                // Reset Row on Mouse Leave as a convenience
                 row.addEventListener('mouseleave', () => {
                     if (isMobile) return;
-
                     cards.forEach(c => {
-                        // Reset Width
-                        gsap.to(c, {
-                            width: rowConfig.default,
-                            duration: 0.5,
-                            ease: "power2.out"
-                        });
+                        gsap.to(c, { width: rowConfig.default, duration: 0.5, ease: 'power2.out' });
 
-                        // Reset Text to PRE-CALCULATED default position
                         const wrapper = c.querySelector('.card-text-wrapper');
                         const list = c.querySelector('.card-list');
-
-                        // Use the stored defaultY! This ensures perfect alignment.
                         const targetY = c.defaultY || 0;
 
-                        gsap.to(wrapper, { y: targetY, duration: 0.5, ease: "power2.out" });
+                        gsap.to(wrapper, { y: targetY, duration: 0.5, ease: 'power2.out' });
                         gsap.to(list, { autoAlpha: 0, y: 20, duration: 0.3 });
+                        if (wrapper) wrapper.classList.remove('glass-active');
                     });
+                    activeCard = null;
                 });
             });
         }

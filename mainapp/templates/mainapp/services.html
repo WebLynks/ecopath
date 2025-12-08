@@ -66,9 +66,9 @@
         theme: {
             extend: {
                 colors: {
-                    'custom-green': '#276B2B',
+                    'custom-green': '#17411A',
                     'custom-yellow': '#F0ED2F',
-                    'card-bg-green': '#A0DEA7'
+                    'card-bg-green': '#CAEACC'
                 },
                 fontFamily: {
                     'montserrat': ['Montserrat', 'sans-serif'],
@@ -91,11 +91,11 @@
 <section class="relative h-screen w-full bg-cover bg-center text-white pt-24"
     style="background-image: url('{% static 'images/Services Hero Header image.webp' %}');">
     <div class="absolute inset-0 bg-black/40"></div>
-    <div class="relative h-full flex flex-col justify-between p-8 sm:p-12 md:p-16 lg:p-24">
-        <h1 class="text-6xl sm:text-7xl md:text-8xl font-product-sans font-black uppercase">
+    <div class="relative h-full flex flex-col justify-between p-8 sm:px-16 py">
+        <h1 class="text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-product-sans font-black uppercase">
             Our <br> Services
         </h1>
-        <p class="text-4xl sm:text-5xl md:text-6xl font-playfair-display max-w-4xl leading-tight">
+        <p class="text-5xl lg:text-6xl font-playfair-display max-w-4xl leading-tight">
             Sustainable road solutions: <br> Carbon-negative, end-to-end, and design-led.
         </p>
     </div>
@@ -107,7 +107,7 @@
         <div class="flex flex-col md:flex-row gap-12">
             <!-- Text Column -->
             <div class="w-full md:w-1/2 pt-12">
-                <h2 class="text-3xl md:text-4xl lg:text-5xl font-product-sans font-black text-custom-green mb-6">
+                <h2 class="text-4xl md:text-5xl lg:text-5xl font-product-sans font-black text-custom-green mb-6">
                     End to End Road Design
                 </h2>
                 <p class="font-montserrat text-lg md:text-xl text-gray-700 leading-relaxed">
@@ -174,7 +174,7 @@
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
             <!-- Service Card 1 -->
             <div
-                class="bg-card-bg-green rounded-2xl p-8 shadow-md flex flex-col items-center justify-center text-center">
+                class="bg-card-bg-green rounded-2xl p-8 py-24 shadow-md flex flex-col items-center justify-center text-center">
                 <h3 class="text-3xl md:text-4xl font-product-sans font-black mb-4">$ 300K</h3>
                 <p class="font-montserrat text-lg md:text-xl ">
                     revenue generated in FY25
@@ -251,14 +251,14 @@
             </div>
 
             <!-- Image Stack (Right on large screens) -->
-            <div class="w-full md:w-1/2 lg:h-[40rem] h-[35rem] flex items-center justify-center mt-8 md:mt-0">
-                <div class="image-stack-container w-full h-full">
+            <div class="w-full md:w-1/2 lg:h-[40rem] h-[25rem] flex items-center justify-center mt-8 md:mt-0">
+                <div class="image-stack-container relative w-full h-full">
                     <img src="{% static 'images/Drain.webp' %}" alt="Drain"
-                        class="image-card data-[index='0'] absolute md:w-1/4 w-3/4 h-auto rounded-2xl" data-index="0">
+                        class="image-card data-[index='0'] absolute 2xl:w-3/4 xl:w-3/5 w-2/4 h-auto rounded-2xl" data-index="0">
                     <img src="{% static 'images/Footpath.webp' %}" alt="Footpath"
-                        class="image-card data-[index='1'] absolute md:w-1/4 w-3/4 h-auto rounded-2xl" data-index="1">
+                        class="image-card data-[index='1'] absolute 2xl:w-3/4 xl:w-3/5 w-2/4 h-auto rounded-2xl" data-index="1">
                     <img src="{% static 'images/Sewer Line.webp' %}" alt="Sewer Line"
-                        class="image-card data-[index='2'] absolute md:w-1/4 w-3/4 h-auto rounded-2xl" data-index="2">
+                        class="image-card data-[index='2'] absolute 2xl:w-3/4 xl:w-3/5 w-2/4 h-auto rounded-2xl" data-index="2">
                 </div>
             </div>
         </div>
@@ -273,6 +273,10 @@
         const activeBar = document.getElementById('active-bar');
 
         let activeIndex = 0; // Default active item
+
+        // Base Y position for the active card (pushes it to the bottom)
+        // 60% allows enough room above for the other cards to stack up without clipping
+        const ACTIVE_Y_BASE = 30; 
 
         const animProps = {
             duration: 0.7,
@@ -313,22 +317,22 @@
                 const stackPositionAbs = Math.abs(stackPosition);
 
                 if (stackPosition === 0) {
-                    // Animate TO Active State
+                    // Animate TO Active State (Bottom, Front)
                     gsap.to(card, {
                         zIndex: 10,
                         x: '0%',
-                        y: '0%',
+                        y: ACTIVE_Y_BASE + '%', // Move to bottom
                         z: 0,
                         rotate: '0deg',
                         scale: 1,
                         ...animProps
                     });
                 } else {
-                    // Animate TO Inactive State (Vertical Staircase)
+                    // Animate TO Inactive State (Staircase Up and Right)
                     gsap.to(card, {
                         zIndex: 5 - stackPositionAbs,
-                        x: (stackPositionAbs * 5) + '%',
-                        y: (stackPositionAbs * 15) + '%',
+                        x: (stackPositionAbs * 15) + '%', // Move Right
+                        y: (ACTIVE_Y_BASE - (stackPositionAbs * 15)) + '%', // Move Up relative to base
                         z: -(stackPositionAbs * 150),
                         scale: 1,
                         ...animProps
@@ -352,13 +356,18 @@
 
                 if (stackPosition === 0) {
                     gsap.set(card, {
-                        zIndex: 10, x: '0%', y: '0%', z: 0, rotate: '0deg', scale: 1
+                        zIndex: 10, 
+                        x: '0%', 
+                        y: ACTIVE_Y_BASE + '%', // Move to bottom
+                        z: 0, 
+                        rotate: '0deg', 
+                        scale: 1
                     });
                 } else {
                     gsap.set(card, {
                         zIndex: 5 - stackPositionAbs,
-                        x: (stackPositionAbs * 5) + '%',
-                        y: (stackPositionAbs * 15) + '%',
+                        x: (stackPositionAbs * 15) + '%',
+                        y: (ACTIVE_Y_BASE - (stackPositionAbs * 15)) + '%', // Move Up
                         z: -(stackPositionAbs * 150),
                         scale: 1
                     });
