@@ -13,7 +13,8 @@
                 colors: {
                     'custom-green': '#17411A',
                     'custom-yellow': '#F0ED2F',
-                    'card-bg-green': '#A0DEA7'
+                    'card-bg-green': '#CAEACC',
+                    'card-bg-dark-green': '#7DCC83'
                 },
                 fontFamily: {
                     'montserrat': ['Montserrat', 'sans-serif'],
@@ -27,11 +28,11 @@
 {% endblock %}
 
 {% block content %}
-<section class="relative h-screen w-full bg-cover bg-center text-white pt-24 pb-12"
-    style="background-image: url('{% static 'images/Tech Hero Header Image.webp' %}');">
+<section class="relative h-screen w-full bg-cover bg-center text-white pt-12"
+    style="background-image: url('{% static 'images/Sustainability Hero Header.webp' %}');">
     <div class="absolute inset-0 bg-black/40"></div>
-    <div class="relative h-full flex flex-col justify-between p-4 sm:p-12 md:p-16 lg:p-24">
-        <h1 class="text-5xl sm:text-6xl md:text-7xl font-product-sans font-black uppercase">
+    <div class="relative h-full flex flex-col justify-between p-12 px-8">
+        <h1 class="text-4xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-product-sans font-black uppercase">
             SUSTAINABILITY
         </h1>
         <p class="text-4xl sm:text-5xl md:text-6xl font-playfair-display max-w-4xl leading-tight">
@@ -42,13 +43,13 @@
 
 <section class="py-16 md:py-24 px-4 sm:px-6 lg:px-8">
     <div class="container mx-auto">
-        <div class="flex flex-col md:flex-row gap-12">
+        <div class="flex flex-col md:flex-row justify-center gap-12">
             <!-- Text Column -->
-            <div class="w-full md:w-1/2 pt-12">
+            <div class="w-full md:w-2/5 pt-12">
                 <h2 class="text-3xl md:text-4xl lg:text-5xl font-product-sans font-black text-custom-green mb-6">
                     Building the Future Responsibly
                 </h2>
-                <p class="font-montserrat text-lg md:text-xl text-gray-700 leading-relaxed">
+                <p class="font-montserrat text-lg md:text-[1.125rem] text-gray-700 leading-relaxed">
                     At EcoPath, we’re transforming infrastructure with materials that cut carbon, reuse waste, and
                     protect the planet’s future.
                     <br><br>
@@ -62,75 +63,10 @@
             </div>
 
             <!-- Image Column -->
-            <div class="w-full md:w-1/2 items-center flex justify-center">
+            <div class="w-full md:w-2/5 items-center flex justify-center">
                 <img src="{% static 'images/Cement issue image(2).png' %}" alt="Maintenance Services"
-                    class="w-[30rem] h-auto">
+                    class="w-full h-auto max-h-[80vh]">
             </div>
-        </div>
-    </div>
-</section>
-
-<!-- Sustainability in Action Section with Carousel -->
-<section class="py-16 md:py-24 px-4 sm:px-6 lg:px-8">
-    <div class="container mx-auto flex flex-col md:flex-row gap-10 md:gap-16 items-center">
-
-        <!-- Text Column -->
-        <div class="w-full md:w-5/12 lg:w-4/12">
-
-            <h2 class="text-3xl md:text-4xl lg:text-5xl font-product-sans font-black text-custom-green mb-4">
-                Sustainability in Action
-            </h2>
-            <p class="font-montserrat text-base md:text-lg lg:text-xl text-gray-700 leading-relaxed">
-                Behind every EcoPath road is a cleaner, smarter process — from collecting industrial by-products
-                to reusing aggregates and cutting emissions on-site.
-            </p>
-        </div>
-
-        <!-- Carousel Column -->
-        <div class="w-full md:w-7/12 lg:w-8/12">
-            <div class="flex justify-end mb-4">
-                <div class="flex items-center gap-4">
-                    <button id="sustainability-prev" class="text-4xl md:text-5xl text-black  transition-colors">
-                        &#8249;
-                    </button>
-                    <button id="sustainability-next" class="text-4xl md:text-5xl text-black  transition-colors">
-                        &#8250;
-                    </button>
-                </div>
-            </div>
-            <div class="relative overflow-hidden rounded-3xl" id="sustainability-carousel">
-                <div class="flex space-x-4" id="sustainability-track">
-                    <div class="basis-[80%] flex-shrink-0 carousel-slide relative">
-                        <img src="{% static 'images/ecopath.webp' %}" alt="Sustainability slide 1"
-                            class="w-full h-full object-cover rounded-3xl">
-                        <div
-                            class="absolute inset-0 bg-black/40 rounded-3xl opacity-0 pointer-events-none peek-overlay">
-                        </div>
-                    </div>
-                    <div class="basis-[80%] flex-shrink-0 carousel-slide relative">
-                        <img src="{% static 'images/ecopath.webp' %}" alt="Sustainability slide 2"
-                            class="w-full h-full object-cover rounded-3xl">
-                        <div
-                            class="absolute inset-0 bg-black/40 rounded-3xl opacity-0 pointer-events-none peek-overlay">
-                        </div>
-                    </div>
-                    <div class="basis-[80%] flex-shrink-0 carousel-slide relative">
-                        <img src="{% static 'images/ecopath.webp' %}" alt="Sustainability slide 3"
-                            class="w-full h-full object-cover rounded-3xl">
-                        <div
-                            class="absolute inset-0 bg-black/40 rounded-3xl opacity-0 pointer-events-none peek-overlay">
-                        </div>
-                    </div>
-                    <div class="basis-[80%] flex-shrink-0 carousel-slide relative">
-                        <img src="{% static 'images/ecopath.webp' %}" alt="Sustainability slide 4"
-                            class="w-full h-full object-cover rounded-3xl">
-                        <div
-                            class="absolute inset-0 bg-black/40 rounded-3xl opacity-0 pointer-events-none peek-overlay">
-                        </div>
-                    </div>
-                </div>
-            </div>
-
         </div>
     </div>
 </section>
@@ -145,7 +81,7 @@
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
             <!-- Service Card 1 -->
             <div
-                class="bg-card-bg-green rounded-2xl p-8 shadow-md flex flex-col items-center justify-center text-center">
+                class="bg-card-bg-green rounded-2xl p-8 py-36 shadow-md flex flex-col items-center justify-center text-center">
                 <h3 class="text-3xl md:text-4xl font-product-sans font-black mb-4">75 - 80%</h3>
                 <p class="font-montserrat text-lg md:text-xl ">
                     less CO2 emissions than traditional concrete.
@@ -154,7 +90,7 @@
 
             <!-- Service Card 2 -->
             <div
-                class="bg-card-bg-green rounded-2xl p-8 shadow-md  flex flex-col items-center justify-center text-center">
+                class="bg-card-bg-green rounded-2xl p-8 py-24 shadow-md flex flex-col items-center justify-center text-center">
                 <h3 class="text-3xl md:text-4xl font-product-sans font-black mb-4">30%</h3>
                 <p class="font-montserrat text-lg md:text-xl ">
                     water saved during production.
@@ -163,7 +99,7 @@
 
             <!-- Service Card 3 -->
             <div
-                class="bg-card-bg-green rounded-2xl p-8 shadow-md  flex flex-col items-center justify-center text-center">
+                class="bg-card-bg-green rounded-2xl p-8 py-24 shadow-md flex flex-col items-center justify-center text-center">
                 <h3 class="text-3xl md:text-4xl font-product-sans font-black mb-4">10,000+ tonnes</h3>
                 <p class="font-montserrat text-lg md:text-xl ">
                     of industrial waste reused.
@@ -172,7 +108,7 @@
 
             <!-- Service Card 4 -->
             <div
-                class="bg-card-bg-green rounded-2xl p-8 shadow-md  flex flex-col items-center justify-center text-center">
+                class="bg-card-bg-green rounded-2xl p-8 py-24 shadow-md flex flex-col items-center justify-center text-center">
                 <h3 class="text-3xl md:text-4xl font-product-sans font-black mb-4">2x</h3>
                 <p class="font-montserrat text-lg md:text-xl ">
                     road lifespan compared to cement-based ones.
@@ -181,6 +117,66 @@
         </div>
     </div>
 </section>
+
+<!-- Sustainability in Action Section with Carousel -->
+<section class="py-16 md:py-24 px-4 sm:px-6 lg:px-8 lg:pr-0">
+    <div class="mx-auto flex flex-col md:flex-row gap-10 md:gap-16 items-center">
+
+        <!-- Text Column -->
+        <div class="w-full md:w-5/12 lg:w-4/12 md:mt-24">
+
+            <h2 class="text-3xl md:text-4xl lg:text-5xl font-product-sans font-black text-custom-green mb-4">
+                Sustainability in Action
+            </h2>
+            <p class="font-montserrat text-base md:text-[1.125rem] lg:text-[1.125rem] text-gray-700 leading-relaxed">
+                Behind every EcoPath road is a cleaner, smarter process — from collecting industrial by-products
+                to reusing aggregates and cutting emissions on-site.
+            </p>
+        </div>
+
+        <!-- Carousel Column -->
+        <div class="w-full md:w-7/12 lg:w-8/12">
+            <div class="flex justify-end mb-4">
+                <div class="flex items-center gap-8">
+                    <button id="sustainability-prev" class="text-4xl md:text-5xl text-black text-custom-green transition-colors">
+                        &#8249;
+                    </button>
+                    <button id="sustainability-next" class="text-4xl md:text-5xl text-black text-custom-green transition-colors">
+                        &#8250;
+                    </button>
+                </div>
+            </div>
+            <div class="relative overflow-hidden rounded-lg" id="sustainability-carousel">
+                <div class="flex space-x-4" id="sustainability-track">
+                    <div class="basis-[80%] flex-shrink-0 carousel-slide relative">
+                        <img src="{% static 'images/Sustainability images 1.webp' %}" alt="Sustainability slide 1"
+                            class="w-full h-full object-cover rounded-lg">
+                        <div
+                            class="absolute inset-0 bg-black/40 rounded-lg opacity-0 pointer-events-none peek-overlay">
+                        </div>
+                    </div>
+                    <div class="basis-[80%] flex-shrink-0 carousel-slide relative">
+                        <img src="{% static 'images/Sustainability images 2.webp' %}" alt="Sustainability slide 2"
+                            class="w-full h-full object-cover rounded-lg">
+                        <div
+                            class="absolute inset-0 bg-black/40 rounded-lg opacity-0 pointer-events-none peek-overlay">
+                        </div>
+                    </div>
+                    <div class="basis-[80%] flex-shrink-0 carousel-slide relative">
+                        <img src="{% static 'images/Sustainability images 3.webp' %}" alt="Sustainability slide 3"
+                            class="w-full h-full object-cover rounded-lg">
+                        <div
+                            class="absolute inset-0 bg-black/40 rounded-lg opacity-0 pointer-events-none peek-overlay">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
 
 <script>
     document.addEventListener('DOMContentLoaded', () => {
@@ -259,10 +255,10 @@
 
 <section class="py-32 px-4 sm:px-6 lg:px-8 bg-[#E6E6DF]">
     <div class="max-w-7xl mx-auto">
-        <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-8 md:gap-16">
+        <div class="flex flex-col md:flex-row md:items-center md:justify-center gap-8 md:gap-16">
             <!-- Content Column (Left on large screens) -->
-            <div class="md:w-1/2">
-                <h2 class="text-4xl font-product-sans font-black text-custom-green mb-4">
+            <div class="md:w-2/5">
+                <h2 class="text-3xl font-product-sans font-semibold text-custom-green mb-12">
                     Our Commitment in Documents
                 </h2>
 
@@ -275,15 +271,15 @@
                             style="top: 0px;"></li>
 
                         <!-- List Items -->
-                        <li class="nav-item text-lg font-product-sans font-black text-gray-800 pl-6 cursor-pointer transition-colors duration-200 hover:text-custom-green"
+                        <li class="nav-item text-xl font-semibold font-product-sans font-black text-gray-800 pl-6 cursor-pointer transition-colors duration-200 hover:text-custom-green"
                             data-index="0">
                             Sustainability Reports
                         </li>
-                        <li class="nav-item text-lg font-product-sans font-black text-gray-800 pl-6 cursor-pointer transition-colors duration-200 hover:text-custom-green"
+                        <li class="nav-item text-xl font-semibold font-semibold font-product-sans font-black text-gray-800 pl-6 cursor-pointer transition-colors duration-200 hover:text-custom-green"
                             data-index="1">
                             Patents
                         </li>
-                        <li class="nav-item text-lg font-product-sans font-black text-gray-800 pl-6 cursor-pointer transition-colors duration-200 hover:text-custom-green"
+                        <li class="nav-item text-xl font-semibold font-product-sans font-black text-gray-800 pl-6 cursor-pointer transition-colors duration-200 hover:text-custom-green"
                             data-index="2">
                             Awards & Recognition
                         </li>
@@ -293,7 +289,7 @@
             </div>
 
             <!-- Documents Panel (Right on large screens) -->
-            <div class="w-full md:w-1/2 flex items-start justify-center md:justify-end mt-8 md:mt-0">
+            <div class="w-full md:w-2/5 flex items-start justify-center md:justify-end mt-8 md:mt-0">
                 <div class="w-full max-w-md space-y-4" id="documents-panels">
                     <!-- Panel 0: Sustainability Reports -->
                     <div class="doc-panel" data-index="0">
@@ -444,15 +440,15 @@
 <!-- Measure Your Impact Section -->
 <section class="py-20 px-4 sm:px-6 lg:px-8">
     <div class="max-w-6xl mx-auto">
-        <div class="rounded-3xl shadow-lg px-6 sm:px-10 lg:px-14 py-10 sm:py-12 lg:py-14 flex flex-col gap-8 lg:gap-10"
+        <div class="rounded-lg shadow-lg px-6 sm:px-10 lg:px-14 py-10 sm:py-12 lg:py-14 flex flex-col gap-8 lg:gap-10"
             style="background-image: url('{% static 'images/About timeline background.webp' %}'); background-size: cover; background-position: center;">
 
             <!-- Heading & Description (full width) -->
-            <div class="w-full">
-                <h2 class="text-3xl md:text-4xl font-product-sans font-black text-custom-green mb-3">
+            <div class="w-full my-4 gap-4">
+                <h2 class="text-4xl md:text-[2.75rem] font-product-sans font-black text-custom-green mb-5">
                     Measure your Impact
                 </h2>
-                <p class="font-montserrat text-sm md:text-base text-gray-700 max-w-3xl">
+                <p class="font-montserrat text-sm md:text-[1.5rem] text-gray-700 max-w-3xl">
                     Compare EcoConcrete with traditional materials and see the carbon savings for your project with
                     our Carbon Calculator.
                 </p>
@@ -516,17 +512,17 @@
                 <div class="w-full lg:w-1/2 flex flex-col">
                     <div class="grid grid-cols-1 gap-4 sm:gap-5">
                         <div
-                            class="grid grid-cols-2 gap-2 bg-[#9ED6A8] rounded-xl py-6 px-5 text-white font-montserrat text-sm md:text-base">
+                            class="grid grid-cols-2 gap-2 bg-card-bg-green rounded-xl py-9 px-5 text-white font-montserrat text-sm md:text-base" style="box-shadow:  6px 10px 3px rgba(0,0,0,0.05) inset;">
                             <span class="font-semibold">CO saved</span>
                             <span class="font-semibold text-right">16.38 tonnes</span>
                         </div>
                         <div
-                            class="grid grid-cols-2 gap-2 bg-[#9ED6A8] rounded-xl py-6 px-5 text-white font-montserrat text-sm md:text-base">
+                            class="grid grid-cols-2 gap-2 bg-card-bg-green rounded-xl py-9 px-5 text-white font-montserrat text-sm md:text-base" style="box-shadow:  6px 10px 3px rgba(0,0,0,0.05) inset;">
                             <span class="font-semibold">Water saved</span>
                             <span class="font-semibold text-right">6,552 litres</span>
                         </div>
                         <div
-                            class="grid grid-cols-2 gap-2 bg-[#3A8F45] rounded-xl py-6 px-5 text-white font-montserrat text-sm md:text-base">
+                            class="grid grid-cols-2 gap-2 bg-card-bg-dark-green rounded-xl py-9 px-5 text-white font-montserrat text-sm md:text-base" style="box-shadow:  6px 10px 3px rgba(0,0,0,0.05) inset;">
                             <span class="font-semibold">Industrial waste used</span>
                             <span class="font-semibold text-right">19.11 tonnes</span>
                         </div>

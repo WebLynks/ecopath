@@ -44,9 +44,9 @@
 <body>
 
     <!-- Navbar -->
-    <header class="shadow-md">
+    <header class="shadow-md max-w-[1920px] mx-auto">
         <nav
-            class="mx-auto px-4 py-3 flex justify-between items-center fixed top-0 left-0 right-0 z-50 bg-white w-full">
+            class="mx-auto px-4 py-3 flex justify-between items-center fixed top-0 left-0 right-0 z-50 bg-white w-full max-w-[1920px] mx-auto">
             <!-- Logo -->
             <a href="{% url 'mainapp:homepage' %}" class="flex items-center">
                 <svg class="h-12 w-12" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
@@ -73,12 +73,12 @@
                     <div
                         class="absolute left-0 mt-2 w-48 bg-white rounded-md shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
                         <a href="{% url 'mainapp:technology_products' %}"
-                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Technology &
+                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 {% if request.resolver_match.url_name == 'technology_products' %}underline{% endif %}">Technology &
                             Products</a>
                         <a href="{% url 'mainapp:services' %}"
-                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Services</a>
+                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 {% if request.resolver_match.url_name == 'services' %}underline{% endif %}">Services</a>
                         <a href="{% url 'mainapp:project_list' %}"
-                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Our Projects</a>
+                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 {% if request.resolver_match.url_name == 'project_list' %}underline{% endif %}">Our Projects</a>
                     </div>
                 </li>
                 <li class="{% if request.resolver_match.url_name == 'sustainability' %}active{% endif %}"><a
@@ -134,10 +134,10 @@
                 <div id="mobile-dropdown-content"
                     class="max-h-0 opacity-0 overflow-hidden transition-all duration-500 ease-in-out flex flex-col items-center space-y-4 text-lg text-gray-600 bg-gray-50 w-full rounded-lg">
                     <div class="py-4 flex flex-col items-center space-y-4 w-full">
-                        <a href="{% url 'mainapp:technology_products' %}" class="hover:text-custom-green">Technology &
+                        <a href="{% url 'mainapp:technology_products' %}" class="hover:text-custom-green {% if request.resolver_match.url_name == 'technology_products' %}underline{% endif %}">Technology &
                             Products</a>
-                        <a href="{% url 'mainapp:services' %}" class="hover:text-custom-green">Services</a>
-                        <a href="{% url 'mainapp:project_list' %}" class="hover:text-custom-green">Our Projects</a>
+                        <a href="{% url 'mainapp:services' %}" class="hover:text-custom-green {% if request.resolver_match.url_name == 'services' %}underline{% endif %}">Services</a>
+                        <a href="{% url 'mainapp:project_list' %}" class="hover:text-custom-green {% if request.resolver_match.url_name == 'project_list' %}underline{% endif %}">Our Projects</a>
                     </div>
                 </div>
             </li>
@@ -149,11 +149,13 @@
         </ul>
     </div>
 
+    <div class="max-w-[1920px] mx-auto">
     {% block content %}
     {% endblock %}
+    </div>
 
     <!-- Footer -->
-    <footer class="bg-[#1C1C1C] text-white">
+    <footer class="bg-[#1C1C1C] text-white max-w-[1920px] mx-auto">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
                 <!-- Column 1: Logo -->

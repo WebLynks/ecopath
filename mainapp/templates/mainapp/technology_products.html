@@ -92,10 +92,10 @@
 {% endblock %}
 
 {% block content %}
-<section class="relative h-screen w-full bg-cover bg-center text-white pt-24"
+<section class="relative h-screen w-full bg-cover bg-center text-white pt-16"
     style="background-image: url('{% static 'images/Tech Hero Header Image.webp' %}');">
     <div class="absolute inset-0 bg-black/40"></div>
-    <div class="relative h-full flex flex-col justify-between p-8 sm:px-16 py-">
+    <div class="relative h-full flex flex-col justify-between p-4 px-8">
         <h1 class="text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-product-sans font-black uppercase">
             Our Advanced Sustainable Materials & Technology
         </h1>
@@ -181,7 +181,7 @@
         <div class="flex flex-col md:flex-row gap-12">
 
             <div class="w-full md:w-1/2 items-center flex justify-center">
-                <img src="{% static 'images/Eco Concrete.webp' %}" alt="Maintenance Services" class="w-[30rem] h-auto">
+                <img src="{% static 'images/Eco Concrete.webp' %}" alt="Maintenance Services" class="w-[30rem] h-auto max-h-[80vh] object-contain">
             </div>
 
             <div class="w-full md:w-1/2 ">
@@ -686,7 +686,7 @@
 
         <!-- Card 1 -->
         <div class="card-item group relative w-full md:w-1/3 h-[20rem]" data-row="top">
-            <img src="{% static 'images/card_animation (1).webp' %}" alt="Abstract 1"
+            <img src="{% static 'images/Material Optimization.webp' %}" alt="Abstract 1"
                 class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
             <div class="card-overlay absolute inset-0 pointer-events-none"></div>
 
@@ -706,7 +706,7 @@
 
         <!-- Card 2 -->
         <div class="card-item group relative w-full md:w-1/3 h-[20rem]" data-row="top">
-            <img src="{% static 'images/card_animation (2).webp' %}" alt="Abstract 2"
+            <img src="{% static 'images/Curing Innovation.webp' %}" alt="Abstract 2"
                 class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
             <div class="card-overlay absolute inset-0 pointer-events-none"></div>
 
@@ -724,7 +724,7 @@
 
         <!-- Card 3 -->
         <div class="card-item group relative w-full md:w-1/3 h-[20rem]" data-row="top">
-            <img src="{% static 'images/card_animation (3).webp' %}" alt="Abstract 3"
+            <img src="{% static 'images/Performance Engg.webp' %}" alt="Abstract 3"
                 class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
             <div class="card-overlay absolute inset-0 pointer-events-none"></div>
 
@@ -747,7 +747,7 @@
 
         <!-- Card 4 -->
         <div class="card-item group relative w-full md:w-1/2 h-[25rem]" data-row="bottom">
-            <img src="{% static 'images/card_animation (4).webp' %}" alt="Abstract 4"
+            <img src="{% static 'images/Cost Parity.webp' %}" alt="Abstract 4"
                 class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
             <div class="card-overlay absolute inset-0 pointer-events-none"></div>
 
@@ -765,7 +765,7 @@
 
         <!-- Card 5 -->
         <div class="card-item group relative w-full md:w-1/2 h-[25rem]" data-row="bottom">
-            <img src="{% static 'images/card_animation (5).webp' %}" alt="Abstract 5"
+            <img src="{% static 'images/Testing Parameters.webp' %}" alt="Abstract 5"
                 class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
             <div class="card-overlay absolute inset-0 pointer-events-none"></div>
 
@@ -907,29 +907,37 @@
         // --- MOBILE INTERACTION FUNCTIONS ---
 
         function handleMobileClick(card) {
-            const list = card.querySelector('.card-list');
-            const hint = card.querySelector('.mobile-hint');
+                const list = card.querySelector('.card-list');
+                const hint = card.querySelector('.mobile-hint');
+                const wrapper = card.querySelector('.card-text-wrapper');
 
-            const isClosed = gsap.getProperty(list, "opacity") === 0;
+                const isClosed = gsap.getProperty(list, "opacity") === 0 || gsap.getProperty(list, "opacity") === '0';
 
-            allCards.forEach(c => {
-                if (c !== card) {
-                    const l = c.querySelector('.card-list');
-                    const h = c.querySelector('.mobile-hint');
-                    gsap.to(l, { height: 0, opacity: 0, duration: 0.3 });
-                    gsap.to(h, { opacity: 1, duration: 0.3 });
+                // Close siblings and remove their glass effect
+                allCards.forEach(c => {
+                    if (c !== card) {
+                        const l = c.querySelector('.card-list');
+                        const h = c.querySelector('.mobile-hint');
+                        const w = c.querySelector('.card-text-wrapper');
+                        gsap.to(l, { height: 0, opacity: 0, duration: 0.3 });
+                        gsap.to(h, { opacity: 1, duration: 0.3 });
+                        if (w) w.classList.remove('glass-active');
+                    }
+                });
+
+                if (isClosed) {
+                    // Open this card: ensure height is auto then animate in
+                    gsap.set(list, { height: "auto" });
+                    gsap.from(list, { height: 0, duration: 0.3 });
+                    gsap.to(list, { opacity: 1, y: 0, duration: 0.3 });
+                    gsap.to(hint, { opacity: 0, duration: 0.2 });
+                    if (wrapper) wrapper.classList.add('glass-active');
+                } else {
+                    // Close this card
+                    gsap.to(list, { height: 0, opacity: 0, duration: 0.3 });
+                    gsap.to(hint, { opacity: 1, duration: 0.3 });
+                    if (wrapper) wrapper.classList.remove('glass-active');
                 }
-            });
-
-            if (isClosed) {
-                gsap.set(list, { height: "auto" });
-                gsap.from(list, { height: 0, duration: 0.3 });
-                gsap.to(list, { opacity: 1, y: 0, duration: 0.3 });
-                gsap.to(hint, { opacity: 0, duration: 0.2 });
-            } else {
-                gsap.to(list, { height: 0, opacity: 0, duration: 0.3 });
-                gsap.to(hint, { opacity: 1, duration: 0.3 });
-            }
         }
 
         // --- INITIALIZATION & RESIZE ---

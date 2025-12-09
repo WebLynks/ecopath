@@ -119,7 +119,7 @@
 
             <!-- Image Column -->
             <div class="w-full md:w-1/2 items-center flex justify-center">
-                <img src="{% static 'images/Maintenance Frame small.webp' %}" alt="Maintenance Services"
+                <img src="{% static 'images/End to end image.webp' %}" alt="Maintenance Services"
                     class="w-[30rem] h-auto">
             </div>
         </div>
@@ -174,7 +174,7 @@
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
             <!-- Service Card 1 -->
             <div
-                class="bg-card-bg-green rounded-2xl p-8 py-24 shadow-md flex flex-col items-center justify-center text-center">
+                class="bg-card-bg-green rounded-2xl p-8 py-36 shadow-md flex flex-col items-center justify-center text-center">
                 <h3 class="text-3xl md:text-4xl font-product-sans font-black mb-4">$ 300K</h3>
                 <p class="font-montserrat text-lg md:text-xl ">
                     revenue generated in FY25
@@ -214,22 +214,18 @@
 <section class="py-16 px-4 sm:px-6 lg:px-8 bg-[#E6E6DF]">
     <div class="max-w-7xl mx-auto">
         <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-8 md:gap-16">
-            <!-- Content Column (Left on large screens) -->
             <div class="md:w-1/2">
                 <h2 class="text-4xl font-product-sans font-black text-custom-green mb-4">
                     Road Construction
                 </h2>
 
-                <!-- Navigation List -->
                 <div class="flex justify-center lg:justify-start">
                     <ul id="infra-nav" class="relative space-y-4 w-full max-w-xs">
-                        <!-- Active Item Indicator Bar -->
                         <li id="active-bar"
                             class="absolute left-0 w-1 h-6 bg-custom-green transition-all duration-200 ease-in-out"
                             style="top: 0px;"></li>
 
-                        <!-- List Items -->
-                        <li class="nav-item text-lg font-product-sans font-black text-gray-800 pl-6 cursor-pointer transition-colors duration-200 hover:text-custom-green"
+                        <li class="nav-item text-lg font-product-sans font-black text-gray-800 pl-6 cursor-pointer transition-colors duration-200 hover:text-custom-green text-custom-green"
                             data-index="0">
                             Carbon Negative Bitumen Roads
                         </li>
@@ -244,21 +240,27 @@
                     </ul>
                 </div>
 
-                <p class="text-lg font-montserrat mt-12 max-w-3xl">
-                    The biggest pain point for delays & losses is multiple vendors & lack of coordination.
-                    Eco Path takes care of everything. All concrete products without using cement.
-                </p>
+                <div class="text-content-container relative mt-12 max-w-3xl h-16"> <p class="nav-text-content absolute top-0 left-0 w-full text-lg font-montserrat" data-index="0">
+                        <i>"The biggest pain point for delays & losses is multiple vendors & lack of coordination.
+                        Eco Path takes care of everything. All concrete products without using cement."</i>
+                    </p>
+                    <p class="nav-text-content absolute top-0 left-0 w-full text-lg font-montserrat opacity-0" data-index="1">
+                        <i>"Precast concrete roads offer faster installation and superior durability compared to traditional methods. Our process ensures minimal on-site disruption."</i>
+                    </p>
+                    <p class="nav-text-content absolute top-0 left-0 w-full text-lg font-montserrat opacity-0" data-index="2">
+                        <i>"For private developments like villas and resorts, paver-based roads provide an aesthetic, permeable, and easily repairable solution, blending seamlessly with the environment."</i>
+                    </p>
+                </div>
             </div>
 
-            <!-- Image Stack (Right on large screens) -->
             <div class="w-full md:w-1/2 lg:h-[40rem] h-[25rem] flex items-center justify-center mt-8 md:mt-0">
                 <div class="image-stack-container relative w-full h-full">
                     <img src="{% static 'images/Drain.webp' %}" alt="Drain"
-                        class="image-card data-[index='0'] absolute 2xl:w-3/4 xl:w-3/5 w-2/4 h-auto rounded-2xl" data-index="0">
+                        class="image-card absolute 2xl:w-2/3 xl:w-3/5 w-2/4 h-auto rounded-2xl" data-index="0">
                     <img src="{% static 'images/Footpath.webp' %}" alt="Footpath"
-                        class="image-card data-[index='1'] absolute 2xl:w-3/4 xl:w-3/5 w-2/4 h-auto rounded-2xl" data-index="1">
+                        class="image-card absolute 2xl:w-2/3 xl:w-3/5 w-2/4 h-auto rounded-2xl" data-index="1">
                     <img src="{% static 'images/Sewer Line.webp' %}" alt="Sewer Line"
-                        class="image-card data-[index='2'] absolute 2xl:w-3/4 xl:w-3/5 w-2/4 h-auto rounded-2xl" data-index="2">
+                        class="image-card absolute 2xl:w-2/3 xl:w-3/5 w-2/4 h-auto rounded-2xl" data-index="2">
                 </div>
             </div>
         </div>
@@ -270,6 +272,7 @@
     document.addEventListener('DOMContentLoaded', () => {
         const navItems = gsap.utils.toArray('.nav-item');
         const imageCards = gsap.utils.toArray('.image-card');
+        const textContents = gsap.utils.toArray('.nav-text-content'); // Get the new text elements
         const activeBar = document.getElementById('active-bar');
 
         let activeIndex = 0; // Default active item
@@ -283,9 +286,17 @@
             ease: 'power3.inOut'
         };
 
-        // Function to update the image stack based on the active index
+        // Function to update the image stack and text content based on the active index
         function updateActiveState(newIndex) {
             if (newIndex === activeIndex) return; // Do nothing if already active
+
+            // 1. Fade Out Old Text
+            gsap.to(textContents[activeIndex], {
+                opacity: 0,
+                duration: 0.3,
+                ease: 'power1.out',
+                zIndex: 1 // Lower zIndex for fading out element
+            });
 
             // Update active nav item styles
             navItems[activeIndex].classList.remove('text-custom-green');
@@ -293,7 +304,7 @@
 
             activeIndex = newIndex;
 
-            // Update Active Bar Immediately
+            // 2. Update Active Bar Immediately
             const activeNavItem = navItems[activeIndex];
             gsap.set(activeBar, {
                 top: activeNavItem.offsetTop,
@@ -311,7 +322,7 @@
                 }
             );
 
-            // Animate Image Stack
+            // 3. Animate Image Stack (Existing logic, slightly modified to ensure zIndex is updated)
             imageCards.forEach((card, index) => {
                 const stackPosition = index - activeIndex;
                 const stackPositionAbs = Math.abs(stackPosition);
@@ -339,6 +350,18 @@
                     });
                 }
             });
+
+            // 4. Fade In New Text
+            gsap.fromTo(textContents[activeIndex], 
+                { opacity: 0, zIndex: 2 }, // Start at opacity 0, higher zIndex for visible element
+                {
+                    opacity: 1,
+                    duration: 0.5,
+                    delay: 0.1, // Slight delay after old text fades out
+                    ease: 'power2.inOut',
+                    zIndex: 2 // Keep high zIndex
+                }
+            );
         }
 
         // Set Initial State
@@ -373,6 +396,15 @@
                     });
                 }
             });
+
+            // Set initial text content state (only first one visible)
+            textContents.forEach((text, index) => {
+                if (index === activeIndex) {
+                    gsap.set(text, { opacity: 1, zIndex: 2 });
+                } else {
+                    gsap.set(text, { opacity: 0, zIndex: 1 });
+                }
+            });
         }
 
         // Add Event Listeners
@@ -385,7 +417,8 @@
         // Initialize the component
         setInitialState();
 
-        // Set first nav item as active
+        // Set first nav item as active (already handled by setInitialState's logic setting activeIndex=0)
+        // Ensure the initial class is set on the first item for the color
         navItems[0].classList.add('text-custom-green');
     });
 </script>

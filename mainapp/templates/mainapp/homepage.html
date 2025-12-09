@@ -61,10 +61,19 @@
         display: none; /* Chrome, Safari, Edge, Opera */
       }
 
-      .no-scrollbar {
-        -ms-overflow-style: none; /* IE and Edge */
-        scrollbar-width: none; /* Firefox */
-      }
+    .no-scrollbar {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+    }
+    #slide-1 {
+        background-image: url('{% static 'images/Home hero header.webp' %}');
+    }
+    
+    @media screen and (max-width: 1024px) {
+        #slide-1 {
+            background-image: url('{% static 'images/Mobile version hero header.webp' %}');
+        }
+    }
 </style>
 <script>
     // Custom Tailwind configuration (merging with base if needed, but base already has it. 
@@ -100,10 +109,9 @@
 <!-- Hero Section -->
 <div id="carousel-container" class="relative w-full h-screen overflow-hidden text-white">
     <!-- Slides -->
-    <div id="slide-1" class="hero-slide absolute top-[5rem] left-0 w-full h-full"
-        style="background-image: url('{% static 'images/Hero image 1.webp' %}');">
-        <div class="absolute top-0 left-0 w-full h-full bg-black/40 z-10"></div>
-        <div class="relative w-full h-full flex items-center justify-center z-20 ">
+    <div id="slide-1" class="hero-slide absolute top-[5rem] left-0 w-full h-full">
+        <!-- <div class="absolute top-0 left-0 w-full h-full bg-black/40 z-10"></div> -->
+        <!-- <div class="relative w-full h-full flex items-center justify-center z-20 ">
             <div class="text-center max-w-4xl p-8 mb-48">
                 <h1
                     class="2xl:text-8xl xl:text-7xl text-6xl font-playfair-display font-bold mb-4 text-shadow uppercase tracking-wider text-custom-yellow">
@@ -112,7 +120,7 @@
                     a Greener Tomorrow
                 </p>
             </div>
-        </div>
+        </div> -->
     </div>
     <div id="slide-2" class="hero-slide absolute top-[5rem] left-0 w-full h-full"
         style="background-image: url('{% static 'images/Hero image 2.webp' %}');">
@@ -182,9 +190,9 @@
         <div class="w-full lg:w-1/2 h-64 flex justify-center items-center">
             <div class="relative w-[25rem] lg:w-[27.5rem] xl:w-[30rem] 2xl:w-[32.5rem] h-48">
                 <!-- Image 1 -->
-                <div class="absolute top-0 left-0 w-32 lg:w-40 overflow-hidden group">
+                <div class="absolute top-0 left-0 w-32 lg:w-40 h-48 lg:h-60 overflow-hidden group rounded-tr-[3rem] rounded-bl-[3rem]">
                     <div class="relative w-full h-full">
-                        <img src="{% static 'images/roads_change (4).webp' %}" alt="High Carbon Emissions"
+                        <img src="{% static 'images/roads_change(1).webp' %}" alt="High Carbon Emissions"
                             class="w-full h-full object-cover">
                         <div
                             class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-40 transition-all duration-300 p-6 py-8 flex items-end">
@@ -195,9 +203,9 @@
                     </div>
                 </div>
                 <!-- Image 2 -->
-                <div class="absolute top-8 left-[6rem] lg:left-[6.5rem] xl:left-[7rem] 2xl:left-[7.5rem]  w-32 lg:w-40 overflow-hidden z-10 group">
+                <div class="absolute top-8 left-[6rem] lg:left-[6.5rem] xl:left-[7rem] 2xl:left-[7.5rem]  w-32 lg:w-40 h-48 lg:h-60 overflow-hidden z-10 group rounded-br-[3rem] rounded-tl-[3rem]">
                     <div class="relative w-full h-full">
-                        <img src="{% static 'images/roads_change (2).webp' %}" alt="Road Maintenance"
+                        <img src="{% static 'images/roads_change(2).webp' %}" alt="Road Maintenance"
                             class="w-full h-full object-cover">
                         <div
                             class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-40 transition-all duration-300 p-6 py-8 flex items-start">
@@ -208,9 +216,9 @@
                     </div>
                 </div>
                 <!-- Image 3 -->
-                <div class="absolute top-0 left-[12rem] lg:left-[13rem] xl:left-[14rem] 2xl:left-[15rem] w-32 lg:w-40 overflow-hidden z-20 group">
+                <div class="absolute top-0 left-[12rem] lg:left-[13rem] xl:left-[14rem] 2xl:left-[15rem] w-32 lg:w-40 h-48 lg:h-60 overflow-hidden z-20 group rounded-tr-[3rem] rounded-bl-[3rem]">
                     <div class="relative w-full h-full">
-                        <img src="{% static 'images/roads_change (3).webp' %}" alt="Project Delays"
+                        <img src="{% static 'images/roads_change(3).webp' %}" alt="Project Delays"
                             class="w-full h-full object-cover">
                         <div
                             class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-40 transition-all duration-300 p-6 py-8 flex items-end">
@@ -221,9 +229,9 @@
                     </div>
                 </div>
                 <!-- Image 4 -->
-                <div class="absolute top-8 left-[18rem] lg:left-[19.5rem] xl:left-[21rem] 2xl:left-[22.5rem] w-32 lg:w-40 overflow-hidden z-20 group">
+                <div class="absolute top-8 left-[18rem] lg:left-[19.5rem] xl:left-[21rem] 2xl:left-[22.5rem] h-48 lg:h-60 w-32 lg:w-40 overflow-hidden z-20 group rounded-br-[3rem] rounded-tl-[3rem]">
                     <div class="relative w-full h-full">
-                        <img src="{% static 'images/roads_change (1).webp' %}" alt="Rising Costs"
+                        <img src="{% static 'images/roads_change(4).webp' %}" alt="Rising Costs"
                             class="w-full h-full object-cover">
                         <div
                             class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-40 transition-all duration-300 p-6 py-8 flex items-start">
@@ -366,7 +374,7 @@
                 const heading = card.querySelector('.heading');
                 const tl = gsap.timeline({ defaults: { duration: 0.6, ease: 'power3.inOut' } });
 
-                tl.to(card, { flex: 3 }, 0);
+                tl.to(card, { flex: 5 }, 0);
                 tl.to(headerGroup, { top: '.5rem', left: '2rem', xPercent: 0, yPercent: 0 }, 0);
                 tl.to(heading, { width: 'auto', opacity: 1, marginLeft: '1rem' }, 0);
                 tl.to(description, { top: '50%', opacity: 1 }, 0);
@@ -424,7 +432,7 @@
                 tl.to(card, { flex: 3 }, 0);
 
                 // Move Number to Top Left (adjusted for smaller screens)
-                tl.to(headerGroup, { top: '.5rem', left: '2rem', xPercent: 0, yPercent: 0 }, 0);
+                tl.to(headerGroup, { top: '2rem', left: '2rem', xPercent: 0, yPercent: 0 }, 0);
 
                 tl.to(heading, { width: 'auto', opacity: 1, marginLeft: '0.5rem' }, 0);
                 tl.to(description, { top: '55%', opacity: 1 }, 0);
@@ -491,23 +499,23 @@
 
                         <!-- List Items -->
                         <li class="nav-item text-lg font-product-sans font-black text-gray-800 pl-6 cursor-pointer transition-colors duration-200 hover:text-custom-green"
-                            data-index="0">
+                            data-index="1">
                             Drain
                         </li>
                         <li class="nav-item text-lg font-product-sans font-black text-gray-800 pl-6 cursor-pointer transition-colors duration-200 hover:text-custom-green"
-                            data-index="1">
+                            data-index="2">
                             Footpath
                         </li>
                         <li class="nav-item text-lg font-product-sans font-black text-gray-800 pl-6 cursor-pointer transition-colors duration-200 hover:text-custom-green"
-                            data-index="2">
+                            data-index="3">
                             Sewer Line
                         </li>
                         <li class="nav-item text-lg font-product-sans font-black text-gray-800 pl-6 cursor-pointer transition-colors duration-200 hover:text-custom-green"
-                            data-index="3">
+                            data-index="4">
                             Electricity Lines
                         </li>
                         <li class="nav-item text-lg font-product-sans font-black text-gray-800 pl-6 cursor-pointer transition-colors duration-200 hover:text-custom-green"
-                            data-index="4">
+                            data-index="5">
                             Street Lights
                         </li>
                     </ul>
@@ -519,20 +527,20 @@
                 <!-- Added 'relative' here to ensure absolute children position correctly relative to this container -->
                 <div class="image-stack-container w-full h-full relative mx-10 my-10">
                     <img src="{% static 'images/Drain.webp' %}" alt="Drain"
-                        class="image-card data-[index='0'] absolute 2xl:w-3/4 xl:w-3/5 w-2/4 h-auto rounded-2xl" data-index="0">
+                        class="image-card data-[index='0'] absolute 2xl:w-2/3 xl:w-3/5 w-2/4 h-auto rounded-2xl" data-index="1">
                     <img src="{% static 'images/Footpath.webp' %}" alt="Footpath"
-                        class="image-card data-[index='1'] absolute 2xl:w-3/4 xl:w-3/5 w-2/4 h-auto rounded-2xl" data-index="1">
+                        class="image-card data-[index='1'] absolute 2xl:w-2/3 xl:w-3/5 w-2/4 h-auto rounded-2xl" data-index="2">
                     <img src="{% static 'images/Sewer Line.webp' %}" alt="Sewer Line"
-                        class="image-card data-[index='2'] absolute 2xl:w-3/4 xl:w-3/5 w-2/4 h-auto rounded-2xl" data-index="2">
+                        class="image-card data-[index='2'] absolute 2xl:w-2/3 xl:w-3/5 w-2/4 h-auto rounded-2xl" data-index="3">
                     <img src="{% static 'images/Electricity Lines.webp' %}" alt="Electricity Lines"
-                        class="image-card data-[index='3'] absolute 2xl:w-3/4 xl:w-3/5 w-2/4 h-auto rounded-2xl" data-index="3">
+                        class="image-card data-[index='3'] absolute 2xl:w-2/3 xl:w-3/5 w-2/4 h-auto rounded-2xl" data-index="4">
                     <img src="{% static 'images/Street Lights.webp' %}" alt="Street Lights"
-                        class="image-card data-[index='4'] absolute 2xl:w-3/4 xl:w-3/5 w-2/4 h-auto rounded-2xl" data-index="4">
+                        class="image-card data-[index='4'] absolute 2xl:w-2/3 xl:w-3/5 w-2/4 h-auto rounded-2xl" data-index="5">
                 </div>
             </div>
         </div>
     </div>
-</section>
+</section>fa
 
 <script>
     // Drain Animation Script
@@ -664,7 +672,7 @@
     <div class="relative w-full lg:w-[80%]  mx-auto">
         <img src="{% static 'images/Eco Concrete Intro Frame.webp' %}" alt="Eco Concrete blocks stacked"
             class="w-full h-auto rounded-xl block">
-        <div class="absolute bottom-8 left-8 sm:bottom-12 sm:left-12 md:bottom-16 md:left-16">
+        <!-- <div class="absolute bottom-8 left-8 sm:bottom-12 sm:left-12 md:bottom-16 md:left-16">
             <a href="#"
                 class="group inline-flex items-center gap-x-3 px-6 py-3 border border-custom-green bg-white/70 backdrop-blur-sm rounded-md font-montserrat text-base text-custom-green transition-all duration-300 hover:bg-custom-green hover:border-green-400 hover:text-white">
                 KNOW MORE
@@ -674,7 +682,7 @@
                     </path>
                 </svg>
             </a>
-        </div>
+        </div> -->
     </div>
 </section>
 
@@ -684,7 +692,7 @@
 </section>
 
 <!-- Clientele Section -->
-<section class="lg:h-screen w-100 py-10 md:px-10">
+<section class="lg:min-h-screen w-100 py-10 md:px-10">
     <div class="w-full h-full bg-[#E6E6DF] py-16 sm:py-24 px-4 sm:px-6 lg:px-8">
         <!-- Top Part: Title + Testimonials -->
         <div class="flex flex-col lg:flex-row gap-12 lg:gap-8">
