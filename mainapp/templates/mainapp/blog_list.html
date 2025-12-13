@@ -81,6 +81,25 @@
     .animate-fade-in {
         animation: fadeIn 0.4s ease;
     }
+
+    /* Latest News: make horizontal carousel on small screens */
+    @media (max-width: 767px) {
+        #latest-news-grid {
+            display: flex;
+            flex-wrap: nowrap;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            scroll-snap-type: x mandatory;
+            gap: 1rem;
+            padding-bottom: 0.5rem;
+        }
+
+        #latest-news-grid > .news-card {
+            scroll-snap-align: start;
+            flex: 0 0 80%; /* each card takes 80% of viewport width on mobile */
+            max-width: 80%;
+        }
+    }
 </style>
 <script>
     // Custom Tailwind configuration
@@ -109,7 +128,7 @@
 {% endblock %}
 
 {% block content %}
-<section class="relative h-screen w-full bg-cover bg-center text-white pt-24"
+<section class="relative h-screen w-full bg-cover bg-center text-white py-24 lg:p-12 lg:px-12 lg:pt-24"
     style="background-image: url('{% static 'images/Blogs Hero Header image.webp' %}');">
     <div class="absolute inset-0 bg-black/40"></div>
     <div class="relative h-full flex flex-col justify-between p-4 px-8">
@@ -136,7 +155,7 @@
                 
                 <!-- HOVER OVERLAY AND LINK: Text is White and Underlined, No Background -->
                 <!-- NOTE: The parent DIV must have 'relative group' for this hover effect to work. -->
-                <a href="#" class="absolute inset-0 z-20 flex items-center justify-center opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                <a href="#" class="absolute top-0 left-0 right-0 h-[25rem] z-20 flex items-center justify-center opacity-0 transition-opacity duration-300 group-hover:opacity-100">
                     <!-- Transparent White Background (opacity-30 = 0.3) -->
                     <div class="absolute inset-0 bg-white opacity-30"></div>
                     <!-- Centered Link Text: White, Underlined, No box styling, Added subtle scale on hover -->
@@ -170,7 +189,7 @@
                 
                 <!-- HOVER OVERLAY AND LINK: Text is White and Underlined, No Background -->
                 <!-- NOTE: The parent DIV must have 'relative group' for this hover effect to work. -->
-                <a href="#" class="absolute inset-0 z-20 flex items-center justify-center opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                <a href="#" class="absolute top-0 left-0 right-0 h-[25rem] z-20 flex items-center justify-center opacity-0 transition-opacity duration-300 group-hover:opacity-100">
                     <!-- Transparent White Background (opacity-30 = 0.3) -->
                     <div class="absolute inset-0 bg-white opacity-30"></div>
                     <!-- Centered Link Text: White, Underlined, No box styling, Added subtle scale on hover -->
@@ -204,7 +223,7 @@
                 
                 <!-- HOVER OVERLAY AND LINK: Text is White and Underlined, No Background -->
                 <!-- NOTE: The parent DIV must have 'relative group' for this hover effect to work. -->
-                <a href="#" class="absolute inset-0 z-20 flex items-center justify-center opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                <a href="#" class="absolute top-0 left-0 right-0 h-[25rem] z-20 flex items-center justify-center opacity-0 transition-opacity duration-300 group-hover:opacity-100">
                     <!-- Transparent White Background (opacity-30 = 0.3) -->
                     <div class="absolute inset-0 bg-white opacity-30"></div>
                     <!-- Centered Link Text: White, Underlined, No box styling, Added subtle scale on hover -->
@@ -237,7 +256,7 @@
                 
                 <!-- HOVER OVERLAY AND LINK: Text is White and Underlined, No Background -->
                 <!-- NOTE: The parent DIV must have 'relative group' for this hover effect to work. -->
-                <a href="#" class="absolute inset-0 z-20 flex items-center justify-center opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                <a href="#" class="absolute top-0 left-0 right-0 h-[25rem] z-20 flex items-center justify-center opacity-0 transition-opacity duration-300 group-hover:opacity-100">
                     <!-- Transparent White Background (opacity-30 = 0.3) -->
                     <div class="absolute inset-0 bg-white opacity-30"></div>
                     <!-- Centered Link Text: White, Underlined, No box styling, Added subtle scale on hover -->
@@ -270,7 +289,7 @@
                 
                 <!-- HOVER OVERLAY AND LINK: Text is White and Underlined, No Background -->
                 <!-- NOTE: The parent DIV must have 'relative group' for this hover effect to work. -->
-                <a href="#" class="absolute inset-0 z-20 flex items-center justify-center opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                <a href="#" class="absolute top-0 left-0 right-0 h-[25rem] z-20 flex items-center justify-center opacity-0 transition-opacity duration-300 group-hover:opacity-100">
                     <!-- Transparent White Background (opacity-30 = 0.3) -->
                     <div class="absolute inset-0 bg-white opacity-30"></div>
                     <!-- Centered Link Text: White, Underlined, No box styling, Added subtle scale on hover -->
@@ -312,24 +331,24 @@
 <!-- Latest News Section -->
 <section class="py-16 bg-gray-50">
     <div class="container mx-auto px-6 sm:px-8 lg:px-12 overflow-x-auto scrollbar-hide">
-        <h2 class="text-3xl md:text-4xl font-product-sans font-bold text-custom-green mb-12 relative pb-4">
-            Sneak Peak <br> Ecopath Projects Driving Sustainable Change
+        <h2 class="text-3xl md:text-4xl font-product-sans font-bold text-custom-green mb-12 relative pb-4 w-full md:w-[60%]">
+            Sneak Peak Ecopath Projects Driving Sustainable Change
         </h2>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-6">
+        <div id="latest-news-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-6">
             <!-- News Card 1 -->
-            <div class="h-[30rem] rounded-lg bg-blue-100 flex items-center justify-center">
+            <div class="news-card h-[30rem] rounded-lg bg-blue-100 flex items-center justify-center">
                 <span class="text-custom-green font-montserrat font-semibold">News Card 1</span>
             </div>
 
             <!-- News Card 2 -->
-            <div class="h-[30rem] rounded-lg bg-custom-green flex items-center justify-center">
-                <span class="text-custom-green font-montserrat font-semibold">News Card 1</span>
+            <div class="news-card h-[30rem] rounded-lg bg-custom-green flex items-center justify-center">
+                <span class="text-white font-montserrat font-semibold">News Card 2</span>
             </div>
 
             <!-- News Card 3 -->
-            <div class="h-[30rem] rounded-lg bg-red-100 flex items-center justify-center">
-                <span class="text-custom-green font-montserrat font-semibold">News Card 1</span>
+            <div class="news-card h-[30rem] rounded-lg bg-red-100 flex items-center justify-center">
+                <span class="text-custom-green font-montserrat font-semibold">News Card 3</span>
             </div>
         </div>
     </div>

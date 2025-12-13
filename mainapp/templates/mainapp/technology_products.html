@@ -92,10 +92,10 @@
 {% endblock %}
 
 {% block content %}
-<section class="relative h-screen w-full bg-cover bg-center text-white pt-16"
+<section class="relative h-screen w-full bg-cover bg-center text-white sm:p-4 pt-24 lg:p-12 lg:px-12 lg:pt-24"
     style="background-image: url('{% static 'images/Tech Hero Header Image.webp' %}');">
     <div class="absolute inset-0 bg-black/40"></div>
-    <div class="relative h-full flex flex-col justify-between p-4 px-8">
+    <div class="relative h-full flex flex-col justify-between p-4 lg:px-8">
         <h1 class="text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-product-sans font-black uppercase">
             Our Advanced Sustainable Materials & Technology
         </h1>
@@ -105,11 +105,11 @@
     </div>
 </section>
 
-<section class="py-16 md:py-24 px-4 sm:px-6 lg:px-8">
+<section class="py-8 md:py-24 px-4 sm:px-6 lg:px-8">
     <div class="container mx-auto">
-        <div class="flex flex-col md:flex-row gap-12">
+        <div class="flex flex-col md:flex-row lg:mx-12 gap-8">
             <!-- Text Column -->
-            <div class="w-full md:w-1/2 pt-12">
+            <div class="w-full md:w-1/2 py-6 items-end">
                 <h2 class="text-3xl md:text-4xl lg:text-5xl font-product-sans font-black text-custom-green mb-6">
                     Cement Industry Challenges
                 </h2>
@@ -128,9 +128,9 @@
             </div>
 
             <!-- Image Column -->
-            <div class="w-full md:w-1/2 items-center flex justify-center">
+            <div class="w-full md:w-1/2 flex justify-end">
                 <img src="{% static 'images/Cement issue image.webp' %}" alt="Maintenance Services"
-                    class="w-[30rem] h-auto">
+                    class="w-full h-auto max-h-[80vh] object-contain">
             </div>
         </div>
     </div>
@@ -176,15 +176,15 @@
     </div>
 </section>
 
-<section class="py-16 md:py-24 px-4 sm:px-6 lg:px-8 md:h-screen">
+<section class="py-8 md:py-24 px-4 sm:px-6 lg:px-8">
     <div class="container mx-auto">
-        <div class="flex flex-col md:flex-row gap-12">
+        <div class="flex flex-col md:flex-row lg:mx-12 gap-8">
 
-            <div class="w-full md:w-1/2 items-center flex justify-center">
-                <img src="{% static 'images/Eco Concrete.webp' %}" alt="Maintenance Services" class="w-[30rem] h-auto max-h-[80vh] object-contain">
+            <div class="w-full md:w-1/2 flex justify-start">
+                <img src="{% static 'images/Eco Concrete.webp' %}" alt="Maintenance Services" class="w-full h-auto max-h-[80vh] object-contain">
             </div>
 
-            <div class="w-full md:w-1/2 ">
+            <div class="w-full md:w-1/2 py-6 items-start">
                 <h2 class="text-3xl md:text-4xl lg:text-5xl font-product-sans font-black text-custom-green mb-6">
                     Eco Concrete
                 </h2>
@@ -213,7 +213,6 @@
         <div class="absolute inset-0 w-full h-full">
             <img src="{% static 'images/Fly ash expanded.webp' %}"
                 class="card-bg w-full h-full object-cover transition-all duration-500 rounded-2xl" alt="Fly Ash">
-            <!-- <div class="absolute inset-0 bg-gradient-to-t from-white/30 via-white/20 to-white/10"></div> -->
         </div>
 
         <div class="relative z-10 h-full w-full">
@@ -254,7 +253,6 @@
             <img src="{% static 'images/Steel slag frame.webp' %}"
                 class="card-bg w-full h-full object-cover brightness-75 group-hover:brightness-90 transition-all duration-500 rounded-2xl"
                 alt="Steel Slag">
-            <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-black/20"></div>
         </div>
 
         <div class="relative z-10 h-full w-full">
@@ -292,7 +290,6 @@
             <img src="{% static 'images/Chemicals frame.webp' %}"
                 class="card-bg w-full h-full object-cover brightness-75 group-hover:brightness-90 transition-all duration-500 rounded-2xl"
                 alt="Chemicals">
-            <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-black/20"></div>
         </div>
 
         <div class="relative z-10 h-full w-full">
@@ -329,7 +326,7 @@
 <!-- Product Ecosystem Section -->
 <section class="py-16 md:py-24 overflow-hidden">
     <!-- Master Heading -->
-    <h2 class="text-3xl md:text-5xl font-product-sans font-bold text-center text-custom-green mb-16 md:mb-24 px-4">
+    <h2 class="text-3xl md:text-5xl font-product-sans font-bold text-center text-custom-green mb-8 md:mb-24 px-4">
         The Ecopath Product Ecosystem
     </h2>
 
@@ -688,7 +685,7 @@
         <div class="card-item group relative w-full md:w-1/3 h-[20rem]" data-row="top">
             <img src="{% static 'images/Material Optimization.webp' %}" alt="Abstract 1"
                 class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-            <div class="card-overlay absolute inset-0 pointer-events-none"></div>
+            
 
             <!-- Content Wrapper: Positioned Top-Left, but animated -->
             <div class="absolute top-0 left-0 w-full h-full p-8 text-white flex flex-col card-text-wrapper">
@@ -699,8 +696,7 @@
                     <li>Designing blends tailored to each location’s waste.</li>
                 </ul>
                 <!-- Mobile Expand Icon -->
-                <div class="md:hidden mt-4 text-xs uppercase tracking-wider text-green-300 font-semibold mobile-hint">
-                    Tap to read</div>
+                
             </div>
         </div>
 
@@ -708,7 +704,7 @@
         <div class="card-item group relative w-full md:w-1/3 h-[20rem]" data-row="top">
             <img src="{% static 'images/Curing Innovation.webp' %}" alt="Abstract 2"
                 class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-            <div class="card-overlay absolute inset-0 pointer-events-none"></div>
+            
 
             <div class="absolute top-0 left-0 w-full h-full p-8 text-white flex flex-col card-text-wrapper">
                 <h3 class="text-2xl font-semibold mb-4 card-title origin-left font-product-sans text-black">Curing
@@ -717,8 +713,7 @@
                     <li>Developing ambient temperature curing. </li>
                     <li>Avoiding energy-intensive autoclaves or ovens.</li>
                 </ul>
-                <div class="md:hidden mt-4 text-xs uppercase tracking-wider text-green-300 font-semibold mobile-hint">
-                    Tap to read</div>
+                
             </div>
         </div>
 
@@ -726,7 +721,7 @@
         <div class="card-item group relative w-full md:w-1/3 h-[20rem]" data-row="top">
             <img src="{% static 'images/Performance Engg.webp' %}" alt="Abstract 3"
                 class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-            <div class="card-overlay absolute inset-0 pointer-events-none"></div>
+            
 
             <div class="absolute top-0 left-0 w-full h-full p-8 text-white flex flex-col card-text-wrapper">
                 <h3 class="text-2xl font-semibold mb-4 card-title origin-left font-product-sans text-black">
@@ -735,8 +730,7 @@
                     <li> Achieving high early and long-term strength </li>
                     <li>Matching or exceeding IS code standards.</li>
                 </ul>
-                <div class="md:hidden mt-4 text-xs uppercase tracking-wider text-green-300 font-semibold mobile-hint">
-                    Tap to read</div>
+                
             </div>
         </div>
 
@@ -749,7 +743,7 @@
         <div class="card-item group relative w-full md:w-1/2 h-[25rem]" data-row="bottom">
             <img src="{% static 'images/Cost Parity.webp' %}" alt="Abstract 4"
                 class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-            <div class="card-overlay absolute inset-0 pointer-events-none"></div>
+            
 
             <div class="absolute top-0 left-0 w-full h-full p-8 text-white flex flex-col card-text-wrapper">
                 <h3 class="text-2xl font-semibold mb-4 card-title origin-left font-product-sans text-black">Cost
@@ -758,8 +752,7 @@
                     <li>Iterating formulas to match traditional concrete’s cost per cubic meter.   </li>
                     <li>Adapting manufacturing to existing batching plants without retrofitting.</li>
                 </ul>
-                <div class="md:hidden mt-4 text-xs uppercase tracking-wider text-green-300 font-semibold mobile-hint">
-                    Tap to read</div>
+                
             </div>
         </div>
 
@@ -767,7 +760,7 @@
         <div class="card-item group relative w-full md:w-1/2 h-[25rem]" data-row="bottom">
             <img src="{% static 'images/Testing Parameters.webp' %}" alt="Abstract 5"
                 class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-            <div class="card-overlay absolute inset-0 pointer-events-none"></div>
+            
 
             <div class="absolute top-0 left-0 w-full h-full p-8 text-white flex flex-col card-text-wrapper">
                 <h3 class="text-2xl font-semibold mb-4 card-title origin-left font-product-sans text-black">Testing
@@ -776,8 +769,7 @@
                     <li>All our products are tested for compressive strength, abrasion resistance, water absorption,
                         fire and thermal resistance.</li>
                 </ul>
-                <div class="md:hidden mt-4 text-xs uppercase tracking-wider text-green-300 font-semibold mobile-hint">
-                    Tap to read</div>
+                
             </div>
         </div>
 
@@ -800,23 +792,19 @@
             const wrapper = card.querySelector('.card-text-wrapper');
             const title = card.querySelector('.card-title');
 
-            if (isMobile) {
-                gsap.set(wrapper, { y: 0 });
-                return;
-            }
-
             // Calculate distance to move title to bottom based on CURRENT dimensions
             const cardHeight = card.offsetHeight;
             const wrapperPaddingTop = 32; // p-8 = 2rem
-            const titleHeight = title.offsetHeight;
+            const titleHeight = title ? title.offsetHeight : 0;
 
             // Distance to push down so title is at bottom
-            const yOffset = cardHeight - wrapperPaddingTop - titleHeight - 40;
+            let yOffset = cardHeight - wrapperPaddingTop - titleHeight - 40;
+            if (yOffset < 0) yOffset = 0;
 
             // Store this value as the 'true' resting place
             card.defaultY = yOffset;
 
-            // Apply immediately
+            // Apply immediately (used for both desktop and mobile initial state)
             gsap.set(wrapper, { y: yOffset });
         }
 
@@ -913,7 +901,7 @@
 
                 const isClosed = gsap.getProperty(list, "opacity") === 0 || gsap.getProperty(list, "opacity") === '0';
 
-                // Close siblings and remove their glass effect
+                // Close siblings and remove their glass effect, reset their wrapper positions
                 allCards.forEach(c => {
                     if (c !== card) {
                         const l = c.querySelector('.card-list');
@@ -921,22 +909,33 @@
                         const w = c.querySelector('.card-text-wrapper');
                         gsap.to(l, { height: 0, opacity: 0, duration: 0.3 });
                         gsap.to(h, { opacity: 1, duration: 0.3 });
-                        if (w) w.classList.remove('glass-active');
+                        if (w) {
+                            w.classList.remove('glass-active');
+                            const target = c.defaultY || 0;
+                            gsap.to(w, { y: target, duration: 0.3, ease: 'power2.out' });
+                        }
                     }
                 });
 
                 if (isClosed) {
-                    // Open this card: ensure height is auto then animate in
+                    // Open this card: ensure height is auto then animate in and move wrapper up
                     gsap.set(list, { height: "auto" });
                     gsap.from(list, { height: 0, duration: 0.3 });
                     gsap.to(list, { opacity: 1, y: 0, duration: 0.3 });
                     gsap.to(hint, { opacity: 0, duration: 0.2 });
-                    if (wrapper) wrapper.classList.add('glass-active');
+                    if (wrapper) {
+                        wrapper.classList.add('glass-active');
+                        gsap.to(wrapper, { y: 0, duration: 0.3, ease: 'power2.out' });
+                    }
                 } else {
-                    // Close this card
+                    // Close this card: move wrapper back to resting position
                     gsap.to(list, { height: 0, opacity: 0, duration: 0.3 });
                     gsap.to(hint, { opacity: 1, duration: 0.3 });
-                    if (wrapper) wrapper.classList.remove('glass-active');
+                    if (wrapper) {
+                        wrapper.classList.remove('glass-active');
+                        const target = card.defaultY || 0;
+                        gsap.to(wrapper, { y: target, duration: 0.3, ease: 'power2.out' });
+                    }
                 }
         }
 
@@ -959,7 +958,12 @@
                     card.onclick = () => handleMobileClick(card);
                     card.onmouseenter = null;
 
-                    gsap.set(wrapper, { y: 0, clearProps: "y" });
+                    // Calculate and set resting position for mobile as well.
+                    // Delay slightly to allow images/fonts to load so measurements are accurate.
+                        setTimeout(() => {
+                        setAndStoreInitialTextPositions(card);
+                        gsap.set(wrapper, { y: card.defaultY || 0 });
+                    }, 120);
                     gsap.set(list, { height: 0, opacity: 0, overflow: 'hidden' });
                 } else {
                     card.onclick = null;
@@ -977,11 +981,26 @@
         }
 
         setupLayout();
+        // Fallback: re-measure shortly after initial layout to handle late-loading images/fonts
+        setTimeout(() => {
+            allCards.forEach(c => {
+                setAndStoreInitialTextPositions(c);
+                const w = c.querySelector('.card-text-wrapper');
+                if (w) gsap.set(w, { y: c.defaultY || 0 });
+            });
+        }, 350);
 
         let resizeTimer;
         window.addEventListener('resize', () => {
             clearTimeout(resizeTimer);
             resizeTimer = setTimeout(setupLayout, 200);
+        });
+
+        // Ensure layout and measurements are correct after all resources load
+        window.addEventListener('load', () => {
+            // Recompute resting positions once images and fonts are fully loaded
+            allCards.forEach(c => setAndStoreInitialTextPositions(c));
+            setupLayout();
         });
     });
 </script>

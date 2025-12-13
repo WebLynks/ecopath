@@ -28,7 +28,7 @@
 {% endblock %}
 
 {% block content %}
-<section class="relative h-screen w-full bg-cover bg-center text-white pt-12"
+<section class="relative h-screen w-full bg-cover bg-center text-white py-24 lg:p-12 lg:px-12 lg:pt-24"
     style="background-image: url('{% static 'images/Sustainability Hero Header.webp' %}');">
     <div class="absolute inset-0 bg-black/40"></div>
     <div class="relative h-full flex flex-col justify-between p-12 px-8">
@@ -41,12 +41,12 @@
     </div>
 </section>
 
-<section class="py-16 md:py-24 px-4 sm:px-6 lg:px-8">
+<section class="py-8 md:py-24 px-4 sm:px-6 lg:px-8">
     <div class="container mx-auto">
-        <div class="flex flex-col md:flex-row justify-center gap-12">
+        <div class="flex flex-col md:flex-row lg:mx-12 gap-8">
             <!-- Text Column -->
-            <div class="w-full md:w-2/5 pt-12">
-                <h2 class="text-3xl md:text-4xl lg:text-5xl font-product-sans font-black text-custom-green mb-6">
+            <div class="w-full md:w-1/2 py-6 items-end">
+                <h2 class="text-4xl md:text-5xl lg:text-5xl font-product-sans font-black text-custom-green mb-6">
                     Building the Future Responsibly
                 </h2>
                 <p class="font-montserrat text-lg md:text-[1.125rem] text-gray-700 leading-relaxed">
@@ -63,9 +63,9 @@
             </div>
 
             <!-- Image Column -->
-            <div class="w-full md:w-2/5 items-center flex justify-center">
+            <div class="w-full md:w-1/2 flex justify-end">
                 <img src="{% static 'images/Cement issue image(2).png' %}" alt="Maintenance Services"
-                    class="w-full h-auto max-h-[80vh]">
+                    class="w-full h-auto max-h-[80vh] object-contain">
             </div>
         </div>
     </div>
@@ -81,7 +81,7 @@
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
             <!-- Service Card 1 -->
             <div
-                class="bg-card-bg-green rounded-2xl p-8 py-36 shadow-md flex flex-col items-center justify-center text-center">
+                class="bg-card-bg-green rounded-xl p-8 py-24 lg:py-36 shadow-md flex flex-col items-center justify-center text-center">
                 <h3 class="text-3xl md:text-4xl font-product-sans font-black mb-4">75 - 80%</h3>
                 <p class="font-montserrat text-lg md:text-xl ">
                     less CO2 emissions than traditional concrete.
@@ -90,7 +90,7 @@
 
             <!-- Service Card 2 -->
             <div
-                class="bg-card-bg-green rounded-2xl p-8 py-24 shadow-md flex flex-col items-center justify-center text-center">
+                class="bg-card-bg-green rounded-xl p-8 py-24 lg:py-36 shadow-md flex flex-col items-center justify-center text-center">
                 <h3 class="text-3xl md:text-4xl font-product-sans font-black mb-4">30%</h3>
                 <p class="font-montserrat text-lg md:text-xl ">
                     water saved during production.
@@ -99,7 +99,7 @@
 
             <!-- Service Card 3 -->
             <div
-                class="bg-card-bg-green rounded-2xl p-8 py-24 shadow-md flex flex-col items-center justify-center text-center">
+                class="bg-card-bg-green rounded-xl p-2 py-24 lg:py-36 shadow-md flex flex-col items-center justify-center text-center">
                 <h3 class="text-3xl md:text-4xl font-product-sans font-black mb-4">10,000+ tonnes</h3>
                 <p class="font-montserrat text-lg md:text-xl ">
                     of industrial waste reused.
@@ -108,7 +108,7 @@
 
             <!-- Service Card 4 -->
             <div
-                class="bg-card-bg-green rounded-2xl p-8 py-24 shadow-md flex flex-col items-center justify-center text-center">
+                class="bg-card-bg-green rounded-xl p-8 py-24 lg:py-36 shadow-md flex flex-col items-center justify-center text-center">
                 <h3 class="text-3xl md:text-4xl font-product-sans font-black mb-4">2x</h3>
                 <p class="font-montserrat text-lg md:text-xl ">
                     road lifespan compared to cement-based ones.
@@ -123,7 +123,7 @@
     <div class="mx-auto flex flex-col md:flex-row gap-10 md:gap-16 items-center">
 
         <!-- Text Column -->
-        <div class="w-full md:w-5/12 lg:w-4/12 md:mt-24">
+        <div class="w-full md:w-6/12 lg:w-5/12 md:mt-24 md:mx-12">
 
             <h2 class="text-3xl md:text-4xl lg:text-5xl font-product-sans font-black text-custom-green mb-4">
                 Sustainability in Action
@@ -135,13 +135,13 @@
         </div>
 
         <!-- Carousel Column -->
-        <div class="w-full md:w-7/12 lg:w-8/12">
-            <div class="flex justify-end mb-4">
+        <div class="w-full md:w-6/12 lg:w-7/12">
+            <div class="flex justify-end mb-4 me-12">
                 <div class="flex items-center gap-8">
-                    <button id="sustainability-prev" class="text-4xl md:text-5xl text-black text-custom-green transition-colors">
+                    <button id="sustainability-prev" class="text-4xl md:text-6xl text-black text-custom-green transition-colors">
                         &#8249;
                     </button>
-                    <button id="sustainability-next" class="text-4xl md:text-5xl text-black text-custom-green transition-colors">
+                    <button id="sustainability-next" class="text-4xl md:text-6xl text-black text-custom-green transition-colors">
                         &#8250;
                     </button>
                 </div>
@@ -263,7 +263,7 @@
                 </h2>
 
                 <!-- Navigation List -->
-                <div class="flex justify-center lg:justify-start">
+                <div class="flex justify-start">
                     <ul id="infra-nav" class="relative space-y-4 w-full max-w-xs">
                         <!-- Active Item Indicator Bar -->
                         <li id="active-bar"
@@ -271,15 +271,15 @@
                             style="top: 0px;"></li>
 
                         <!-- List Items -->
-                        <li class="nav-item text-xl font-semibold font-product-sans font-black text-gray-800 pl-6 cursor-pointer transition-colors duration-200 hover:text-custom-green"
+                        <li class="nav-item text-xl font-semibold font-product-sans font-black pl-6 cursor-pointer transition-colors duration-200 hover:text-custom-green"
                             data-index="0">
                             Sustainability Reports
                         </li>
-                        <li class="nav-item text-xl font-semibold font-semibold font-product-sans font-black text-gray-800 pl-6 cursor-pointer transition-colors duration-200 hover:text-custom-green"
+                        <li class="nav-item text-xl font-semibold font-semibold font-product-sans font-black pl-6 cursor-pointer transition-colors duration-200 hover:text-custom-green"
                             data-index="1">
                             Patents
                         </li>
-                        <li class="nav-item text-xl font-semibold font-product-sans font-black text-gray-800 pl-6 cursor-pointer transition-colors duration-200 hover:text-custom-green"
+                        <li class="nav-item text-xl font-semibold font-product-sans font-black pl-6 cursor-pointer transition-colors duration-200 hover:text-custom-green"
                             data-index="2">
                             Awards & Recognition
                         </li>
@@ -448,7 +448,7 @@
                 <h2 class="text-4xl md:text-[2.75rem] font-product-sans font-black text-custom-green mb-5">
                     Measure your Impact
                 </h2>
-                <p class="font-montserrat text-sm md:text-[1.5rem] text-gray-700 max-w-3xl">
+                <p class="font-montserrat text-[.875rem] md:text-[1.5rem] text-gray-700 max-w-3xl">
                     Compare EcoConcrete with traditional materials and see the carbon savings for your project with
                     our Carbon Calculator.
                 </p>
@@ -512,19 +512,19 @@
                 <div class="w-full lg:w-1/2 flex flex-col">
                     <div class="grid grid-cols-1 gap-4 sm:gap-5">
                         <div
-                            class="grid grid-cols-2 gap-2 bg-card-bg-green rounded-xl py-9 px-5 text-white font-montserrat text-sm md:text-base" style="box-shadow:  6px 10px 3px rgba(0,0,0,0.05) inset;">
+                            class="grid grid-cols-2 gap-2 bg-card-bg-green rounded-xl py-6 px-5 text-white font-montserrat text-2xl md:text-3xl" style="box-shadow:  6px 10px 3px rgba(0,0,0,0.05) inset;">
                             <span class="font-semibold">CO saved</span>
-                            <span class="font-semibold text-right">16.38 tonnes</span>
+                            <span class="font-semibold text-right flex justify-center items-center">16.38 tonnes</span>
                         </div>
                         <div
-                            class="grid grid-cols-2 gap-2 bg-card-bg-green rounded-xl py-9 px-5 text-white font-montserrat text-sm md:text-base" style="box-shadow:  6px 10px 3px rgba(0,0,0,0.05) inset;">
+                            class="grid grid-cols-2 gap-2 bg-card-bg-green rounded-xl py-6 px-5 text-white font-montserrat text-2xl md:text-3xl" style="box-shadow:  6px 10px 3px rgba(0,0,0,0.05) inset;">
                             <span class="font-semibold">Water saved</span>
-                            <span class="font-semibold text-right">6,552 litres</span>
+                            <span class="font-semibold text-right flex justify-center items-center">6,552 litres</span>
                         </div>
                         <div
-                            class="grid grid-cols-2 gap-2 bg-card-bg-dark-green rounded-xl py-9 px-5 text-white font-montserrat text-sm md:text-base" style="box-shadow:  6px 10px 3px rgba(0,0,0,0.05) inset;">
+                            class="grid grid-cols-2 gap-2 bg-card-bg-dark-green rounded-xl py-6 px-5 text-white font-montserrat text-2xl md:text-3xl flex justify-center" style="box-shadow:  6px 10px 3px rgba(0,0,0,0.05) inset;">
                             <span class="font-semibold">Industrial waste used</span>
-                            <span class="font-semibold text-right">19.11 tonnes</span>
+                            <span class="font-semibold text-right flex justify-center items-center">19.11 tonnes</span>
                         </div>
                     </div>
                 </div>
@@ -535,7 +535,7 @@
             <div
                 class="mt-4 bg-white/95 rounded-xl py-3 px-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 text-xs md:text-sm font-montserrat text-gray-800">
                 <div class="flex items-center gap-2">
-                    <span class="text-lg">🌳</span>
+                    <span class="text--lg">🌳</span>
                     <span>Equivalent to planting 780 trees per year.</span>
                 </div>
                 <div class="flex items-center gap-2">
@@ -547,4 +547,8 @@
         </div>
     </div>
 </section>
+
+
+
+
 {% endblock %}
