@@ -74,6 +74,12 @@
             background-image: url('{% static 'images/Mobile version hero header.webp' %}');
         }
     }
+
+    @media screen and (max-width:400px) {
+        #carousel_section {
+            height: 110vh !important;
+        }
+    }
 </style>
 <script>
     // Custom Tailwind configuration (merging with base if needed, but base already has it. 
@@ -378,6 +384,60 @@
                 tl.to(headerGroup, { top: '30%', left: '2rem', xPercent: 0, yPercent: 0 }, 0);
                 tl.to(heading, { width: 'auto', opacity: 1, marginLeft: '1rem' }, 0);
                 tl.to(description, { top: '60%', opacity: 1 }, 0);
+                return tl;
+            };
+
+            const animateOutDesktop = (card) => {
+                const headerGroup = card.querySelector('.header-group');
+                const description = card.querySelector('.description');
+                const heading = card.querySelector('.heading');
+                const tl = gsap.timeline({ defaults: { duration: 0.5, ease: 'power3.inOut' } });
+
+                tl.to(card, { flex: 1 }, 0);
+                tl.to(headerGroup, { top: '50%', left: '50%', xPercent: -50, yPercent: -30 }, 0);
+                tl.to(heading, { width: 0, opacity: 0, marginLeft: 0 }, 0);
+                tl.to(description, { top: '60%', opacity: 0 }, 0);
+                return tl;
+            };
+
+            // Event Listeners for Desktop
+            cards.forEach(card => {
+                card.onmouseenter = () => {
+                    if (activeCard === card) return;
+                    if (activeCard) animateOutDesktop(activeCard);
+                    activeCard = card;
+                    animateInDesktop(card);
+                };
+            });
+
+            container.onmouseleave = () => {
+                if (activeCard) {
+                    animateOutDesktop(activeCard);
+                    activeCard = null;
+                }
+            };
+
+            return () => {
+                // Cleanup
+                cards.forEach(c => c.onmouseenter = null);
+                container.onmouseleave = null;
+            };
+        });
+
+        mm.add("(min-width: 1200px) and (max-width: 1500px) ", () => {
+            // DESKTOP: Horizontal Flex
+            setupCards();
+
+            const animateInDesktop = (card) => {
+                const headerGroup = card.querySelector('.header-group');
+                const description = card.querySelector('.description');
+                const heading = card.querySelector('.heading');
+                const tl = gsap.timeline({ defaults: { duration: 0.6, ease: 'power3.inOut' } });
+
+                tl.to(card, { flex: 5 }, 0);
+                tl.to(headerGroup, { top: '30%', left: '2rem', xPercent: 0, yPercent: 0 }, 0);
+                tl.to(heading, { width: 'auto', opacity: 1, marginLeft: '1rem' }, 0);
+                tl.to(description, { top: '70%', opacity: 1 }, 0);
                 return tl;
             };
 
@@ -725,53 +785,53 @@
 <section class="p-8 sm:p-12 md:p-16 flex items-center justify-center">
     <div class="relative w-full lg:w-[80%]  mx-auto">
         <img src="{% static 'images/Eco Concrete Intro Frame.webp' %}" alt="Eco Concrete blocks stacked"
-            class="w-full h-auto rounded-xl block hidden lg:block">
-        <img src="{% static 'images/Eco Concrete Mobile version.png' %}" class="lg:hidden w-full max-h-screen object-contain"
+            class="w-full h-auto rounded-xl block hidden md:block">
+        <img src="{% static 'images/Eco Concrete Mobile version.png' %}" class="md:hidden w-full max-h-screen object-contain"
             alt="Eco Concrete blocks stacked Mobile version"> 
     </div>
 </section>
 
 <!-- GoKart Project Section (carousel of project slides) -->
-<section class="relative h-[110vh] lg:h-[90vh] w-full overflow-hidden pt-0">
+<section class="relative h-[90vh] md:h-[100vh] lg:h-[90vh] w-full overflow-hidden pt-0" id="carousel_section">
     <div id="gokart-carousel-slides" class="h-full w-full relative">
         <!-- Slide 1 -->
         <div class="carousel-slide absolute inset-0 w-full h-full" data-index="0">
             <img src="{% static 'images/gokart.webp' %}" alt="" class="absolute inset-0 w-full h-full object-cover filter blur-sm scale-105">
             <div class="absolute inset-0 bg-black/30"></div>
-            <div class="relative z-20 h-full w-full lg:w-[90%] mx-auto px-6 lg:px-12 flex flex-col items-start justify-center lg:justify-start">
+            <div class="relative z-20 h-[95%] w-full md:w-[95%] mx-auto px-6 flex flex-col items-start justify-center md:justify-start">
                 <!-- Full-width Heading Row -->
-                <div class="w-full pt-6 lg:pt-6 lg:h-[10%] lg:items-center lg:flex lg:mt-12">
-                    <h4 class="text-2xl md:text-4xl lg:text-5xl text-white font-product-sans font-black lg:w-[90%]">Projects that Prove Sustainability and Performance Can Coexist</h4>
+                <div class="w-full pt-6 md:pt-2 md:h-[15%] items-start md:items-center md:flex py-4 md:pt-6">
+                    <h4 class="text-2xl md:text-4xl text-white font-product-sans font-black md:w-[95%]">Projects that Prove Sustainability and Performance Can Coexist</h4>
                 </div>
 
                 <!-- Content Row: Middle (60%) and Right (40%) on large screens -->
-                <div class="w-full lg:flex lg:flex-row lg:items-center lg:gap-8 mt-8 lg:mt-12 lg:h-[90%]">
-                    <div class="w-full lg:w-3/5">
-                        <h2 class="text-4xl lg:text-5xl 2xl:text-6xl text-white font-product-sans font-black mb-4">Raceway Go Cart</h2>
+                <div class="w-full md:flex md:flex-row md:items-center md:gap-8 md:pt-4 lg:pt-6 xl:pt-10 md:h-[80%]">
+                    <div class="w-full md:w-3/5">
+                        <h2 class="text-4xl md:text-5xl 2xl:text-6xl text-white font-product-sans font-black mb-4">Raceway Go Cart</h2>
 
-                        <div class="space-y-4 text-white pr-8">
+                        <div class="space-y-4 text-white md:pr-8">
                             <div>
-                                <h5 class="text-2xl lg:text-3xl font-product-sans font-black mb-2">Scope</h5>
-                                <p class="font-product-sans font-black text-lg text-white/90">Full renovation of racing track with SMA and Polymer Modified Bitumen (PMB). 3,200 sqm designed for high-speed vehicular stress and water resistance.</p>
+                                <h5 class="text-xl md:text-2xl font-montserrat font-black mb-2">Scope</h5>
+                                <p class="font-product-sans font-black text-md text-white/90">Full renovation of racing track with SMA and Polymer Modified Bitumen (PMB). 3,200 sqm designed for high-speed vehicular stress and water resistance.</p>
                             </div>
 
                             <div>
-                                <h5 class="text-2xl lg:text-3xl font-product-sans font-black mb-2">Tech Used</h5>
-                                <p class="font-product-sans font-black text-lg text-white/90">SMA asphalt, PMB technology & rapid deployment.</p>
+                                <h5 class="text-xl md:text-2xl font-montserrat font-black mb-2">Tech Used</h5>
+                                <p class="font-product-sans font-black text-md text-white/90">SMA asphalt, PMB technology & rapid deployment.</p>
                             </div>
 
-                                <h5 class="text-2xl lg:text-3xl font-product-sans font-black mb-2">Performance Impact</h5>
-                                <p class="font-product-sans font-black text-lg text-white/90">Zero repairs in 2+ years despite high-speed racing, flawless traction and durability.</p>
+                                <h5 class="text-xl md:text-2xl font-montserrat font-black mb-2">Performance Impact</h5>
+                                <p class="font-product-sans font-black text-md text-white/90">Zero repairs in 2+ years despite high-speed racing, flawless traction and durability.</p>
                             </div>
                     </div>
 
-                    <div class="w-full lg:w-2/5 mt-6 lg:mt-0 lg:pl-8 flex flex-col gap-6 items-start">
-                        <div class="w-full bg-white/20 backdrop-blur-md text-white p-6 rounded-lg shadow-lg">
-                            <div class="text-3xl font-product-sans font-normal">Cement eliminated</div>
+                    <div class="w-full md:w-2/5 mt-6 md:mt-0 md:pl-8 flex flex-col gap-6 items-start">
+                        <div class="w-full bg-white/20 backdrop-blur-md text-white py-2 px-4 md:p-6 rounded-md shadow-md">
+                            <div class="text-3xl font-montserrat font-normal">Cement eliminated</div>
                             <div class="text-2xl font-product-sans font-black mt-2">10+ tonnes</div>
                         </div>
-                        <div class="w-full bg-white/20 backdrop-blur-md text-white p-6 rounded-lg shadow-lg">
-                            <div class="text-3xl font-product-sans font-normal">Water saved</div>
+                        <div class="w-full bg-white/20 backdrop-blur-md text-white py-2 px-4 md:p-6 rounded-md shadow-md">
+                            <div class="text-3xl font-montserrat font-normal">Water saved</div>
                             <div class="text-2xl font-product-sans font-black mt-2">18,000 litres</div>
                         </div>
                     </div>
@@ -779,43 +839,43 @@
             </div>
         </div>
 
-        <div class="carousel-slide absolute inset-0 w-full h-full" data-index="1">
-            <img src="{% static 'images' %}" alt="" class="absolute inset-0 w-full h-full object-cover filter blur-sm scale-105">
+        <div class="carousel-slide absolute inset-0 w-full h-full" data-index="0">
+            <img src="{% static 'images/gokart_1.webp' %}" alt="" class="absolute inset-0 w-full h-full object-cover filter blur-sm scale-105">
             <div class="absolute inset-0 bg-black/30"></div>
-            <div class="relative z-20 h-full w-full lg:w-[90%] mx-auto px-6 lg:px-12 flex flex-col items-start justify-center lg:justify-start">
+            <div class="relative z-20 h-[95%] w-full md:w-[95%] mx-auto px-6 flex flex-col items-start justify-center md:justify-start">
                 <!-- Full-width Heading Row -->
-                <div class="w-full pt-6 lg:pt-6 lg:h-[10%] lg:items-center lg:flex lg:mt-12">
-                    <h4 class="text-2xl md:text-4xl lg:text-5xl text-white font-product-sans font-black lg:w-[90%]">Projects that Prove Sustainability and Performance Can Coexist</h4>
+                <div class="w-full pt-6 md:pt-2 md:h-[15%] items-start md:items-center md:flex py-4 md:pt-6">
+                    <h4 class="text-2xl md:text-4xl text-white font-product-sans font-black md:w-[95%]">Projects that Prove Sustainability and Performance Can Coexist</h4>
                 </div>
 
                 <!-- Content Row: Middle (60%) and Right (40%) on large screens -->
-                <div class="w-full lg:flex lg:flex-row lg:items-center lg:gap-8 mt-8 lg:mt-12 lg:h-[90%]">
-                    <div class="w-full lg:w-3/5">
-                        <h2 class="text-4xl lg:text-5xl 2xl:text-6xl text-white font-product-sans font-black mb-4">Raceway Go Cart</h2>
+                <div class="w-full md:flex md:flex-row md:items-center md:gap-8 md:pt-4 lg:pt-6 xl:pt-10 md:h-[80%]">
+                    <div class="w-full md:w-3/5">
+                        <h2 class="text-4xl md:text-5xl 2xl:text-6xl text-white font-product-sans font-black mb-4">Raceway Go Cart</h2>
 
-                        <div class="space-y-4 text-white pr-8">
+                        <div class="space-y-4 text-white md:pr-8">
                             <div>
-                                <h5 class="text-2xl lg:text-3xl font-product-sans font-black mb-2">Scope</h5>
-                                <p class="font-product-sans font-black text-lg text-white/90">Full renovation of racing track with SMA and Polymer Modified Bitumen (PMB). 3,200 sqm designed for high-speed vehicular stress and water resistance.</p>
+                                <h5 class="text-xl md:text-2xl font-montserrat font-black mb-2">Scope</h5>
+                                <p class="font-product-sans font-black text-md text-white/90">Full renovation of racing track with SMA and Polymer Modified Bitumen (PMB). 3,200 sqm designed for high-speed vehicular stress and water resistance.</p>
                             </div>
 
                             <div>
-                                <h5 class="text-2xl lg:text-3xl font-product-sans font-black mb-2">Tech Used</h5>
-                                <p class="font-product-sans font-black text-lg text-white/90">SMA asphalt, PMB technology & rapid deployment.</p>
+                                <h5 class="text-xl md:text-2xl font-montserrat font-black mb-2">Tech Used</h5>
+                                <p class="font-product-sans font-black text-md text-white/90">SMA asphalt, PMB technology & rapid deployment.</p>
                             </div>
 
-                                <h5 class="text-2xl lg:text-3xl font-product-sans font-black mb-2">Performance Impact</h5>
-                                <p class="font-product-sans font-black text-lg text-white/90">Zero repairs in 2+ years despite high-speed racing, flawless traction and durability.</p>
+                                <h5 class="text-xl md:text-2xl font-montserrat font-black mb-2">Performance Impact</h5>
+                                <p class="font-product-sans font-black text-md text-white/90">Zero repairs in 2+ years despite high-speed racing, flawless traction and durability.</p>
                             </div>
                     </div>
 
-                    <div class="w-full lg:w-2/5 mt-6 lg:mt-0 lg:pl-8 flex flex-col gap-6 items-start">
-                        <div class="w-full bg-white/20 backdrop-blur-md text-white p-6 rounded-lg shadow-lg">
-                            <div class="text-3xl font-product-sans font-normal">Cement eliminated</div>
+                    <div class="w-full md:w-2/5 mt-6 md:mt-0 md:pl-8 flex flex-col gap-6 items-start">
+                        <div class="w-full bg-white/20 backdrop-blur-md text-white py-2 px-4 md:p-6 rounded-md shadow-md">
+                            <div class="text-3xl font-montserrat font-normal">Cement eliminated</div>
                             <div class="text-2xl font-product-sans font-black mt-2">10+ tonnes</div>
                         </div>
-                        <div class="w-full bg-white/20 backdrop-blur-md text-white p-6 rounded-lg shadow-lg">
-                            <div class="text-3xl font-product-sans font-normal">Water saved</div>
+                        <div class="w-full bg-white/20 backdrop-blur-md text-white py-2 px-4 md:p-6 rounded-md shadow-md">
+                            <div class="text-3xl font-montserrat font-normal">Water saved</div>
                             <div class="text-2xl font-product-sans font-black mt-2">18,000 litres</div>
                         </div>
                     </div>
@@ -823,60 +883,59 @@
             </div>
         </div>
 
-        <div class="carousel-slide absolute inset-0 w-full h-full" data-index="1">
-            <img src="{% static 'images' %}" alt="" class="absolute inset-0 w-full h-full object-cover filter blur-sm scale-105">
+        <div class="carousel-slide absolute inset-0 w-full h-full" data-index="0">
+            <img src="{% static 'images/gokart_2.webp' %}" alt="" class="absolute inset-0 w-full h-full object-cover filter blur-sm scale-105">
             <div class="absolute inset-0 bg-black/30"></div>
-            <div class="relative z-20 h-full w-full lg:w-[90%] mx-auto px-6 lg:px-12 flex flex-col items-start justify-center lg:justify-start">
+            <div class="relative z-20 h-[95%] w-full md:w-[95%] mx-auto px-6 flex flex-col items-start justify-center md:justify-start">
                 <!-- Full-width Heading Row -->
-                <div class="w-full pt-6 lg:pt-6 lg:h-[10%] lg:items-center lg:flex lg:mt-12">
-                    <h4 class="text-2xl md:text-4xl lg:text-5xl text-white font-product-sans font-black lg:w-[90%]">Projects that Prove Sustainability and Performance Can Coexist</h4>
+                <div class="w-full pt-6 md:pt-2 md:h-[15%] items-start md:items-center md:flex py-4 md:pt-6">
+                    <h4 class="text-2xl md:text-4xl text-white font-product-sans font-black md:w-[95%]">Projects that Prove Sustainability and Performance Can Coexist</h4>
                 </div>
 
                 <!-- Content Row: Middle (60%) and Right (40%) on large screens -->
-                <div class="w-full lg:flex lg:flex-row lg:items-center lg:gap-8 mt-8 lg:mt-12 lg:h-[90%]">
-                    <div class="w-full lg:w-3/5">
-                        <h2 class="text-4xl lg:text-5xl 2xl:text-6xl text-white font-product-sans font-black mb-4">Raceway Go Cart</h2>
+                <div class="w-full md:flex md:flex-row md:items-center md:gap-8 md:pt-4 lg:pt-6 xl:pt-10 md:h-[80%]">
+                    <div class="w-full md:w-3/5">
+                        <h2 class="text-4xl md:text-5xl 2xl:text-6xl text-white font-product-sans font-black mb-4">Raceway Go Cart</h2>
 
-                        <div class="space-y-4 text-white pr-8">
+                        <div class="space-y-4 text-white md:pr-8">
                             <div>
-                                <h5 class="text-2xl lg:text-3xl font-product-sans font-black mb-2">Scope</h5>
-                                <p class="font-product-sans font-black text-lg text-white/90">Full renovation of racing track with SMA and Polymer Modified Bitumen (PMB). 3,200 sqm designed for high-speed vehicular stress and water resistance.</p>
+                                <h5 class="text-xl md:text-2xl font-montserrat font-black mb-2">Scope</h5>
+                                <p class="font-product-sans font-black text-md text-white/90">Full renovation of racing track with SMA and Polymer Modified Bitumen (PMB). 3,200 sqm designed for high-speed vehicular stress and water resistance.</p>
                             </div>
 
                             <div>
-                                <h5 class="text-2xl lg:text-3xl font-product-sans font-black mb-2">Tech Used</h5>
-                                <p class="font-product-sans font-black text-lg text-white/90">SMA asphalt, PMB technology & rapid deployment.</p>
+                                <h5 class="text-xl md:text-2xl font-montserrat font-black mb-2">Tech Used</h5>
+                                <p class="font-product-sans font-black text-md text-white/90">SMA asphalt, PMB technology & rapid deployment.</p>
                             </div>
 
-                                <h5 class="text-2xl lg:text-3xl font-product-sans font-black mb-2">Performance Impact</h5>
-                                <p class="font-product-sans font-black text-lg text-white/90">Zero repairs in 2+ years despite high-speed racing, flawless traction and durability.</p>
+                                <h5 class="text-xl md:text-2xl font-montserrat font-black mb-2">Performance Impact</h5>
+                                <p class="font-product-sans font-black text-md text-white/90">Zero repairs in 2+ years despite high-speed racing, flawless traction and durability.</p>
                             </div>
                     </div>
 
-                    <div class="w-full lg:w-2/5 mt-6 lg:mt-0 lg:pl-8 flex flex-col gap-6 items-start">
-                        <div class="w-full bg-white/20 backdrop-blur-md text-white p-6 rounded-lg shadow-lg">
-                            <div class="text-3xl font-product-sans font-normal">Cement eliminated</div>
+                    <div class="w-full md:w-2/5 mt-6 md:mt-0 md:pl-8 flex flex-col gap-6 items-start">
+                        <div class="w-full bg-white/20 backdrop-blur-md text-white py-2 px-4 md:p-6 rounded-md shadow-md">
+                            <div class="text-3xl font-montserrat font-normal">Cement eliminated</div>
                             <div class="text-2xl font-product-sans font-black mt-2">10+ tonnes</div>
                         </div>
-                        <div class="w-full bg-white/20 backdrop-blur-md text-white p-6 rounded-lg shadow-lg">
-                            <div class="text-3xl font-product-sans font-normal">Water saved</div>
+                        <div class="w-full bg-white/20 backdrop-blur-md text-white py-2 px-4 md:p-6 rounded-md shadow-md">
+                            <div class="text-3xl font-montserrat font-normal">Water saved</div>
                             <div class="text-2xl font-product-sans font-black mt-2">18,000 litres</div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
     </div>
 
     <!-- Navigation Arrows -->
-    <button id="gokart-prev-btn" class="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 z-20 bg-black/30 hover:bg-black/50 text-white p-3 rounded-full transition-all duration-300 focus:outline-none">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 md:h-10 md:w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+    <button id="gokart-prev-btn" class="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 z-20 bg-black/30 hover:bg-black/50 text-white p-3 rounded-full transition-all duration-300 focus:outline-none">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 md:h-6 md:w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
         </svg>
     </button>
-    <button id="gokart-next-btn" class="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 z-20 bg-black/30 hover:bg-black/50 text-white p-3 rounded-full transition-all duration-300 focus:outline-none">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 md:h-10 md:w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+    <button id="gokart-next-btn" class="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 z-20 bg-black/30 hover:bg-black/50 text-white p-3 rounded-full transition-all duration-300 focus:outline-none">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 md:h-6 md:w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
         </svg>
     </button>

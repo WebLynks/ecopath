@@ -30,7 +30,7 @@
 <section class="py-16 md:py-24 px-6 sm:px-10 lg:px-20 xl:px-32 pt-24">
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
         <!-- Left Content -->
-        <div>
+        <div class="order-2 lg:order-1">
             <div class="space-y-6">
                 <h1
                     class="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-product-sans font-black text-custom-green leading-none uppercase">
@@ -44,10 +44,10 @@
                 </p>
             </div>
 
-            <div class="mt-12 grid grid-cols-1 lg:grid-cols-2 gap-10 items-center max-w-4xl mx-auto py-4 bg-white">
+            <div class="mt-6 lg:mt-12 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10 items-center max-w-4xl mx-auto py-4 bg-white">
         
         <!-- Left Column (Visit us) - Vertically centered. Removed h-full. -->
-        <div class="flex flex-col py-6 justify-center">
+        <div class="flex flex-col lg:py-6 justify-center">
             <div>
                 <h3 class="text-xl sm:text-2xl font-bold text-gray-900 mb-4">
                     Visit us
@@ -61,7 +61,7 @@
         </div>
 
         <!-- Right Column (Phone/Email) - Removed left borders and bold font for simplicity -->
-        <div class="flex flex-col gap-8 py-4">
+        <div class="flex flex-col gap-8 lg:py-4">
             <div>
                 <h3 class="text-xl sm:text-2xl font-bold text-gray-900 mb-2">
                     Phone
@@ -87,7 +87,7 @@
         </div>
 
         <!-- Right Image -->
-        <div class="flex justify-center">
+        <div class="flex justify-center order-1 lg:order-2">
             <img src="{% static 'images/Contact Hero Image.png' %}" alt="Eco-friendly vertical garden"
                 class="h-full object-cover rounded-3xl object-cover">
         </div>
@@ -153,10 +153,10 @@
                 <div>
                     <label class="block text-base sm:text-lg font-semibold text-gray-900 mb-2">Mobile Number <span
                             class="text-red-500">*</span></label>
-                    <div class="flex flex-col sm:flex-row gap-3">
+                    <div class="flex flex-row gap-3">
                         <div
                             class="flex items-center border border-gray-300 rounded-lg px-4 py-3 text-base text-gray-700 bg-white">
-                            <img src="https://img.icons8.com/color/48/india.png" alt="india" class="w-[25px]"/>
+                            <img src="https://img.icons8.com/color/48/india.png" alt="india" class="w-[20px] lg:w-[25px]"/>
                             <span class="ml-2 font-semibold">+91</span>
                         </div>
                         <div class="relative flex-1">

@@ -31,11 +31,11 @@
 <section class="relative h-screen w-full bg-cover bg-center text-white py-24 lg:p-12 lg:px-12 lg:pt-24"
     style="background-image: url('{% static 'images/Sustainability Hero Header.webp' %}');">
     <div class="absolute inset-0 bg-black/40"></div>
-    <div class="relative h-full flex flex-col justify-between p-12 px-8">
-        <h1 class="text-4xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-product-sans font-black uppercase">
+    <div class="relative h-full flex flex-col justify-center md:justify-between p-12 px-8">
+        <h1 class="text-4xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-product-sans font-black uppercase my-6 md:my-0">
             SUSTAINABILITY
         </h1>
-        <p class="text-4xl sm:text-5xl md:text-6xl font-playfair-display max-w-4xl leading-tight">
+        <p class="text-4xl sm:text-5xl md:text-6xl font-playfair-display max-w-4xl leading-tight my-6 md:my-0">
             We’re rebuilding the world — without cement.
         </p>
     </div>
@@ -216,8 +216,12 @@
         };
 
         const updatePeekOverlay = () => {
+            // Determine which slide should show the "peek" overlay.
+            // By default, it's the next slide (currentIndex + 1). When on the last slide,
+            // show the previous slide instead so the left-side peek is visible.
+            const peekIndex = (currentIndex < slides.length - 1) ? (currentIndex + 1) : Math.max(0, currentIndex - 1);
             overlays.forEach((overlay, i) => {
-                const isPeek = i === currentIndex + 1;
+                const isPeek = i === peekIndex;
                 gsap.to(overlay, {
                     opacity: isPeek ? 1 : 0,
                     duration: 0.3,
@@ -231,11 +235,27 @@
             if (clampedIndex === currentIndex) return;
             currentIndex = clampedIndex;
             const step = getStep();
-            gsap.to(track, {
-                x: -step * currentIndex,
-                duration: 0.6,
-                ease: 'power3.inOut'
-            });
+            // If we're on the last slide, shift the track so the PREVIOUS slide
+            // shows a 20% peek on the left side of the carousel. Otherwise, position
+            // slides normally (each slide starts at the container left edge).
+            if (clampedIndex === slides.length - 1 && slides.length > 1) {
+                const peekWidth = carousel.clientWidth * 0.2; // 20% peek
+                const slideWidth = carousel.clientWidth * 0.8;
+                // Position so the PREVIOUS slide's right edge sits at `peekWidth` from the left.
+                const prevIndex = clampedIndex - 1;
+                const targetX = peekWidth - slideWidth - (prevIndex * step);
+                gsap.to(track, {
+                    x: targetX,
+                    duration: 0.6,
+                    ease: 'power3.inOut'
+                });
+            } else {
+                gsap.to(track, {
+                    x: -step * currentIndex,
+                    duration: 0.6,
+                    ease: 'power3.inOut'
+                });
+            }
             updateArrows();
             updatePeekOverlay();
         };
@@ -448,7 +468,7 @@
                 <h2 class="text-4xl md:text-[2.75rem] font-product-sans font-black text-custom-green mb-5">
                     Measure your Impact
                 </h2>
-                <p class="font-montserrat text-[.875rem] md:text-[1.5rem] text-gray-700 max-w-3xl">
+                <p class="font-montserrat text-[.875rem] md:text-[1rem] text-gray-700 max-w-3xl">
                     Compare EcoConcrete with traditional materials and see the carbon savings for your project with
                     our Carbon Calculator.
                 </p>
