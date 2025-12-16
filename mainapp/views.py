@@ -54,7 +54,6 @@ class BlogListView(ListView):
     model = Blog
     template_name = "mainapp/blog_list.html"
     context_object_name = "blogs"
-    paginate_by = 10
 
     def get_queryset(self):
         return Blog.objects.filter(status='PUBLISHED').order_by('-published_date')
@@ -81,21 +80,18 @@ class ContactView(CreateView):
 
     def form_valid(self, form):
         # Honeypot check
+        # If form has a honeypot field check it defensively
         if form.cleaned_data.get('honeypot'):
             return HttpResponseRedirect(self.get_success_url())
 
         self.object = form.save(commit=False)
-        # Capture IP and User-Agent
-        self.object.ip_address = self.request.META.get('REMOTE_ADDR')
-        self.object.device_info = self.request.META.get('HTTP_USER_AGENT')
 
         try:
             with transaction.atomic():
                 self.object.save()
                 subject, text_body, html_body = format_contact_email(self.object)
-                
-                # NOTE: For production, this email sending should be offloaded to a background worker (e.g., Celery, RQ)
-                # to avoid blocking the request-response cycle.
+
+                # NOTE: For production, this email sending should be offloaded to a background worker
                 send_mail(
                     subject=subject,
                     message=text_body,
@@ -104,13 +100,10 @@ class ContactView(CreateView):
                     html_message=html_body,
                     fail_silently=False
                 )
-                self.object.notified = True
-                self.object.save(update_fields=['notified'])
 
         except Exception as e:
-            logger.error(f"Failed to send contact submission email for {self.object.email}: {e}")
-            # The object is already saved with notified=False by default
-            pass # Continue to success page even if email fails
+            logger.error(f"Failed to send contact submission email for {getattr(self.object, 'email', 'unknown')}: {e}")
+            # Continue to success page even if email fails
 
         return HttpResponseRedirect(self.get_success_url())
 

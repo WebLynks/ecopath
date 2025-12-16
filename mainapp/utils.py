@@ -72,12 +72,8 @@ def format_contact_email(submission) -> tuple[str, str]:
         f"You have received a new contact submission:\n\n"
         f"Name: {submission.first_name} {submission.last_name}\n"
         f"Email: {submission.email}\n"
-        f"Mobile: {submission.mobile_number or 'N/A'}\n"
-        f"Service Inquiry: {submission.service_inquiry.name}\n"
-        f"Message: {submission.message}\n\n"
-        f"-- Technical Details --\n"
-        f"IP Address: {submission.ip_address}\n"
-        f"Device Info: {submission.device_info}"
+        f"Mobile: {getattr(submission, 'mobile_number', 'N/A') or 'N/A'}\n"
+        f"Message: {getattr(submission, 'message', '')}\n\n"
     )
     
     # Basic HTML body
@@ -86,13 +82,8 @@ def format_contact_email(submission) -> tuple[str, str]:
         f"<h2>New Contact Inquiry</h2>"
         f"<p><strong>Name:</strong> {submission.first_name} {submission.last_name}</p>"
         f"<p><strong>Email:</strong> {submission.email}</p>"
-        f"<p><strong>Mobile:</strong> {submission.mobile_number or 'N/A'}</p>"
-        f"<p><strong>Service Inquiry:</strong> {submission.service_inquiry.name}</p>"
-        f"<p><strong>Message:</strong><br>{submission.message}</p>"
-        f"<hr>"
-        f"<h3>Technical Details</h3>"
-        f"<p><strong>IP Address:</strong> {submission.ip_address}</p>"
-        f"<p><strong>Device Info:</strong> {submission.device_info}</p>"
+        f"<p><strong>Mobile:</strong> {getattr(submission, 'mobile_number', 'N/A') or 'N/A'}</p>"
+        f"<p><strong>Message:</strong><br>{getattr(submission, 'message', '')}</p>"
         f"</body></html>"
     )
     

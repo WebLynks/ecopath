@@ -79,15 +79,11 @@ class BlogAdmin(admin.ModelAdmin):
 
 @admin.register(ContactSubmission)
 class ContactSubmissionAdmin(admin.ModelAdmin):
-    list_display = ('email', 'service_inquiry', 'submission_date', 'notified')
-    list_filter = ('service_inquiry', 'submission_date', 'notified')
+    list_display = ('first_name', 'last_name', 'email', 'submission_date')
+    list_filter = ('submission_date',)
     search_fields = ('first_name', 'last_name', 'email', 'message')
-    readonly_fields = ('first_name', 'last_name', 'email', 'mobile_number', 'service_inquiry', 'message', 'submission_date', 'ip_address', 'device_info')
-    actions = ['mark_notified', 'export_as_csv']
-
-    def mark_notified(self, request, queryset):
-        queryset.update(notified=True)
-    mark_notified.short_description = "Mark selected submissions as notified"
+    readonly_fields = ('first_name', 'last_name', 'email', 'mobile_number', 'message', 'submission_date')
+    actions = ['export_as_csv']
 
     def export_as_csv(self, request, queryset):
         # NOTE: A more robust implementation would use the csv module and stream the response.
@@ -95,7 +91,8 @@ class ContactSubmissionAdmin(admin.ModelAdmin):
         from django.http import HttpResponse
         
         meta = self.model._meta
-        field_names = [field.name for field in meta.fields]
+        # Limit exported fields to relevant submission fields
+        field_names = ['first_name', 'last_name', 'email', 'mobile_number', 'message', 'submission_date']
         response = HttpResponse(content_type='text/csv')
         response['Content-Disposition'] = 'attachment; filename={}.csv'.format(meta)
         writer = csv.writer(response)

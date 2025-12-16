@@ -100,7 +100,8 @@
     <div class="max-w-5xl mx-auto px-6 sm:px-10">
         <div class="p-8 sm:p-12">
             <h2 class="text-3xl sm:text-4xl font-product-sans font-black mb-10 text-custom-green">Tell Us What You Need</h2>
-            <form class="space-y-6">
+            <form method="post" class="space-y-6">
+                {% csrf_token %}
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
                         <label class="block text-base sm:text-lg font-semibold text-gray-900 mb-2">First Name <span
@@ -113,7 +114,7 @@
                                         d="M5.121 17.804A12.07 12.07 0 0112 15c2.1 0 4.063.54 5.879 1.5M15 9a3 3 0 11-6 0 3 3 0 016 0z" />
                                 </svg>
                             </span>
-                            <input type="text" placeholder="Enter your first name"
+                            <input name="first_name" type="text" placeholder="Enter your first name" required
                                 class="w-full border border-gray-300 rounded-lg py-3 pl-12 pr-4 text-base focus:outline-none focus:ring-2 focus:ring-custom-green focus:border-custom-green">
                         </div>
                     </div>
@@ -128,7 +129,7 @@
                                         d="M5.121 17.804A12.07 12.07 0 0112 15c2.1 0 4.063.54 5.879 1.5M15 9a3 3 0 11-6 0 3 3 0 016 0z" />
                                 </svg>
                             </span>
-                            <input type="text" placeholder="Enter your last name"
+                            <input name="last_name" type="text" placeholder="Enter your last name" required
                                 class="w-full border border-gray-300 rounded-lg py-3 pl-12 pr-4 text-base focus:outline-none focus:ring-2 focus:ring-custom-green focus:border-custom-green">
                         </div>
                     </div>
@@ -145,7 +146,7 @@
                                     d="M3 8l9 6 9-6M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                             </svg>
                         </span>
-                        <input type="email" placeholder="Enter your email address"
+                        <input name="email" type="email" placeholder="Enter your email address" required
                             class="w-full border border-gray-300 rounded-lg py-3 pl-12 pr-4 text-base focus:outline-none focus:ring-2 focus:ring-custom-green focus:border-custom-green">
                     </div>
                 </div>
@@ -169,7 +170,7 @@
                                         d="M16 5a4 4 0 01-8 0" />
                                 </svg>
                             </span>
-                            <input type="tel" placeholder="Enter your 10 digit mobile number"
+                            <input name="mobile_number" type="tel" placeholder="Enter your 10 digit mobile number" required
                                 class="w-full border border-gray-300 rounded-lg py-3 pl-12 pr-4 text-base focus:outline-none focus:ring-2 focus:ring-custom-green focus:border-custom-green">
                         </div>
                     </div>
@@ -178,13 +179,13 @@
                 <div>
                     <label class="block text-base sm:text-lg font-semibold text-gray-900 mb-2">Message</label>
                     <div class="relative">
-                        <textarea id="inquiry-message" maxlength="1000" placeholder="Type your message here..."
+                        <textarea id="inquiry-message" name="message" maxlength="1000" placeholder="Type your message here..." required
                             class="w-full border border-gray-300 rounded-lg py-3 px-4 text-base min-h-[180px] focus:outline-none focus:ring-2 focus:ring-custom-green focus:border-custom-green"></textarea>
                         <div class="text-right text-sm text-gray-500 mt-2" id="message-counter">0/1000</div>
                     </div>
                 </div>
 
-                <button type="button"
+                <button type="submit"
                     class="w-full bg-custom-green hover:bg-[#1f5223] text-white font-product-sans font-semibold text-lg tracking-wide py-4 rounded-md transition-colors">Send
                     Inquiry</button>
             </form>
@@ -204,5 +205,62 @@
             messageInput.addEventListener('input', updateCounter);
         }
     });
+</script>
+<!-- Floating notification -->
+<div id="contact-toast" class="fixed right-6 bottom-6 z-50 hidden bg-white border border-gray-200 shadow-lg rounded-lg px-5 py-3 flex items-center gap-3" role="status" aria-live="polite">
+    <svg id="contact-toast-icon" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+    </svg>
+    <div>
+        <div id="contact-toast-title" class="font-semibold text-gray-900">Submitted</div>
+        <div id="contact-toast-body" class="text-sm text-gray-700">Thanks — we received your message.</div>
+    </div>
+    <button id="contact-toast-close" class="ml-4 text-gray-400 hover:text-gray-600" aria-label="Close">
+        &times;
+    </button>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const params = new URLSearchParams(window.location.search);
+    const toast = document.getElementById('contact-toast');
+    const title = document.getElementById('contact-toast-title');
+    const body = document.getElementById('contact-toast-body');
+    const icon = document.getElementById('contact-toast-icon');
+    const closeBtn = document.getElementById('contact-toast-close');
+
+    if (!toast || !params) return;
+
+    const showToast = (type) => {
+        if (type === '1') {
+            title.textContent = 'Message sent';
+            body.textContent = "Thanks — we'll get back to you soon.";
+            icon.classList.remove('text-red-600');
+            icon.classList.add('text-green-700');
+        } else {
+            title.textContent = 'Submission status';
+            body.textContent = 'There was a problem submitting the form.';
+            icon.classList.remove('text-green-700');
+            icon.classList.add('text-red-600');
+        }
+
+        toast.classList.remove('hidden');
+
+        // Auto-hide after 6s
+        const t = setTimeout(() => { toast.classList.add('hidden'); }, 6000);
+
+        closeBtn.addEventListener('click', () => { clearTimeout(t); toast.classList.add('hidden'); });
+    };
+
+    if (params.has('success')) {
+        showToast(params.get('success'));
+        // remove query param from URL to prevent repeat on refresh/navigation
+        try {
+            const url = new URL(window.location.href);
+            url.searchParams.delete('success');
+            window.history.replaceState({}, document.title, url.toString());
+        } catch (e) { /* ignore */ }
+    }
+});
 </script>
 {% endblock %}

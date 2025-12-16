@@ -137,13 +137,9 @@ class ContactSubmission(models.Model):
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
     email = models.EmailField(db_index=True)
-    mobile_number = models.CharField(max_length=20, blank=True)
-    service_inquiry = models.ForeignKey(ServiceCategory, on_delete=models.PROTECT)
+    mobile_number = models.CharField(max_length=20)
     message = models.TextField()
     submission_date = models.DateTimeField(auto_now_add=True, db_index=True)
-    notified = models.BooleanField(default=False, help_text="Indicates if admin notification has been sent.")
-    ip_address = models.CharField(max_length=45, blank=True, null=True)
-    device_info = models.CharField(max_length=512, blank=True, help_text="User-Agent string or similar device identifier.")
 
     def __str__(self):
         return f"Submission from {self.first_name} {self.last_name} ({self.email})"
