@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="{% static 'css/navbar_footer.css' %}">
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="icon" type="image/x-icon" href="{% static 'images/EcoPathLogo.png' %}">
     <script>
         // Custom Tailwind configuration
         tailwind.config = {
@@ -48,14 +49,14 @@
         <nav
             class="mx-auto px-4 py-3 flex justify-between items-center fixed top-0 left-0 right-0 z-50 bg-white w-full max-w-[1920px] mx-auto">
             <!-- Logo -->
-            <a href="{% url 'mainapp:homepage' %}" class="flex items-center">
+            <a href="{% url 'mainapp:homepage' %}" class="flex items-center h-[4rem]">
                 <!-- <svg class="h-12 w-12" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
                     <circle cx="50" cy="50" r="45" fill="none" stroke="#276B2B" stroke-width="5" />
                     <text x="50" y="55" font-family="Montserrat, sans-serif" font-size="20" fill="#276B2B"
                         text-anchor="middle">EcoPath</text>
                 </svg> -->
 
-                <img src="{% static 'images/logo.webp' %}" alt="EcoPath Logo" class="h-[90%] w-auto">
+                <img src="{% static 'images/EcoPathLogo.png' %}" alt="EcoPath Logo" class="h-full w-auto">
 
             </a>
 
