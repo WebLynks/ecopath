@@ -107,6 +107,19 @@ class ProjectFact(models.Model):
     def __str__(self):
         return f"{self.key}: {self.value}"
 
+
+class ProjectHomeBanner(models.Model):
+    name = models.CharField("Name", max_length=100)
+    scope = models.CharField("Scope", max_length=300)
+    tech_used = models.CharField("Tech Used", max_length=200)
+    performance_impact = models.CharField("Performance Impact", max_length=200)
+    background_image = models.ImageField("Background Image", upload_to="project_home_banners/")
+    cement_eliminated = models.CharField("Cement Eliminated", max_length=50)
+    water_saved = models.CharField("Water Saved", max_length=50)
+
+    def __str__(self):
+        return self.name
+
 class Blog(models.Model):
     """Represents a blog post."""
     class Status(models.TextChoices):

@@ -1,5 +1,5 @@
 # Byte-compiled / optimized / DLL files
-__pycache__/
+Ecopath/__pycache__/
 *.py[codz]
 *$py.class
 *.pyc
@@ -16,7 +16,6 @@ downloads/
 eggs/
 .eggs/
 lib/
-db.sqlite3
 lib64/
 parts/
 sdist/

@@ -172,9 +172,9 @@
                 <div>
                     <h3 class="font-product-sans font-bold text-lg mb-4">Services</h3>
                     <ul class="space-y-3 font-montserrat text-gray-400">
-                        <li><a href="#" class="hover:text-white transition-colors">Road Infra</a></li>
-                        <li><a href="#" class="hover:text-white transition-colors">Design Consultancy</a></li>
-                        <li><a href="#" class="hover:text-white transition-colors">Asphalt Road</a></li>
+                        <li><a href="{% url 'mainapp:services' %}" class="hover:text-white transition-colors">Road Infra</a></li>
+                        <li><a href="{% url 'mainapp:services' %}" class="hover:text-white transition-colors">Design Consultancy</a></li>
+                        <li><a href="{% url 'mainapp:services' %}" class="hover:text-white transition-colors">Asphalt Road</a></li>
                     </ul>
                 </div>
 
@@ -186,7 +186,7 @@
                         </li>
                         <li><a href="{% url 'mainapp:about' %}" class="hover:text-white transition-colors">About Us</a>
                         </li>
-                        <li><a href="#" class="hover:text-white transition-colors">Events</a></li>
+                        <li><a class="hover:text-white transition-colors">Events</a></li>
                         <li><a href="{% url 'mainapp:blog_list' %}" class="hover:text-white transition-colors">Blogs</a>
                         </li>
                     </ul>
