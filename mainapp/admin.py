@@ -3,7 +3,7 @@ from django.db.models import Sum
 from django.utils.html import format_html
 from .models import (
     ServiceCategory, Clientele, Testimonial, TeamMember, 
-    Project, ProjectImage, ProjectFact, Blog, ContactSubmission, HitCount
+    Project, ProjectImage, ProjectFact, Blog, ContactSubmission, HitCount, ProjectHomeBanner
 )
 
 @admin.register(ServiceCategory)
@@ -41,24 +41,24 @@ class ProjectFactInline(admin.TabularInline):
     model = ProjectFact
     extra = 1
 
-@admin.register(Project)
-class ProjectAdmin(admin.ModelAdmin):
-    list_display = ('title', 'status', 'is_featured_home', 'created_at', 'hit_count_display')
-    list_filter = ('status', 'is_featured_home', 'created_at')
-    search_fields = ('title', 'brief_description')
-    prepopulated_fields = {'slug': ('title',)}
-    inlines = [ProjectImageInline, ProjectFactInline]
+# @admin.register(Project)
+# class ProjectAdmin(admin.ModelAdmin):
+#     list_display = ('title', 'status', 'is_featured_home', 'created_at', 'hit_count_display')
+#     list_filter = ('status', 'is_featured_home', 'created_at')
+#     search_fields = ('title', 'brief_description')
+#     prepopulated_fields = {'slug': ('title',)}
+#     inlines = [ProjectImageInline, ProjectFactInline]
 
-    def get_queryset(self, request):
-        queryset = super().get_queryset(request)
-        # Annotate with total hits to avoid N+1 queries in hit_count_display
-        queryset = queryset.annotate(total_hits=Sum('hitcount__hits'))
-        return queryset
+#     def get_queryset(self, request):
+#         queryset = super().get_queryset(request)
+#         # Annotate with total hits to avoid N+1 queries in hit_count_display
+#         queryset = queryset.annotate(total_hits=Sum('hitcount__hits'))
+#         return queryset
 
-    def hit_count_display(self, obj):
-        return obj.total_hits or 0
-    hit_count_display.short_description = 'Total Hits'
-    hit_count_display.admin_order_field = 'total_hits'
+#     def hit_count_display(self, obj):
+#         return obj.total_hits or 0
+#     hit_count_display.short_description = 'Total Hits'
+#     hit_count_display.admin_order_field = 'total_hits'
 
 @admin.register(Blog)
 class BlogAdmin(admin.ModelAdmin):
@@ -107,3 +107,10 @@ class HitCountAdmin(admin.ModelAdmin):
     list_display = ('content_object', 'hits', 'created_at', 'last_hit')
     list_filter = ('created_at', 'content_type')
     readonly_fields = ('content_type', 'object_id', 'content_object', 'hits', 'created_at', 'last_hit')
+
+
+@admin.register(ProjectHomeBanner)
+class ProjectHomeBannerAdmin(admin.ModelAdmin):
+    list_display = ('name', 'cement_eliminated', 'water_saved')
+    search_fields = ('name', 'scope', 'tech_used', 'performance_impact')
+
