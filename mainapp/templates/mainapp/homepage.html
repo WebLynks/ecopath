@@ -98,7 +98,8 @@
                 fontFamily: {
                     'montserrat': ['Montserrat', 'sans-serif'],
                     'product-sans': ['Product Sans', 'sans-serif'],
-                    'playfair-display': ['Playfair Display', 'serif']
+                    'playfair-display': ['Playfair Display', 'serif'],
+                    'product-sans-medium' : ['Product Sans Medium', 'sans-serif'],
                 },
                 fontSize: {
                     'sm': '14px', // 14px
@@ -115,26 +116,13 @@
 <!-- Hero Section -->
 <div id="carousel-container" class="relative w-full h-screen overflow-hidden text-white">
     <!-- Slides -->
-    <div id="slide-1" class="hero-slide absolute top-0 left-0 w-full h-full">
-        <!-- <div class="absolute top-0 left-0 w-full h-full bg-black/40 z-10"></div> -->
-        <!-- <div class="relative w-full h-full flex items-center justify-center z-20 ">
-            <div class="text-center max-w-4xl p-8 mb-48">
-                <h1
-                    class="2xl:text-8xl xl:text-7xl text-6xl font-playfair-display font-bold mb-4 text-shadow uppercase tracking-wider text-custom-yellow">
-                    ECO PATH</h1>
-                <p class="text-2xl md:text-3xl text-shadow text-custom-yellow font-playfair-display">Rethinking Roads for
-                    a Greener Tomorrow
-                </p>
-            </div>
-        </div> -->
-    </div>
     <div id="slide-2" class="hero-slide absolute top-0 left-0 w-full h-full"
         style="background-image: url('{% static 'images/Hero image 2.webp' %}');">
         <div class="absolute top-0 left-0 w-full h-full bg-black/40 z-10"></div>
         <div class="relative w-full h-full flex items-center justify-start z-20 px-4 sm:px-24 lg:px-48">
-            <div class="text-left max-w-4xl p-8 mb-48">
-                <h1 class="2xl:text-6xl xl:text-5xl text-4xl font-playfair-display font-bold text-white text-shadow leading-tight">
-                    Let's make green <br> construction the norm,<br> not the exception.</h1>
+            <div class="text-left max-w-4xl p-8 mx-auto">
+                <h1 class="text-4xl md:text-6xl font-product-sans text-white/90 text-shadow leading-tight">
+                    Let's make green construction the norm, not the exception.</h1>
             </div>
         </div>
     </div>
@@ -142,8 +130,8 @@
         style="background-image: url('{% static 'images/Hero image 3.webp' %}');">
         <div class="absolute top-0 left-0 w-full h-full bg-black/40 z-10 text-left"></div>
         <div class="relative w-full h-full flex items-center justify-start z-20 px-4 sm:px-24 lg:px-48">
-            <div class="text-left md:max-w-4xl p-8 mb-48">
-                <h1 class="2xl:text-6xl xl:text-5xl text-4xl font-playfair-display font-bold text-white text-shadow leading-tight">We
+            <div class="text-left md:max-w-4xl p-8 mx-auto">
+                <h1 class="text-4xl md:text-6xl font-product-sans text-white/90 text-shadow leading-tight">We
                     aim to decarbonize the construction industry and make green construction mainstream and affordable.
                 </h1>
             </div>
@@ -188,7 +176,7 @@
 </div>
 
 <section class="mx-auto px-2 xld:px-8 py-16 lg:h-screen flex flex-col justify-center">
-    <h2 class="text-5xl md:text-5xl font-product-sans font-black text-custom-green text-center mb-8">Why Roads Need to Change?</h2>
+    <h2 class="text-4xl md:text-5xl font-product-sans font-black text-custom-green text-center mb-8">Why Roads Need to Change?</h2>
     <div class="flex flex-col lg:flex-row items-center gap-12">
         <!-- Image Collage -->
         <div class="w-full lg:w-1/2 h-64 flex justify-center lg:justify-end items-center">
@@ -262,7 +250,7 @@
 <!-- We at EcoPath Section -->
 <section class="py-16 px-4 sm:px-6 lg:px-8">
     <div class="max-w-7xl mx-auto">
-        <h2 class="text-5xl font-product-sans font-black text-custom-green mb-6">
+        <h2 class="text-4xl md:text-5xl font-product-sans font-black text-custom-green mb-12 leading-tight">
             We at EcoPath
         </h2>
 
@@ -271,21 +259,21 @@
             <!-- Card 1 -->
             <div class="card flex-1 relative bg-cover bg-center cursor-pointer overflow-hidden group"
                 style="background-image: url('{% static 'images/we_at_ecopath (1).webp' %}');">
-                <div class="absolute inset-0 bg-black/30 transition-opacity duration-500 group-hover:bg-black/50"></div>
+                <div class="absolute inset-0 bg-black/30 transition-opacity duration-500 group-hover:bg-black/60"></div>
 
                 <!-- Header Group: Number + Title -->
                 <div class="header-group absolute flex items-center z-20">
-                    <span class="number text-6xl md:text-8xl lg:text-9xl font-black text-white/90 leading-none">1</span>
+                    <span class="number text-6xl md:text-7xl lg:text-8xl font-black text-white/90 leading-none">1</span>
                     <h2
-                        class="heading text-xl md:text-2xl lg:text-3xl font-bold uppercase text-white ml-4 whitespace-nowrap overflow-hidden opacity-0 w-0">
+                        class="heading text-xl font-product-sans md:text-2xl lg:text-3xl font-bold uppercase text-white ml-4 whitespace-nowrap overflow-hidden opacity-0 w-0">
                         Build Roads
                     </h2>
                 </div>
 
                 <!-- Description -->
                 <p
-                    class="description absolute text-base text-xl md:text-2xl text-white/90 w-full z-10 opacity-0 px-8">
-                    We stabilize the soil you already have — no soil is imported, engineering road design for better
+                    class="description font-montserrat font-medium absolute text-xl md:text-2xl text-white/90 w-full z-10 opacity-0 px-8">
+                    We stabilize the soil you already have, no soil is imported, engineering road design for better
                     durability and build roads for life long longevity.
                 </p>
             </div>
@@ -293,18 +281,18 @@
             <!-- Card 2 -->
             <div class="card flex-1 relative bg-cover bg-center cursor-pointer overflow-hidden group"
                 style="background-image: url('{% static 'images/we_at_ecopath (2).webp' %}');">
-                <div class="absolute inset-0 bg-black/30 transition-opacity duration-500 group-hover:bg-black/50"></div>
+                <div class="absolute inset-0 bg-black/30 transition-opacity duration-500 group-hover:bg-black/60"></div>
 
                 <div class="header-group absolute flex items-center z-20">
-                    <span class="number text-6xl md:text-8xl lg:text-9xl font-black text-white/90 leading-none">2</span>
+                    <span class="number text-6xl md:text-7xl lg:text-8xl font-black text-white/90 leading-none">2</span>
                     <h2
-                        class="heading text-xl md:text-2xl lg:text-3xl font-bold uppercase text-white ml-4 whitespace-nowrap overflow-hidden opacity-0 w-0">
+                        class="heading font-product-sans text-xl md:text-2xl lg:text-3xl font-bold uppercase text-white ml-4 whitespace-nowrap overflow-hidden opacity-0 w-0">
                         Sustainable Solutions
                     </h2>
                 </div>
 
                 <p
-                    class="description absolute text-base text-xl md:text-2xl text-white/90 w-full z-10 opacity-0 px-8">
+                    class="description font-montserrat font-medium absolute text-xl md:text-2xl text-white/90 w-full z-10 opacity-0 px-8">
                     Our innovative approach reduces carbon footprint and environmental impact while delivering
                     high-quality, long-lasting road infrastructure.
                 </p>
@@ -313,18 +301,17 @@
             <!-- Card 3 -->
             <div class="card flex-1 relative bg-cover bg-center cursor-pointer overflow-hidden group"
                 style="background-image: url('{% static 'images/we_at_ecopath (3).webp' %}');">
-                <div class="absolute inset-0 bg-black/30 transition-opacity duration-500 group-hover:bg-black/50"></div>
+                <div class="absolute inset-0 bg-black/30 transition-opacity duration-500 group-hover:bg-black/60"></div>
 
                 <div class="header-group absolute flex items-center z-20">
-                    <span class="number text-6xl md:text-8xl lg:text-9xl font-black text-white/90 leading-none">3</span>
+                    <span class="number text-6xl md:text-7xl lg:text-8xl font-black text-white/90 leading-none">3</span>
                     <h2
-                        class="heading text-xl md:text-2xl lg:text-3xl font-bold uppercase text-white ml-4 whitespace-nowrap overflow-hidden opacity-0 w-0">
+                        class="heading text-xl font-product-sans font-medium md:text-2xl lg:text-3xl font-bold uppercase text-white ml-4 whitespace-nowrap overflow-hidden opacity-0 w-0">
                         Future Ready
                     </h2>
                 </div>
-
                 <p
-                    class="description absolute text-base text-xl md:text-2xl text-white/90 w-full z-10 opacity-0 px-8">
+                    class="description font-montserrat font-medium absolute text-base text-xl md:text-2xl text-white/90 w-full z-10 opacity-0 px-8">
                     Pioneering the next generation of road construction with cutting-edge technology and sustainable
                     practices for a better tomorrow.
                 </p>
@@ -593,8 +580,8 @@
         <div class="flex flex-col md:flex-row md:justify-between gap-8 md:gap-16">
             <!-- Content Column (Left on large screens) -->
             <div class="md:w-1/2 flex justify-start flex-col">
-                <h2 class="text-4xl font-product-sans font-black text-custom-green mb-4">
-                    Entire ROAD INFRA DEVELOPMENT under one roof
+                <h2 class="text-4xl md:text-5xl font-product-sans font-black text-custom-green mb-12 leading-tight">
+                    Entire Road Infra Development Under One Roof
                 </h2>
                 <p class="text-lg font-montserrat mb-12 max-w-3xl">
                     The biggest pain point for delays & losses is multiple vendors & lack of coordination.
@@ -935,7 +922,7 @@
         <div class="flex flex-col lg:flex-row gap-12 lg:gap-8">
             <div class="lg:w-2/5 text-center lg:text-left lg:mt-8">
                 <p class="font-montserrat text-custom-green font-semibold">CLIENTELE</p>
-                <h2 class="text-4xl sm:text-5xl font-product-sans font-black text-custom-green mt-4">What people say
+                <h2 class="text-4xl md:text-5xl font-product-sans font-black text-custom-green mt-4">What people say
                     about us?</h2>
             </div>
             <div class="lg:w-3/5 relative overflow-y-auto pb-4 [&::-webkit-scrollbar]:w-2
