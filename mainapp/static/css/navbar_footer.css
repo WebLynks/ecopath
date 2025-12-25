@@ -1,63 +1,84 @@
 /* Base Styles & Resets */
 html {
-    font-size: clamp(14px, 1vw + 0.5rem, 18px);
+    font-size: clamp(14px, 1vw + 0.5rem, 16px);
+    scroll-behavior: smooth;
+    overflow-x: hidden; /* Safety net against leaking */
 }
 
 body {
     max-width: 1920px;
-    margin: auto !important;
+    margin: 0 auto !important;
+    overflow-x: hidden; /* Safety net against leaking */
 }
 
+/* FONT FIXES */
 @font-face {
     font-family: 'Product Sans';
-    src: url('fonts/ProductSans-Black.ttf') format('truetype');
-    font-weight: 900; /* Black */
+    src: url('../fonts/ProductSans-Black.ttf') format('truetype');
+    font-weight: 900;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'Product Sans Regular';
     src: url('../fonts/ProductSans-Regular.ttf') format('truetype');
-    font-weight: 900; /* Black */
+    font-weight: 400;
     font-style: normal;
 }
 
-/* Basic CSS Reset */
-*,
-*::before,
-*::after {
+@font-face {
+    font-family: 'Product Sans Medium';
+    src: url('../fonts/ProductSans-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+}
+
+/* Reset */
+*, *::before, *::after {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Navbar underline effect */
+/* Desktop Navigation */
 .desktop-nav li {
     position: relative;
 }
 
 .nav-link {
     position: relative;
-    padding: 0.5rem 0.75rem; /* Equivalent to py-2 px-3 */
+    padding: 0.5rem 0; /* Clean vertical padding */
     transition: color 0.3s ease;
 }
 
+/* Underline Animation */
+/* LINE COMES FROM LEFT (AND IS WIDER) */
 .nav-link::after {
     content: '';
     position: absolute;
-    bottom: -8px; /* Adjusts space between text and underline */
-    left: 50%;
-    transform: translateX(-50%) scaleX(0);
-    transform-origin: center;
-    width: 120%; /* Makes the underline wider than the text */
+    bottom: -4px;
+    
+    /* Center the 120% line by pulling it back 10% */
+    left: -20%;
+    
+    /* Width is 120% of the text */
+    width: 140%;
     height: 2px;
-    background-color: #276B2B; /* custom-green */
+    background-color: #17411A;
+    
+    /* Start hidden (scale 0) */
+    transform: scaleX(0);
+    
+    /* Animate from the LEFT side */
+    transform-origin: left;
+    
     transition: transform 0.3s ease-out;
 }
 
-/* Show underline on hover or when the item is active */
-.desktop-nav li:hover .nav-link::after,
-.desktop-nav li.active .nav-link::after {
-    transform: translateX(-50%) scaleX(1);
+/* Hover Effect */
+.nav-link:not(.bg-custom-green):hover::after,
+.desktop-nav li.active .nav-link:not(.bg-custom-green)::after {
+    /* Grow to full width */
+    transform: scaleX(1);
 }
 

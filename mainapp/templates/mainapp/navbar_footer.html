@@ -5,35 +5,75 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}EcoPath{% endblock %}</title>
-    <!-- Tailwind CSS -->
+    <title>{% block title %}EcoPath | Sustainable Cement-Free Road Infrastructure{% endblock %}</title>
+
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts: Montserrat -->
+
+    <meta name="theme-color" content="#17411A">
+    <meta name="msapplication-navbutton-color" content="#17411A">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#17411A">
+
+    <meta name="description"
+        content="EcoPath is decarbonizing the construction industry with innovative, cement-free road infrastructure solutions. We build sustainable, durable, and green roads for a better future.">
+    <meta name="keywords"
+        content="EcoPath, Sustainable Roads, Cement-Free Concrete, Green Construction, Road Infrastructure, Decarbonization, Eco-friendly Pavers">
+    <meta name="author" content="EcoPath">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://ecopath.weblynks.studio/">
+    <meta property="og:title" content="EcoPath | Sustainable Cement-Free Infrastructure">
+    <meta property="og:description"
+        content="Pioneering the next generation of road construction. Faster, greener, and cement-free.">
+    <meta property="og:image" content="{% static 'images/EcoPath_Share_Card.jpg' %}">
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://ecopath.weblynks.studio/">
+    <meta property="twitter:title" content="EcoPath | Sustainable Cement-Free Infrastructure">
+    <meta property="twitter:description"
+        content="Pioneering the next generation of road construction. Faster, greener, and cement-free.">
+    <meta property="twitter:image" content="{% static 'images/EcoPath_Share_Card.jpg' %}">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <!-- Custom CSS -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
     <link rel="stylesheet" href="{% static 'css/navbar_footer.css' %}">
-    <!-- jQuery -->
+
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="icon" type="image/x-icon" href="{% static 'images/EcoPathLogo.png' %}">
+
     <script>
-        // Custom Tailwind configuration
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
                         'custom-green': '#17411A',
+                        'custom-yellow': '#F0ED2F',
                     },
                     fontFamily: {
                         'montserrat': ['Montserrat', 'sans-serif'],
+                        'poppins': ['Poppins', 'sans-serif'],
                         'product-sans': ['Product Sans', 'sans-serif'],
-                        'product-sans-regular': ['Product Sans Regular', 'sans-serif']
+                        'product-sans-regular': ['Product Sans Regular', 'sans-serif'],
+                        'product-sans-medium' : ['Product Sans Medium', 'sans-serif'],
+                    },
+                    fontWeight: {
+                        light: '300',
+                        normal: '400',
+                        medium: '500',
+                        semibold: '600',
+                        bold: '700',
+                        extrabold: '800',
+                        black: '900',
                     },
                     fontSize: {
-                        'sm': '14px', // 14px
-                        'lg': '18px', // 18px
-                        '5xl': '48px', // 48px
+                        'sm': '14px',
+                        'lg': '18px',
+                        '5xl': '48px',
+                    },
+                    screens: {
+                        '3xl': '1600px', // Extra large screens support
                     }
                 }
             }
@@ -42,225 +82,403 @@
     {% block extra_head %}{% endblock %}
 </head>
 
-<body>
+<body class="bg-white overflow-x-hidden">
 
-    <!-- Navbar -->
-    <header class="shadow-md max-w-[1920px] mx-auto">
-        <nav
-            class="mx-auto px-4 py-3 flex justify-between items-center fixed top-0 left-0 right-0 z-50 bg-white w-full max-w-[1920px] mx-auto">
-            <!-- Logo -->
-            <a href="{% url 'mainapp:homepage' %}" class="flex items-center h-[4rem]">
-                <!-- <svg class="h-12 w-12" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="50" cy="50" r="45" fill="none" stroke="#276B2B" stroke-width="5" />
-                    <text x="50" y="55" font-family="Montserrat, sans-serif" font-size="20" fill="#276B2B"
-                        text-anchor="middle">EcoPath</text>
-                </svg> -->
+    <header class="w-full relative z-[100]">
+        <nav id="main-navbar"
+            class="fixed top-0 left-0 right-0 bg-white/95 backdrop-blur-md w-full transition-transform duration-500 ease-in-out border-b border-gray-100/50">
 
-                <img src="{% static 'images/EcoPathLogo.png' %}" alt="EcoPath Logo" class="h-full w-auto">
+            <div class="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center py-2">
 
-            </a>
+                <a href="{% url 'mainapp:homepage' %}"
+                    class="flex items-center h-16 md:h-20 flex-shrink-0 transition-all duration-300">
+                    <img src="{% static 'images/EcoPathLogo.png' %}" alt="EcoPath Logo"
+                        class="h-full w-auto object-contain">
+                </a>
 
-            <!-- Desktop Menu -->
-            <ul
-                class="hidden md:flex items-center space-x-10 text-sm text-custom-green font-montserrat font-semibold desktop-nav">
-                <li class="{% if request.resolver_match.url_name == 'homepage' %}active{% endif %}"><a
-                        href="{% url 'mainapp:homepage' %}" class="nav-link">Home</a></li>
-                <li class="relative group">
-                    <a href="#" class="nav-link flex items-center">What we do <svg class="w-4 h-4 ml-1" fill="none"
-                            stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7">
-                            </path>
-                        </svg></a>
-                    <!-- Dropdown Placeholder -->
-                    <div
-                        class="absolute left-0 mt-2 w-48 bg-white rounded-md shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
-                        <a href="{% url 'mainapp:technology_products' %}"
-                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 {% if request.resolver_match.url_name == 'technology_products' %}underline{% endif %}">Technology &
-                            Products</a>
-                        <a href="{% url 'mainapp:services' %}"
-                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 {% if request.resolver_match.url_name == 'services' %}underline{% endif %}">Services</a>
-                        <a href="{% url 'mainapp:project_list' %}"
-                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 {% if request.resolver_match.url_name == 'project_list' %}underline{% endif %}">Our Projects</a>
-                    </div>
-                </li>
-                <li class="{% if request.resolver_match.url_name == 'sustainability' %}active{% endif %}"><a
-                        href="{% url 'mainapp:sustainability' %}" class="nav-link">Sustainability</a></li>
-                <li class="{% if request.resolver_match.url_name == 'about' %}active{% endif %}"><a
-                        href="{% url 'mainapp:about' %}" class="nav-link">About Us</a></li>
-                <li class="{% if request.resolver_match.url_name == 'blog_list' %}active{% endif %}"><a
-                        href="{% url 'mainapp:blog_list' %}" class="nav-link">Blogs</a></li>
-                <li class="{% if request.resolver_match.url_name == 'contact' %}active{% endif %}"><a
-                        href="{% url 'mainapp:contact' %}" class="nav-link">Contact Us</a></li>
-            </ul>
+                <ul
+                    class="hidden xl:flex items-center space-x-12 text-base text-custom-green font-montserrat font-semibold desktop-nav">
+                    <li class="{% if request.resolver_match.url_name == 'homepage' %}active{% endif %}">
+                        <a href="{% url 'mainapp:homepage' %}" class="nav-link">Home</a>
+                    </li>
 
-            <!-- Hamburger Menu Button -->
-            <div class="md:hidden">
-                <button id="hamburger-btn" class="text-custom-green focus:outline-none">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M4 6h16M4 12h16m-7 6h7"></path>
-                    </svg>
-                </button>
+                    <li class="relative group">
+                        <a href="#" class="nav-link flex items-center">What we do
+                            <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </a>
+                        <div
+                            class="absolute left-0 mt-2 w-56 bg-white rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-10 border border-gray-100 overflow-hidden transform translate-y-2 group-hover:translate-y-0">
+                            <a href="{% url 'mainapp:technology_products' %}"
+                                class="block px-4 py-3 text-base text-gray-700 hover:bg-gray-50 hover:text-custom-green transition-colors">Technology
+                                & Products</a>
+                            <a href="{% url 'mainapp:services' %}"
+                                class="block px-4 py-3 text-base text-gray-700 hover:bg-gray-50 hover:text-custom-green transition-colors">Services</a>
+                            <a href="{% url 'mainapp:project_list' %}"
+                                class="block px-4 py-3 text-base text-gray-700 hover:bg-gray-50 hover:text-custom-green transition-colors">Our
+                                Projects</a>
+                        </div>
+                    </li>
+
+                    <li class="{% if request.resolver_match.url_name == 'sustainability' %}active{% endif %}">
+                        <a href="{% url 'mainapp:sustainability' %}" class="nav-link text-base">Sustainability</a>
+                    </li>
+                    <li class="{% if request.resolver_match.url_name == 'about' %}active{% endif %}">
+                        <a href="{% url 'mainapp:about' %}" class="nav-link text-base">About Us</a>
+                    </li>
+                    <li class="{% if request.resolver_match.url_name == 'blog_list' %}active{% endif %}">
+                        <a href="{% url 'mainapp:blog_list' %}" class="nav-link text-base">Blogs</a>
+                    </li>
+                    <li class="{% if request.resolver_match.url_name == 'contact' %}active{% endif %}">
+                        <a href="{% url 'mainapp:contact' %}"
+                            class="nav-link bg-custom-green text-white px-6 py-2.5 rounded-full hover:bg-green-800 transition-colors shadow-md !text-white after:!hidden">Contact
+                            Us</a>
+                    </li>
+                </ul>
+
+                <div class="xl:hidden">
+                    <button id="hamburger-btn"
+                        class="text-custom-green focus:outline-none p-2 rounded-md hover:bg-gray-100 transition-colors">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16m-7 6h7"></path>
+                        </svg>
+                    </button>
+                </div>
             </div>
         </nav>
     </header>
 
-
-
-    <!-- Mobile Overlay Menu -->
     <div id="mobile-menu"
-        class="fixed inset-0 bg-white z-50 transform translate-x-full transition-transform duration-300 ease-in-out overflow-y-auto">
-        <div class="flex justify-end p-4">
-            <button id="close-btn" class="text-custom-green focus:outline-none">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg">
+        class="fixed inset-0 bg-custom-green z-[110] transform translate-x-full transition-transform duration-500 ease-[cubic-bezier(0.4,0,0.2,1)] overflow-y-auto">
+
+        <div class="flex justify-between items-center p-6 border-b border-white/10">
+            <img src="{% static 'images/EcoPathLogo.png' %}" alt="EcoPath Logo" class="h-16 w-auto object-contain">
+            <button id="close-btn"
+                class="text-white focus:outline-none p-2 hover:bg-white/10 rounded-full transition-colors transform hover:rotate-90 duration-300">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
                     </path>
                 </svg>
             </button>
         </div>
-        <ul
-            class="flex flex-col items-center justify-start pt-10 pb-10 w-full space-y-8 text-xl text-custom-green font-montserrat font-semibold">
-            <li><a href="{% url 'mainapp:homepage' %}">Home</a></li>
 
-            <!-- Mobile Dropdown -->
-            <li class="w-full flex flex-col items-center px-4">
-                <button id="mobile-dropdown-btn" class="flex items-center justify-center focus:outline-none w-full">
-                    What we do
-                    <svg id="mobile-dropdown-icon" class="w-4 h-4 ml-2 transition-transform duration-300" fill="none"
-                        stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                    </svg>
-                </button>
-                <div id="mobile-dropdown-content"
-                    class="max-h-0 opacity-0 overflow-hidden transition-all duration-500 ease-in-out flex flex-col items-center space-y-4 text-lg text-gray-600 bg-gray-50 w-full rounded-lg">
-                    <div class="py-4 flex flex-col items-center space-y-4 w-full">
-                        <a href="{% url 'mainapp:technology_products' %}" class="hover:text-custom-green {% if request.resolver_match.url_name == 'technology_products' %}underline{% endif %}">Technology &
-                            Products</a>
-                        <a href="{% url 'mainapp:services' %}" class="hover:text-custom-green {% if request.resolver_match.url_name == 'services' %}underline{% endif %}">Services</a>
-                        <a href="{% url 'mainapp:project_list' %}" class="hover:text-custom-green {% if request.resolver_match.url_name == 'project_list' %}underline{% endif %}">Our Projects</a>
+        <ul class="flex flex-col px-6 pb-12">
+            <li class="border-b border-white/10">
+                <a href="{% url 'mainapp:homepage' %}"
+                    class="block py-5 text-2xl sm:text-3xl font-product-sans font-bold text-white hover:text-custom-yellow transition-colors">
+                    HOME
+                </a>
+            </li>
+
+            <li class="border-b border-white/10">
+                <div class="w-full">
+                    <button id="mobile-dropdown-btn"
+                        class="flex items-center justify-between w-full py-5 text-2xl sm:text-3xl font-product-sans font-bold text-white hover:text-custom-yellow transition-colors focus:outline-none">
+                        <span>WHAT WE DO</span>
+                        <svg id="mobile-dropdown-icon" class="w-6 h-6 transform transition-transform duration-300"
+                            fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7">
+                            </path>
+                        </svg>
+                    </button>
+                    <div id="mobile-dropdown-content"
+                        class="max-h-0 opacity-0 overflow-hidden transition-all duration-500 ease-in-out bg-[#123314] -mx-6 px-6">
+                        <div class="py-4 space-y-4">
+                            <a href="{% url 'mainapp:technology_products' %}"
+                                class="block text-lg font-montserrat font-medium text-gray-300 hover:text-white pl-4 border-l-2 border-transparent hover:border-custom-yellow transition-all">
+                                TECHNOLOGY AND PRODUCTS
+                            </a>
+                            <a href="{% url 'mainapp:services' %}"
+                                class="block text-lg font-montserrat font-medium text-gray-300 hover:text-white pl-4 border-l-2 border-transparent hover:border-custom-yellow transition-all">
+                                SERVICES
+                            </a>
+                            <a href="{% url 'mainapp:project_list' %}"
+                                class="block text-lg font-montserrat font-medium text-gray-300 hover:text-white pl-4 border-l-2 border-transparent hover:border-custom-yellow transition-all">
+                                OUR PROJECTS
+                            </a>
+                        </div>
                     </div>
                 </div>
             </li>
 
-            <li><a href="{% url 'mainapp:sustainability' %}">Sustainability</a></li>
-            <li><a href="{% url 'mainapp:about' %}">About Us</a></li>
-            <li><a href="{% url 'mainapp:blog_list' %}">Blogs</a></li>
-            <li><a href="{% url 'mainapp:contact' %}">Contact Us</a></li>
+            <li class="border-b border-white/10">
+                <a href="{% url 'mainapp:sustainability' %}"
+                    class="block py-5 text-2xl sm:text-3xl font-product-sans font-bold text-white hover:text-custom-yellow transition-colors">
+                    SUSTAINABBILITY
+                </a>
+            </li>
+
+            <li class="border-b border-white/10">
+                <a href="{% url 'mainapp:about' %}"
+                    class="block py-5 text-2xl sm:text-3xl font-product-sans font-bold text-white hover:text-custom-yellow transition-colors">
+                    ABOUT US
+                </a>
+            </li>
+
+            <li class="border-b border-white/10">
+                <a href="{% url 'mainapp:blog_list' %}"
+                    class="block py-5 text-2xl sm:text-3xl font-product-sans font-bold text-white hover:text-custom-yellow transition-colors">
+                    BLOGS
+                </a>
+            </li>
+
+            <li class="pt-8">
+                <a href="{% url 'mainapp:contact' %}"
+                    class="block w-full text-center bg-white text-custom-green text-xl font-bold font-product-sans py-4 rounded-full shadow-lg hover:bg-custom-yellow hover:text-custom-green transition-all transform hover:scale-[1.02]">
+                    CONTACT US
+                </a>
+            </li>
         </ul>
     </div>
 
-    <div class="max-w-[1920px] mx-auto">
-    {% block content %}
-    {% endblock %}
+    <div class="w-full min-h-screen">
+        {% block content %}{% endblock %}
     </div>
 
-    <!-- Footer -->
-    <footer class="bg-[#1C1C1C] text-white max-w-[1920px] mx-auto">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
-                <!-- Column 1: Logo -->
-                <div class="flex flex-col items-center md:items-start">
-                    <div class="flex items-center gap-x-3">
-                        <img src="{% static 'images/logo.webp' %}" alt="EcoPath Logo" class="h-12 w-12">
-                        <span class="font-product-sans text-xl font-bold">Eco Path</span>
+    <!-- <footer class="w-full bg-[#17411A] font-product-sans text-white px-8 py-12 md:px-16 md:py-20 overflow-hidden relative mx-auto">
+    
+    <div class="flex flex-col lg:flex-row justify-between gap-12 lg:gap-20">
+        
+        <div class="lg:w-1/2">
+            <p class="text-green-200 font-bold text-xs tracking-widest uppercase mb-6">Contact Us</p>
+            
+            <h2 class="text-4xl md:text-6xl font-medium leading-[1.1] mb-10">
+                Let’s Discuss Your <br /> Vision. With Us
+            </h2>
+
+            <a href="#" class="group bg-white hover:bg-gray-100 text-black px-8 py-4 rounded-full font-semibold inline-flex items-center gap-3 transition-transform hover:scale-105">
+                Schedule a call now
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="group-hover:translate-x-1 transition-transform"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            </a>
+
+            <div class="mt-12">
+                <p class="text-green-200/80 text-xs font-bold uppercase tracking-widest mb-4">Or Email Us At</p>
+                <div class="inline-flex items-center gap-3 bg-[#ffffff08] border border-[#ffffff15] rounded-full px-6 py-3 group cursor-pointer hover:border-[#ffffff30] transition-colors">
+                    <span class="text-gray-200 font-light">contactus@ecopath.com</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-gray-400 group-hover:text-white transition-colors"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+                </div>
+            </div>
+        </div>
+
+        <div class="lg:w-1/2 flex gap-12 md:gap-24 lg:justify-end">
+            <div>
+                <h3 class="text-green-200/80 font-bold text-sm uppercase tracking-widest mb-6">Quick Links</h3>
+                <ul class="space-y-4">
+                    <li><a href="#" class="text-gray-300 hover:text-white transition-colors text-sm font-medium">Home</a></li>
+                    <li><a href="#" class="text-gray-300 hover:text-white transition-colors text-sm font-medium">Case Studies</a></li>
+                    <li><a href="#" class="text-gray-300 hover:text-white transition-colors text-sm font-medium">Gallery</a></li>
+                    <li><a href="#" class="text-gray-300 hover:text-white transition-colors text-sm font-medium">Blogs</a></li>
+                    <li><a href="#" class="text-gray-300 hover:text-white transition-colors text-sm font-medium">About Me</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h3 class="text-green-200/80 font-bold text-sm uppercase tracking-widest mb-6">Information</h3>
+                <ul class="space-y-4">
+                    <li><a href="#" class="text-gray-300 hover:text-white transition-colors text-sm font-medium">Terms of Service</a></li>
+                    <li><a href="#" class="text-gray-300 hover:text-white transition-colors text-sm font-medium">Privacy Policy</a></li>
+                    <li><a href="#" class="text-gray-300 hover:text-white transition-colors text-sm font-medium">Cookies Settings</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="h-px bg-[#ffffff15] w-full my-12"></div>
+
+    <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+        <p class="text-gray-400 text-[10px] md:text-xs font-bold uppercase tracking-widest">
+            &copy; Xavierdubois 2024. All rights reserved.
+        </p>
+
+        <div class="flex gap-6">
+            <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/></svg>
+            </a>
+            <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/></svg>
+            </a>
+            <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            </a>
+            <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+            </a>
+        </div>
+    </div>
+
+</footer> -->
+
+    <footer
+        class="w-full bg-[#17411A] font-product-sans text-white px-8 py-12 md:px-16 md:py-20 overflow-hidden relative mx-auto">
+
+        <div class="max-w-[1400px] mx-auto">
+
+            <div class="flex flex-col lg:flex-row justify-between gap-12 lg:gap-20">
+
+                <div class="lg:w-1/2">
+                    <p class="text-green-200 font-bold text-md tracking-wider uppercase mb-6">Contact Us</p>
+
+                    <h2 class="text-4xl md:text-6xl font-semibold leading-[1.1] mb-10">
+                        Let’s Discuss Your <br /> Vision. With Us
+                    </h2>
+
+                    <a href="{% url 'mainapp:contact' %}"
+                        class="group bg-white hover:bg-gray-100 text-black px-8 py-4 rounded-full font-bold inline-flex items-center gap-3 transition-transform hover:scale-105">
+                        Schedule a call now
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
+                            class="group-hover:translate-x-1 transition-transform">
+                            <path d="M5 12h14" />
+                            <path d="m12 5 7 7-7 7" />
+                        </svg>
+                    </a>
+
+                    <div class="mt-12">
+                        <p class="text-green-200/80 text-md font-bold uppercase tracking-wider mb-4">Or Email Us At</p>
+                        <div
+                            class="inline-flex items-center gap-3 bg-[#ffffff08] border border-[#ffffff15] rounded-full px-6 py-3 group cursor-pointer hover:border-[#ffffff30] transition-colors">
+                            <span class="text-gray-200 font-medium">contactus@ecopath.com</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="text-gray-400 group-hover:text-white transition-colors">
+                                <rect width="14" height="14" x="8" y="8" rx="2" ry="2" />
+                                <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2" />
+                            </svg>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Column 2: Services -->
-                <div>
-                    <h3 class="font-product-sans font-bold text-lg mb-4">Services</h3>
-                    <ul class="space-y-3 font-montserrat text-gray-400">
-                        <li><a href="{% url 'mainapp:services' %}" class="hover:text-white transition-colors">Road Infra</a></li>
-                        <li><a href="{% url 'mainapp:services' %}" class="hover:text-white transition-colors">Design Consultancy</a></li>
-                        <li><a href="{% url 'mainapp:services' %}" class="hover:text-white transition-colors">Asphalt Road</a></li>
-                    </ul>
-                </div>
+                <div class="lg:w-1/2 flex gap-12 md:gap-24 lg:justify-end">
 
-                <!-- Column 3: Explore -->
-                <div>
-                    <h3 class="font-product-sans font-bold text-lg mb-4">Explore</h3>
-                    <ul class="space-y-3 font-montserrat text-gray-400">
-                        <li><a href="{% url 'mainapp:homepage' %}" class="hover:text-white transition-colors">Home</a>
-                        </li>
-                        <li><a href="{% url 'mainapp:about' %}" class="hover:text-white transition-colors">About Us</a>
-                        </li>
-                        <li><a class="hover:text-white transition-colors">Events</a></li>
-                        <li><a href="{% url 'mainapp:blog_list' %}" class="hover:text-white transition-colors">Blogs</a>
-                        </li>
-                    </ul>
-                </div>
+                    <div>
+                        <h3 class="text-green-200/80 font-bold text-md uppercase tracking-wider mb-6">Quick Links</h3>
+                        <ul class="space-y-4">
+                            <li><a href="{% url 'mainapp:homepage' %}"
+                                    class="text-gray-300 hover:text-white transition-colors text-base font-medium">Home</a>
+                            </li>
+                            <li><a href="{% url 'mainapp:sustainability' %}"
+                                    class="text-gray-300 hover:text-white transition-colors text-base font-medium">Sustainability</a>
+                            </li>
+                            <li><a href="{% url 'mainapp:about' %}"
+                                    class="text-gray-300 hover:text-white transition-colors text-base font-medium">About
+                                    Us</a></li>
+                            <li><a href="{% url 'mainapp:blog_list' %}"
+                                    class="text-gray-300 hover:text-white transition-colors text-base font-medium">Blogs</a>
+                            </li>
+                            <li><a href="{% url 'mainapp:contact' %}"
+                                    class="text-gray-300 hover:text-white transition-colors text-base font-medium">Contact
+                                    Us</a></li>
+                        </ul>
+                    </div>
 
-                <!-- Column 4: Follow Us -->
-                <div>
-                    <h3 class="font-product-sans font-bold text-lg mb-4">Follow Us</h3>
-                    <ul class="space-y-4 font-montserrat text-gray-400">
-                        <li class="flex items-center gap-x-3">
-                            <img src="{% static 'images/instagram.png' %}" alt="Instagram" class="w-5 h-5">
-                            <a href="https://www.instagram.com/ecopath.earth/" target="_blank" class="hover:text-white transition-colors">Instagram</a>
-                        </li>
-                        <li class="flex items-center gap-x-3">
-                            <img src="{% static 'images/linkedin.png' %}" alt="LinkedIn" class="w-5 h-5">
-                            <a href="https://www.linkedin.com/company/ecopath-earth/" target="_blank" class="hover:text-white transition-colors">LinkedIn</a>
-                        </li>
-                        <li class="flex items-center gap-x-3">
-                            <img src="{% static 'images/email.png' %}" alt="Email" class="w-5 h-5">
-                            <a href="mailto:ecopath@gmail.com"
-                                class="hover:text-white transition-colors">ecopath@gmail.com</a>
-                        </li>
-                    </ul>
+                    <div>
+                        <h3 class="text-green-200/80 font-bold text-md uppercase tracking-wider mb-6">What We Do</h3>
+                        <ul class="space-y-4">
+                            <li><a href="{% url 'mainapp:technology_products' %}"
+                                    class="text-gray-300 hover:text-white transition-colors text-base font-medium">Technology
+                                    & Products</a></li>
+                            <li><a href="{% url 'mainapp:services' %}"
+                                    class="text-gray-300 hover:text-white transition-colors text-base font-medium">Services</a>
+                            </li>
+                            <li><a href="{% url 'mainapp:project_list' %}"
+                                    class="text-gray-300 hover:text-white transition-colors text-base font-medium">Our
+                                    Projects</a></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
 
-            <!-- Bottom Divider & Info -->
-            <div
-                class="mt-16 pt-8 border-t border-gray-700 flex flex-col md:flex-row justify-between items-center text-center md:text-left gap-y-6">
-                <p class="font-montserrat text-sm text-gray-500">We respect for your privacy</p>
-                <p class="font-montserrat text-sm text-gray-400">Give us a call at <span
-                        class="font-bold text-white">+91 93733 24053</span></p>
-            </div>
-        </div>
+            <div class="h-px bg-[#ffffff15] w-full my-12"></div>
 
-        <!-- Sub-Footer -->
-        <div class="bg-custom-green py-4 px-4 sm:px-6 lg:px-8">
-            <div
-                class="container mx-auto flex flex-col sm:flex-row justify-between items-center text-sm font-montserrat text-center">
-                <p>Copyright by EcoPath - All rights reserved</p>
-                <p>Designed And Developed by <a href="#" class="font-bold underline">WebLynks</a></p>
+            <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+                <p class="text-gray-400 text-[10px] md:text-xs font-bold uppercase tracking-widest">
+                    &copy; EcoPath 2024. All rights reserved.
+                </p>
+
+                <div class="flex gap-6">
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor"
+                            viewBox="0 0 24 24">
+                            <path
+                                d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z" />
+                        </svg>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor"
+                            viewBox="0 0 24 24">
+                            <path
+                                d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z" />
+                        </svg>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+                        </svg>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor"
+                            viewBox="0 0 24 24">
+                            <path
+                                d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                        </svg>
+                    </a>
+                </div>
             </div>
+
         </div>
     </footer>
 
+
+
     <script>
         $(document).ready(function () {
-            // Mobile Menu Toggle
-            $('#hamburger-btn').click(function () {
-                $('#mobile-menu').removeClass('translate-x-full');
-                $('body').addClass('overflow-hidden'); // Prevent background scrolling
-            });
+            // Navbar Scroll Logic
+            let lastScrollTop = 0;
+            const navbar = document.getElementById('main-navbar');
+            const scrollThreshold = 100;
 
-            $('#close-btn').click(function () {
-                $('#mobile-menu').addClass('translate-x-full');
-                $('body').removeClass('overflow-hidden');
-            });
+            window.addEventListener('scroll', function () {
+                let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
-            // Mobile Dropdown Toggle
+                // Hide on scroll down, Show on scroll up
+                if (scrollTop > lastScrollTop && scrollTop > scrollThreshold) {
+                    navbar.style.transform = 'translateY(-100%)';
+                } else {
+                    navbar.style.transform = 'translateY(0)';
+                }
+
+                // Add Shadow on scroll
+                if (scrollTop > 20) {
+                    navbar.classList.add('shadow-lg', 'bg-white/95');
+                } else {
+                    navbar.classList.remove('shadow-lg');
+                }
+                lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+            }, false);
+
+            // Mobile Menu
+            $('#hamburger-btn').click(() => { $('#mobile-menu').removeClass('translate-x-full'); $('body').addClass('overflow-hidden'); });
+            $('#close-btn').click(() => { $('#mobile-menu').addClass('translate-x-full'); $('body').removeClass('overflow-hidden'); });
+
+            // Dropdown Accordion
             $('#mobile-dropdown-btn').click(function () {
                 const content = $('#mobile-dropdown-content');
                 const icon = $('#mobile-dropdown-icon');
-
                 if (content.hasClass('max-h-0')) {
-                    content.removeClass('max-h-0 opacity-0').addClass('max-h-[500px] opacity-100 mt-4');
+                    content.removeClass('max-h-0 opacity-0').addClass('max-h-[500px] opacity-100 mt-2');
                     icon.addClass('rotate-180');
                 } else {
-                    content.addClass('max-h-0 opacity-0').removeClass('max-h-[500px] opacity-100 mt-4');
+                    content.addClass('max-h-0 opacity-0').removeClass('max-h-[500px] opacity-100 mt-2');
                     icon.removeClass('rotate-180');
                 }
             });
         });
     </script>
-
 </body>
-
 </html>

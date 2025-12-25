@@ -1,7 +1,7 @@
 {% extends 'mainapp/navbar_footer.html' %}
 {% load static %}
 
-{% block title %}EcoPath - Home{% endblock %}
+{% block title %}EcoPath | Sustainable Cement-Free Road Infrastructure{% endblock %}
 
 {% block extra_head %}
 <!-- GSAP -->
@@ -115,7 +115,7 @@
 <!-- Hero Section -->
 <div id="carousel-container" class="relative w-full h-screen overflow-hidden text-white">
     <!-- Slides -->
-    <div id="slide-1" class="hero-slide absolute top-[5rem] left-0 w-full h-full">
+    <div id="slide-1" class="hero-slide absolute top-0 left-0 w-full h-full">
         <!-- <div class="absolute top-0 left-0 w-full h-full bg-black/40 z-10"></div> -->
         <!-- <div class="relative w-full h-full flex items-center justify-center z-20 ">
             <div class="text-center max-w-4xl p-8 mb-48">
@@ -128,7 +128,7 @@
             </div>
         </div> -->
     </div>
-    <div id="slide-2" class="hero-slide absolute top-[5rem] left-0 w-full h-full"
+    <div id="slide-2" class="hero-slide absolute top-0 left-0 w-full h-full"
         style="background-image: url('{% static 'images/Hero image 2.webp' %}');">
         <div class="absolute top-0 left-0 w-full h-full bg-black/40 z-10"></div>
         <div class="relative w-full h-full flex items-center justify-start z-20 px-4 sm:px-24 lg:px-48">
@@ -138,7 +138,7 @@
             </div>
         </div>
     </div>
-    <div id="slide-3" class="hero-slide absolute top-[5rem] left-0 w-full h-full"
+    <div id="slide-3" class="hero-slide absolute top-0 left-0 w-full h-full"
         style="background-image: url('{% static 'images/Hero image 3.webp' %}');">
         <div class="absolute top-0 left-0 w-full h-full bg-black/40 z-10 text-left"></div>
         <div class="relative w-full h-full flex items-center justify-start z-20 px-4 sm:px-24 lg:px-48">
@@ -152,31 +152,29 @@
 
     <!-- Navigation Container -->
     <div id="nav-container"
-        class="absolute bottom-20 left-1/2 -translate-x-1/2 z-30 overflow-hidden bg-white/20 backdrop-blur-md rounded-xl shadow-lg px-12 py-3 min-w-[25rem] md:min-w-[40rem] 2xl:min-w-[42rem]">
-        <div class="relative w-full h-full" style="height: 48px;">
+        class="absolute bottom-20 left-1/2 -translate-x-1/2 z-30 overflow-hidden bg-white/30 backdrop-blur-md rounded-xl shadow-lg px-2 md:px-10 py-2 min-w-[22rem] md:min-w-[40rem] 2xl:min-w-[42rem]">
+        <div class="relative w-full h-[40px] md:h-[48px]">
             <div id="nav-group-1" class="hero-nav-group w-full">
-                <span class="hero-nav-item-slot flex-1 text-center font-montserrat font-black text-black">Road
+                <span class="hero-nav-item-slot flex-1 text-center font-montserrat font-bold text-black">Road
                     Design</span>
                 <span
-                    class="hero-nav-item-slot flex-1 text-center font-montserrat font-black text-black">Sustainability</span>
-                <span class="hero-nav-item-slot flex-1 text-center font-montserrat font-black text-black">Carbon
-                    dioxide</span>
+                    class="hero-nav-item-slot flex-1 text-center font-montserrat font-bold text-black">Sustainability</span>
+                <span class="hero-nav-item-slot hidden md:block flex-1 text-center font-montserrat font-bold text-black">Carbon
+                    Dioxide</span>
             </div>
             <div id="nav-group-2" class="hero-nav-group w-full">
-                <span class="hero-nav-item-slot flex-1 text-center font-montserrat font-black text-black">Water
-                    saving</span>
-                <span class="hero-nav-item-slot flex-1 text-center font-montserrat font-black text-black">Eco
-                    concrete</span>
-                <span class="hero-nav-item-slot flex-1 text-center font-montserrat font-black text-black">Road
-                    Design</span>
-                <span class="hero-nav-item-slot flex-1 text-center font-montserrat font-black text-black">Cement
-                    free</span>
+                <span class="hero-nav-item-slot flex-1 text-center hidden md:block font-montserrat font-bold text-black">Water
+                    Saving</span>
+                <span class="hero-nav-item-slot flex-1 text-center font-montserrat font-bold text-black">Eco
+                    Concrete</span>
+                <span class="hero-nav-item-slot flex-1 text-center font-montserrat font-bold text-black">Cement
+                    Free</span>
             </div>
             <div id="nav-group-3" class="hero-nav-group w-full">
-                <span class="hero-nav-item-slot flex-1 text-center font-montserrat font-black text-black">Pavers</span>
-                <span class="hero-nav-item-slot flex-1 text-center font-montserrat font-black text-black">Quality</span>
+                <span class="hero-nav-item-slot flex-1 text-center font-montserrat font-bold text-black">Water Saving</span>
+                <span class="hero-nav-item-slot flex-1 text-center font-montserrat font-bold text-black">Quality</span>
                 <span
-                    class="hero-nav-item-slot flex-1 text-center font-montserrat font-black text-black">Sustainability</span>
+                    class="hero-nav-item-slot flex-1 text-center hidden md:block font-montserrat font-bold text-black">Sustainability</span>
             </div>
         </div>
     </div>
@@ -190,7 +188,7 @@
 </div>
 
 <section class="mx-auto px-2 xld:px-8 py-16 lg:h-screen flex flex-col justify-center">
-    <h2 class="text-5xl font-product-sans font-black text-custom-green text-center mb-8">Why Roads Need to Change?</h2>
+    <h2 class="text-5xl md:text-5xl font-product-sans font-black text-custom-green text-center mb-8">Why Roads Need to Change?</h2>
     <div class="flex flex-col lg:flex-row items-center gap-12">
         <!-- Image Collage -->
         <div class="w-full lg:w-1/2 h-64 flex justify-center lg:justify-end items-center">
