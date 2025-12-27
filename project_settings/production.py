@@ -3,7 +3,7 @@ from .base import *
 # Production-specific settings
 DEBUG = config('DEBUG', default=False, cast=bool)
 
-ALLOWED_HOSTS = config('ecopath.weblynks.studio', cast=Csv())
+ALLOWED_HOSTS = config('ecopath.earth', cast=Csv())
 
 # Security settings for production
 # NOTE: Ensure your site is served over HTTPS before enabling these settings permanently.
