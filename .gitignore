@@ -214,4 +214,24 @@ mainapp/static/videos/
 
 dev_test/
 mainapp/static/videos/
->>>>>>> cf8b9f70e2beb6940b8f3e255b0bd7ea99a433e0:.gitgnore
+
+# --- Custom Server Fixes ---
+# The specific virtual environment you are using
+venv_hos/
+env/
+
+# The generated static files causing the push to hang
+staticfiles/
+
+# Logs and Database
+logs/
+*.log
+db.sqlite3
+.env
+
+# Media files (usually handled by S3 or local storage, not Git)
+mediafiles/
+
+# Conflict clean-up
+dev_test/
+mainapp/static/videos/
