@@ -8,7 +8,7 @@ import logging
 
 from django.utils.decorators import method_decorator
 
-from .models import Project, ProjectHomeBanner, Blog, Clientele, Testimonial, TeamMember, HitCount, ContactSubmission
+from .models import Project, ProjectHomeBanner, Blog, Clientele, Testimonial, HomepageTestimonial, TeamMember, HitCount, ContactSubmission
 from .forms import ContactForm
 from .utils import format_contact_email
 
@@ -26,6 +26,8 @@ class HomepageView(TemplateView):
         context['clients'] = Clientele.objects.all()
         context['featured_testimonials'] = Testimonial.objects.filter(is_featured=True)
         context['home_project_banners'] = ProjectHomeBanner.objects.all()
+        context['homepage_testimonials'] = HomepageTestimonial.objects.all()
+        print(len(HomepageTestimonial.objects.all()))
         return context
 
 class ProjectListView(ListView):

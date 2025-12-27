@@ -36,12 +36,22 @@ class Testimonial(models.Model):
     quote = models.TextField()
     author_name = models.CharField(max_length=100)
     author_title = models.CharField(max_length=150)
-    author_image = models.ImageField(upload_to='testimonial_authors/')
+    author_image = models.ImageField(upload_to='testimonial_authors/', blank=True)
     is_featured = models.BooleanField(default=False, db_index=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return f'"{self.quote[:30]}..." - {self.author_name}'
+
+
+class HomepageTestimonial(models.Model):
+    customer_name = models.CharField("Customer Name", max_length=75)
+    customer_designation = models.CharField("Customer Designation", max_length=75)
+    customer_image = models.ImageField("Customer Image", upload_to='homepage_testimonials/', blank=True)
+    testimonial = models.TextField("Testimonial", max_length=300)
+
+    def __str__(self):
+        return self.customer_name
 
 class TeamMember(models.Model):
     """Represents a member of the team. Not a Django user."""

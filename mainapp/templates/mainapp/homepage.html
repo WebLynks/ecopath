@@ -931,65 +931,24 @@
                         dark:[&::-webkit-scrollbar-track]:bg-neutral-700
                         dark:[&::-webkit-scrollbar-thumb]:bg-neutral-500">
                 <div class="flex gap-8 flex-nowrap">
+                    {% for t in homepage_testimonials %}
                     <div class="testimonial-card flex-shrink-0 w-[90%] sm:w-[25rem] bg-white p-8 rounded-2xl shadow-md">
                         <div class="flex items-start gap-4">
-                            <img src="{% static 'images/nagrag.webp' %}" alt="Nagraj"
-                                class="w-14 h-14 rounded-full object-cover">
+                            {% if t.customer_image %}
+                                <img src="{{ t.customer_image.url }}" alt="{{ t.customer_name }}" class="w-14 h-14 rounded-full object-cover">
+                            {% else %}
+                                <img src="" alt="{{ t.customer_name }}" class="w-14 h-14 rounded-full object-cover">
+                            {% endif %}
                             <div>
-                                <h3 class="font-product-sans font-bold text-lg">Nagraj</h3>
-                                <p class="font-montserrat text-sm text-gray-600">Owner Forest by the Hills</p>
+                                <h3 class="font-product-sans font-bold text-lg">{{ t.customer_name }}</h3>
+                                <p class="font-montserrat text-sm text-gray-600">{{ t.customer_designation }}</p>
                             </div>
                         </div>
                         <p class="font-montserrat text-gray-700 mt-4">
-                            "I couldn't be happier with the work Eco Path did for Forest by The Hills in Karjat. We had
-                            serious issues with the existing road, but their team came in with innovative solutions and
-                            tackled every challenge head-on."
+                            {{ t.testimonial }}
                         </p>
                     </div>
-                    <div class="testimonial-card flex-shrink-0 w-[90%] sm:w-[25rem] bg-white p-4 rounded-2xl shadow-md">
-                        <div class="flex items-start gap-4">
-                            <img src="{% static 'images/nagrag.webp' %}" alt="Nagraj"
-                                class="w-14 h-14 rounded-full object-cover">
-                            <div>
-                                <h3 class="font-product-sans font-bold text-lg">Nagraj</h3>
-                                <p class="font-montserrat text-sm text-gray-600">Owner Forest by the Hills</p>
-                            </div>
-                        </div>
-                        <p class="font-montserrat text-gray-700 mt-4">
-                            "The new road is not only durable but also environmentally friendly. Their professionalism
-                            and commitment to quality are truly commendable. Highly recommended!"
-                        </p>
-                    </div>
-                    <div class="testimonial-card flex-shrink-0 w-[90%] sm:w-[25rem] bg-white p-4 rounded-2xl shadow-md">
-                        <div class="flex items-start gap-4">
-                            <img src="{% static 'images/nagrag.webp' %}" alt="Nagraj"
-                                class="w-14 h-14 rounded-full object-cover">
-                            <div>
-                                <h3 class="font-product-sans font-bold text-lg">Nagraj</h3>
-                                <p class="font-montserrat text-sm text-gray-600">Owner Forest by the Hills</p>
-                            </div>
-                        </div>
-                        <p class="font-montserrat text-gray-700 mt-4">
-                            "I couldn't be happier with the work Eco Path did for Forest by The Hills in Karjat. We had
-                            serious issues with the existing road, but their team came in with innovative solutions and
-                            tackled every challenge head-on."
-                        </p>
-                    </div>
-                    <div class="testimonial-card flex-shrink-0 w-[90%] sm:w-[25rem] bg-white p-4 rounded-2xl shadow-md">
-                        <div class="flex items-start gap-4">
-                            <img src="{% static 'images/nagrag.webp' %}" alt="Nagraj"
-                                class="w-14 h-14 rounded-full object-cover">
-                            <div>
-                                <h3 class="font-product-sans font-bold text-lg">Nagraj</h3>
-                                <p class="font-montserrat text-sm text-gray-600">Owner Forest by the Hills</p>
-                            </div>
-                        </div>
-                        <p class="font-montserrat text-gray-700 mt-4">
-                            "I couldn't be happier with the work Eco Path did for Forest by The Hills in Karjat. We had
-                            serious issues with the existing road, but their team came in with innovative solutions and
-                            tackled every challenge head-on."
-                        </p>
-                    </div>
+                    {% endfor %}
                 </div>
             </div>
         </div>

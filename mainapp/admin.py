@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.db.models import Sum
 from django.utils.html import format_html
 from .models import (
-    ServiceCategory, Clientele, Testimonial, TeamMember, 
+    ServiceCategory, Clientele, Testimonial, Testimonial, TeamMember, HomepageTestimonial,
     Project, ProjectImage, ProjectFact, Blog, ContactSubmission, HitCount, ProjectHomeBanner
 )
 
@@ -13,12 +13,6 @@ class ServiceCategoryAdmin(admin.ModelAdmin):
 @admin.register(Clientele)
 class ClienteleAdmin(admin.ModelAdmin):
     list_display = ('name', 'website_url', 'created_at')
-
-@admin.register(Testimonial)
-class TestimonialAdmin(admin.ModelAdmin):
-    list_display = ('author_name', 'author_title', 'is_featured', 'created_at')
-    list_filter = ('is_featured',)
-    search_fields = ('author_name', 'quote')
 
 @admin.register(TeamMember)
 class TeamMemberAdmin(admin.ModelAdmin):
@@ -114,3 +108,8 @@ class ProjectHomeBannerAdmin(admin.ModelAdmin):
     list_display = ('name', 'cement_eliminated', 'water_saved')
     search_fields = ('name', 'scope', 'tech_used', 'performance_impact')
 
+
+@admin.register(HomepageTestimonial)
+class HomepageTestimonialAdmin(admin.ModelAdmin):
+    list_display = ('customer_name', 'customer_designation')
+    search_fields = ('customer_name', 'customer_designation', 'testimonial')
