@@ -8,7 +8,19 @@ import logging
 
 from django.utils.decorators import method_decorator
 
-from .models import Project, ProjectHomeBanner, Blog, Clientele, Testimonial, HomepageTestimonial, TeamMember, HitCount, ContactSubmission
+from .models import (
+    Project,
+    ProjectImage,
+    ProjectHomeBanner,
+    Blog,
+    Clientele,
+    Testimonial,
+    HomepageTestimonial,
+    TeamMember,
+    Leadership,
+    HitCount,
+    ContactSubmission,
+)
 from .forms import ContactForm
 from .utils import format_contact_email
 
@@ -21,7 +33,6 @@ class HomepageView(TemplateView):
         context = super().get_context_data(**kwargs)
         # NOTE: For performance on large datasets, consider caching these querysets.
         # Avoid order_by('?') on large tables; fetch random IDs in a more performant way if needed.
-        context['featured_projects'] = Project.objects.filter(status='PUBLISHED', is_featured_home=True).order_by('-created_at')[:3]
         context['recent_blogs'] = Blog.objects.filter(status='PUBLISHED').order_by('-published_date')[:3]
         context['clients'] = Clientele.objects.all()
         context['featured_testimonials'] = Testimonial.objects.filter(is_featured=True)
@@ -36,8 +47,13 @@ class ProjectListView(ListView):
     context_object_name = "projects"
     paginate_by = 12
 
-    def get_queryset(self):
-        return Project.objects.filter(status='PUBLISHED').only('title', 'slug', 'header_image_desktop', 'brief_description').order_by('-created_at')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        base_qs = Project.objects.filter(status='PUBLISHED').prefetch_related('gallery_images')
+        context['signature_projects'] = base_qs.filter(feature_on_project_page=True)
+        context['archive_projects'] = base_qs.filter(feature_on_project_page=False)
+        return context
 
 class ProjectDetailView(DetailView):
     model = Project
@@ -116,6 +132,7 @@ class AboutUsView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['team_members'] = TeamMember.objects.all()
+        context['leadership_team'] = Leadership.objects.all()
         context['recent_blogs'] = Blog.objects.filter(status='PUBLISHED').order_by('-published_date')[:3]
         return context
 
