@@ -279,89 +279,59 @@
     <h1 class="text-3xl md:text-4xl lg:text-5xl font-product-sans font-black text-center text-custom-green mb-16">
         Our Signature Projects
     </h1>
-    <div class="container mx-auto">
+    {% for project in signature_projects %}
+    <div class="container mx-auto mb-12 last:mb-0">
         <div class="flex flex-col md:flex-row lg:mx-12 gap-8">
-            <!-- Text Column -->
-
-            <!-- Image Column -->
-            <div class="w-full md:w-1/2 flex justify-start">
-                <img src="{% static 'images/Nesta Ira project image.webp' %}" alt="Maintenance Services"
-                    class="w-full h-auto max-h-[80vh] object-contain">
-            </div>
-
-            <div class="w-full md:w-1/2 py-6 items-start ">
-                <h2 class="text-3xl md:text-4xl lg:text-5xl font-product-sans font-black text-custom-green mb-6">
-                    Nesta Ira
-                </h2>
-                <p class="font-montserrat text-[1.25rem] md:text-xl text-gray-700 leading-relaxed">
-                    Our maintenance services are designed to extend the lifespan of your infrastructure while minimizing
-                    environmental impact. Using sustainable materials and eco-friendly techniques, we ensure your roads
-                    remain in optimal condition with minimal carbon footprint.
-                </p>
-                <a href="" class="font-montserrat text-[#0C96EC] text-[1.2rem] mt-6 inline-block">
-                    Explore Project <span>&rarr;</span>
-                </a>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section class="py-8 md:py-24 px-4 sm:px-6 lg:px-8">
-    <div class="container mx-auto">
-        <div class="flex flex-col md:flex-row lg:mx-12 gap-8">
-
+            {% if forloop.counter|divisibleby:2 %}
             <div class="w-full md:w-1/2 py-6 items-end order-2 lg:order-1">
                 <h2 class="text-2xl md:text-3xl lg:text-5xl font-product-sans font-black text-custom-green mb-6">
-                    Warehouse Flooring
+                    {{ project.title }}
                 </h2>
                 <p class="font-montserrat text-[1.25rem] md:text-xl text-gray-700 leading-relaxed">
-                    When constructing industrial-grade floors, performance, longevity, and efficiency often pull against
-                    each other. But what if the foundation could support all three — and do it sustainably? In this
-                    warehouse project, we achieved just that by swapping traditional TMT (Thermo-Mechanically Treated)
-                    steel bars with GFRP rebars. The results were game-changing — technically, financially, and
-                    environmentally.
+                    {{ project.brief_description }}
                 </p>
-                <a href="" class="font-montserrat text-[#0C96EC] text-[1.2rem] mt-6 inline-block">
+                <a href="{% url 'mainapp:project_detail' slug=project.slug %}"
+                    class="font-montserrat text-[#0C96EC] text-[1.2rem] mt-6 inline-block">
                     Explore Project <span>&rarr;</span>
                 </a>
             </div>
 
             <div class="w-full md:w-1/2 flex justify-end order-1 lg:order-2">
-                <img src="{% static 'images/Warehouse project image.webp' %}" alt="Maintenance Services"
+                {% if project.main_image %}
+                <img src="{{ project.main_image.image.url }}" alt="{{ project.main_image.alt_text }}"
                     class="w-full h-auto max-h-[80vh] object-contain">
+                {% endif %}
             </div>
-
-        </div>
-    </div>
-</section>
-
-<section class="py-8 md:py-24 px-4 sm:px-6 lg:px-8">
-    <div class="container mx-auto">
-        <div class="flex flex-col md:flex-row lg:mx-12 gap-8">
-
+            {% else %}
             <div class="w-full md:w-1/2 flex justify-start">
-                <img src="{% static 'images/CoEvolve project image.webp' %}" alt="Maintenance Services"
+                {% if project.main_image %}
+                <img src="{{ project.main_image.image.url }}" alt="{{ project.main_image.alt_text }}"
                     class="w-full h-auto max-h-[80vh] object-contain">
+                {% endif %}
             </div>
 
-            <div class="w-full md:w-1/2 py-6 items-start">
-                <h2 class="text-2xl md:text-3xl lg:text-5xl font-product-sans font-black text-custom-green mb-6">
-                    CoEvolve Estates
+            <div class="w-full md:w-1/2 py-6 items-start ">
+                <h2 class="text-3xl md:text-4xl lg:text-5xl font-product-sans font-black text-custom-green mb-6">
+                    {{ project.title }}
                 </h2>
                 <p class="font-montserrat text-[1.25rem] md:text-xl text-gray-700 leading-relaxed">
-                    At CoEvolve Estates, sustainability and smart engineering go hand-in-hand. So when it was time to
-                    build the internal roads at their Whitefield property, they weren’t looking for a typical solution.
-                    They wanted strength, longevity, and harmony with the earth—without compromising on performance.
-                    That’s where EcoPath came in. Our team was tasked with building a road that could withstand the test
-                    of time and weather while aligning with CoEvolve’s thoughtful living philosophy.
+                    {{ project.brief_description }}
                 </p>
-                <a href="" class="font-montserrat text-[#0C96EC] text-[1.2rem] mt-6 inline-block">
+                <a href="{% url 'mainapp:project_detail' slug=project.slug %}"
+                    class="font-montserrat text-[#0C96EC] text-[1.2rem] mt-6 inline-block">
                     Explore Project <span>&rarr;</span>
                 </a>
             </div>
-
+            {% endif %}
         </div>
     </div>
+    {% empty %}
+    <div class="container mx-auto">
+        <p class="text-center font-montserrat text-gray-600">
+            Projects coming soon.
+        </p>
+    </div>
+    {% endfor %}
 </section>
 
 <!-- Projects Grid Section -->
@@ -374,72 +344,28 @@
         <!-- Scrollable Cards Container -->
         <div class="relative">
             <div class="flex overflow-x-auto pb-6 -mx-2" id="projects-scroll-container">
-                <!-- Project Card 1 -->
+                {% for project in archive_projects %}
                 <div class="px-2 flex-none w-[75%] md:w-1/4">
-                    <div class="bg-white overflow-hidden h-full flex flex-col">
+                    <a href="{% url 'mainapp:project_detail' slug=project.slug %}"
+                        class="bg-white overflow-hidden h-full flex flex-col">
                         <div class="h-[20rem] bg-gray-200 overflow-hidden">
-                            <img src="{% static 'images/Nesta Ira project image.webp' %}" alt="Project 1"
+                            {% if project.main_image %}
+                            <img src="{{ project.main_image.image.url }}" alt="{{ project.main_image.alt_text }}"
                                 class="w-full h-full object-cover">
+                            {% endif %}
                         </div>
                         <div class="pt-3 flex-grow">
-                            <h3 class="font-product-sans font-black text-2xl text-black mb-2">Project Name 1</h3>
+                            <h3 class="font-product-sans font-black text-2xl text-black mb-2">{{ project.title }}</h3>
                         </div>
+                    </a>
+                </div>
+                {% empty %}
+                <div class="px-2 flex-none w-full">
+                    <div class="bg-white overflow-hidden h-full flex flex-col items-center justify-center py-8">
+                        <p class="font-montserrat text-gray-600">No archived projects available yet.</p>
                     </div>
                 </div>
-
-                <!-- Project Card 2 -->
-                <div class="px-2 flex-none w-[75%] md:w-1/4">
-                    <div class="bg-white overflow-hidden h-full flex flex-col">
-                        <div class="h-[20rem] bg-gray-200 overflow-hidden">
-                            <img src="{% static 'images/Nesta Ira project image.webp' %}" alt="Project 1"
-                                class="w-full h-full object-cover">
-                        </div>
-                        <div class="pt-3 flex-grow">
-                            <h3 class="font-product-sans font-black text-2xl text-black mb-2">Project Name 1</h3>
-                        </div>
-                    </div>
-                </div>
-
-
-                <!-- Project Card 3 -->
-                <div class="px-2 flex-none w-[75%] md:w-1/4">
-                    <div class="bg-white overflow-hidden h-full flex flex-col">
-                        <div class="h-[20rem] bg-gray-200 overflow-hidden">
-                            <img src="{% static 'images/Nesta Ira project image.webp' %}" alt="Project 1"
-                                class="w-full h-full object-cover">
-                        </div>
-                        <div class="pt-3 flex-grow">
-                            <h3 class="font-product-sans font-black text-2xl text-black mb-2">Project Name 1</h3>
-                        </div>
-                    </div>
-                </div>
-
-
-                <!-- Project Card 4 -->
-                <div class="px-2 flex-none w-[75%] md:w-1/4">
-                    <div class="bg-white overflow-hidden h-full flex flex-col">
-                        <div class="h-[20rem] bg-gray-200 overflow-hidden">
-                            <img src="{% static 'images/Nesta Ira project image.webp' %}" alt="Project 1"
-                                class="w-full h-full object-cover">
-                        </div>
-                        <div class="pt-3 flex-grow">
-                            <h3 class="font-product-sans font-black text-2xl text-black mb-2">Project Name 1</h3>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="px-2 flex-none w-[75%] md:w-1/4">
-                    <div class="bg-white overflow-hidden h-full flex flex-col">
-                        <div class="h-[20rem] bg-gray-200 overflow-hidden">
-                            <img src="{% static 'images/Nesta Ira project image.webp' %}" alt="Project 1"
-                                class="w-full h-full object-cover">
-                        </div>
-                        <div class="pt-3 flex-grow">
-                            <h3 class="font-product-sans font-black text-2xl text-black mb-2">Project Name 1</h3>
-                        </div>
-                    </div>
-                </div>
-
+                {% endfor %}
             </div>
         </div>
     </div>

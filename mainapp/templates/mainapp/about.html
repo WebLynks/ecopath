@@ -219,7 +219,6 @@
                         <div class="dot-core w-4 h-4 bg-custom-green rounded-full"></div>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>
@@ -230,97 +229,25 @@
         <h2 class="text-3xl md:text-4xl lg:text-5xl font-product-sans font-black text-custom-green mb-16 w-full">Our Leadership
         </h2>
         <div class="flex flex-wrap gap-8">
-
-            <!-- Leadership Card 1 -->
-            <div class="group relative rounded-lg overflow-hidden w-4/5 md:w-[30%] h-[30rem] mx-auto md:mx-0 ">
-                <img src="{% static 'images/leadership.png' %}" alt="Leadership Team Member"
-                    class="w-full h-full object-cover">
-                <div
-                    class="absolute inset-0 bg-black/50 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col p-6 text-white">
-                    <h3 class="text-2xl font-product-sans font-semibold">Sourabh Kumar</h3>
-                    <p class="font-montserrat text-lg mb-8">Founder & CEO</p>
-                    <p class="font-montserrat text-base leading-relaxed">
-                        Sourabh Kumar, founder of Eco Path Innovations, brings extensive experience and passion for
-                        innovation. He bootstrapped his first venture-PotHoleRaja, a social startup to 20Cr revenue
-                        in 6 years. It also got featured in Shark Tank India Season 3. He holds an MBA from SP Jain
-                        Institute of Management & Research and brings a unique blend of business acumen, grassroots
-                        experience, and vision-led leadership.
-                    </p>
-                </div>
-            </div>
-
-            <!-- Leadership Card 2 -->
+            {% for leader in leadership_team %}
             <div class="group relative rounded-lg overflow-hidden w-4/5 md:w-[30%] h-[30rem] mx-auto md:mx-0">
-                <img src="{% static 'images/leadership.png' %}" alt="Leadership Team Member"
-                    class="w-full h-full object-cover">
+                {% if leader.photo %}
+                <img src="{{ leader.photo.url }}" alt="{{ leader.name }}" class="w-full h-full object-cover">
+                {% else %}
+                <img src="{% static 'images/leadership.png' %}" alt="{{ leader.name }}" class="w-full h-full object-cover">
+                {% endif %}
                 <div
                     class="absolute inset-0 bg-black/50 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col p-6 text-white">
-                    <h3 class="text-2xl font-product-sans font-semibold">Sourabh Kumar</h3>
-                    <p class="font-montserrat text-lg mb-8">Founder & CEO</p>
+                    <h3 class="text-2xl font-product-sans font-semibold">{{ leader.name }}</h3>
+                    <p class="font-montserrat text-lg mb-8">{{ leader.designation }}</p>
                     <p class="font-montserrat text-base leading-relaxed">
-                        Sourabh Kumar, founder of Eco Path Innovations, brings extensive experience and passion for
-                        innovation. He bootstrapped his first venture-PotHoleRaja, a social startup to 20Cr revenue
-                        in 6 years. It also got featured in Shark Tank India Season 3. He holds an MBA from SP Jain
-                        Institute of Management & Research and brings a unique blend of business acumen, grassroots
-                        experience, and vision-led leadership.
+                        {{ leader.description }}
                     </p>
                 </div>
             </div>
-
-            <!-- Leadership Card 3 -->
-            <div class="group relative rounded-lg overflow-hidden w-4/5 md:w-[30%] h-[30rem] mx-auto md:mx-0">
-                <img src="{% static 'images/leadership.png' %}" alt="Leadership Team Member"
-                    class="w-full h-full object-cover">
-                <div
-                    class="absolute inset-0 bg-black/50 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col p-6 text-white">
-                    <h3 class="text-2xl font-product-sans font-semibold">Sourabh Kumar</h3>
-                    <p class="font-montserrat text-lg mb-8">Founder & CEO</p>
-                    <p class="font-montserrat text-base leading-relaxed">
-                        Sourabh Kumar, founder of Eco Path Innovations, brings extensive experience and passion for
-                        innovation. He bootstrapped his first venture-PotHoleRaja, a social startup to 20Cr revenue
-                        in 6 years. It also got featured in Shark Tank India Season 3. He holds an MBA from SP Jain
-                        Institute of Management & Research and brings a unique blend of business acumen, grassroots
-                        experience, and vision-led leadership.
-                    </p>
-                </div>
-            </div>
-
-            <!-- Leadership Card 4 -->
-            <div class="group relative rounded-lg overflow-hidden w-4/5 md:w-[30%] h-[30rem] mx-auto md:mx-0">
-                <img src="{% static 'images/leadership.png' %}" alt="Leadership Team Member"
-                    class="w-full h-full object-cover">
-                <div
-                    class="absolute inset-0 bg-black/50 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col p-6 text-white">
-                    <h3 class="text-2xl font-product-sans font-semibold">Sourabh Kumar</h3>
-                    <p class="font-montserrat text-lg mb-8">Founder & CEO</p>
-                    <p class="font-montserrat text-base leading-relaxed">
-                        Sourabh Kumar, founder of Eco Path Innovations, brings extensive experience and passion for
-                        innovation. He bootstrapped his first venture-PotHoleRaja, a social startup to 20Cr revenue
-                        in 6 years. It also got featured in Shark Tank India Season 3. He holds an MBA from SP Jain
-                        Institute of Management & Research and brings a unique blend of business acumen, grassroots
-                        experience, and vision-led leadership.
-                    </p>
-                </div>
-            </div>
-
-            <!-- Leadership Card 5 -->
-            <div class="group relative rounded-lg overflow-hidden w-4/5 md:w-[30%] h-[30rem] mx-auto md:mx-0">
-                <img src="{% static 'images/leadership.png' %}" alt="Leadership Team Member"
-                    class="w-full h-full object-cover">
-                <div
-                    class="absolute inset-0 bg-black/50 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col p-6 text-white">
-                    <h3 class="text-2xl font-product-sans font-semibold">Sourabh Kumar</h3>
-                    <p class="font-montserrat text-lg mb-8">Founder & CEO</p>
-                    <p class="font-montserrat text-base leading-relaxed">
-                        Sourabh Kumar, founder of Eco Path Innovations, brings extensive experience and passion for
-                        innovation. He bootstrapped his first venture-PotHoleRaja, a social startup to 20Cr revenue
-                        in 6 years. It also got featured in Shark Tank India Season 3. He holds an MBA from SP Jain
-                        Institute of Management & Research and brings a unique blend of business acumen, grassroots
-                        experience, and vision-led leadership.
-                    </p>
-                </div>
-            </div>
-
+            {% empty %}
+            <p class="font-montserrat text-lg text-gray-600">Leadership profiles coming soon.</p>
+            {% endfor %}
         </div>
     </div>
 </section>
