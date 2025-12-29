@@ -36,12 +36,22 @@ class Testimonial(models.Model):
     quote = models.TextField()
     author_name = models.CharField(max_length=100)
     author_title = models.CharField(max_length=150)
-    author_image = models.ImageField(upload_to='testimonial_authors/')
+    author_image = models.ImageField(upload_to='testimonial_authors/', blank=True)
     is_featured = models.BooleanField(default=False, db_index=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return f'"{self.quote[:30]}..." - {self.author_name}'
+
+
+class HomepageTestimonial(models.Model):
+    customer_name = models.CharField("Customer Name", max_length=75)
+    customer_designation = models.CharField("Customer Designation", max_length=75)
+    customer_image = models.ImageField("Customer Image", upload_to='homepage_testimonials/', blank=True)
+    testimonial = models.TextField("Testimonial", max_length=300)
+
+    def __str__(self):
+        return self.customer_name
 
 class TeamMember(models.Model):
     """Represents a member of the team. Not a Django user."""
@@ -58,29 +68,53 @@ class TeamMember(models.Model):
     class Meta:
         ordering = ['order']
 
+
+class Leadership(models.Model):
+    """Represents a leadership member displayed on the About page."""
+    name = models.CharField(max_length=50)
+    designation = models.CharField(max_length=100)
+    description = models.TextField(max_length=500)
+    photo = models.ImageField(upload_to='leadership_photos/')
+
+    def __str__(self):
+        return self.name
+
 class Project(models.Model):
     """Represents a single project."""
+
     class Status(models.TextChoices):
         DRAFT = 'DRAFT', 'Draft'
         PUBLISHED = 'PUBLISHED', 'Published'
 
-    title = models.CharField(max_length=255)
+    # Name
+    title = models.CharField(max_length=100)
+    # Slug (auto-generated in admin from title; can also be set programmatically)
     slug = models.SlugField(max_length=255, unique=True, blank=True, help_text="Auto-generated if left blank.")
     status = models.CharField(max_length=10, choices=Status.choices, default=Status.DRAFT, db_index=True)
-    header_image_desktop = models.ImageField(upload_to='project_headers/desktop/')
-    header_image_mobile = models.ImageField(upload_to='project_headers/mobile/')
-    brief_description = models.TextField()
+    # Short description
+    brief_description = models.TextField(max_length=500)
+    # Content (CKEditor field)
     detail_content = RichTextUploadingField()
-    is_featured_home = models.BooleanField(default=False, db_index=True)
+    # Feature on project page flag
+    feature_on_project_page = models.BooleanField(default=False, db_index=True)
     author_name = models.CharField(max_length=100, blank=True)
+    # Meta tags
     meta_description = models.CharField(max_length=160, blank=True)
     meta_keywords = models.CharField(max_length=255, blank=True, help_text="Comma-separated keywords.")
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    hitcount = GenericRelation('HitCount', object_id_field='object_id', content_type_field='content_type')
 
     def __str__(self):
         return self.title
+
+    @property
+    def main_image(self):
+        """Return the designated main image for this project, falling back to the first gallery image."""
+        main = self.gallery_images.filter(main_image=True).first()
+        if main:
+            return main
+        return self.gallery_images.first()
+
 
 class ProjectImage(models.Model):
     """Represents a gallery image for a Project."""
@@ -88,12 +122,15 @@ class ProjectImage(models.Model):
     image = models.ImageField(upload_to='project_images/')
     alt_text = models.CharField(max_length=255, blank=True)
     order = models.PositiveIntegerField(default=0)
+    # Flag to mark this as the main image used on list/archive pages
+    main_image = models.BooleanField(default=False)
 
     class Meta:
         ordering = ['order']
 
     def __str__(self):
         return self.alt_text or f"Image for {self.project.title}"
+
 
 class ProjectFact(models.Model):
     """A key-value fact associated with a project."""
@@ -109,7 +146,7 @@ class ProjectFact(models.Model):
 
 
 class ProjectHomeBanner(models.Model):
-    name = models.CharField("Name", max_length=100)
+    project = models.ForeignKey(Project, on_delete=models.CASCADE, related_name="home_banners", null=True, blank=True)
     scope = models.CharField("Scope", max_length=300)
     tech_used = models.CharField("Tech Used", max_length=200)
     performance_impact = models.CharField("Performance Impact", max_length=200)
@@ -118,7 +155,7 @@ class ProjectHomeBanner(models.Model):
     water_saved = models.CharField("Water Saved", max_length=50)
 
     def __str__(self):
-        return self.name
+        return self.project.title
 
 class Blog(models.Model):
     """Represents a blog post."""

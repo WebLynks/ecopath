@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.db.models import Sum
 from django.utils.html import format_html
 from .models import (
-    ServiceCategory, Clientele, Testimonial, TeamMember, 
+    ServiceCategory, Clientele, Testimonial, Testimonial, TeamMember, Leadership, HomepageTestimonial,
     Project, ProjectImage, ProjectFact, Blog, ContactSubmission, HitCount, ProjectHomeBanner
 )
 
@@ -14,16 +14,11 @@ class ServiceCategoryAdmin(admin.ModelAdmin):
 class ClienteleAdmin(admin.ModelAdmin):
     list_display = ('name', 'website_url', 'created_at')
 
-@admin.register(Testimonial)
-class TestimonialAdmin(admin.ModelAdmin):
-    list_display = ('author_name', 'author_title', 'is_featured', 'created_at')
-    list_filter = ('is_featured',)
-    search_fields = ('author_name', 'quote')
 
-@admin.register(TeamMember)
-class TeamMemberAdmin(admin.ModelAdmin):
-    list_display = ('name', 'role', 'order', 'photo_preview')
-    list_editable = ('order',)
+@admin.register(Leadership)
+class LeadershipAdmin(admin.ModelAdmin):
+    list_display = ('name', 'designation', 'photo_preview')
+    search_fields = ('name', 'designation')
     readonly_fields = ('photo_preview',)
 
     def photo_preview(self, obj):
@@ -41,24 +36,18 @@ class ProjectFactInline(admin.TabularInline):
     model = ProjectFact
     extra = 1
 
-# @admin.register(Project)
-# class ProjectAdmin(admin.ModelAdmin):
-#     list_display = ('title', 'status', 'is_featured_home', 'created_at', 'hit_count_display')
-#     list_filter = ('status', 'is_featured_home', 'created_at')
-#     search_fields = ('title', 'brief_description')
-#     prepopulated_fields = {'slug': ('title',)}
-#     inlines = [ProjectImageInline, ProjectFactInline]
+@admin.register(Project)
+class ProjectAdmin(admin.ModelAdmin):
+    list_display = ('title', 'status', 'feature_on_project_page', 'created_at', 'main_image')
+    list_filter = ('status', 'feature_on_project_page', 'created_at')
+    search_fields = ('title', 'brief_description')
+    prepopulated_fields = {'slug': ('title',)}
+    inlines = [ProjectImageInline, ProjectFactInline]
 
-#     def get_queryset(self, request):
-#         queryset = super().get_queryset(request)
-#         # Annotate with total hits to avoid N+1 queries in hit_count_display
-#         queryset = queryset.annotate(total_hits=Sum('hitcount__hits'))
-#         return queryset
+    def get_queryset(self, request):
+        queryset = super().get_queryset(request)
+        return queryset
 
-#     def hit_count_display(self, obj):
-#         return obj.total_hits or 0
-#     hit_count_display.short_description = 'Total Hits'
-#     hit_count_display.admin_order_field = 'total_hits'
 
 @admin.register(Blog)
 class BlogAdmin(admin.ModelAdmin):
@@ -86,12 +75,10 @@ class ContactSubmissionAdmin(admin.ModelAdmin):
     actions = ['export_as_csv']
 
     def export_as_csv(self, request, queryset):
-        # NOTE: A more robust implementation would use the csv module and stream the response.
         import csv
         from django.http import HttpResponse
         
         meta = self.model._meta
-        # Limit exported fields to relevant submission fields
         field_names = ['first_name', 'last_name', 'email', 'mobile_number', 'message', 'submission_date']
         response = HttpResponse(content_type='text/csv')
         response['Content-Disposition'] = 'attachment; filename={}.csv'.format(meta)
@@ -111,6 +98,11 @@ class HitCountAdmin(admin.ModelAdmin):
 
 @admin.register(ProjectHomeBanner)
 class ProjectHomeBannerAdmin(admin.ModelAdmin):
-    list_display = ('name', 'cement_eliminated', 'water_saved')
-    search_fields = ('name', 'scope', 'tech_used', 'performance_impact')
+    list_display = ('project', 'cement_eliminated', 'water_saved')
+    search_fields = ('project__title', 'scope', 'tech_used', 'performance_impact')
 
+
+@admin.register(HomepageTestimonial)
+class HomepageTestimonialAdmin(admin.ModelAdmin):
+    list_display = ('customer_name', 'customer_designation')
+    search_fields = ('customer_name', 'customer_designation', 'testimonial')

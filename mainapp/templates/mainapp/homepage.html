@@ -776,51 +776,48 @@
     </div>
 </section>
 
-<!-- GoKart Project Section (carousel of project slides) -->
-<section class="relative h-[95vh] md:h-[105vh] lg:h-[95vh] w-full overflow-hidden pt-0" id="carousel_section">
-    <div id="gokart-carousel-slides" class="h-full w-full relative">
+<!-- Carousel of project slides -->
+<section class="relative h-[105vh] md:h-[95vh] lg:h-[85vh] w-full overflow-hidden pt-0" id="carousel_section">
+    <div id="gokart-carousel-slides" class="p-8 sm:p-12 md:p-16 h-full w-full relative">
         {% for banner in home_project_banners %}
         <div class="carousel-slide absolute inset-0 w-full h-full" data-index="{{ forloop.counter0 }}">
             <img src="{{ banner.background_image.url }}" alt="" class="absolute inset-0 w-full h-full object-cover filter blur-sm scale-105">
             <div class="absolute inset-0 bg-black/30"></div>
             <div class="relative z-20 h-[95%] w-full md:w-[95%] mx-auto px-6 flex flex-col items-start justify-center md:justify-start">
-                <!-- Full-width Heading Row -->
-                <div class="w-full pt-6 md:pt-2 md:h-[15%] md:mt-10 lg:mt-5 items-start md:items-center md:flex py-4 md:pt-6">
-                    <h4 class="text-2xl md:text-4xl text-white font-product-sans font-black md:w-[95%]">Projects that Prove Sustainability and Performance Can Coexist</h4>
-                </div>
-
+            
                 <!-- Content Row: Middle (60%) and Right (40%) on large screens -->
                 <div class="w-full md:flex md:flex-row md:items-center md:gap-8 md:pt-4 lg:pt-6 xl:pt-10 md:h-[80%]">
                     <div class="w-full md:w-3/5">
-                        <h2 class="text-4xl md:text-5xl 2xl:text-6xl text-white font-product-sans font-black mb-4">
-                            {{ banner.name }}
+                        <h2 class="text-3xl md:text-5xl tracking-tight font-product-sans text-white/85 font-product-sans py-8 leading-tight">
+                            {{ banner.project.title }}
                         </h2>
 
-                        <div class="space-y-4 text-white md:pr-8">
+                        <div class="space-y-4 text-white/90 md:pr-8">
+                            <p class="text-lg font-montserrat font-normal text-white/90">{{ banner.project.brief_description }}</p>
                             <div>
-                                <h5 class="text-xl md:text-2xl font-montserrat font-black mb-2">Scope</h5>
-                                <p class="font-product-sans font-black text-md text-white/90">{{ banner.scope }}</p>
+                                <h5 class="text-3xl md:text-2xl font-normal font-montserrat py-2">Scope</h5>
+                                <p class="text-xl font-product-sans text-white/90">{{ banner.scope }}</p>
                             </div>
 
                             <div>
-                                <h5 class="text-xl md:text-2xl font-montserrat font-black mb-2">Tech Used</h5>
-                                <p class="font-product-sans font-black text-md text-white/90">{{ banner.tech_used }}</p>
+                                <h5 class="text-3xl md:text-2xl font-normal font-montserrat py-2">Tech Used</h5>
+                                <p class="text-xl font-product-sans text-white/90">{{ banner.tech_used }}</p>
                             </div>
 
                             <div>
-                                <h5 class="text-xl md:text-2xl font-montserrat font-black mb-2">Performance Impact</h5>
-                                <p class="font-product-sans font-black text-md text-white/90">{{ banner.performance_impact }}</p>
+                                <h5 class="text-3xl md:text-2xl font-normal font-montserrat py-2">Performance Impact</h5>
+                                <p class="text-xl font-product-sans text-white/90">{{ banner.performance_impact }}</p>
                             </div>
                         </div>
                     </div>
 
-                    <div class="w-full md:w-2/5 mt-6 md:mt-0 md:pl-8 flex flex-col gap-6 items-start">
+                    <div class="w-full md:w-2/5 mt-6 md:mt-0 md:pl-8 flex flex-col gap-6 items-start justify-center">
                         <div class="w-full bg-white/20 backdrop-blur-md text-white py-2 px-4 md:p-6 rounded-md shadow-md">
-                            <div class="text-3xl font-montserrat font-normal">Cement eliminated</div>
+                            <div class="text-3xl font-montserrat font-normal">Cement Eliminated</div>
                             <div class="text-2xl font-product-sans font-black mt-2">{{ banner.cement_eliminated }}</div>
                         </div>
                         <div class="w-full bg-white/20 backdrop-blur-md text-white py-2 px-4 md:p-6 rounded-md shadow-md">
-                            <div class="text-3xl font-montserrat font-normal">Water saved</div>
+                            <div class="text-3xl font-montserrat font-normal">Water Saved</div>
                             <div class="text-2xl font-product-sans font-black mt-2">{{ banner.water_saved }}</div>
                         </div>
                     </div>
@@ -931,65 +928,24 @@
                         dark:[&::-webkit-scrollbar-track]:bg-neutral-700
                         dark:[&::-webkit-scrollbar-thumb]:bg-neutral-500">
                 <div class="flex gap-8 flex-nowrap">
+                    {% for t in homepage_testimonials %}
                     <div class="testimonial-card flex-shrink-0 w-[90%] sm:w-[25rem] bg-white p-8 rounded-2xl shadow-md">
                         <div class="flex items-start gap-4">
-                            <img src="{% static 'images/nagrag.webp' %}" alt="Nagraj"
-                                class="w-14 h-14 rounded-full object-cover">
+                            {% if t.customer_image %}
+                                <img src="{{ t.customer_image.url }}" alt="{{ t.customer_name }}" class="w-14 h-14 rounded-full object-cover">
+                            {% else %}
+                                <img src="" alt="{{ t.customer_name }}" class="w-14 h-14 rounded-full object-cover">
+                            {% endif %}
                             <div>
-                                <h3 class="font-product-sans font-bold text-lg">Nagraj</h3>
-                                <p class="font-montserrat text-sm text-gray-600">Owner Forest by the Hills</p>
+                                <h3 class="font-product-sans font-bold text-lg">{{ t.customer_name }}</h3>
+                                <p class="font-montserrat text-sm text-gray-600">{{ t.customer_designation }}</p>
                             </div>
                         </div>
                         <p class="font-montserrat text-gray-700 mt-4">
-                            "I couldn't be happier with the work Eco Path did for Forest by The Hills in Karjat. We had
-                            serious issues with the existing road, but their team came in with innovative solutions and
-                            tackled every challenge head-on."
+                            {{ t.testimonial }}
                         </p>
                     </div>
-                    <div class="testimonial-card flex-shrink-0 w-[90%] sm:w-[25rem] bg-white p-4 rounded-2xl shadow-md">
-                        <div class="flex items-start gap-4">
-                            <img src="{% static 'images/nagrag.webp' %}" alt="Nagraj"
-                                class="w-14 h-14 rounded-full object-cover">
-                            <div>
-                                <h3 class="font-product-sans font-bold text-lg">Nagraj</h3>
-                                <p class="font-montserrat text-sm text-gray-600">Owner Forest by the Hills</p>
-                            </div>
-                        </div>
-                        <p class="font-montserrat text-gray-700 mt-4">
-                            "The new road is not only durable but also environmentally friendly. Their professionalism
-                            and commitment to quality are truly commendable. Highly recommended!"
-                        </p>
-                    </div>
-                    <div class="testimonial-card flex-shrink-0 w-[90%] sm:w-[25rem] bg-white p-4 rounded-2xl shadow-md">
-                        <div class="flex items-start gap-4">
-                            <img src="{% static 'images/nagrag.webp' %}" alt="Nagraj"
-                                class="w-14 h-14 rounded-full object-cover">
-                            <div>
-                                <h3 class="font-product-sans font-bold text-lg">Nagraj</h3>
-                                <p class="font-montserrat text-sm text-gray-600">Owner Forest by the Hills</p>
-                            </div>
-                        </div>
-                        <p class="font-montserrat text-gray-700 mt-4">
-                            "I couldn't be happier with the work Eco Path did for Forest by The Hills in Karjat. We had
-                            serious issues with the existing road, but their team came in with innovative solutions and
-                            tackled every challenge head-on."
-                        </p>
-                    </div>
-                    <div class="testimonial-card flex-shrink-0 w-[90%] sm:w-[25rem] bg-white p-4 rounded-2xl shadow-md">
-                        <div class="flex items-start gap-4">
-                            <img src="{% static 'images/nagrag.webp' %}" alt="Nagraj"
-                                class="w-14 h-14 rounded-full object-cover">
-                            <div>
-                                <h3 class="font-product-sans font-bold text-lg">Nagraj</h3>
-                                <p class="font-montserrat text-sm text-gray-600">Owner Forest by the Hills</p>
-                            </div>
-                        </div>
-                        <p class="font-montserrat text-gray-700 mt-4">
-                            "I couldn't be happier with the work Eco Path did for Forest by The Hills in Karjat. We had
-                            serious issues with the existing road, but their team came in with innovative solutions and
-                            tackled every challenge head-on."
-                        </p>
-                    </div>
+                    {% endfor %}
                 </div>
             </div>
         </div>
