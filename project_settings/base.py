@@ -8,7 +8,7 @@ SECRET_KEY = config('SECRET_KEY')
 
 # Application definition
 INSTALLED_APPS = [
-    'jazzmin',
+    'mainapp',
     'admin_tools_stats',
     'django_nvd3',
     'django.contrib.admin',
@@ -25,8 +25,8 @@ INSTALLED_APPS = [
     'django_extensions',
 
     # Local apps
-    'mainapp',
 ]
+
 
 SITE_ID = 1
 
@@ -110,12 +110,39 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # CKEditor Configuration
 CKEDITOR_UPLOAD_PATH = 'uploads/ckeditor/'
+# CKEditor Configuration
 CKEDITOR_CONFIGS = {
     'default': {
-        'toolbar': 'full',
-        'height': 400,
+        'toolbar': 'Custom',
+        'height': 500,
         'width': '100%',
-        'contentsCss': ['/static/css/ckeditor_custom.css'],
+        # This toolbar includes the Image, Table, and Code tools you asked for
+        'toolbar_Custom': [
+            ['Styles', 'Format', 'Font', 'FontSize'],
+            ['Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', '-', 'RemoveFormat'],
+            ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Blockquote', 'CreateDiv', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock'],
+            ['Link', 'Unlink', 'Anchor'],
+            ['Image', 'Table', 'HorizontalRule', 'SpecialChar'], # 'Image' plugin enables the upload button
+            ['TextColor', 'BGColor'],
+            ['Maximize', 'ShowBlocks', 'CodeSnippet'], # 'Maximize' helps writing long blogs
+        ],
+        # Plugins to load
+        'extraPlugins': ','.join([
+            'uploadimage', # Enables drag-and-drop upload
+            'codesnippet', # Beautiful code blocks
+            'div',
+            'autolink',
+            'autoembed',
+            'embedsemantic',
+            'autogrow',
+            'widget',
+            'lineutils',
+            'clipboard',
+            'dialog',
+            'dialogui',
+            'elementspath'
+        ]),
+        'removeDialogTabs': 'image:advanced;link:advanced', # Cleans up the image dialog
     }
 }
 

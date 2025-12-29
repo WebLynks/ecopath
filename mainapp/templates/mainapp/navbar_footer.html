@@ -50,14 +50,28 @@
                     colors: {
                         'custom-green': '#17411A',
                         'custom-yellow': '#F0ED2F',
+                        'card-bg-green': '#CAEACC',      // Used in Services & Sustainability
+                        'card-bg-dark-green': '#7DCC83'  // Used in Sustainability
                     },
                     fontFamily: {
                         'montserrat': ['Montserrat', 'sans-serif'],
                         'poppins': ['Poppins', 'sans-serif'],
+                        'playfair-display': ['Playfair Display', 'serif'],
+
+                        // MAPPING YOUR CUSTOM CSS FONTS ACCURATELY:
+                        // Use class="font-product-sans" for the Heavy/Black header font
                         'product-sans': ['Product Sans', 'sans-serif'],
+
+                        // Use class="font-product-sans-regular" for body text
                         'product-sans-regular': ['Product Sans Regular', 'sans-serif'],
-                        'product-sans-medium' : ['Product Sans Medium', 'sans-serif'],
+
+                        // Use class="font-product-sans-medium" for sub-headings
+                        'product-sans-medium': ['Product Sans Medium', 'sans-serif'],
                     },
+                    maxWidth: {
+                        '8xl': '1440px', // Fixes the "Zoomed In" navbar issue
+                    },
+                    // These extend your ability to use specific weights if the font family supports it
                     fontWeight: {
                         light: '300',
                         normal: '400',
@@ -73,12 +87,13 @@
                         '5xl': '48px',
                     },
                     screens: {
-                        '3xl': '1600px', // Extra large screens support
+                        '3xl': '1600px',
                     }
                 }
             }
         }
     </script>
+
     {% block extra_head %}{% endblock %}
 </head>
 
@@ -86,12 +101,12 @@
 
     <header class="w-full relative z-[100]">
         <nav id="main-navbar"
-            class="fixed top-0 left-0 right-0 bg-white/95 backdrop-blur-md w-full transition-transform duration-500 ease-in-out border-b border-gray-100/50">
+            class="fixed top-0 left-0 right-0 bg-white/95 backdrop-blur-md w-full transition-transform duration-500 ease-in-out border-b border-gray-100/50 shadow-md">
 
-            <div class="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center py-2">
+            <div class="max-w-8xl mx-auto px-4 sm:px-6 lg:px-2 flex justify-between items-center py-2">
 
                 <a href="{% url 'mainapp:homepage' %}"
-                    class="flex items-center h-16 md:h-20 flex-shrink-0 transition-all duration-300">
+                    class="flex items-center h-16 flex-shrink-0 transition-all duration-300">
                     <img src="{% static 'images/EcoPathLogo.png' %}" alt="EcoPath Logo"
                         class="h-full w-auto object-contain">
                 </a>
@@ -481,4 +496,5 @@
         });
     </script>
 </body>
+
 </html>

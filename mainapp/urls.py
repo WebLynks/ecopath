@@ -1,5 +1,11 @@
 from django.urls import path
 from . import views
+from django.contrib import admin
+
+# Admin Site Config
+admin.site.site_header = "EcoPath Administration"
+admin.site.site_title = "EcoPath Admin Portal"
+admin.site.index_title = "Welcome to EcoPath Management"
 
 app_name = 'mainapp'
 

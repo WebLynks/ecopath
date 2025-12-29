@@ -6,7 +6,6 @@ from .models import (
     Project, ProjectImage, ProjectFact, Blog, ContactSubmission, HitCount, ProjectHomeBanner
 )
 
-@admin.register(ServiceCategory)
 class ServiceCategoryAdmin(admin.ModelAdmin):
     list_display = ('name', 'created_at')
 
@@ -38,6 +37,7 @@ class ProjectFactInline(admin.TabularInline):
 
 @admin.register(Project)
 class ProjectAdmin(admin.ModelAdmin):
+    save_on_top = False
     list_display = ('title', 'status', 'feature_on_project_page', 'created_at', 'main_image')
     list_filter = ('status', 'feature_on_project_page', 'created_at')
     search_fields = ('title', 'brief_description')
@@ -51,6 +51,7 @@ class ProjectAdmin(admin.ModelAdmin):
 
 @admin.register(Blog)
 class BlogAdmin(admin.ModelAdmin):
+    save_on_top = False
     list_display = ('title', 'status', 'published_date', 'hit_count_display')
     list_filter = ('status', 'published_date')
     search_fields = ('title', 'summary')
@@ -89,7 +90,6 @@ class ContactSubmissionAdmin(admin.ModelAdmin):
         return response
     export_as_csv.short_description = "Export Selected as CSV"
 
-@admin.register(HitCount)
 class HitCountAdmin(admin.ModelAdmin):
     list_display = ('content_object', 'hits', 'created_at', 'last_hit')
     list_filter = ('created_at', 'content_type')

@@ -5,48 +5,60 @@
 
 {% block extra_head %}
 <style>
-    .post-content p { line-height: 1.8; }
-    .post-meta { color: #6B7280; }
+    .post-meta {
+        color: #6B7280;
+    }
 </style>
 {% endblock %}
 
 {% block content %}
 <section class="pt-24 pb-12 bg-white">
     <div class="container mx-auto max-w-4xl px-6">
-        <h1 class="text-custom-green font-product-sans font-black text-3xl md:text-4xl leading-tight">{{ blog.title }}</h1>
+        <h1 class="text-custom-green font-product-sans font-black text-3xl md:text-4xl leading-tight">{{ blog.title }}
+        </h1>
         <p class="post-meta mt-2 text-sm">{{ blog.published_date|date:"jS F, Y" }}</p>
 
         {% if blog.header_image_desktop %}
-        <img src="{{ blog.header_image_desktop.url }}" alt="{{ blog.title }}" class="w-full h-auto object-cover rounded mt-6" onerror="this.src='https://placehold.co/800x400/1E402F/FFFFFF?text=Image'; this.onerror=null;">
+        <img src="{{ blog.header_image_desktop.url }}" alt="{{ blog.title }}"
+            class="w-full h-auto object-cover rounded mt-6"
+            onerror="this.src='https://placehold.co/800x400/1E402F/FFFFFF?text=Image'; this.onerror=null;">
         {% endif %}
 
-        <div class="post-content font-montserrat text-gray-800 mt-8">
+        <div class="post-content mt-8 font-montserrat text-lg text-gray-700 leading-relaxed 
+            [&_h1]:font-product-sans [&_h1]:font-black [&_h1]:text-3xl [&_h1]:text-custom-green [&_h1]:mt-8 [&_h1]:mb-4
+            [&_h2]:font-product-sans [&_h2]:font-black [&_h2]:text-2xl [&_h2]:text-custom-green [&_h2]:mt-8 [&_h2]:mb-4
+            [&_h3]:font-product-sans [&_h3]:font-bold [&_h3]:text-xl [&_h3]:text-custom-green [&_h3]:mt-6 [&_h3]:mb-3
+            [&_p]:mb-6 [&_p]:leading-relaxed
+            [&_ul]:list-disc [&_ul]:pl-5 [&_ul]:mb-6
+            [&_ol]:list-decimal [&_ol]:pl-5 [&_ol]:mb-6
+            [&_li]:mb-2
+            [&_img]:rounded-xl [&_img]:shadow-lg [&_img]:my-8 [&_img]:w-full">
             {{ blog.content|safe }}
         </div>
     </div>
 </section>
 
 <script>
-// Attach Tailwind classes to headings inside the blog content so sizes/margins come from Tailwind
-(function(){
-    const mapping = {
-        'H1': 'text-3xl md:text-4xl font-product-sans font-black my-6',
-        'H2': 'text-2xl md:text-3xl font-product-sans font-black my-5',
-        'H3': 'text-xl md:text-2xl font-product-sans font-black my-4',
-        'H4': 'text-lg md:text-xl font-product-sans font-black my-3',
-        'H5': 'text-base md:text-lg font-product-sans font-black my-2',
-        'H6': 'text-sm md:text-base font-product-sans font-black my-2'
-    };
+    // Attach Tailwind classes to headings inside the blog content so sizes/margins come from Tailwind
+    (function () {
+        const mapping = {
+            'H1': 'text-3xl md:text-4xl font-product-sans font-black my-6',
+            'H2': 'text-2xl md:text-3xl font-product-sans font-black my-5',
+            'H3': 'text-xl md:text-2xl font-product-sans font-black my-4',
+            'H4': 'text-lg md:text-xl font-product-sans font-black my-3',
+            'H5': 'text-base md:text-lg font-product-sans font-black my-2',
+            'H6': 'text-sm md:text-base font-product-sans font-black my-2'
+        };
 
-    const container = document.querySelector('.post-content');
-    if (!container) return;
+        const container = document.querySelector('.post-content');
+        if (!container) return;
 
-    const headings = container.querySelectorAll('h1,h2,h3,h4,h5,h6');
-    headings.forEach(h => {
-        const cls = mapping[h.tagName] || 'text-base font-product-sans font-black my-3';
-        cls.split(' ').forEach(c => { if (c) h.classList.add(c); });
-    });
-})();
+        const headings = container.querySelectorAll('h1,h2,h3,h4,h5,h6');
+        headings.forEach(h => {
+            const cls = mapping[h.tagName] || 'text-base font-product-sans font-black my-3';
+            cls.split(' ').forEach(c => { if (c) h.classList.add(c); });
+        });
+    })();
 </script>
 
 {% endblock %}
