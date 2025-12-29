@@ -57,21 +57,26 @@
         /* 24px */
         opacity: 0;
     }
+
     .no-scrollbar::-webkit-scrollbar {
-        display: none; /* Chrome, Safari, Edge, Opera */
-      }
+        display: none;
+        /* Chrome, Safari, Edge, Opera */
+    }
 
     .no-scrollbar {
-    -ms-overflow-style: none; /* IE and Edge */
-    scrollbar-width: none; /* Firefox */
+        -ms-overflow-style: none;
+        /* IE and Edge */
+        scrollbar-width: none;
+        /* Firefox */
     }
+
     #slide-1 {
-        background-image: url('{% static 'images/Home hero header.webp' %}');
+        background-image: url('{% static ' images/Home hero header.webp' %}');
     }
-    
+
     @media screen and (max-width: 1024px) {
         #slide-1 {
-            background-image: url('{% static 'images/Mobile version hero header.webp' %}');
+            background-image: url('{% static ' images/Mobile version hero header.webp' %}');
         }
     }
 
@@ -147,11 +152,13 @@
                     Design</span>
                 <span
                     class="hero-nav-item-slot flex-1 text-center font-montserrat font-bold text-black">Sustainability</span>
-                <span class="hero-nav-item-slot hidden md:block flex-1 text-center font-montserrat font-bold text-black">Carbon
+                <span
+                    class="hero-nav-item-slot hidden md:block flex-1 text-center font-montserrat font-bold text-black">Carbon
                     Dioxide</span>
             </div>
             <div id="nav-group-2" class="hero-nav-group w-full">
-                <span class="hero-nav-item-slot flex-1 text-center hidden md:block font-montserrat font-bold text-black">Water
+                <span
+                    class="hero-nav-item-slot flex-1 text-center hidden md:block font-montserrat font-bold text-black">Water
                     Saving</span>
                 <span class="hero-nav-item-slot flex-1 text-center font-montserrat font-bold text-black">Eco
                     Concrete</span>
@@ -159,7 +166,8 @@
                     Free</span>
             </div>
             <div id="nav-group-3" class="hero-nav-group w-full">
-                <span class="hero-nav-item-slot flex-1 text-center font-montserrat font-bold text-black">Water Saving</span>
+                <span class="hero-nav-item-slot flex-1 text-center font-montserrat font-bold text-black">Water
+                    Saving</span>
                 <span class="hero-nav-item-slot flex-1 text-center font-montserrat font-bold text-black">Quality</span>
                 <span
                     class="hero-nav-item-slot flex-1 text-center hidden md:block font-montserrat font-bold text-black">Sustainability</span>
@@ -176,13 +184,15 @@
 </div>
 
 <section class="mx-auto px-2 xl:px-8 py-16 lg:h-screen flex flex-col justify-center">
-    <h2 class="text-4xl md:text-5xl font-product-sans font-black text-custom-green text-center mb-8">Why Roads Need to Change?</h2>
+    <h2 class="text-4xl md:text-5xl font-product-sans font-black text-custom-green text-center mb-8">Why Roads Need to
+        Change?</h2>
     <div class="flex flex-col lg:flex-row items-center gap-12">
         <!-- Image Collage -->
         <div class="w-full lg:w-1/2 h-64 flex justify-center lg:justify-end items-center">
             <div class="relative w-[25rem] lg:w-[27.5rem] xl:w-[30rem] 2xl:w-[32.5rem] h-48 lg:me-[5rem]">
                 <!-- Image 1 -->
-                <div class="absolute top-0 left-0 w-32 lg:w-40 h-48 lg:h-60 overflow-hidden group rounded-tr-[3rem] rounded-bl-[3rem]">
+                <div
+                    class="absolute top-0 left-0 w-32 lg:w-40 h-48 lg:h-60 overflow-hidden group rounded-tr-[3rem] rounded-bl-[3rem]">
                     <div class="relative w-full h-full">
                         <img src="{% static 'images/roads_change(1).webp' %}" alt="High Carbon Emissions"
                             class="w-full h-full object-cover">
@@ -195,7 +205,8 @@
                     </div>
                 </div>
                 <!-- Image 2 -->
-                <div class="absolute top-8 left-[5.5rem] lg:left-[6.5rem] xl:left-[7rem] 2xl:left-[7.5rem]  w-32 lg:w-40 h-48 lg:h-60 overflow-hidden z-10 group rounded-br-[3rem] rounded-tl-[3rem]">
+                <div
+                    class="absolute top-8 left-[5.5rem] lg:left-[6.5rem] xl:left-[7rem] 2xl:left-[7.5rem]  w-32 lg:w-40 h-48 lg:h-60 overflow-hidden z-10 group rounded-br-[3rem] rounded-tl-[3rem]">
                     <div class="relative w-full h-full">
                         <img src="{% static 'images/roads_change(2).webp' %}" alt="Road Maintenance"
                             class="w-full h-full object-cover">
@@ -208,7 +219,8 @@
                     </div>
                 </div>
                 <!-- Image 3 -->
-                <div class="absolute top-0 left-[11rem] lg:left-[13rem] xl:left-[14rem] 2xl:left-[15rem] w-32 lg:w-40 h-48 lg:h-60 overflow-hidden z-20 group rounded-tr-[3rem] rounded-bl-[3rem]">
+                <div
+                    class="absolute top-0 left-[11rem] lg:left-[13rem] xl:left-[14rem] 2xl:left-[15rem] w-32 lg:w-40 h-48 lg:h-60 overflow-hidden z-20 group rounded-tr-[3rem] rounded-bl-[3rem]">
                     <div class="relative w-full h-full">
                         <img src="{% static 'images/roads_change(3).webp' %}" alt="Project Delays"
                             class="w-full h-full object-cover">
@@ -221,7 +233,8 @@
                     </div>
                 </div>
                 <!-- Image 4 -->
-                <div class="absolute top-8 left-[16.5rem] lg:left-[19.5rem] xl:left-[21rem] 2xl:left-[22.5rem] h-48 lg:h-60 w-32 lg:w-40 overflow-hidden z-20 group rounded-br-[3rem] rounded-tl-[3rem]">
+                <div
+                    class="absolute top-8 left-[16.5rem] lg:left-[19.5rem] xl:left-[21rem] 2xl:left-[22.5rem] h-48 lg:h-60 w-32 lg:w-40 overflow-hidden z-20 group rounded-br-[3rem] rounded-tl-[3rem]">
                     <div class="relative w-full h-full">
                         <img src="{% static 'images/roads_change(4).webp' %}" alt="Rising Costs"
                             class="w-full h-full object-cover">
@@ -237,7 +250,8 @@
         </div>
         <!-- Text Content -->
         <div class="w-full lg:w-1/2 flex justify-start px-4 md:px-0">
-            <p class="text-lg text-gray-700 font-montserrat leading-relaxed w-full lg:max-w-[30rem] xl:max-w-[32.5rem] 2xl:w-[37.5rem]">
+            <p
+                class="text-lg text-gray-700 font-montserrat leading-relaxed w-full lg:max-w-[30rem] xl:max-w-[32.5rem] 2xl:w-[37.5rem]">
                 Traditional road construction comes with a heavy price — high carbon emissions, constant maintenance,
                 rising costs, and endless delays. These challenges not only strain the environment but also slow down
                 progress and drain valuable resources. At EcoPath, we set out to change this by rethinking how roads are
@@ -652,7 +666,7 @@
 
         // Base Y position for the active card (pushes it to the bottom)
         // 60% allows enough room above for the other cards to stack up without clipping
-        const ACTIVE_Y_BASE = 60; 
+        const ACTIVE_Y_BASE = 60;
 
         const animProps = {
             duration: 0.7,
@@ -732,11 +746,11 @@
 
                 if (stackPosition === 0) {
                     gsap.set(card, {
-                        zIndex: 10, 
-                        x: '0%', 
+                        zIndex: 10,
+                        x: '0%',
                         y: ACTIVE_Y_BASE + '%', // Move to bottom
-                        z: 0, 
-                        rotate: '0deg', 
+                        z: 0,
+                        rotate: '0deg',
                         scale: 1
                     });
                 } else {
@@ -771,8 +785,8 @@
     <div class="relative w-full lg:w-[80%]  mx-auto">
         <img src="{% static 'images/Eco Concrete Intro Frame.webp' %}" alt="Eco Concrete blocks stacked"
             class="w-full h-auto rounded-xl block hidden md:block">
-        <img src="{% static 'images/Eco Concrete Mobile version.png' %}" class="md:hidden w-full max-h-screen object-contain"
-            alt="Eco Concrete blocks stacked Mobile version"> 
+        <img src="{% static 'images/Eco Concrete Mobile version.png' %}"
+            class="md:hidden w-full max-h-screen object-contain" alt="Eco Concrete blocks stacked Mobile version">
     </div>
 </section>
 
@@ -781,19 +795,23 @@
     <div id="gokart-carousel-slides" class="p-8 sm:p-12 md:p-16 h-full w-full relative">
         {% for banner in home_project_banners %}
         <div class="carousel-slide absolute inset-0 w-full h-full" data-index="{{ forloop.counter0 }}">
-            <img src="{{ banner.background_image.url }}" alt="" class="absolute inset-0 w-full h-full object-cover filter blur-sm scale-105">
+            <img src="{{ banner.background_image.url }}" alt=""
+                class="absolute inset-0 w-full h-full object-cover filter blur-sm scale-105">
             <div class="absolute inset-0 bg-black/30"></div>
-            <div class="relative z-20 h-[95%] w-full md:w-[95%] mx-auto px-6 flex flex-col items-start justify-center md:justify-start">
-            
+            <div
+                class="relative z-20 h-[95%] w-full md:w-[95%] mx-auto px-6 flex flex-col items-start justify-center md:justify-start">
+
                 <!-- Content Row: Middle (60%) and Right (40%) on large screens -->
                 <div class="w-full md:flex md:flex-row md:items-center md:gap-8 md:pt-4 lg:pt-6 xl:pt-10 md:h-[80%]">
                     <div class="w-full md:w-3/5">
-                        <h2 class="text-3xl md:text-5xl tracking-tight font-product-sans text-white/85 font-product-sans py-8 leading-tight">
+                        <h2
+                            class="text-3xl md:text-5xl tracking-tight font-product-sans text-white/85 font-product-sans py-8 leading-tight">
                             {{ banner.project.title }}
                         </h2>
 
                         <div class="space-y-4 text-white/90 md:pr-8">
-                            <p class="text-lg font-montserrat font-normal text-white/90">{{ banner.project.brief_description }}</p>
+                            <p class="text-lg font-montserrat font-normal text-white/90">{{
+                                banner.project.brief_description }}</p>
                             <div>
                                 <h5 class="text-3xl md:text-2xl font-normal font-montserrat py-2">Scope</h5>
                                 <p class="text-xl font-product-sans text-white/90">{{ banner.scope }}</p>
@@ -805,18 +823,21 @@
                             </div>
 
                             <div>
-                                <h5 class="text-3xl md:text-2xl font-normal font-montserrat py-2">Performance Impact</h5>
+                                <h5 class="text-3xl md:text-2xl font-normal font-montserrat py-2">Performance Impact
+                                </h5>
                                 <p class="text-xl font-product-sans text-white/90">{{ banner.performance_impact }}</p>
                             </div>
                         </div>
                     </div>
 
                     <div class="w-full md:w-2/5 mt-6 md:mt-0 md:pl-8 flex flex-col gap-6 items-start justify-center">
-                        <div class="w-full bg-white/20 backdrop-blur-md text-white py-2 px-4 md:p-6 rounded-md shadow-md">
+                        <div
+                            class="w-full bg-white/20 backdrop-blur-md text-white py-2 px-4 md:p-6 rounded-md shadow-md">
                             <div class="text-3xl font-montserrat font-normal">Cement Eliminated</div>
                             <div class="text-2xl font-product-sans font-black mt-2">{{ banner.cement_eliminated }}</div>
                         </div>
-                        <div class="w-full bg-white/20 backdrop-blur-md text-white py-2 px-4 md:p-6 rounded-md shadow-md">
+                        <div
+                            class="w-full bg-white/20 backdrop-blur-md text-white py-2 px-4 md:p-6 rounded-md shadow-md">
                             <div class="text-3xl font-montserrat font-normal">Water Saved</div>
                             <div class="text-2xl font-product-sans font-black mt-2">{{ banner.water_saved }}</div>
                         </div>
@@ -828,13 +849,17 @@
     </div>
 
     <!-- Navigation Arrows -->
-    <button id="gokart-prev-btn" class="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 z-20 bg-black/30 hover:bg-black/50 text-white p-3 rounded-full transition-all duration-300 focus:outline-none">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 md:h-6 md:w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+    <button id="gokart-prev-btn"
+        class="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 z-20 bg-black/30 hover:bg-black/50 text-white p-3 rounded-full transition-all duration-300 focus:outline-none">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 md:h-6 md:w-6" fill="none" viewBox="0 0 24 24"
+            stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
         </svg>
     </button>
-    <button id="gokart-next-btn" class="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 z-20 bg-black/30 hover:bg-black/50 text-white p-3 rounded-full transition-all duration-300 focus:outline-none">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 md:h-6 md:w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+    <button id="gokart-next-btn"
+        class="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 z-20 bg-black/30 hover:bg-black/50 text-white p-3 rounded-full transition-all duration-300 focus:outline-none">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 md:h-6 md:w-6" fill="none" viewBox="0 0 24 24"
+            stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
         </svg>
     </button>
@@ -842,7 +867,9 @@
     <!-- Dots Navigation -->
     <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex space-x-3">
         {% for banner in home_project_banners %}
-        <button class="gokart-dot-btn w-3 h-3 rounded-full bg-white/30 hover:bg-white/50 transition-all duration-300 focus:outline-none" data-index="{{ forloop.counter0 }}"></button>
+        <button
+            class="gokart-dot-btn w-3 h-3 rounded-full bg-white/30 hover:bg-white/50 transition-all duration-300 focus:outline-none"
+            data-index="{{ forloop.counter0 }}"></button>
         {% endfor %}
     </div>
 
@@ -932,9 +959,10 @@
                     <div class="testimonial-card flex-shrink-0 w-[90%] sm:w-[25rem] bg-white p-8 rounded-2xl shadow-md">
                         <div class="flex items-start gap-4">
                             {% if t.customer_image %}
-                                <img src="{{ t.customer_image.url }}" alt="{{ t.customer_name }}" class="w-14 h-14 rounded-full object-cover">
+                            <img src="{{ t.customer_image.url }}" alt="{{ t.customer_name }}"
+                                class="w-14 h-14 rounded-full object-cover">
                             {% else %}
-                                <img src="" alt="{{ t.customer_name }}" class="w-14 h-14 rounded-full object-cover">
+                            <img src="" alt="{{ t.customer_name }}" class="w-14 h-14 rounded-full object-cover">
                             {% endif %}
                             <div>
                                 <h3 class="font-product-sans font-bold text-lg">{{ t.customer_name }}</h3>
@@ -953,24 +981,12 @@
         <!-- Bottom Part: Client Logos -->
         <div class="mt-24 relative overflow-hidden h-20">
             <div class="client-logo-scroller w-max flex items-center h-full gap-x-16 sm:gap-x-24">
-                <img src="{% static 'images/client (1).webp' %}" class="client-logo h-12 sm:h-14 w-auto object-contain"
-                    alt="Client Logo 1">
-                <img src="{% static 'images/client (2).webp' %}" class="client-logo h-14 sm:h-16 w-auto object-contain"
-                    alt="Client Logo 2">
-                <img src="{% static 'images/client (3).webp' %}" class="client-logo h-10 sm:h-12 w-auto object-contain"
-                    alt="Client Logo 3">
-                <img src="{% static 'images/client (4).webp' %}" class="client-logo h-16 sm:h-20 w-auto object-contain"
-                    alt="Client Logo 4">
-                <img src="{% static 'images/client (5).webp' %}" class="client-logo h-12 sm:h-14 w-auto object-contain"
-                    alt="Client Logo 5">
-                <img src="{% static 'images/client (6).webp' %}" class="client-logo h-14 sm:h-16 w-auto object-contain"
-                    alt="Client Logo 6">
-                <img src="{% static 'images/client (7).webp' %}" class="client-logo h-10 sm:h-12 w-auto object-contain"
-                    alt="Client Logo 7">
-                <img src="{% static 'images/client (8).webp' %}" class="client-logo h-16 sm:h-20 w-auto object-contain"
-                    alt="Client Logo 8">
-                <img src="{% static 'images/client (9).webp' %}" class="client-logo h-12 sm:h-14 w-auto object-contain"
-                    alt="Client Logo 9">
+                {% for client in clients %}
+                {% if client.logo %}
+                <img src="{{ client.logo.url }}" class="client-logo h-12 sm:h-16 w-auto object-contain"
+                    alt="{{ client.name }}">
+                {% endif %}
+                {% endfor %}
             </div>
         </div>
     </div>
@@ -995,7 +1011,7 @@
             });
         }
 
-        createInfiniteScroller('.client-logo-scroller', '.client-logo', 50);
+        createInfiniteScroller('.client-logo-scroller', '.client-logo', 25);
 
         // Hero Section Animation Logic
         const slides = gsap.utils.toArray(".hero-slide");
