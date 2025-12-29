@@ -109,14 +109,14 @@
 {% endblock %}
 
 {% block content %}
-<section class="relative h-screen w-full bg-cover bg-center text-white pt-24"
+<section class="relative h-screen w-full bg-cover bg-center text-white py-24 lg:p-12 lg:px-12 lg:pt-24"
     style="background-image: url('{% static 'images/Blogs Hero Header image.webp' %}');">
     <div class="absolute inset-0 bg-black/40"></div>
-    <div class="relative h-full flex flex-col justify-between p-4 px-8">
-        <h1 class="text-6xl sm:text-7xl md:text-8xl font-product-sans font-black uppercase">
+    <div class="relative h-full flex flex-col justify-center p-12 px-8">
+        <h1 class="text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-product-sans font-black uppercase mb-10">
             BLOGS
         </h1>
-        <p class="text-4xl sm:text-5xl md:text-6xl font-playfair-display max-w-4xl leading-tight">
+        <p class="text-4xl md:text-6xl font-playfair-display max-w-4xl leading-tight">
             Insights and thought leadership on sustainable infrastructure and road design.
         </p>
     </div>
@@ -125,7 +125,7 @@
 <!-- Blog Posts Section -->
 <section class="py-16 md:py-24 px-6 sm:px-8 lg:px-12 bg-white">
     <div class="container mx-auto">
-        <h2 class="text-3xl md:text-4xl lg:text-5xl font-product-sans font-black text-custom-green mb-12 md:mb-16">
+        <h2 class="text-3xl md:text-4xl lg:text-5xl font-product-sans font-black text-custom-green py-8">
             Latest at Ecopath
         </h2>
 
@@ -180,30 +180,30 @@
 </section>
 
 <!-- Latest News Section -->
-<section class="py-16 bg-gray-50">
+<!-- <section class="py-16 bg-gray-50">
     <div class="container mx-auto px-6 sm:px-8 lg:px-12 overflow-x-auto scrollbar-hide">
         <h2 class="text-3xl md:text-4xl font-product-sans font-bold text-custom-green mb-12 relative pb-4">
             Sneak Peak <br> Ecopath Projects Driving Sustainable Change
         </h2>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-6">
-            <!-- News Card 1 -->
+            
             <div class="h-[30rem] rounded-lg bg-blue-100 flex items-center justify-center">
                 <span class="text-custom-green font-montserrat font-semibold">News Card 1</span>
             </div>
 
-            <!-- News Card 2 -->
+           
             <div class="h-[30rem] rounded-lg bg-custom-green flex items-center justify-center">
                 <span class="text-custom-green font-montserrat font-semibold">News Card 1</span>
             </div>
 
-            <!-- News Card 3 -->
+            
             <div class="h-[30rem] rounded-lg bg-red-100 flex items-center justify-center">
                 <span class="text-custom-green font-montserrat font-semibold">News Card 1</span>
             </div>
         </div>
     </div>
-</section>
+</section> -->
 
 <script>
     function debounce(fn, delay = 200) {
