@@ -103,7 +103,7 @@
         <nav id="main-navbar"
             class="fixed top-0 left-0 right-0 bg-white/95 backdrop-blur-md w-full transition-transform duration-500 ease-in-out border-b border-gray-100/50 shadow-md">
 
-            <div class="max-w-8xl mx-auto px-4 sm:px-6 lg:px-2 flex justify-between items-center py-2">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center py-2">
 
                 <a href="{% url 'mainapp:homepage' %}"
                     class="flex items-center h-16 flex-shrink-0 transition-all duration-300">
@@ -112,7 +112,7 @@
                 </a>
 
                 <ul
-                    class="hidden xl:flex items-center space-x-12 text-base text-custom-green font-montserrat font-semibold desktop-nav">
+                    class="hidden lg:flex items-center space-x-8 text-base text-custom-green font-montserrat font-semibold desktop-nav">
                     <li class="{% if request.resolver_match.url_name == 'homepage' %}active{% endif %}">
                         <a href="{% url 'mainapp:homepage' %}" class="nav-link">Home</a>
                     </li>
