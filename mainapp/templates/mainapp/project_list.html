@@ -273,56 +273,57 @@
     });
 </script>
 
-<section class="py-8 md:py-24 px-4 sm:px-6 lg:px-8">
+<section class="py-8 md:py-12 px-4 sm:px-6 lg:px-8">
     <h1 class="text-3xl md:text-5xl tracking-tight font-product-sans text-center text-custom-green py-8 mb-8">
         Our Signature Projects
     </h1>
+    
     {% for project in signature_projects %}
-    <div class="container mx-auto mb-12 last:mb-0">
-        <div class="flex flex-col md:flex-row lg:mx-12 md:gap-8">
+    <div class="container mx-auto mb-16 last:mb-0">
+        <div class="flex flex-col md:flex-row lg:mx-12 md:gap-8 items-center">
+            
             {% if forloop.counter|divisibleby:2 %}
-            <div class="w-full md:w-1/2 py-6 items-end order-2 lg:order-1">
-                <h2 class="text-2xl md:text-3xl lg:text-5xl font-product-sans text-custom-green md:leading-12 py-8">
-                    {{ project.title }}
-                </h2>
-                <p class="font-montserrat text-lg text-gray-700 leading-relaxed">
-                    {{ project.brief_description }}
-                </p>
-                <div class="w-full md:w-1/2 flex justify-end order-1 lg:order-2">
+                <div class="w-full md:w-1/2 py-6 order-2 md:order-1">
+                    <h2 class="text-2xl md:text-3xl lg:text-5xl font-product-sans text-custom-green md:leading-tight py-4">
+                        {{ project.title }}
+                    </h2>
+                    <p class="font-montserrat text-lg text-gray-700 leading-relaxed mb-6">
+                        {{ project.brief_description }}
+                    </p>
+                    <a href="{% url 'mainapp:project_detail' slug=project.slug %}" class="font-montserrat text-[#0C96EC] text-[1.2rem] inline-block hover:underline">
+                        Explore Project <span>&rarr;</span>
+                    </a>
+                </div>
+
+                <div class="w-full md:w-1/2 flex justify-center order-1 md:order-2 mb-6 md:mb-0">
                     {% if project.main_image %}
                     <img src="{{ project.main_image.image.url }}" alt="{{ project.main_image.alt_text }}"
-                        class="w-full h-auto max-h-[80vh] object-cover rounded-tr-[60px] rounded-bl-[60px] shadow-lg"">
+                        class="w-auto max-w-[450px] h-auto max-h-[80vh] object-cover rounded-tr-[60px] rounded-bl-[60px] shadow-lg">
                     {% endif %}
                 </div>
-            </div>
 
-            <div class="w-full md:w-1/2 flex justify-center">
-                {% if project.main_image %}
-                <img src="{{ project.main_image.image.url }}" alt="{{ project.main_image.alt_text }}"
-                    class="w-auto max-w-[450px] h-auto max-h-[80vh] object-cover rounded-tr-[60px] rounded-bl-[60px] shadow-lg">
-                {% endif %}
-            </div>
             {% else %}
-            <div class="w-full md:w-1/2 flex justify-center">
-                {% if project.main_image %}
-                <img src="{{ project.main_image.image.url }}" alt="{{ project.main_image.alt_text }}"
-                    class="w-auto max-w-[450px] h-auto max-h-[80vh] object-cover rounded-tr-[60px] rounded-bl-[60px] shadow-lg">
-                {% endif %}
-            </div>
+                <div class="w-full md:w-1/2 flex justify-center mb-6 md:mb-0">
+                    {% if project.main_image %}
+                    <img src="{{ project.main_image.image.url }}" alt="{{ project.main_image.alt_text }}"
+                        class="w-auto max-w-[450px] h-auto max-h-[80vh] object-cover rounded-tr-[60px] rounded-bl-[60px] shadow-lg">
+                    {% endif %}
+                </div>
 
-            <div class="w-full md:w-1/2 py-6 items-start ">
-                <h2 class="text-3xl md:text-4xl lg:text-5xl font-product-sans text-custom-green md:leading-tight py-8">
-                    {{ project.title }}
-                </h2>
-                <p class="font-montserrat text-lg text-gray-700 leading-tight">
-                    {{ project.brief_description }}
-                </p>
-                <a href="{% url 'mainapp:project_detail' slug=project.slug %}"
-                    class="font-montserrat text-[#0C96EC] text-[1.2rem] mt-6 inline-block">
-                    Explore Project <span>&rarr;</span>
-                </a>
-            </div>
+                <div class="w-full md:w-1/2 py-6 items-start">
+                    <h2 class="text-3xl md:text-4xl lg:text-5xl font-product-sans text-custom-green md:leading-tight py-4">
+                        {{ project.title }}
+                    </h2>
+                    <p class="font-montserrat text-lg text-gray-700 leading-tight mb-6">
+                        {{ project.brief_description }}
+                    </p>
+                    <a href="{% url 'mainapp:project_detail' slug=project.slug %}"
+                        class="font-montserrat text-[#0C96EC] text-[1.2rem] inline-block hover:underline">
+                        Explore Project <span>&rarr;</span>
+                    </a>
+                </div>
             {% endif %}
+            
         </div>
     </div>
     {% empty %}
