@@ -838,55 +838,62 @@
 </section>
 
 <!-- Carousel of project slides -->
-<section class="relative h-[105vh] md:h-[95vh] lg:h-[85vh] w-full overflow-hidden pt-0" id="carousel_section">
-    <div id="gokart-carousel-slides" class="p-8 sm:p-12 md:p-16 h-full w-full relative">
+<section class="relative h-screen w-full overflow-hidden bg-black" id="carousel_section">
+    
+    <div id="gokart-carousel-slides" class="h-full w-full relative">
         {% for banner in home_project_banners %}
         <div class="carousel-slide absolute inset-0 w-full h-full" data-index="{{ forloop.counter0 }}">
+            
             <img src="{{ banner.background_image.url }}" alt=""
                 class="absolute inset-0 w-full h-full object-cover filter blur-sm scale-105">
-            <div class="absolute inset-0 bg-black/30"></div>
-            <div
-                class="relative z-20 h-[95%] w-full md:w-[95%] mx-auto px-6 lg:px-10 flex flex-col items-start justify-center md:justify-start">
+            
+            <div class="absolute inset-0 bg-black/40"></div>
+            
+            <div class="absolute inset-0 z-20 w-full h-full pointer-events-none">
+                <div class="h-full w-full max-w-8xl mx-auto px-6 md:px-12 flex flex-col justify-center md:justify-center pt-20 md:pt-0">
+                    
+                    <div class="w-full flex flex-col md:flex-row items-start md:items-center gap-6 md:gap-16 pointer-events-auto">
+                        
+                        <div class="w-full md:w-3/5 text-left">
+                            <h2 class="text-3xl md:text-5xl lg:text-6xl font-product-sans font-black text-white leading-tight mb-4 md:mb-6 drop-shadow-lg">
+                                {{ banner.project.title }}
+                            </h2>
 
-                <!-- Content Row: Middle (60%) and Right (40%) on large screens -->
-                <div class="w-full md:flex md:flex-row md:items-center md:gap-8 md:pt-4 lg:pt-6 xl:pt-10 md:h-[80%]">
-                    <div class="w-full md:w-3/5">
-                        <h2
-                            class="text-3xl md:text-5xl tracking-tight font-product-sans text-white/85 font-product-sans py-8 leading-tight">
-                            {{ banner.project.title }}
-                        </h2>
+                            <div class="space-y-4 text-white/90 md:pr-8 max-h-[40vh] md:max-h-none overflow-y-auto md:overflow-visible no-scrollbar">
+                                <p class="text-base md:text-lg font-montserrat font-normal text-white/90 leading-relaxed">
+                                    {{ banner.project.brief_description }}
+                                </p>
+                                
+                                <div class="space-y-4 mt-4">
+                                    <div>
+                                        <h5 class="text-xl md:text-2xl font-normal font-montserrat text-white">Scope</h5>
+                                        <p class="text-lg md:text-xl font-product-sans text-white/80">{{ banner.scope }}</p>
+                                    </div>
 
-                        <div class="space-y-4 text-white/90 md:pr-8">
-                            <p class="text-lg font-montserrat font-normal text-white/90">{{ banner.project.brief_description }}</p>
-                            <div>
-                                <h5 class="text-3xl md:text-2xl font-normal font-montserrat py-2">Scope</h5>
-                                <p class="text-xl font-product-sans text-white/90">{{ banner.scope }}</p>
-                            </div>
+                                    <div>
+                                        <h5 class="text-xl md:text-2xl font-normal font-montserrat text-white">Tech Used</h5>
+                                        <p class="text-lg md:text-xl font-product-sans text-white/80">{{ banner.tech_used }}</p>
+                                    </div>
 
-                            <div>
-                                <h5 class="text-3xl md:text-2xl font-normal font-montserrat py-2">Tech Used</h5>
-                                <p class="text-xl font-product-sans text-white/90">{{ banner.tech_used }}</p>
-                            </div>
-
-                            <div>
-                                <h5 class="text-3xl md:text-2xl font-normal font-montserrat py-2">Performance Impact
-                                </h5>
-                                <p class="text-xl font-product-sans text-white/90">{{ banner.performance_impact }}</p>
+                                    <div>
+                                        <h5 class="text-xl md:text-2xl font-normal font-montserrat text-white">Performance Impact</h5>
+                                        <p class="text-lg md:text-xl font-product-sans text-white/80">{{ banner.performance_impact }}</p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="w-full md:w-2/5 mt-6 md:mt-0 md:pl-8 flex flex-col gap-6 items-start justify-center">
-                        <div
-                            class="w-full bg-white/20 backdrop-blur-md text-white py-2 px-4 md:p-6 rounded-md shadow-md">
-                            <div class="text-3xl font-montserrat font-normal">Cement Eliminated</div>
-                            <div class="text-2xl font-product-sans font-black mt-2">{{ banner.cement_eliminated }}</div>
+                        <div class="w-full md:w-2/5 flex flex-row md:flex-col gap-4 mt-4 md:mt-0">
+                            <div class="flex-1 bg-white/20 backdrop-blur-md text-white p-4 md:p-6 rounded-xl shadow-lg border border-white/10">
+                                <div class="text-lg md:text-3xl font-montserrat font-normal">Cement Eliminated</div>
+                                <div class="text-xl md:text-3xl font-product-sans font-black mt-1 md:mt-2">{{ banner.cement_eliminated }}</div>
+                            </div>
+                            <div class="flex-1 bg-white/20 backdrop-blur-md text-white p-4 md:p-6 rounded-xl shadow-lg border border-white/10">
+                                <div class="text-lg md:text-3xl font-montserrat font-normal">Water Saved</div>
+                                <div class="text-xl md:text-3xl font-product-sans font-black mt-1 md:mt-2">{{ banner.water_saved }}</div>
+                            </div>
                         </div>
-                        <div
-                            class="w-full bg-white/20 backdrop-blur-md text-white py-2 px-4 md:p-6 rounded-md shadow-md">
-                            <div class="text-3xl font-montserrat font-normal">Water Saved</div>
-                            <div class="text-2xl font-product-sans font-black mt-2">{{ banner.water_saved }}</div>
-                        </div>
+
                     </div>
                 </div>
             </div>
@@ -894,27 +901,21 @@
         {% endfor %}
     </div>
 
-    <!-- Navigation Arrows -->
-    <button id="gokart-prev-btn"
-        class="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 z-20 bg-black/30 hover:bg-black/50 text-white p-3 rounded-full transition-all duration-300 focus:outline-none">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 md:h-6 md:w-6" fill="none" viewBox="0 0 24 24"
-            stroke="currentColor">
+    <button id="gokart-prev-btn" class="absolute left-2 md:left-8 top-1/2 -translate-y-1/2 z-30 bg-black/30 hover:bg-black/50 text-white p-3 rounded-full transition-all duration-300 focus:outline-none backdrop-blur-sm border border-white/10">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 md:h-8 md:w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
         </svg>
     </button>
-    <button id="gokart-next-btn"
-        class="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 z-20 bg-black/30 hover:bg-black/50 text-white p-3 rounded-full transition-all duration-300 focus:outline-none">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 md:h-6 md:w-6" fill="none" viewBox="0 0 24 24"
-            stroke="currentColor">
+    <button id="gokart-next-btn" class="absolute right-2 md:right-8 top-1/2 -translate-y-1/2 z-30 bg-black/30 hover:bg-black/50 text-white p-3 rounded-full transition-all duration-300 focus:outline-none backdrop-blur-sm border border-white/10">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 md:h-8 md:w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
         </svg>
     </button>
 
-    <!-- Dots Navigation -->
-    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex space-x-3">
+    <div class="absolute bottom-6 left-1/2 -translate-x-1/2 z-30 flex space-x-3">
         {% for banner in home_project_banners %}
         <button
-            class="gokart-dot-btn w-3 h-3 rounded-full bg-white/30 hover:bg-white/50 transition-all duration-300 focus:outline-none"
+            class="gokart-dot-btn w-2 h-2 md:w-3 md:h-3 rounded-full bg-white/30 hover:bg-white/50 transition-all duration-300 focus:outline-none"
             data-index="{{ forloop.counter0 }}"></button>
         {% endfor %}
     </div>
@@ -942,11 +943,11 @@
 
                 dotBtns.forEach((dot, i) => {
                     if (i === index) {
-                        dot.classList.remove('bg-white/30', 'w-3');
-                        dot.classList.add('bg-white', 'w-6');
+                        dot.classList.remove('bg-white/30', 'w-2', 'h-2', 'md:w-3', 'md:h-3');
+                        dot.classList.add('bg-white', 'w-6', 'h-2', 'md:w-8', 'md:h-3', 'rounded-full');
                     } else {
-                        dot.classList.remove('bg-white', 'w-6');
-                        dot.classList.add('bg-white/30', 'w-3');
+                        dot.classList.remove('bg-white', 'w-6', 'h-2', 'md:w-8', 'md:h-3', 'rounded-full');
+                        dot.classList.add('bg-white/30', 'w-2', 'h-2', 'md:w-3', 'md:h-3', 'rounded-full');
                     }
                 });
 
@@ -965,7 +966,6 @@
             function startSlideShow() { slideInterval = setInterval(goToNext, slideDuration); }
             function resetSlideShow() { clearInterval(slideInterval); startSlideShow(); }
 
-            // Init
             updateSlide(0);
             startSlideShow();
 
@@ -973,7 +973,7 @@
             nextBtn.addEventListener('click', goToNext);
             dotBtns.forEach(dot => dot.addEventListener('click', () => goToSlide(parseInt(dot.getAttribute('data-index')))));
 
-            const carousel = document.querySelector('#gokart-carousel-slides');
+            const carousel = document.querySelector('#carousel_section');
             carousel.addEventListener('mouseenter', () => clearInterval(slideInterval));
             carousel.addEventListener('mouseleave', () => resetSlideShow());
 
@@ -984,7 +984,6 @@
         });
     </script>
 </section>
-
 <!--Calculator-->
 <section class="py-20 px-4 sm:px-6 lg:px-8">
     <div class="max-w-6xl mx-auto">
