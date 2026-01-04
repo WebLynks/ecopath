@@ -39,7 +39,7 @@
 </section>
 
 <script>
-    // Attach Tailwind classes to headings inside the blog content so sizes/margins come from Tailwind
+    // Attach Tailwind classes to headings, paragraphs, AND IMAGES inside the blog content
     (function () {
         const mapping = {
             'H1': 'text-3xl md:text-4xl font-product-sans font-black my-6',
@@ -50,15 +50,45 @@
             'H6': 'text-sm md:text-base font-product-sans font-black my-2'
         };
 
+        // TARGETING .post-content (Specific to your blog page)
         const container = document.querySelector('.post-content');
         if (!container) return;
 
+        // 1. Format Headings
         const headings = container.querySelectorAll('h1,h2,h3,h4,h5,h6');
         headings.forEach(h => {
             const cls = mapping[h.tagName] || 'text-base font-product-sans font-black my-3';
             cls.split(' ').forEach(c => { if (c) h.classList.add(c); });
         });
+
+        // 2. Format Paragraphs
+        const paragraphs = container.querySelectorAll('p');
+        paragraphs.forEach(p => {
+            'my-4 text-base md:text-lg leading-relaxed'.split(' ').forEach(c => { if (c) p.classList.add(c); });
+        });
+
+        // 3. Format Images (Uniform size, object-cover)
+        const images = container.querySelectorAll('img');
+        const imageClasses = [
+            'w-full',               // Full width
+            'h-[400px]',            // Fixed height mobile
+            'md:h-[500px]',         // Fixed height desktop
+            'object-cover',         // Prevents distortion/stretching
+            'rounded-2xl',          // Rounded corners
+            'shadow-lg',            // Shadow
+            'my-10',                // Vertical spacing
+            'block',                // Block element
+            'mx-auto'               // Centered
+        ];
+
+        images.forEach(img => {
+            // Remove CKEditor inline styles to prevent conflicts
+            img.style.height = ''; 
+            img.style.width = '';
+            
+            imageClasses.forEach(c => img.classList.add(c));
+        });
+
     })();
 </script>
-
 {% endblock %}

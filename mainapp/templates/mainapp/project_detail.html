@@ -251,7 +251,7 @@
 </section>
 
 <script>
-    // Attach Tailwind classes to headings and paragraphs inside the project content
+    // Attach Tailwind classes to headings, paragraphs, AND IMAGES inside the project content
     (function () {
         const mapping = {
             'H1': 'text-3xl md:text-4xl font-product-sans font-black my-6',
@@ -265,16 +265,41 @@
         const container = document.querySelector('.project-content');
         if (!container) return;
 
+        // 1. Format Headings
         const headings = container.querySelectorAll('h1,h2,h3,h4,h5,h6');
         headings.forEach(h => {
             const cls = mapping[h.tagName] || 'text-base font-product-sans font-black my-3';
             cls.split(' ').forEach(c => { if (c) h.classList.add(c); });
         });
 
+        // 2. Format Paragraphs
         const paragraphs = container.querySelectorAll('p');
         paragraphs.forEach(p => {
             'my-4 text-base md:text-lg leading-relaxed'.split(' ').forEach(c => { if (c) p.classList.add(c); });
         });
+
+        // 3. Format Images (Make them same size and look good)
+        const images = container.querySelectorAll('img');
+        const imageClasses = [
+            'w-full',               // Full width of container
+            'h-[400px]',            // Fixed height on mobile
+            'md:h-[500px]',         // Fixed height on desktop
+            'object-cover',         // Ensures image fills the box (crops edges if needed)
+            'rounded-2xl',          // Nice rounded corners
+            'shadow-lg',            // Depth shadow
+            'my-10',                // Vertical spacing
+            'block',                // Ensures it sits on its own line
+            'mx-auto'               // Centers it
+        ];
+
+        images.forEach(img => {
+            // Remove any inline styles that CKEditor might have added (optional, but recommended)
+            img.style.height = ''; 
+            img.style.width = '';
+            
+            imageClasses.forEach(c => img.classList.add(c));
+        });
+
     })();
 </script>
 

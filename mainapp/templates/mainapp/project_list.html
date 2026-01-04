@@ -273,6 +273,7 @@
     });
 </script>
 
+<!--Signature Projects-->
 <section class="py-8 md:py-12 px-4 sm:px-6 lg:px-8">
     <h1 class="text-3xl md:text-5xl tracking-tight font-product-sans text-center text-custom-green py-8 mb-8">
         Our Signature Projects
@@ -280,7 +281,7 @@
     
     {% for project in signature_projects %}
     <div class="container mx-auto mb-16 last:mb-0">
-        <div class="flex flex-col md:flex-row lg:mx-12 md:gap-8 items-center">
+        <div class="flex flex-col md:flex-row lg:mx-12 md:gap-12 items-center">
             
             {% if forloop.counter|divisibleby:2 %}
                 <div class="w-full md:w-1/2 py-6 order-2 md:order-1">
@@ -295,18 +296,18 @@
                     </a>
                 </div>
 
-                <div class="w-full md:w-1/2 flex justify-center order-1 md:order-2 mb-6 md:mb-0">
+                <div class="w-full md:w-1/2 flex justify-center order-1 md:order-2">
                     {% if project.main_image %}
                     <img src="{{ project.main_image.image.url }}" alt="{{ project.main_image.alt_text }}"
-                        class="w-auto max-w-[450px] h-auto max-h-[80vh] object-cover rounded-tr-[60px] rounded-bl-[60px] shadow-lg">
+                        class="w-full h-[350px] md:w-[500px] md:h-[600px] object-cover rounded-tr-[60px] rounded-bl-[60px] shadow-lg mb-8 md:mb-0">
                     {% endif %}
                 </div>
 
             {% else %}
-                <div class="w-full md:w-1/2 flex justify-center mb-6 md:mb-0">
+                <div class="w-full md:w-1/2 flex justify-center mb-0 md:mb-0">
                     {% if project.main_image %}
                     <img src="{{ project.main_image.image.url }}" alt="{{ project.main_image.alt_text }}"
-                        class="w-auto max-w-[450px] h-auto max-h-[80vh] object-cover rounded-tr-[60px] rounded-bl-[60px] shadow-lg">
+                        class="w-full h-[350px] md:w-[500px] md:h-[600px] object-cover rounded-tr-[60px] rounded-bl-[60px] shadow-lg mb-8 md:mb-0">
                     {% endif %}
                 </div>
 
