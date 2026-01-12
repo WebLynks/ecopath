@@ -1,7 +1,7 @@
 {% extends 'mainapp/navbar_footer.html' %}
 {% load static %}
 
-{% block title %}Sustainability - EcoPath{% endblock %}
+{% block title %}Sustainability - Ecopath{% endblock %}
 
 {% block extra_head %}
 <!-- GSAP -->
@@ -50,10 +50,10 @@
                     Building the Future Responsibly
                 </h2>
                 <p class="font-montserrat text-lg text-gray-700 leading-relaxed">
-                    At EcoPath, we’re transforming infrastructure with materials that cut carbon, reuse waste, and
+                    At Ecopath, we’re transforming infrastructure with materials that cut carbon, reuse waste, and
                     protect the planet’s future.
                     <br><br>
-                    EcoPath’s mission is to redefine how roads and infrastructure are built — by replacing
+                    Ecopath’s mission is to redefine how roads and infrastructure are built — by replacing
                     high-emission
                     materials with sustainable, circular alternatives. Sustainability sits at the heart of our
                     innovation, shaping every design, product, and process we create.
@@ -129,7 +129,7 @@
                 Sustainability in Action
             </h2>
             <p class="font-montserrat text-lg text-gray-700 leading-relaxed">
-                Behind every EcoPath road is a cleaner, smarter process — from collecting industrial by-products
+                Behind every Ecopath road is a cleaner, smarter process — from collecting industrial by-products
                 to reusing aggregates and cutting emissions on-site.
             </p>
         </div>
@@ -329,7 +329,7 @@
                         <a href="#"
                             class="flex items-center gap-3 text-sm md:text-base font-montserrat text-gray-800 hover:text-custom-green">
                             <span class="text-red-600 text-lg">📄</span>
-                            <span>EcoPath Core Binder Patent Filing</span>
+                            <span>Ecopath Core Binder Patent Filing</span>
                         </a>
                         <a href="#"
                             class="mt-2 flex items-center gap-3 text-sm md:text-base font-montserrat text-gray-800 hover:text-custom-green">
@@ -462,7 +462,6 @@
         <div class="rounded-lg shadow-lg px-6 sm:px-10 lg:px-14 py-10 sm:py-12 lg:py-14 flex flex-col gap-8 lg:gap-10"
             style="background-image: url('{% static 'images/About timeline background.webp' %}'); background-size: cover; background-position: center;">
 
-            <!-- Heading & Description (full width) -->
             <div class="w-full gap-4">
                 <h2 class="text-3xl md:text-4xl lg:text-5xl font-product-sans text-custom-green py-8">
                     Measure your Impact
@@ -473,96 +472,382 @@
                 </p>
             </div>
 
-            <!-- Main content: form + metrics -->
             <div class="w-full flex flex-col lg:flex-row gap-10 lg:gap-16">
 
-                <!-- Left: Form UI -->
                 <div class="w-full lg:w-1/2">
-                    <form class="space-y-6">
-                        <!-- Road Type -->
-                        <div>
-                            <label class="block text-sm font-montserrat text-gray-700 mb-2">Select Road Type</label>
-                            <div class="relative">
-                                <select
-                                    class="w-full border border-gray-300 rounded-lg py-2.5 px-3 pr-10 text-sm md:text-base font-montserrat text-gray-800 focus:outline-none focus:ring-2 focus:ring-custom-green focus:border-custom-green appearance-none bg-white">
-                                    <option>Select the type of road you want to construct</option>
-                                </select>
-                                <span
-                                    class="pointer-events-none absolute inset-y-0 right-3 flex items-center text-gray-500 text-xs md:text-sm">▾</span>
-                            </div>
-                        </div>
-
-                        <!-- Dimensions -->
+                    <form id="impact-calculator-form" class="space-y-6" onsubmit="return false;">
+                        
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                             <div>
-                                <label class="block text-sm font-montserrat text-gray-700 mb-2">Length (in
-                                    km)</label>
-                                <input type="text"
-                                    class="w-full border border-gray-300 rounded-lg py-2.5 px-3 text-sm md:text-base font-montserrat text-gray-800 focus:outline-none focus:ring-2 focus:ring-custom-green focus:border-custom-green">
+                                <label class="block text-sm font-montserrat text-gray-700 mb-2">Product</label>
+                                <div class="relative">
+                                    <select id="calc-product" onchange="updateFormFields()"
+                                        class="w-full border border-gray-300 rounded-lg py-2.5 px-3 pr-8 text-sm md:text-base font-montserrat text-gray-800 focus:outline-none focus:ring-2 focus:ring-custom-green focus:border-custom-green appearance-none bg-white">
+                                        <option value="Solid Block">Solid Block</option>
+                                        <option value="Paver">Paver</option>
+                                        <option value="Kerbstone">Kerbstone</option>
+                                        <option value="Saucer Drain">Saucer Drain</option>
+                                        <option value="U Drain">U Drain</option>
+                                        <option value="Precast Slab">Precast Slab</option>
+                                        <option value="Boundary Wall Panel">Boundary Wall Panel</option>
+                                        <option value="Precast Road">Precast Road</option>
+                                    </select>
+                                    <span class="pointer-events-none absolute inset-y-0 right-3 flex items-center text-gray-500 text-xs md:text-sm">▾</span>
+                                </div>
                             </div>
+                            
                             <div>
-                                <label class="block text-sm font-montserrat text-gray-700 mb-2">Width (in m)</label>
-                                <input type="text"
+                                <label class="block text-sm font-montserrat text-gray-700 mb-2">Grade (Optional)</label>
+                                <div class="relative">
+                                    <select id="calc-grade"
+                                        class="w-full border border-gray-300 rounded-lg py-2.5 px-3 pr-8 text-sm md:text-base font-montserrat text-gray-800 focus:outline-none focus:ring-2 focus:ring-custom-green focus:border-custom-green appearance-none bg-white">
+                                        <option value="Default">Default</option>
+                                        <option value="M7.5">M7.5</option>
+                                        <option value="M25">M25</option>
+                                        <option value="M30">M30</option>
+                                        <option value="M35">M35</option>
+                                        <option value="M40">M40</option>
+                                    </select>
+                                    <span class="pointer-events-none absolute inset-y-0 right-3 flex items-center text-gray-500 text-xs md:text-sm">▾</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            
+                            <div id="group-dim-1">
+                                <label id="label-dim-1" class="block text-sm font-montserrat text-gray-700 mb-2">Length (m)</label>
+                                <input type="number" step="0.01" id="input-dim-1" placeholder="0.00"
+                                    class="w-full border border-gray-300 rounded-lg py-2.5 px-3 text-sm md:text-base font-montserrat text-gray-800 focus:outline-none focus:ring-2 focus:ring-custom-green focus:border-custom-green">
+                                
+                                <div id="udrain-size-wrapper" class="relative hidden">
+                                    <select id="input-udrain-size"
+                                        class="w-full border border-gray-300 rounded-lg py-2.5 px-3 pr-8 text-sm md:text-base font-montserrat text-gray-800 focus:outline-none focus:ring-2 focus:ring-custom-green focus:border-custom-green appearance-none bg-white">
+                                        <option value="300x300">300 x 300 mm</option>
+                                        <option value="450x450">450 x 450 mm</option>
+                                        <option value="600x600">600 x 600 mm</option>
+                                    </select>
+                                    <span class="pointer-events-none absolute inset-y-0 right-3 flex items-center text-gray-500 text-xs md:text-sm">▾</span>
+                                </div>
+                            </div>
+
+                            <div id="group-dim-2">
+                                <label id="label-dim-2" class="block text-sm font-montserrat text-gray-700 mb-2">Width (m)</label>
+                                <input type="number" step="0.01" id="input-dim-2" placeholder="0.00"
+                                    class="w-full border border-gray-300 rounded-lg py-2.5 px-3 text-sm md:text-base font-montserrat text-gray-800 focus:outline-none focus:ring-2 focus:ring-custom-green focus:border-custom-green">
+                                
+                                <div id="area-unit-wrapper" class="relative hidden">
+                                    <select id="input-area-unit"
+                                        class="w-full border border-gray-300 rounded-lg py-2.5 px-3 pr-8 text-sm md:text-base font-montserrat text-gray-800 focus:outline-none focus:ring-2 focus:ring-custom-green focus:border-custom-green appearance-none bg-white">
+                                        <option value="sqm">Square Meters (m²)</option>
+                                        <option value="sqft">Square Feet (ft²)</option>
+                                    </select>
+                                    <span class="pointer-events-none absolute inset-y-0 right-3 flex items-center text-gray-500 text-xs md:text-sm">▾</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label id="label-thickness" class="block text-sm font-montserrat text-gray-700 mb-2">Thickness (mm)</label>
+                                <div class="relative">
+                                    <input type="number" id="input-thickness" placeholder="mm"
+                                        class="w-full border border-gray-300 rounded-lg py-2.5 px-3 text-sm md:text-base font-montserrat text-gray-800 focus:outline-none focus:ring-2 focus:ring-custom-green focus:border-custom-green">
+                                    
+                                    <select id="select-thickness" class="hidden w-full border border-gray-300 rounded-lg py-2.5 px-3 pr-8 text-sm md:text-base font-montserrat text-gray-800 focus:outline-none focus:ring-2 focus:ring-custom-green focus:border-custom-green appearance-none bg-white">
+                                    </select>
+                                    <span id="arrow-thickness" class="hidden pointer-events-none absolute inset-y-0 right-3 flex items-center text-gray-500 text-xs md:text-sm">▾</span>
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="block text-sm font-montserrat text-gray-700 mb-2">Quantity (Nos)</label>
+                                <input type="number" id="input-quantity" placeholder="1"
                                     class="w-full border border-gray-300 rounded-lg py-2.5 px-3 text-sm md:text-base font-montserrat text-gray-800 focus:outline-none focus:ring-2 focus:ring-custom-green focus:border-custom-green">
                             </div>
                         </div>
 
-                        <div>
-                            <label class="block text-sm font-montserrat text-gray-700 mb-2">Thickness (in m)</label>
-                            <input type="text"
-                                class="w-full border border-gray-300 rounded-lg py-2.5 px-3 text-sm md:text-base font-montserrat text-gray-800 focus:outline-none focus:ring-2 focus:ring-custom-green focus:border-custom-green">
-                        </div>
-
-                        <!-- Buttons -->
                         <div class="flex flex-col sm:flex-row gap-4 mt-4">
-                            <button type="button"
-                                class="flex-1 bg-custom-green text-white font-montserrat font-semibold py-2.5 rounded-lg text-sm md:text-base">
+                            <button type="button" onclick="calculateImpact()"
+                                class="flex-1 bg-custom-green text-white font-montserrat font-semibold py-2.5 rounded-lg text-sm md:text-base hover:bg-green-800 transition-colors">
                                 Calculate
                             </button>
-                            <button type="button"
-                                class="flex-1 bg-gray-200 text-gray-800 font-montserrat font-semibold py-2.5 rounded-lg text-sm md:text-base">
+                            <button type="button" onclick="resetCalculator()"
+                                class="flex-1 bg-gray-200 text-gray-800 font-montserrat font-semibold py-2.5 rounded-lg text-sm md:text-base hover:bg-gray-300 transition-colors">
                                 Reset
                             </button>
                         </div>
                     </form>
                 </div>
 
-                <!-- Right: Summary Cards -->
                 <div class="w-full lg:w-1/2 flex flex-col">
                     <div class="grid grid-cols-1 gap-4 sm:gap-5">
-                        <div
-                            class="grid grid-cols-2 gap-2 bg-card-bg-green rounded-xl py-6 px-5 text-white font-montserrat text-2xl md:text-3xl" style="box-shadow:  6px 10px 3px rgba(0,0,0,0.05) inset;">
-                            <span class="font-semibold">CO2 saved</span>
-                            <span class="font-semibold text-right flex justify-center items-center">16.38 tonnes</span>
+                        <div class="grid grid-cols-2 gap-2 bg-card-bg-green rounded-xl py-6 px-5 text-white font-montserrat text-2xl md:text-3xl"
+                            style="box-shadow: 6px 10px 3px rgba(0,0,0,0.05) inset;">
+                            <span class="font-semibold text-lg md:text-xl self-center">CO2 saved</span>
+                            <span class="font-semibold text-right flex justify-end items-center"><span id="res-co2">0</span>&nbsp;<span class="text-sm md:text-lg self-end mb-1">tonnes</span></span>
                         </div>
-                        <div
-                            class="grid grid-cols-2 gap-2 bg-card-bg-green rounded-xl py-6 px-5 text-white font-montserrat text-2xl md:text-3xl" style="box-shadow:  6px 10px 3px rgba(0,0,0,0.05) inset;">
-                            <span class="font-semibold">Water saved</span>
-                            <span class="font-semibold text-right flex justify-center items-center">6,552 litres</span>
+                        <div class="grid grid-cols-2 gap-2 bg-card-bg-green rounded-xl py-6 px-5 text-white font-montserrat text-2xl md:text-3xl"
+                            style="box-shadow: 6px 10px 3px rgba(0,0,0,0.05) inset;">
+                            <span class="font-semibold text-lg md:text-xl self-center">Water saved</span>
+                            <span class="font-semibold text-right flex justify-end items-center"><span id="res-water">0</span>&nbsp;<span class="text-sm md:text-lg self-end mb-1">litres</span></span>
                         </div>
-                        <div
-                            class="grid grid-cols-2 gap-2 bg-card-bg-dark-green rounded-xl py-6 px-5 text-white font-montserrat text-2xl md:text-3xl flex justify-center" style="box-shadow:  6px 10px 3px rgba(0,0,0,0.05) inset;">
-                            <span class="font-semibold">Industrial waste used</span>
-                            <span class="font-semibold text-right flex justify-center items-center">19.11 tonnes</span>
+                        <div class="grid grid-cols-2 gap-2 bg-card-bg-dark-green rounded-xl py-6 px-5 text-white font-montserrat text-2xl md:text-3xl"
+                            style="box-shadow: 6px 10px 3px rgba(0,0,0,0.05) inset;">
+                            <span class="font-semibold text-lg md:text-xl self-center">Industrial waste used</span>
+                            <span class="font-semibold text-right flex justify-end items-center"><span id="res-waste">0</span>&nbsp;<span class="text-sm md:text-lg self-end mb-1">tonnes</span></span>
                         </div>
                     </div>
                 </div>
 
             </div>
 
-            <!-- Bottom savings bar (full width, at bottom) -->
-            <div
-                class="mt-4 bg-white/95 rounded-xl py-3 px-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 text-xs md:text-sm font-montserrat text-gray-800">
-                <div class="flex">
-                    <p class="text-md leading-relaxed">🌳 <span class="ml-5 md:ml-1 ">Equivalent to planting 780 trees per year.</span></p>
+            <div class="mt-4 bg-white/95 rounded-xl py-4 px-6 flex flex-col gap-4 text-sm md:text-base font-montserrat text-gray-800">
+                <div class="flex items-start gap-3">
+                    <span class="text-2xl">🌳</span> 
+                    <p class="leading-relaxed">Equivalent to planting <span id="res-trees" class="font-bold text-custom-green">0</span> trees per year.</p>
                 </div>
-                <div class="flex">
-                    <p class="text-md leading-relaxed">🚗💨 <span class="ml-1"> Comparable to eliminating monthly emissions of 91 cars.</span></p>
+                <div class="flex items-start gap-3">
+                    <span class="text-2xl">🚗</span> 
+                    <p class="leading-relaxed">Comparable to eliminating <span id="res-cars" class="font-bold text-custom-green">0</span> km of car travel.</p>
+                </div>
+                <div class="flex items-start gap-3">
+                    <span class="text-2xl">📱</span> 
+                    <p class="leading-relaxed">Equal to <span id="res-phones" class="font-bold text-custom-green">0</span> smartphone charges.</p>
+                </div>
+                <div class="flex items-start gap-3">
+                    <span class="text-2xl">💧</span> 
+                    <p class="leading-relaxed">Water for <span id="res-urban" class="font-bold text-custom-green">0</span> days (Urban) or <span id="res-rural" class="font-bold text-custom-green">0</span> days (Rural) households.</p>
                 </div>
             </div>
 
         </div>
     </div>
 </section>
+<script>
+    // --- 1. CONFIGURATION DATA (Frontend Version) ---
+    const CEMENT_KG_PER_M3 = {
+        "M7.5": 220, "M25": 320, "M30": 340, "M35": 380, "M40": 400
+    };
+
+    const DEFAULT_GRADE = {
+        "Solid Block": "M7.5", "Paver": "M35", "Kerbstone": "M25",
+        "Saucer Drain": "M25", "U Drain": "M30", "Precast Slab": "M30",
+        "Boundary Wall Panel": "M30", "Precast Road": "M40"
+    };
+
+    // Constants
+    const EF_CEMENT = 0.9;
+    const REDUCTION_FACTOR = 0.75; // 75% reduction
+    const WATER_PER_M2_CURING = 70;
+    const URBAN_HH_L_PER_DAY = 540;
+    const RURAL_HH_L_PER_DAY = 220;
+    const EF_CAR_KM = 0.18;
+    const EF_TREE_PER_YEAR = 22;
+    const EF_PHONE_CHARGE = 0.0082;
+
+    // UI Config for hiding/showing fields
+    const UI_CONFIG = {
+        "Solid Block": { type: "dims", l_label: "Length (m)", w_label: "Width (m)", t_label: "Height (mm)", t_options: null },
+        "Paver": { type: "area", t_label: "Thickness (mm)", t_options: [60, 80, 100] },
+        "Kerbstone": { type: "dims", l_label: "Length (m)", w_label: "Width (m)", t_label: "Thickness (mm)", t_options: null },
+        "Saucer Drain": { type: "dims", l_label: "Length (m)", w_label: "Width (m)", t_label: "Thickness (mm)", t_options: null },
+        "U Drain": { type: "udrain", t_label: "Wall Thickness (mm)", t_options: [100, 125, 150] },
+        "Precast Slab": { type: "dims", l_label: "Length (m)", w_label: "Width (m)", t_label: "Thickness (mm)", t_options: [100, 125, 150, 200] },
+        "Boundary Wall Panel": { type: "dims", l_label: "Length (m)", w_label: "Height (m)", t_label: "Thickness (mm)", t_options: [100, 125, 150] },
+        "Precast Road": { type: "area", t_label: "Thickness (mm)", t_options: [125, 150, 175, 200, 250] },
+    };
+
+    // --- 2. UPDATE UI FUNCTION ---
+    function updateFormFields() {
+        const product = document.getElementById('calc-product').value;
+        const config = UI_CONFIG[product] || UI_CONFIG["Solid Block"];
+        
+        // DOM Elements
+        const label1 = document.getElementById('label-dim-1');
+        const input1 = document.getElementById('input-dim-1');
+        const uDrainSelect = document.getElementById('udrain-size-wrapper');
+        
+        const label2 = document.getElementById('label-dim-2');
+        const input2 = document.getElementById('input-dim-2');
+        const unitSelect = document.getElementById('area-unit-wrapper');
+        
+        const labelThick = document.getElementById('label-thickness');
+        const inputThick = document.getElementById('input-thickness');
+        const selectThick = document.getElementById('select-thickness');
+        const arrowThick = document.getElementById('arrow-thickness');
+
+        // Reset display
+        input1.classList.remove('hidden');
+        uDrainSelect.classList.add('hidden');
+        input2.classList.remove('hidden');
+        unitSelect.classList.add('hidden');
+        inputThick.classList.remove('hidden');
+        selectThick.classList.add('hidden');
+        arrowThick.classList.add('hidden');
+
+        // Apply Logic
+        if (config.type === 'area') {
+            label1.textContent = "Area";
+            label2.textContent = "Unit";
+            input2.classList.add('hidden');
+            unitSelect.classList.remove('hidden');
+        } 
+        else if (config.type === 'udrain') {
+            label1.textContent = "Internal Size";
+            input1.classList.add('hidden');
+            uDrainSelect.classList.remove('hidden');
+            label2.textContent = ""; 
+            input2.classList.add('hidden');
+        } 
+        else {
+            label1.textContent = config.l_label;
+            label2.textContent = config.w_label;
+        }
+
+        // Thickness Logic
+        labelThick.textContent = config.t_label;
+        if (config.t_options) {
+            inputThick.classList.add('hidden');
+            selectThick.classList.remove('hidden');
+            arrowThick.classList.remove('hidden');
+            selectThick.innerHTML = "";
+            config.t_options.forEach(opt => {
+                const option = document.createElement("option");
+                option.value = opt;
+                option.text = opt + " mm";
+                selectThick.appendChild(option);
+            });
+        }
+    }
+
+    // --- 3. CALCULATION LOGIC ---
+    function calculateImpact() {
+        // Get Inputs
+        const product = document.getElementById('calc-product').value;
+        const gradeInput = document.getElementById('calc-grade').value;
+        const quantity = parseFloat(document.getElementById('input-quantity').value) || 0;
+        
+        // Resolve Grade
+        let grade = gradeInput;
+        if (grade === "Default" || !grade) {
+            grade = DEFAULT_GRADE[product] || "M30";
+        }
+
+        // Logic variables
+        let total_volume_m3 = 0.0;
+        let total_curing_area_m2 = 0.0;
+
+        // Extract Dimensions based on Product Type logic
+        
+        if (product === "Solid Block") {
+            const L = parseFloat(document.getElementById('input-dim-1').value) || 0;
+            const B = parseFloat(document.getElementById('input-dim-2').value) || 0;
+            const H_mm = parseFloat(document.getElementById('input-thickness').value) || 0;
+            const H = H_mm / 1000.0;
+
+            total_volume_m3 = (L * B * H) * quantity;
+            total_curing_area_m2 = (L * B) * quantity;
+        } 
+        else if (product === "Paver" || product === "Precast Road") {
+            const areaVal = parseFloat(document.getElementById('input-dim-1').value) || 0;
+            const unit = document.getElementById('input-area-unit').value;
+            const thickness_mm = parseFloat(document.getElementById('select-thickness').value) || 0;
+            
+            let area_m2 = (unit === "sqft") ? areaVal * 0.092903 : areaVal;
+            let thickness_m = thickness_mm / 1000.0;
+
+            total_volume_m3 = area_m2 * thickness_m;
+            total_curing_area_m2 = area_m2;
+        }
+        else if (product === "Kerbstone" || product === "Saucer Drain") {
+            const L = parseFloat(document.getElementById('input-dim-1').value) || 0;
+            const B = parseFloat(document.getElementById('input-dim-2').value) || 0;
+            const H_mm = parseFloat(document.getElementById('input-thickness').value) || 0;
+            const H = H_mm / 1000.0;
+
+            total_volume_m3 = (L * B * H) * quantity;
+            total_curing_area_m2 = (L * H) * quantity; // Front face
+        }
+        else if (product === "U Drain") {
+            const sizeStr = document.getElementById('input-udrain-size').value; // "300x300"
+            const parts = sizeStr.split('x');
+            const inner_w_mm = parseFloat(parts[0]);
+            const inner_h_mm = parseFloat(parts[1]);
+            const wall_mm = parseFloat(document.getElementById('select-thickness').value) || 0;
+            
+            const L_drain = 2.0; // Fixed
+            const inner_w_m = inner_w_mm / 1000.0;
+            const inner_h_m = inner_h_mm / 1000.0;
+            const t_m = wall_mm / 1000.0;
+
+            const outer_w_m = inner_w_m + (2 * t_m);
+            const outer_h_m = inner_h_m + t_m;
+
+            const outer_area = outer_w_m * outer_h_m;
+            const inner_area = inner_w_m * inner_h_m;
+            const section_area = outer_area - inner_area;
+
+            total_volume_m3 = (section_area * L_drain) * quantity;
+            total_curing_area_m2 = (inner_w_m * L_drain) * quantity;
+        }
+        else if (product === "Precast Slab" || product === "Boundary Wall Panel") {
+            const L = parseFloat(document.getElementById('input-dim-1').value) || 0;
+            const B = parseFloat(document.getElementById('input-dim-2').value) || 0; // or Height for Panel
+            const thick_mm = parseFloat(document.getElementById('select-thickness').value) || 0;
+            const thick_m = thick_mm / 1000.0;
+
+            total_volume_m3 = (L * B * thick_m) * quantity;
+            total_curing_area_m2 = (L * B) * quantity;
+        }
+
+        // --- MATHS ---
+        
+        // 1. Carbon
+        const cement_per_m3 = CEMENT_KG_PER_M3[grade] || 340;
+        const cement_mass_kg = total_volume_m3 * cement_per_m3;
+        const conventional_co2_kg = cement_mass_kg * EF_CEMENT;
+        const co2_saved_kg = conventional_co2_kg * REDUCTION_FACTOR;
+        const co2_saved_tonnes = co2_saved_kg / 1000.0;
+
+        // 2. Water
+        const water_saved_liters = total_curing_area_m2 * WATER_PER_M2_CURING;
+        const urban_days = water_saved_liters / URBAN_HH_L_PER_DAY;
+        const rural_days = water_saved_liters / RURAL_HH_L_PER_DAY;
+
+        // 3. Equivalents
+        const car_km = co2_saved_kg / EF_CAR_KM;
+        const trees = co2_saved_kg / EF_TREE_PER_YEAR;
+        const phones = co2_saved_kg / EF_PHONE_CHARGE;
+        const waste_tonnes = (cement_mass_kg * REDUCTION_FACTOR) / 1000.0; // Estimation
+
+        // --- UPDATE UI ---
+        document.getElementById('res-co2').innerText = co2_saved_tonnes.toFixed(2);
+        document.getElementById('res-water').innerText = Math.round(water_saved_liters);
+        document.getElementById('res-waste').innerText = waste_tonnes.toFixed(2);
+
+        document.getElementById('res-trees').innerText = Math.round(trees);
+        document.getElementById('res-cars').innerText = Math.round(car_km);
+        document.getElementById('res-phones').innerText = Math.round(phones);
+        document.getElementById('res-urban').innerText = urban_days.toFixed(1);
+        document.getElementById('res-rural').innerText = rural_days.toFixed(1);
+    }
+
+    function resetCalculator() {
+        document.getElementById('impact-calculator-form').reset();
+        updateFormFields(); // Reset logic
+        document.getElementById('res-co2').innerText = "0";
+        document.getElementById('res-water').innerText = "0";
+        document.getElementById('res-waste').innerText = "0";
+        document.getElementById('res-trees').innerText = "0";
+        document.getElementById('res-cars').innerText = "0";
+        document.getElementById('res-phones').innerText = "0";
+        document.getElementById('res-urban').innerText = "0";
+        document.getElementById('res-rural').innerText = "0";
+    }
+
+    // Initialize
+    document.addEventListener('DOMContentLoaded', updateFormFields);
+</script>
 
 {% endblock %}

@@ -1,7 +1,7 @@
 {% extends 'mainapp/navbar_footer.html' %}
 {% load static %}
 
-{% block title %}Technology & Products - EcoPath{% endblock %}
+{% block title %}Technology & Products - Ecopath{% endblock %}
 
 {% block extra_head %}
 <!-- GSAP -->
@@ -84,9 +84,11 @@
 
     /* Glass overlay applied when card is active */
     .glass-active {
-        background: rgba(255, 255, 255, 0.15); /* transparent white */
-  backdrop-filter: blur(8px);            /* glass blur */
-  -webkit-backdrop-filter: blur(8px);    
+        background: rgba(255, 255, 255, 0.15);
+        /* transparent white */
+        backdrop-filter: blur(8px);
+        /* glass blur */
+        -webkit-backdrop-filter: blur(8px);
     }
 </style>
 {% endblock %}
@@ -179,8 +181,9 @@
     <div class="container mx-auto">
         <div class="flex flex-col md:flex-row lg:mx-12 gap-8">
 
-            <div class="w-full md:w-1/2 flex justify-start">
-                <img src="{% static 'images/Eco Concrete.webp' %}" alt="Maintenance Services" class="w-full h-auto max-h-[80vh] object-contain">
+            <div class="w-full md:w-1/2 flex justify-center">
+                <img src="{% static 'images/EcoConcrete11.webp' %}" alt="Maintenance Services"
+                    class="h-auto max-h-[75vh] object-contain rounded-tr-3xl rounded-bl-3xl">
             </div>
 
             <div class="w-full md:w-1/2 py-6 items-start">
@@ -188,7 +191,10 @@
                     Eco Concrete
                 </h2>
                 <p class="font-montserrat text-lg text-gray-700 leading-relaxed">
-                    Eco-Concrete is a geopolymer concrete solution that fully eliminates the use of cement. We use GGBS (Ground Granulated Blast-furnace Slag) — an industrial byproduct from steel plants. GGBS helps us build eco-friendly, cost-effective, and durable precast products. GGBS is mixed with our proprietary binders to replicate the property of cement.
+                    Eco-Concrete is a geopolymer concrete solution that fully eliminates the use of cement. We use GGBS
+                    (Ground Granulated Blast-furnace Slag) — an industrial byproduct from steel plants. GGBS helps us
+                    build eco-friendly, cost-effective, and durable precast products. GGBS is mixed with our proprietary
+                    binders to replicate the property of cement.
                 </p>
                 <a href="" class="font-montserrat text-[#0C96EC] text-xl mt-6 inline-block">
                     Technical Details <span>&rarr;</span>
@@ -208,10 +214,12 @@
     class="relative w-full mx-auto px-4 md:px-12 lg:px-24 h-[75vh] md:h-[90vh] flex flex-col justify-between">
 
     <!-- CARD 1: Fly Ash -->
-    <div class="card group font-montserrat text-lg relative overflow-hidden cursor-pointer shadow-xl rounded-sm self-start" data-index="0">
+    <div class="card group font-montserrat text-lg relative overflow-hidden cursor-pointer shadow-xl rounded-sm self-start"
+        data-index="0">
         <div class="absolute inset-0 w-full h-full">
             <img src="{% static 'images/Fly ash expanded.webp' %}"
-                class="card-bg w-full h-full object-cover transition-all duration-500 rounded-2xl brightness-75 group-hover:brightness-50" alt="Fly Ash">
+                class="card-bg w-full h-full object-cover transition-all duration-500 rounded-2xl brightness-75 group-hover:brightness-50"
+                alt="Fly Ash">
         </div>
 
         <div class="relative z-10 h-full w-full">
@@ -247,7 +255,8 @@
     </div>
 
     <!-- CARD 2: Steel Slag -->
-    <div class="card group font-montserrat relative overflow-hidden cursor-pointer shadow-xl rounded-sm self-center" data-index="1">
+    <div class="card group font-montserrat relative overflow-hidden cursor-pointer shadow-xl rounded-sm self-center"
+        data-index="1">
         <div class="absolute inset-0 w-full h-full">
             <img src="{% static 'images/Steel slag frame.webp' %}"
                 class="card-bg w-full h-full object-cover brightness-75 group-hover:brightness-50 transition-all duration-500 rounded-2xl"
@@ -284,7 +293,8 @@
     </div>
 
     <!-- CARD 3: Chemicals -->
-    <div class="card group font-montserrat relative overflow-hidden cursor-pointer shadow-xl rounded-sm self-end" data-index="2">
+    <div class="card group font-montserrat relative overflow-hidden cursor-pointer shadow-xl rounded-sm self-end"
+        data-index="2">
         <div class="absolute inset-0 w-full h-full">
             <img src="{% static 'images/Chemicals frame.webp' %}"
                 class="card-bg w-full h-full object-cover brightness-75 group-hover:brightness-50 transition-all duration-500 rounded-2xl bg-black/90"
@@ -325,7 +335,8 @@
 <!-- Product Ecosystem Section -->
 <section class="overflow-hidden pt-8 pb-4 md:pt-24 md:pt-16 md:pb-12">
     <!-- Master Heading -->
-    <h2 class="text-3xl md:text-5xl tracking-tight font-product-sans md:text-center font-bold text-custom-green px-4 py-8">
+    <h2
+        class="text-3xl md:text-5xl tracking-tight font-product-sans md:text-center font-bold text-custom-green px-4 py-8">
         The Ecopath Product Ecosystem
     </h2>
 
@@ -415,12 +426,14 @@
         <!-- Text Side (Right on Desktop) -->
         <div class="w-full md:w-1/2 px-6 md:px-12 lg:pl-24 lg:pr-32">
             <h3 class="text-3xl md:text-[40px] font-product-sans font-bold text-black mb-6">
-                Pavers
+                Kerbstones
             </h3>
             <p class="font-montserrat text-lg text-gray-700 mb-10 leading-relaxed">
-                Available in a wide range of shapes, sizes, and finishes, our pavers are ideal for roads, driveways,
-                sidewalks, and landscapes. Both thickness and color can be customized to meet specific project
-                requirements, ensuring flexibility in design and application.
+                Our Kerbstones come in a variety of different shapes beyond the standard straight rectangle, to
+                accommodate various construction and design requirements, such as radii for curves, quadrants, and
+                special profiles.
+                Our Kerbstones are available in three standard sizes: 600×300 mm, 600×450 mm and 1000×300 mm.
+                Thickness availability: 100 mm, 125 mm and 150 mm.
             </p>
 
             <!-- Small Boxes Grid -->
@@ -673,7 +686,8 @@
     <div class="mb-8">
         <h2 class="text-3xl md:text-5xl font-product-sans font-bold text-custom-green py-8">Innovation Engineered:
             Performance, Parity, & Planet.</h2>
-        <p class="font-montserrat text-lg text-gray-700 w-3/4">Creating a product as ambitious as Eco-Concrete required us
+        <p class="font-montserrat text-lg text-gray-700 w-3/4">Creating a product as ambitious as Eco-Concrete required
+            us
             to invest heavily in research, field testing, and chemical engineering.</p>
     </div>
 
@@ -684,7 +698,7 @@
         <div class="card-item group relative w-full md:w-1/3 h-[20rem]" data-row="top">
             <img src="{% static 'images/Material Optimization.webp' %}" alt="Abstract 1"
                 class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-            
+
 
             <!-- Content Wrapper: Positioned Top-Left, but animated -->
             <div class="absolute top-0 left-0 w-full h-full p-8 text-white flex flex-col card-text-wrapper">
@@ -695,7 +709,7 @@
                     <li>Designing blends tailored to each location’s waste.</li>
                 </ul>
                 <!-- Mobile Expand Icon -->
-                
+
             </div>
         </div>
 
@@ -703,7 +717,7 @@
         <div class="card-item group relative w-full md:w-1/3 h-[20rem]" data-row="top">
             <img src="{% static 'images/Curing Innovation.webp' %}" alt="Abstract 2"
                 class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-            
+
 
             <div class="absolute top-0 left-0 w-full h-full p-8 text-white flex flex-col card-text-wrapper">
                 <h3 class="text-2xl font-semibold mb-4 card-title origin-left font-product-sans text-black">Curing
@@ -712,7 +726,7 @@
                     <li>Developing ambient temperature curing. </li>
                     <li>Avoiding energy-intensive autoclaves or ovens.</li>
                 </ul>
-                
+
             </div>
         </div>
 
@@ -720,7 +734,7 @@
         <div class="card-item group relative w-full md:w-1/3 h-[20rem]" data-row="top">
             <img src="{% static 'images/Performance Engg.webp' %}" alt="Abstract 3"
                 class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-            
+
 
             <div class="absolute top-0 left-0 w-full h-full p-8 text-white flex flex-col card-text-wrapper">
                 <h3 class="text-2xl font-semibold mb-4 card-title origin-left font-product-sans text-black">
@@ -729,7 +743,7 @@
                     <li> Achieving high early and long-term strength </li>
                     <li>Matching or exceeding IS code standards.</li>
                 </ul>
-                
+
             </div>
         </div>
 
@@ -742,7 +756,7 @@
         <div class="card-item group relative w-full md:w-1/2 h-[25rem]" data-row="bottom">
             <img src="{% static 'images/Cost Parity.webp' %}" alt="Abstract 4"
                 class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-            
+
 
             <div class="absolute top-0 left-0 w-full h-full p-8 text-white flex flex-col card-text-wrapper">
                 <h3 class="text-2xl font-semibold mb-4 card-title origin-left font-product-sans text-black">Cost
@@ -751,7 +765,7 @@
                     <li>Iterating formulas to match traditional concrete’s cost per cubic meter.   </li>
                     <li>Adapting manufacturing to existing batching plants without retrofitting.</li>
                 </ul>
-                
+
             </div>
         </div>
 
@@ -759,7 +773,7 @@
         <div class="card-item group relative w-full md:w-1/2 h-[25rem]" data-row="bottom">
             <img src="{% static 'images/Testing Parameters.webp' %}" alt="Abstract 5"
                 class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-            
+
 
             <div class="absolute top-0 left-0 w-full h-full p-8 text-white flex flex-col card-text-wrapper">
                 <h3 class="text-2xl font-semibold mb-4 card-title origin-left font-product-sans text-black">Testing
@@ -768,7 +782,7 @@
                     <li>All our products are tested for compressive strength, abrasion resistance, water absorption,
                         fire and thermal resistance.</li>
                 </ul>
-                
+
             </div>
         </div>
 
@@ -894,48 +908,48 @@
         // --- MOBILE INTERACTION FUNCTIONS ---
 
         function handleMobileClick(card) {
-                const list = card.querySelector('.card-list');
-                const hint = card.querySelector('.mobile-hint');
-                const wrapper = card.querySelector('.card-text-wrapper');
+            const list = card.querySelector('.card-list');
+            const hint = card.querySelector('.mobile-hint');
+            const wrapper = card.querySelector('.card-text-wrapper');
 
-                const isClosed = gsap.getProperty(list, "opacity") === 0 || gsap.getProperty(list, "opacity") === '0';
+            const isClosed = gsap.getProperty(list, "opacity") === 0 || gsap.getProperty(list, "opacity") === '0';
 
-                // Close siblings and remove their glass effect, reset their wrapper positions
-                allCards.forEach(c => {
-                    if (c !== card) {
-                        const l = c.querySelector('.card-list');
-                        const h = c.querySelector('.mobile-hint');
-                        const w = c.querySelector('.card-text-wrapper');
-                        gsap.to(l, { height: 0, opacity: 0, duration: 0.3 });
-                        gsap.to(h, { opacity: 1, duration: 0.3 });
-                        if (w) {
-                            w.classList.remove('glass-active');
-                            const target = c.defaultY || 0;
-                            gsap.to(w, { y: target, duration: 0.3, ease: 'power2.out' });
-                        }
-                    }
-                });
-
-                if (isClosed) {
-                    // Open this card: ensure height is auto then animate in and move wrapper up
-                    gsap.set(list, { height: "auto" });
-                    gsap.from(list, { height: 0, duration: 0.3 });
-                    gsap.to(list, { opacity: 1, y: 0, duration: 0.3 });
-                    gsap.to(hint, { opacity: 0, duration: 0.2 });
-                    if (wrapper) {
-                        wrapper.classList.add('glass-active');
-                        gsap.to(wrapper, { y: 0, duration: 0.3, ease: 'power2.out' });
-                    }
-                } else {
-                    // Close this card: move wrapper back to resting position
-                    gsap.to(list, { height: 0, opacity: 0, duration: 0.3 });
-                    gsap.to(hint, { opacity: 1, duration: 0.3 });
-                    if (wrapper) {
-                        wrapper.classList.remove('glass-active');
-                        const target = card.defaultY || 0;
-                        gsap.to(wrapper, { y: target, duration: 0.3, ease: 'power2.out' });
+            // Close siblings and remove their glass effect, reset their wrapper positions
+            allCards.forEach(c => {
+                if (c !== card) {
+                    const l = c.querySelector('.card-list');
+                    const h = c.querySelector('.mobile-hint');
+                    const w = c.querySelector('.card-text-wrapper');
+                    gsap.to(l, { height: 0, opacity: 0, duration: 0.3 });
+                    gsap.to(h, { opacity: 1, duration: 0.3 });
+                    if (w) {
+                        w.classList.remove('glass-active');
+                        const target = c.defaultY || 0;
+                        gsap.to(w, { y: target, duration: 0.3, ease: 'power2.out' });
                     }
                 }
+            });
+
+            if (isClosed) {
+                // Open this card: ensure height is auto then animate in and move wrapper up
+                gsap.set(list, { height: "auto" });
+                gsap.from(list, { height: 0, duration: 0.3 });
+                gsap.to(list, { opacity: 1, y: 0, duration: 0.3 });
+                gsap.to(hint, { opacity: 0, duration: 0.2 });
+                if (wrapper) {
+                    wrapper.classList.add('glass-active');
+                    gsap.to(wrapper, { y: 0, duration: 0.3, ease: 'power2.out' });
+                }
+            } else {
+                // Close this card: move wrapper back to resting position
+                gsap.to(list, { height: 0, opacity: 0, duration: 0.3 });
+                gsap.to(hint, { opacity: 1, duration: 0.3 });
+                if (wrapper) {
+                    wrapper.classList.remove('glass-active');
+                    const target = card.defaultY || 0;
+                    gsap.to(wrapper, { y: target, duration: 0.3, ease: 'power2.out' });
+                }
+            }
         }
 
         // --- INITIALIZATION & RESIZE ---
@@ -959,7 +973,7 @@
 
                     // Calculate and set resting position for mobile as well.
                     // Delay slightly to allow images/fonts to load so measurements are accurate.
-                        setTimeout(() => {
+                    setTimeout(() => {
                         setAndStoreInitialTextPositions(card);
                         gsap.set(wrapper, { y: card.defaultY || 0 });
                     }, 120);
