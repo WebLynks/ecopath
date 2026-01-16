@@ -183,7 +183,7 @@
 
             <div class="w-full md:w-1/2 flex justify-center">
                 <img src="{% static 'images/EcoConcrete11.webp' %}" alt="Maintenance Services"
-                    class="h-auto max-h-[75vh] object-contain rounded-tr-3xl rounded-bl-3xl">
+                    class="h-auto max-h-[75vh] object-contain rounded-tr-[50px] rounded-bl-[50px]">
             </div>
 
             <div class="w-full md:w-1/2 py-6 items-start">
@@ -217,8 +217,8 @@
     <div class="card group font-montserrat text-lg relative overflow-hidden cursor-pointer shadow-xl rounded-sm self-start"
         data-index="0">
         <div class="absolute inset-0 w-full h-full">
-            <img src="{% static 'images/Fly ash expanded.webp' %}"
-                class="card-bg w-full h-full object-cover transition-all duration-500 rounded-2xl brightness-75 group-hover:brightness-50"
+            <img src="{% static 'images/Ecopath_FlyAsh.webp' %}"
+                class="card-bg w-full h-full object-cover brightness-75 group-hover:brightness-[0.35] transition-all duration-500 rounded-2xl black/60"
                 alt="Fly Ash">
         </div>
 
@@ -258,8 +258,8 @@
     <div class="card group font-montserrat relative overflow-hidden cursor-pointer shadow-xl rounded-sm self-center"
         data-index="1">
         <div class="absolute inset-0 w-full h-full">
-            <img src="{% static 'images/Steel slag frame.webp' %}"
-                class="card-bg w-full h-full object-cover brightness-75 group-hover:brightness-50 transition-all duration-500 rounded-2xl"
+            <img src="{% static 'images/Ecopath_SteelSlag.webp' %}"
+                class="card-bg w-full h-full object-cover brightness-50 group-hover:brightness-[0.35] transition-all duration-500 rounded-2xl black/60"
                 alt="Steel Slag">
         </div>
 
@@ -296,8 +296,8 @@
     <div class="card group font-montserrat relative overflow-hidden cursor-pointer shadow-xl rounded-sm self-end"
         data-index="2">
         <div class="absolute inset-0 w-full h-full">
-            <img src="{% static 'images/Chemicals frame.webp' %}"
-                class="card-bg w-full h-full object-cover brightness-75 group-hover:brightness-50 transition-all duration-500 rounded-2xl bg-black/90"
+            <img src="{% static 'images/Ecopath_Chemicals.webp' %}"
+                class="card-bg w-full h-full object-cover brightness-50 group-hover:brightness-[0.35] transition-all duration-500 rounded-2xl bg-black/60"
                 alt="Chemicals">
         </div>
 
@@ -345,7 +345,7 @@
 
         <!-- Image Side (Right on Desktop) -->
         <div class="w-full md:w-1/2">
-            <img src="{% static 'images/Pavers image.webp' %}" alt="Pavers Main"
+            <img src="{% static 'images/Ecopath_Pavers_Image.webp' %}" alt="Pavers Main"
                 class="w-full h-[20rem] md:h-[30rem] lg:h-[75vh] ml-4 object-cover rounded-l-[1rem] md:rounded-l-[1rem] shadow-lg">
         </div>
 
@@ -366,7 +366,8 @@
                 <div class="flex flex-col items-center">
                     <div
                         class="w-20 h-20 md:w-24 md:h-24 bg-gray-200 shadow-[0_10px_20px_rgba(0,0,0,0.25)] rounded-md overflow-hidden transition-transform hover:scale-105">
-                        <img src="https://placehold.co/150x150" alt="Square" class="w-full h-full object-cover">
+                        <img src="{% static 'images/Ecopath_Square_Pavers.webp' %}" alt="Square"
+                            class="w-full h-full object-cover">
                     </div>
                     <span class="font-montserrat font-bold text-sm md:text-base mt-4 text-center">Square</span>
                 </div>
@@ -374,7 +375,8 @@
                 <div class="flex flex-col items-center">
                     <div
                         class="w-20 h-20 md:w-24 md:h-24 bg-gray-200 shadow-[0_10px_20px_rgba(0,0,0,0.25)] rounded-md overflow-hidden transition-transform hover:scale-105">
-                        <img src="https://placehold.co/150x150" alt="I Shape" class="w-full h-full object-cover">
+                        <img src="{% static 'images/Ecopath_IShape_Pavers.webp' %}" alt="I Shape"
+                            class="w-full h-full object-cover">
                     </div>
                     <span class="font-montserrat font-bold text-sm md:text-base mt-4 text-center">I Shape</span>
                 </div>
@@ -382,7 +384,8 @@
                 <div class="flex flex-col items-center">
                     <div
                         class="w-20 h-20 md:w-24 md:h-24 bg-gray-200 shadow-[0_10px_20px_rgba(0,0,0,0.25)] rounded-md overflow-hidden transition-transform hover:scale-105">
-                        <img src="https://placehold.co/150x150" alt="Zig Zag" class="w-full h-full object-cover">
+                        <img src="{% static 'images/Ecopath_ZigZag_Pavers.webp' %}" alt="Zig Zag"
+                            class="w-full h-full object-cover">
                     </div>
                     <span class="font-montserrat font-bold text-sm md:text-base mt-4 text-center">Zig Zag</span>
                 </div>
@@ -390,7 +393,8 @@
                 <div class="flex flex-col items-center">
                     <div
                         class="w-20 h-20 md:w-24 md:h-24 bg-gray-200 shadow-[0_10px_20px_rgba(0,0,0,0.25)] rounded-md overflow-hidden transition-transform hover:scale-105">
-                        <img src="https://placehold.co/150x150" alt="Rectangle" class="w-full h-full object-cover">
+                        <img src="{% static 'images/Ecopath_Rectangle_Pavers.webp' %}" alt="Rectangle"
+                            class="w-full h-full object-cover">
                     </div>
                     <span class="font-montserrat font-bold text-sm md:text-base mt-4 text-center">Rectangle</span>
                 </div>
@@ -398,7 +402,8 @@
                 <div class="flex flex-col items-center">
                     <div
                         class="w-20 h-20 md:w-24 md:h-24 bg-gray-200 shadow-[0_10px_20px_rgba(0,0,0,0.25)] rounded-md overflow-hidden transition-transform hover:scale-105">
-                        <img src="https://placehold.co/150x150" alt="Grass" class="w-full h-full object-cover">
+                        <img src="{% static 'images/Ecopath_Grass_Pavers.webp' %}" alt="Grass"
+                            class="w-full h-full object-cover">
                     </div>
                     <span class="font-montserrat font-bold text-sm md:text-base mt-4 text-center">Grass</span>
                 </div>
@@ -406,7 +411,8 @@
                 <div class="flex flex-col items-center">
                     <div
                         class="w-20 h-20 md:w-24 md:h-24 bg-gray-200 shadow-[0_10px_20px_rgba(0,0,0,0.25)] rounded-md overflow-hidden transition-transform hover:scale-105">
-                        <img src="https://placehold.co/150x150" alt="Cobble" class="w-full h-full object-cover">
+                        <img src="{% static 'images/Ecopath_Cobble_Pavers.webp' %}" alt="Cobble"
+                            class="w-full h-full object-cover">
                     </div>
                     <span class="font-montserrat font-bold text-sm md:text-base mt-4 text-center">Cobble</span>
                 </div>
@@ -442,49 +448,21 @@
                 <div class="flex flex-col items-center">
                     <div
                         class="w-20 h-20 md:w-24 md:h-24 bg-gray-200 shadow-[0_10px_20px_rgba(0,0,0,0.25)] rounded-md overflow-hidden transition-transform hover:scale-105">
-                        <img src="https://placehold.co/150x150" alt="Square" class="w-full h-full object-cover">
+                        <img src="{% static 'images/Ecopath_FullBatterKerbstone.webp' %}" alt="Square"
+                            class="w-full h-full object-cover">
                     </div>
-                    <span class="font-montserrat font-bold text-sm md:text-base mt-4 text-center">Square</span>
+                    <span class="font-montserrat font-bold text-sm md:text-base mt-4 text-center">Full Batter
+                        Kerbstone</span>
                 </div>
                 <!-- Item 2 -->
                 <div class="flex flex-col items-center">
                     <div
                         class="w-20 h-20 md:w-24 md:h-24 bg-gray-200 shadow-[0_10px_20px_rgba(0,0,0,0.25)] rounded-md overflow-hidden transition-transform hover:scale-105">
-                        <img src="https://placehold.co/150x150" alt="I Shape" class="w-full h-full object-cover">
+                        <img src="{% static 'images/Ecopath_HalfBatterKerbstone.webp' %}" alt="I Shape"
+                            class="w-full h-full object-cover">
                     </div>
-                    <span class="font-montserrat font-bold text-sm md:text-base mt-4 text-center">I Shape</span>
-                </div>
-                <!-- Item 3 -->
-                <div class="flex flex-col items-center">
-                    <div
-                        class="w-20 h-20 md:w-24 md:h-24 bg-gray-200 shadow-[0_10px_20px_rgba(0,0,0,0.25)] rounded-md overflow-hidden transition-transform hover:scale-105">
-                        <img src="https://placehold.co/150x150" alt="Zig Zag" class="w-full h-full object-cover">
-                    </div>
-                    <span class="font-montserrat font-bold text-sm md:text-base mt-4 text-center">Zig Zag</span>
-                </div>
-                <!-- Item 4 -->
-                <div class="flex flex-col items-center">
-                    <div
-                        class="w-20 h-20 md:w-24 md:h-24 bg-gray-200 shadow-[0_10px_20px_rgba(0,0,0,0.25)] rounded-md overflow-hidden transition-transform hover:scale-105">
-                        <img src="https://placehold.co/150x150" alt="Rectangle" class="w-full h-full object-cover">
-                    </div>
-                    <span class="font-montserrat font-bold text-sm md:text-base mt-4 text-center">Rectangle</span>
-                </div>
-                <!-- Item 5 -->
-                <div class="flex flex-col items-center">
-                    <div
-                        class="w-20 h-20 md:w-24 md:h-24 bg-gray-200 shadow-[0_10px_20px_rgba(0,0,0,0.25)] rounded-md overflow-hidden transition-transform hover:scale-105">
-                        <img src="https://placehold.co/150x150" alt="Grass" class="w-full h-full object-cover">
-                    </div>
-                    <span class="font-montserrat font-bold text-sm md:text-base mt-4 text-center">Grass</span>
-                </div>
-                <!-- Item 6 -->
-                <div class="flex flex-col items-center">
-                    <div
-                        class="w-20 h-20 md:w-24 md:h-24 bg-gray-200 shadow-[0_10px_20px_rgba(0,0,0,0.25)] rounded-md overflow-hidden transition-transform hover:scale-105">
-                        <img src="https://placehold.co/150x150" alt="Cobble" class="w-full h-full object-cover">
-                    </div>
-                    <span class="font-montserrat font-bold text-sm md:text-base mt-4 text-center">Cobble</span>
+                    <span class="font-montserrat font-bold text-sm md:text-base mt-4 text-center">Half Batter
+                        Kerbstone</span>
                 </div>
             </div>
         </div>
@@ -494,7 +472,7 @@
 
         <!-- Image Side (Right on Desktop) -->
         <div class="w-full md:w-1/2">
-            <img src="{% static 'images/ecopath.webp' %}" alt="RMC"
+            <img src="{% static 'images/Ecopath_Truck.webp' %}" alt="RMC"
                 class="w-full h-[20rem] md:h-[30rem] lg:h-[75vh] ml-4 object-cover rounded-l-[1rem] md:rounded-l-[1rem] shadow-lg">
         </div>
 
@@ -525,13 +503,19 @@
         <!-- Text Side (Left on Desktop) -->
         <div class="w-full md:w-1/2 px-6 md:px-12 lg:pr-24 lg:pl-32">
             <h3 class="text-3xl md:text-[40px] font-product-sans font-bold text-black mb-6">
-                Precast Roads
+                Bricks & Blocks
             </h3>
             <p class="font-montserrat text-lg text-gray-700 mb-10 leading-relaxed">
-                Our precast road panels are a breakthrough in speed, quality, and design. Each panel is
-                custom-designed, allowing decorative finishes—like cobblestones or texture patterns—to be cast
-                directly into the slab.<br><br> These roads are installed directly on the ground, enabling immediate
-                use and drastically reducing construction time.
+                Solid and hollow blocks are widely used as durable load-bearing walling materials. These blocks provide
+                strength, stability, and faster construction compared to conventional bricks.
+                <br>
+                Our Blocks are available in three standard sizes:
+                <br>
+                <b>400 × 200 × 200 mm,</b>
+                <br>
+                <b>400 × 200 × 150 mm</b>
+                <br>
+                <b>400 × 200 × 100 mm.</b>
             </p>
 
         </div>
@@ -696,7 +680,7 @@
 
         <!-- Card 1 -->
         <div class="card-item group relative w-full md:w-1/3 h-[20rem]" data-row="top">
-            <img src="{% static 'images/Material Optimization.webp' %}" alt="Abstract 1"
+            <img src="{% static 'images/Ecopath_MaterialOptimization.webp' %}" alt="Abstract 1"
                 class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
 
 
@@ -715,7 +699,7 @@
 
         <!-- Card 2 -->
         <div class="card-item group relative w-full md:w-1/3 h-[20rem]" data-row="top">
-            <img src="{% static 'images/Curing Innovation.webp' %}" alt="Abstract 2"
+            <img src="{% static 'images/Ecopath_CuringInnovation.webp' %}" alt="Abstract 2"
                 class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
 
 
@@ -732,7 +716,7 @@
 
         <!-- Card 3 -->
         <div class="card-item group relative w-full md:w-1/3 h-[20rem]" data-row="top">
-            <img src="{% static 'images/Performance Engg.webp' %}" alt="Abstract 3"
+            <img src="{% static 'images/Ecopath_PerformanceEngg.webp' %}" alt="Abstract 3"
                 class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
 
 
@@ -754,7 +738,7 @@
 
         <!-- Card 4 -->
         <div class="card-item group relative w-full md:w-1/2 h-[25rem]" data-row="bottom">
-            <img src="{% static 'images/Cost Parity.webp' %}" alt="Abstract 4"
+            <img src="{% static 'images/Ecopath_CostParity.webp' %}" alt="Abstract 4"
                 class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
 
 
@@ -771,7 +755,7 @@
 
         <!-- Card 5 -->
         <div class="card-item group relative w-full md:w-1/2 h-[25rem]" data-row="bottom">
-            <img src="{% static 'images/Testing Parameters.webp' %}" alt="Abstract 5"
+            <img src="{% static 'images/Ecopath_TestingParameters.webp' %}" alt="Abstract 5"
                 class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
 
 

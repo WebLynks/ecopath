@@ -36,7 +36,8 @@
             SUSTAINABILITY
         </h1>
         <p class="text-4xl md:text-6xl font-playfair-display max-w-4xl leading-tight">
-            We’re rebuilding the world without cement. Because the future of infrastructure shouldn’t come at the cost of the planet.
+            We’re rebuilding the world without cement. Because the future of infrastructure shouldn’t come at the cost
+            of the planet.
         </p>
     </div>
 </section>
@@ -63,9 +64,9 @@
             </div>
 
             <!-- Image Column -->
-            <div class="w-full md:w-1/2 flex justify-end">
-                <img src="{% static 'images/Cement issue image(2).png' %}" alt="Maintenance Services"
-                    class="w-full h-auto max-h-[80vh] object-contain">
+            <div class="w-full md:w-1/2 flex justify-center">
+                <img src="{% static 'images/Ecopath_PrecaseConcreteRoads.webp' %}" alt="Precast Concrete Roads"
+                    class="w-full max-w-[450px] h-[600px] object-cover rounded-tl-[50px] rounded-br-[50px]">
             </div>
         </div>
     </div>
@@ -138,10 +139,12 @@
         <div class="w-full md:w-6/12 lg:w-7/12">
             <div class="flex justify-end mb-4 me-12">
                 <div class="flex items-center gap-8">
-                    <button id="sustainability-prev" class="text-4xl md:text-6xl text-black text-custom-green transition-colors">
+                    <button id="sustainability-prev"
+                        class="text-4xl md:text-6xl text-black text-custom-green transition-colors">
                         &#8249;
                     </button>
-                    <button id="sustainability-next" class="text-4xl md:text-6xl text-black text-custom-green transition-colors">
+                    <button id="sustainability-next"
+                        class="text-4xl md:text-6xl text-black text-custom-green transition-colors">
                         &#8250;
                     </button>
                 </div>
@@ -151,22 +154,19 @@
                     <div class="basis-[80%] flex-shrink-0 carousel-slide relative">
                         <img src="{% static 'images/Sustainability images 1.webp' %}" alt="Sustainability slide 1"
                             class="w-full h-full object-cover rounded-lg">
-                        <div
-                            class="absolute inset-0 bg-black/40 rounded-lg opacity-0 pointer-events-none peek-overlay">
+                        <div class="absolute inset-0 bg-black/40 rounded-lg opacity-0 pointer-events-none peek-overlay">
                         </div>
                     </div>
                     <div class="basis-[80%] flex-shrink-0 carousel-slide relative">
                         <img src="{% static 'images/Sustainability images 2.webp' %}" alt="Sustainability slide 2"
                             class="w-full h-full object-cover rounded-lg">
-                        <div
-                            class="absolute inset-0 bg-black/40 rounded-lg opacity-0 pointer-events-none peek-overlay">
+                        <div class="absolute inset-0 bg-black/40 rounded-lg opacity-0 pointer-events-none peek-overlay">
                         </div>
                     </div>
                     <div class="basis-[80%] flex-shrink-0 carousel-slide relative">
                         <img src="{% static 'images/Sustainability images 3.webp' %}" alt="Sustainability slide 3"
                             class="w-full h-full object-cover rounded-lg">
-                        <div
-                            class="absolute inset-0 bg-black/40 rounded-lg opacity-0 pointer-events-none peek-overlay">
+                        <div class="absolute inset-0 bg-black/40 rounded-lg opacity-0 pointer-events-none peek-overlay">
                         </div>
                     </div>
                 </div>
@@ -456,9 +456,9 @@
     });
 </script>
 
-<!-- Measure Your Impact Section -->
-<section class="py-20 px-4 sm:px-6 lg:px-8">
-    <div class="max-w-6xl mx-auto">
+<!--Calculator-->
+<section class="py-16 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto">
         <div class="rounded-lg shadow-lg px-6 sm:px-10 lg:px-14 py-10 sm:py-12 lg:py-14 flex flex-col gap-8 lg:gap-10"
             style="background-image: url('{% static 'images/About timeline background.webp' %}'); background-size: cover; background-position: center;">
 
@@ -476,10 +476,11 @@
 
                 <div class="w-full lg:w-1/2">
                     <form id="impact-calculator-form" class="space-y-6" onsubmit="return false;">
-                        
+
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                             <div>
-                                <label class="block text-sm font-montserrat text-gray-700 mb-2">Product</label>
+                                <label class="block text-sm font-montserrat text-gray-700 mb-2">Product <span
+                                        class="text-red-500">*</span></label>
                                 <div class="relative">
                                     <select id="calc-product" onchange="updateFormFields()"
                                         class="w-full border border-gray-300 rounded-lg py-2.5 px-3 pr-8 text-sm md:text-base font-montserrat text-gray-800 focus:outline-none focus:ring-2 focus:ring-custom-green focus:border-custom-green appearance-none bg-white">
@@ -492,10 +493,11 @@
                                         <option value="Boundary Wall Panel">Boundary Wall Panel</option>
                                         <option value="Precast Road">Precast Road</option>
                                     </select>
-                                    <span class="pointer-events-none absolute inset-y-0 right-3 flex items-center text-gray-500 text-xs md:text-sm">▾</span>
+                                    <span
+                                        class="pointer-events-none absolute inset-y-0 right-3 flex items-center text-gray-500 text-xs md:text-sm">▾</span>
                                 </div>
                             </div>
-                            
+
                             <div>
                                 <label class="block text-sm font-montserrat text-gray-700 mb-2">Grade (Optional)</label>
                                 <div class="relative">
@@ -508,18 +510,20 @@
                                         <option value="M35">M35</option>
                                         <option value="M40">M40</option>
                                     </select>
-                                    <span class="pointer-events-none absolute inset-y-0 right-3 flex items-center text-gray-500 text-xs md:text-sm">▾</span>
+                                    <span
+                                        class="pointer-events-none absolute inset-y-0 right-3 flex items-center text-gray-500 text-xs md:text-sm">▾</span>
                                 </div>
                             </div>
                         </div>
 
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                            
+
                             <div id="group-dim-1">
-                                <label id="label-dim-1" class="block text-sm font-montserrat text-gray-700 mb-2">Length (m)</label>
-                                <input type="number" step="0.01" id="input-dim-1" placeholder="0.00"
+                                <label id="label-dim-1" class="block text-sm font-montserrat text-gray-700 mb-2">Length
+                                    (mm) <span class="text-red-500">*</span></label>
+                                <input type="number" step="0.01" id="input-dim-1" placeholder="0" required
                                     class="w-full border border-gray-300 rounded-lg py-2.5 px-3 text-sm md:text-base font-montserrat text-gray-800 focus:outline-none focus:ring-2 focus:ring-custom-green focus:border-custom-green">
-                                
+
                                 <div id="udrain-size-wrapper" class="relative hidden">
                                     <select id="input-udrain-size"
                                         class="w-full border border-gray-300 rounded-lg py-2.5 px-3 pr-8 text-sm md:text-base font-montserrat text-gray-800 focus:outline-none focus:ring-2 focus:ring-custom-green focus:border-custom-green appearance-none bg-white">
@@ -527,42 +531,50 @@
                                         <option value="450x450">450 x 450 mm</option>
                                         <option value="600x600">600 x 600 mm</option>
                                     </select>
-                                    <span class="pointer-events-none absolute inset-y-0 right-3 flex items-center text-gray-500 text-xs md:text-sm">▾</span>
+                                    <span
+                                        class="pointer-events-none absolute inset-y-0 right-3 flex items-center text-gray-500 text-xs md:text-sm">▾</span>
                                 </div>
                             </div>
 
                             <div id="group-dim-2">
-                                <label id="label-dim-2" class="block text-sm font-montserrat text-gray-700 mb-2">Width (m)</label>
-                                <input type="number" step="0.01" id="input-dim-2" placeholder="0.00"
+                                <label id="label-dim-2" class="block text-sm font-montserrat text-gray-700 mb-2">Width
+                                    (mm) <span class="text-red-500">*</span></label>
+                                <input type="number" step="0.01" id="input-dim-2" placeholder="0" required
                                     class="w-full border border-gray-300 rounded-lg py-2.5 px-3 text-sm md:text-base font-montserrat text-gray-800 focus:outline-none focus:ring-2 focus:ring-custom-green focus:border-custom-green">
-                                
+
                                 <div id="area-unit-wrapper" class="relative hidden">
                                     <select id="input-area-unit"
                                         class="w-full border border-gray-300 rounded-lg py-2.5 px-3 pr-8 text-sm md:text-base font-montserrat text-gray-800 focus:outline-none focus:ring-2 focus:ring-custom-green focus:border-custom-green appearance-none bg-white">
                                         <option value="sqm">Square Meters (m²)</option>
                                         <option value="sqft">Square Feet (ft²)</option>
                                     </select>
-                                    <span class="pointer-events-none absolute inset-y-0 right-3 flex items-center text-gray-500 text-xs md:text-sm">▾</span>
+                                    <span
+                                        class="pointer-events-none absolute inset-y-0 right-3 flex items-center text-gray-500 text-xs md:text-sm">▾</span>
                                 </div>
                             </div>
                         </div>
 
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                             <div>
-                                <label id="label-thickness" class="block text-sm font-montserrat text-gray-700 mb-2">Thickness (mm)</label>
+                                <label id="label-thickness"
+                                    class="block text-sm font-montserrat text-gray-700 mb-2">Thickness (mm) <span
+                                        class="text-red-500">*</span></label>
                                 <div class="relative">
-                                    <input type="number" id="input-thickness" placeholder="mm"
+                                    <input type="number" id="input-thickness" placeholder="mm" required
                                         class="w-full border border-gray-300 rounded-lg py-2.5 px-3 text-sm md:text-base font-montserrat text-gray-800 focus:outline-none focus:ring-2 focus:ring-custom-green focus:border-custom-green">
-                                    
-                                    <select id="select-thickness" class="hidden w-full border border-gray-300 rounded-lg py-2.5 px-3 pr-8 text-sm md:text-base font-montserrat text-gray-800 focus:outline-none focus:ring-2 focus:ring-custom-green focus:border-custom-green appearance-none bg-white">
+
+                                    <select id="select-thickness"
+                                        class="hidden w-full border border-gray-300 rounded-lg py-2.5 px-3 pr-8 text-sm md:text-base font-montserrat text-gray-800 focus:outline-none focus:ring-2 focus:ring-custom-green focus:border-custom-green appearance-none bg-white">
                                     </select>
-                                    <span id="arrow-thickness" class="hidden pointer-events-none absolute inset-y-0 right-3 flex items-center text-gray-500 text-xs md:text-sm">▾</span>
+                                    <span id="arrow-thickness"
+                                        class="hidden pointer-events-none absolute inset-y-0 right-3 flex items-center text-gray-500 text-xs md:text-sm">▾</span>
                                 </div>
                             </div>
 
                             <div>
-                                <label class="block text-sm font-montserrat text-gray-700 mb-2">Quantity (Nos)</label>
-                                <input type="number" id="input-quantity" placeholder="1"
+                                <label class="block text-sm font-montserrat text-gray-700 mb-2">Quantity (Nos) <span
+                                        class="text-red-500">*</span></label>
+                                <input type="number" id="input-quantity" placeholder="1" required
                                     class="w-full border border-gray-300 rounded-lg py-2.5 px-3 text-sm md:text-base font-montserrat text-gray-800 focus:outline-none focus:ring-2 focus:ring-custom-green focus:border-custom-green">
                             </div>
                         </div>
@@ -585,47 +597,71 @@
                         <div class="grid grid-cols-2 gap-2 bg-card-bg-green rounded-xl py-6 px-5 text-white font-montserrat text-2xl md:text-3xl"
                             style="box-shadow: 6px 10px 3px rgba(0,0,0,0.05) inset;">
                             <span class="font-semibold text-lg md:text-xl self-center">CO2 saved</span>
-                            <span class="font-semibold text-right flex justify-end items-center"><span id="res-co2">0</span>&nbsp;<span class="text-sm md:text-lg self-end mb-1">tonnes</span></span>
+                            <span class="font-semibold text-right flex justify-end items-center"><span
+                                    id="res-co2">0</span>&nbsp;<span
+                                    class="text-sm md:text-lg self-end mb-1">tonnes</span></span>
                         </div>
                         <div class="grid grid-cols-2 gap-2 bg-card-bg-green rounded-xl py-6 px-5 text-white font-montserrat text-2xl md:text-3xl"
                             style="box-shadow: 6px 10px 3px rgba(0,0,0,0.05) inset;">
                             <span class="font-semibold text-lg md:text-xl self-center">Water saved</span>
-                            <span class="font-semibold text-right flex justify-end items-center"><span id="res-water">0</span>&nbsp;<span class="text-sm md:text-lg self-end mb-1">litres</span></span>
+                            <span class="font-semibold text-right flex justify-end items-center"><span
+                                    id="res-water">0</span>&nbsp;<span
+                                    class="text-sm md:text-lg self-end mb-1">litres</span></span>
                         </div>
                         <div class="grid grid-cols-2 gap-2 bg-card-bg-dark-green rounded-xl py-6 px-5 text-white font-montserrat text-2xl md:text-3xl"
                             style="box-shadow: 6px 10px 3px rgba(0,0,0,0.05) inset;">
                             <span class="font-semibold text-lg md:text-xl self-center">Industrial waste used</span>
-                            <span class="font-semibold text-right flex justify-end items-center"><span id="res-waste">0</span>&nbsp;<span class="text-sm md:text-lg self-end mb-1">tonnes</span></span>
+                            <span class="font-semibold text-right flex justify-end items-center"><span
+                                    id="res-waste">0</span>&nbsp;<span
+                                    class="text-sm md:text-lg self-end mb-1">tonnes</span></span>
                         </div>
                     </div>
                 </div>
 
             </div>
 
-            <div class="mt-4 bg-white/95 rounded-xl py-4 px-6 flex flex-col gap-4 text-sm md:text-base font-montserrat text-gray-800">
+            <div
+                class="mt-4 bg-white/95 rounded-xl py-4 px-6 flex flex-col gap-4 text-sm md:text-base font-montserrat text-gray-800">
                 <div class="flex items-start gap-3">
-                    <span class="text-2xl">🌳</span> 
-                    <p class="leading-relaxed">Equivalent to planting <span id="res-trees" class="font-bold text-custom-green">0</span> trees per year.</p>
+                    <span class="text-2xl">🌳</span>
+                    <p class="leading-relaxed">Equivalent to planting <span id="res-trees"
+                            class="font-bold text-custom-green">0</span> trees per year.</p>
                 </div>
                 <div class="flex items-start gap-3">
-                    <span class="text-2xl">🚗</span> 
-                    <p class="leading-relaxed">Comparable to eliminating <span id="res-cars" class="font-bold text-custom-green">0</span> km of car travel.</p>
+                    <span class="text-2xl">🚗</span>
+                    <p class="leading-relaxed">Comparable to eliminating <span id="res-cars"
+                            class="font-bold text-custom-green">0</span> km of car travel.</p>
                 </div>
                 <div class="flex items-start gap-3">
-                    <span class="text-2xl">📱</span> 
-                    <p class="leading-relaxed">Equal to <span id="res-phones" class="font-bold text-custom-green">0</span> smartphone charges.</p>
+                    <span class="text-2xl">📱</span>
+                    <p class="leading-relaxed">Equal to <span id="res-phones"
+                            class="font-bold text-custom-green">0</span> smartphone charges.</p>
                 </div>
                 <div class="flex items-start gap-3">
-                    <span class="text-2xl">💧</span> 
-                    <p class="leading-relaxed">Water for <span id="res-urban" class="font-bold text-custom-green">0</span> days (Urban) or <span id="res-rural" class="font-bold text-custom-green">0</span> days (Rural) households.</p>
+                    <span class="text-2xl">💧</span>
+                    <p class="leading-relaxed">Water for <span id="res-urban"
+                            class="font-bold text-custom-green">0</span> days (Urban) or <span id="res-rural"
+                            class="font-bold text-custom-green">0</span> days (Rural) households.</p>
                 </div>
             </div>
 
         </div>
     </div>
 </section>
+
 <script>
-    // --- 1. CONFIGURATION DATA (Frontend Version) ---
+    // --- 1. CONFIGURATION DATA ---
+    const UI_CONFIG = {
+        "Solid Block": { type: "dims", l_label: "Length (mm)", w_label: "Width (mm)", t_label: "Height (mm)", t_options: null },
+        "Paver": { type: "area", t_label: "Thickness (mm)", t_options: [60, 80, 100] },
+        "Kerbstone": { type: "dims", l_label: "Length (mm)", w_label: "Width (mm)", t_label: "Thickness (mm)", t_options: null },
+        "Saucer Drain": { type: "dims", l_label: "Length (mm)", w_label: "Width (mm)", t_label: "Thickness (mm)", t_options: null },
+        "U Drain": { type: "udrain", t_label: "Wall Thickness (mm)", t_options: [100, 125, 150] },
+        "Precast Slab": { type: "dims", l_label: "Length (mm)", w_label: "Width (mm)", t_label: "Thickness (mm)", t_options: [100, 125, 150, 200] },
+        "Boundary Wall Panel": { type: "dims", l_label: "Length (mm)", w_label: "Height (mm)", t_label: "Thickness (mm)", t_options: [100, 125, 150] },
+        "Precast Road": { type: "area", t_label: "Thickness (mm)", t_options: [125, 150, 175, 200, 250] },
+    };
+
     const CEMENT_KG_PER_M3 = {
         "M7.5": 220, "M25": 320, "M30": 340, "M35": 380, "M40": 400
     };
@@ -638,7 +674,7 @@
 
     // Constants
     const EF_CEMENT = 0.9;
-    const REDUCTION_FACTOR = 0.75; // 75% reduction
+    const REDUCTION_FACTOR = 0.75;
     const WATER_PER_M2_CURING = 70;
     const URBAN_HH_L_PER_DAY = 540;
     const RURAL_HH_L_PER_DAY = 220;
@@ -646,38 +682,28 @@
     const EF_TREE_PER_YEAR = 22;
     const EF_PHONE_CHARGE = 0.0082;
 
-    // UI Config for hiding/showing fields
-    const UI_CONFIG = {
-        "Solid Block": { type: "dims", l_label: "Length (m)", w_label: "Width (m)", t_label: "Height (mm)", t_options: null },
-        "Paver": { type: "area", t_label: "Thickness (mm)", t_options: [60, 80, 100] },
-        "Kerbstone": { type: "dims", l_label: "Length (m)", w_label: "Width (m)", t_label: "Thickness (mm)", t_options: null },
-        "Saucer Drain": { type: "dims", l_label: "Length (m)", w_label: "Width (m)", t_label: "Thickness (mm)", t_options: null },
-        "U Drain": { type: "udrain", t_label: "Wall Thickness (mm)", t_options: [100, 125, 150] },
-        "Precast Slab": { type: "dims", l_label: "Length (m)", w_label: "Width (m)", t_label: "Thickness (mm)", t_options: [100, 125, 150, 200] },
-        "Boundary Wall Panel": { type: "dims", l_label: "Length (m)", w_label: "Height (m)", t_label: "Thickness (mm)", t_options: [100, 125, 150] },
-        "Precast Road": { type: "area", t_label: "Thickness (mm)", t_options: [125, 150, 175, 200, 250] },
-    };
-
     // --- 2. UPDATE UI FUNCTION ---
     function updateFormFields() {
         const product = document.getElementById('calc-product').value;
         const config = UI_CONFIG[product] || UI_CONFIG["Solid Block"];
-        
-        // DOM Elements
+
         const label1 = document.getElementById('label-dim-1');
         const input1 = document.getElementById('input-dim-1');
         const uDrainSelect = document.getElementById('udrain-size-wrapper');
-        
+
         const label2 = document.getElementById('label-dim-2');
         const input2 = document.getElementById('input-dim-2');
         const unitSelect = document.getElementById('area-unit-wrapper');
-        
+
         const labelThick = document.getElementById('label-thickness');
         const inputThick = document.getElementById('input-thickness');
         const selectThick = document.getElementById('select-thickness');
         const arrowThick = document.getElementById('arrow-thickness');
 
-        // Reset display
+        // Clear errors
+        document.querySelectorAll('.border-red-500').forEach(el => el.classList.remove('border-red-500'));
+
+        // Reset visibility
         input1.classList.remove('hidden');
         uDrainSelect.classList.add('hidden');
         input2.classList.remove('hidden');
@@ -692,20 +718,19 @@
             label2.textContent = "Unit";
             input2.classList.add('hidden');
             unitSelect.classList.remove('hidden');
-        } 
+        }
         else if (config.type === 'udrain') {
             label1.textContent = "Internal Size";
             input1.classList.add('hidden');
             uDrainSelect.classList.remove('hidden');
-            label2.textContent = ""; 
+            label2.textContent = "";
             input2.classList.add('hidden');
-        } 
+        }
         else {
             label1.textContent = config.l_label;
             label2.textContent = config.w_label;
         }
 
-        // Thickness Logic
         labelThick.textContent = config.t_label;
         if (config.t_options) {
             inputThick.classList.add('hidden');
@@ -721,39 +746,62 @@
         }
     }
 
-    // --- 3. CALCULATION LOGIC ---
+    // --- 3. VALIDATION ---
+    function validateInputs() {
+        let isValid = true;
+        const requiredIds = ['input-quantity'];
+
+        // Add visible dimensions to validation list
+        if (!document.getElementById('input-dim-1').classList.contains('hidden')) requiredIds.push('input-dim-1');
+        if (!document.getElementById('input-dim-2').classList.contains('hidden')) requiredIds.push('input-dim-2');
+        if (!document.getElementById('input-thickness').classList.contains('hidden')) requiredIds.push('input-thickness');
+
+        requiredIds.forEach(id => {
+            const el = document.getElementById(id);
+            if (!el.value || parseFloat(el.value) <= 0) {
+                el.classList.add('border-red-500'); // Add red border
+                isValid = false;
+            } else {
+                el.classList.remove('border-red-500');
+            }
+        });
+
+        if (!isValid) {
+            alert("Please fill in all mandatory fields with valid numbers.");
+        }
+        return isValid;
+    }
+
+    // --- 4. CALCULATION LOGIC ---
     function calculateImpact() {
-        // Get Inputs
+        if (!validateInputs()) return;
+
         const product = document.getElementById('calc-product').value;
         const gradeInput = document.getElementById('calc-grade').value;
         const quantity = parseFloat(document.getElementById('input-quantity').value) || 0;
-        
-        // Resolve Grade
+
         let grade = gradeInput;
         if (grade === "Default" || !grade) {
             grade = DEFAULT_GRADE[product] || "M30";
         }
 
-        // Logic variables
         let total_volume_m3 = 0.0;
         let total_curing_area_m2 = 0.0;
 
-        // Extract Dimensions based on Product Type logic
-        
+        // DIVIDE INPUTS BY 1000 TO CONVERT MM TO M
         if (product === "Solid Block") {
-            const L = parseFloat(document.getElementById('input-dim-1').value) || 0;
-            const B = parseFloat(document.getElementById('input-dim-2').value) || 0;
-            const H_mm = parseFloat(document.getElementById('input-thickness').value) || 0;
-            const H = H_mm / 1000.0;
+            const L = (parseFloat(document.getElementById('input-dim-1').value) || 0) / 1000.0;
+            const B = (parseFloat(document.getElementById('input-dim-2').value) || 0) / 1000.0;
+            const H = (parseFloat(document.getElementById('input-thickness').value) || 0) / 1000.0;
 
             total_volume_m3 = (L * B * H) * quantity;
             total_curing_area_m2 = (L * B) * quantity;
-        } 
+        }
         else if (product === "Paver" || product === "Precast Road") {
             const areaVal = parseFloat(document.getElementById('input-dim-1').value) || 0;
             const unit = document.getElementById('input-area-unit').value;
             const thickness_mm = parseFloat(document.getElementById('select-thickness').value) || 0;
-            
+
             let area_m2 = (unit === "sqft") ? areaVal * 0.092903 : areaVal;
             let thickness_m = thickness_mm / 1000.0;
 
@@ -761,22 +809,21 @@
             total_curing_area_m2 = area_m2;
         }
         else if (product === "Kerbstone" || product === "Saucer Drain") {
-            const L = parseFloat(document.getElementById('input-dim-1').value) || 0;
-            const B = parseFloat(document.getElementById('input-dim-2').value) || 0;
-            const H_mm = parseFloat(document.getElementById('input-thickness').value) || 0;
-            const H = H_mm / 1000.0;
+            const L = (parseFloat(document.getElementById('input-dim-1').value) || 0) / 1000.0;
+            const B = (parseFloat(document.getElementById('input-dim-2').value) || 0) / 1000.0;
+            const H = (parseFloat(document.getElementById('input-thickness').value) || 0) / 1000.0;
 
             total_volume_m3 = (L * B * H) * quantity;
-            total_curing_area_m2 = (L * H) * quantity; // Front face
+            total_curing_area_m2 = (L * H) * quantity;
         }
         else if (product === "U Drain") {
-            const sizeStr = document.getElementById('input-udrain-size').value; // "300x300"
+            const sizeStr = document.getElementById('input-udrain-size').value;
             const parts = sizeStr.split('x');
             const inner_w_mm = parseFloat(parts[0]);
             const inner_h_mm = parseFloat(parts[1]);
             const wall_mm = parseFloat(document.getElementById('select-thickness').value) || 0;
-            
-            const L_drain = 2.0; // Fixed
+
+            const L_drain = 2.0;
             const inner_w_m = inner_w_mm / 1000.0;
             const inner_h_m = inner_h_mm / 1000.0;
             const t_m = wall_mm / 1000.0;
@@ -792,8 +839,8 @@
             total_curing_area_m2 = (inner_w_m * L_drain) * quantity;
         }
         else if (product === "Precast Slab" || product === "Boundary Wall Panel") {
-            const L = parseFloat(document.getElementById('input-dim-1').value) || 0;
-            const B = parseFloat(document.getElementById('input-dim-2').value) || 0; // or Height for Panel
+            const L = (parseFloat(document.getElementById('input-dim-1').value) || 0) / 1000.0;
+            const B = (parseFloat(document.getElementById('input-dim-2').value) || 0) / 1000.0;
             const thick_mm = parseFloat(document.getElementById('select-thickness').value) || 0;
             const thick_m = thick_mm / 1000.0;
 
@@ -802,40 +849,50 @@
         }
 
         // --- MATHS ---
-        
-        // 1. Carbon
         const cement_per_m3 = CEMENT_KG_PER_M3[grade] || 340;
         const cement_mass_kg = total_volume_m3 * cement_per_m3;
         const conventional_co2_kg = cement_mass_kg * EF_CEMENT;
         const co2_saved_kg = conventional_co2_kg * REDUCTION_FACTOR;
         const co2_saved_tonnes = co2_saved_kg / 1000.0;
 
-        // 2. Water
         const water_saved_liters = total_curing_area_m2 * WATER_PER_M2_CURING;
         const urban_days = water_saved_liters / URBAN_HH_L_PER_DAY;
         const rural_days = water_saved_liters / RURAL_HH_L_PER_DAY;
 
-        // 3. Equivalents
         const car_km = co2_saved_kg / EF_CAR_KM;
         const trees = co2_saved_kg / EF_TREE_PER_YEAR;
         const phones = co2_saved_kg / EF_PHONE_CHARGE;
-        const waste_tonnes = (cement_mass_kg * REDUCTION_FACTOR) / 1000.0; // Estimation
+        const waste_tonnes = (cement_mass_kg * REDUCTION_FACTOR) / 1000.0;
 
-        // --- UPDATE UI ---
-        document.getElementById('res-co2').innerText = co2_saved_tonnes.toFixed(2);
-        document.getElementById('res-water').innerText = Math.round(water_saved_liters);
-        document.getElementById('res-waste').innerText = waste_tonnes.toFixed(2);
+        // --- UPDATE UI WITH SMART ROUNDING ---
+        // If value is small but positive, show 4 decimals. Otherwise show 2.
 
-        document.getElementById('res-trees').innerText = Math.round(trees);
-        document.getElementById('res-cars').innerText = Math.round(car_km);
-        document.getElementById('res-phones').innerText = Math.round(phones);
-        document.getElementById('res-urban').innerText = urban_days.toFixed(1);
-        document.getElementById('res-rural').innerText = rural_days.toFixed(1);
+        // Helper to format text
+        const fmt = (val) => {
+            let decimals = val > 0 && val < 0.01 ? 4 : 2;
+            return val.toLocaleString('en-US', {
+                minimumFractionDigits: decimals,
+                maximumFractionDigits: decimals
+            });
+        };
+        document.getElementById('res-co2').innerText = fmt(co2_saved_tonnes);
+        document.getElementById('res-waste').innerText = fmt(waste_tonnes);
+
+        // Water, Trees, Cars, and Phones (Whole numbers with commas)
+        document.getElementById('res-water').innerText = Math.round(water_saved_liters).toLocaleString('en-US');
+        document.getElementById('res-trees').innerText = Math.round(trees).toLocaleString('en-US');
+        document.getElementById('res-cars').innerText = Math.round(car_km).toLocaleString('en-US');
+        document.getElementById('res-phones').innerText = Math.round(phones).toLocaleString('en-US');
+
+        // Days (1 decimal place with commas)
+        document.getElementById('res-urban').innerText = urban_days.toLocaleString('en-US', { minimumFractionDigits: 1, maximumFractionDigits: 1 });
+        document.getElementById('res-rural').innerText = rural_days.toLocaleString('en-US', { minimumFractionDigits: 1, maximumFractionDigits: 1 });
     }
 
     function resetCalculator() {
         document.getElementById('impact-calculator-form').reset();
-        updateFormFields(); // Reset logic
+        document.querySelectorAll('.border-red-500').forEach(el => el.classList.remove('border-red-500'));
+        updateFormFields();
         document.getElementById('res-co2').innerText = "0";
         document.getElementById('res-water').innerText = "0";
         document.getElementById('res-waste').innerText = "0";
@@ -846,7 +903,6 @@
         document.getElementById('res-rural').innerText = "0";
     }
 
-    // Initialize
     document.addEventListener('DOMContentLoaded', updateFormFields);
 </script>
 

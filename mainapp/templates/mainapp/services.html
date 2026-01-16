@@ -89,7 +89,7 @@
 {% block content %}
 <!-- Hero Section -->
 <section class="relative h-screen w-full bg-cover bg-center text-white sm:p-4 pt-16 lg:p-12 lg:px-12 lg:pt-24"
-    style="background-image: url('{% static 'images/Services Hero Header image.webp' %}');">
+    style="background-image: url('{% static 'images/Ecopath_Services_Hero_Header_Image.webp' %}');">
     <div class="absolute inset-0 bg-black/40"></div>
     <div class="relative h-full flex flex-col justify-center p-4 lg:px-8">
         <h1 class="text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-product-sans font-black uppercase mb-10">
@@ -118,9 +118,9 @@
             </div>
 
             <!-- Image Column -->
-            <div class="w-full md:w-1/2 flex justify-end">
-                <img src="{% static 'images/End to end image.webp' %}" alt="Maintenance Services"
-                    class="w-full h-auto max-h-[80vh] object-contain">
+            <div class="w-full md:w-1/2 flex justify-center">
+                <img src="{% static 'images/Ecopath_end_to_end_road_design.webp' %}" alt="Maintenance Services"
+                    class="h-auto max-h-[80vh] object-contain rounded-tl-[50px] rounded-br-[50px]">
             </div>
         </div>
     </div>
@@ -240,27 +240,33 @@
                 </div>
 
                 <div class="text-content-container relative mt-6 lg:mt-12 max-w-3xl h-16 mb-8">
-                    <p class="nav-text-content absolute top-0 left-0 w-full text-lg font-montserrat text-custom-green" data-index="0">
+                    <p class="nav-text-content absolute top-0 left-0 w-full text-lg font-montserrat text-custom-green"
+                        data-index="0">
                         <i>The biggest pain point for delays & losses is multiple vendors & lack of coordination.
-                        Eco Path takes care of everything. All concrete products without using cement.</i>
+                            Eco Path takes care of everything. All concrete products without using cement.</i>
                     </p>
-                    <p class="nav-text-content absolute top-0 left-0 w-full text-lg font-montserrat text-custom-green opacity-0" data-index="1">
-                        <i>Precast concrete roads offer faster installation and superior durability compared to traditional methods. Our process ensures minimal on-site disruption.</i>
+                    <p class="nav-text-content absolute top-0 left-0 w-full text-lg font-montserrat text-custom-green opacity-0"
+                        data-index="1">
+                        <i>Precast concrete roads offer faster installation and superior durability compared to
+                            traditional methods. Our process ensures minimal on-site disruption.</i>
                     </p>
-                    <p class="nav-text-content absolute top-0 left-0 w-full text-lg font-montserrat text-custom-green opacity-0" data-index="2">
-                        <i>For private developments like villas and resorts, paver-based roads provide an aesthetic, permeable, and easily repairable solution, blending seamlessly with the environment.</i>
+                    <p class="nav-text-content absolute top-0 left-0 w-full text-lg font-montserrat text-custom-green opacity-0"
+                        data-index="2">
+                        <i>For private developments like villas and resorts, paver-based roads provide an aesthetic,
+                            permeable, and easily repairable solution, blending seamlessly with the environment.</i>
                     </p>
                 </div>
             </div>
 
-            <div class="w-full md:w-1/2 2xl:h-[25rem] h-[20rem] lg:h-[18rem] flex items-center justify-center mt-20 md:mt-0">
+            <div
+                class="w-full md:w-1/2 2xl:h-[25rem] h-[20rem] lg:h-[18rem] flex items-center justify-center mt-20 md:mt-0">
                 <div class="image-stack-container w-full h-full relative mx-10 my-10">
-                    <img src="{% static 'images/Drain.webp' %}" alt="Drain"
-                        class="image-card data-[index='0'] absolute w-4/5 lg:w-3/5 h-auto rounded-2xl" data-index="0">
-                    <img src="{% static 'images/Footpath.webp' %}" alt="Footpath"
-                        class="image-card data-[index='1'] absolute w-4/5 lg:w-3/5 h-auto rounded-2xl" data-index="1">
-                    <img src="{% static 'images/Sewer Line.webp' %}" alt="Sewer Line"
-                        class="image-card data-[index='2'] absolute w-4/5 lg:w-3/5 h-auto rounded-2xl" data-index="2">
+                    <img src="{% static 'images/Ecopath_CarbonNegativeBitumenRoad.webp' %}" alt="Drain"
+                        class="image-card data-[index='0'] absolute w-4/5 lg:w-3/5 h-auto rounded-tl-[50px] rounded-br-[50px]" data-index="0">
+                    <img src="{% static 'images/Ecopath_PrecaseConcreteRoads.webp' %}" alt="Footpath"
+                        class="image-card data-[index='1'] absolute w-4/5 lg:w-3/5 h-auto rounded-tl-[50px] rounded-br-[50px]" data-index="1">
+                    <img src="{% static 'images/EcoPath_PaverBasedForVillaAndResorts.webp' %}" alt="Sewer Line"
+                        class="image-card data-[index='2'] absolute w-4/5 lg:w-3/5 h-auto rounded-tl-[50px] rounded-br-[50px]" data-index="2">
                 </div>
             </div>
         </div>
@@ -280,7 +286,7 @@
 
         // Base Y position for the active card (pushes it to the bottom)
         // 60% allows enough room above for the other cards to stack up without clipping
-        const ACTIVE_Y_BASE = 30; 
+        const ACTIVE_Y_BASE = 30;
 
         const animProps = {
             duration: 0.7,
@@ -353,7 +359,7 @@
             });
 
             // 4. Fade In New Text
-            gsap.fromTo(textContents[activeIndex], 
+            gsap.fromTo(textContents[activeIndex],
                 { opacity: 0, zIndex: 2 }, // Start at opacity 0, higher zIndex for visible element
                 {
                     opacity: 1,
@@ -380,11 +386,11 @@
 
                 if (stackPosition === 0) {
                     gsap.set(card, {
-                        zIndex: 10, 
-                        x: '0%', 
+                        zIndex: 10,
+                        x: '0%',
                         y: ACTIVE_Y_BASE + '%', // Move to bottom
-                        z: 0, 
-                        rotate: '0deg', 
+                        z: 0,
+                        rotate: '0deg',
                         scale: 1
                     });
                 } else {
