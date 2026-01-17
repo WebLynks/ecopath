@@ -3,16 +3,6 @@
 /* =========================================
    1. FONTS & RESET
    ========================================= */
-@font-face {
-    font-family: 'Product Sans';
-    src: url('../fonts/ProductSans-Black.ttf') format('truetype');
-    font-weight: 900;
-}
-@font-face {
-    font-family: 'Product Sans Regular';
-    src: url('../fonts/ProductSans-Regular.ttf') format('truetype');
-    font-weight: 400;
-}
 
 :root {
     /* Brand Identity */
