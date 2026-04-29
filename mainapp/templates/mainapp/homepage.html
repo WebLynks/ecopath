@@ -1450,6 +1450,77 @@
     document.addEventListener('DOMContentLoaded', updateFormFields);
 </script>
 
+<!-- Recognition Section -->
+<section class="py-24 px-6 lg:px-12 relative overflow-hidden bg-white">
+    <!-- Subtle Background Gradients for the whole section -->
+    <div class="absolute top-0 left-0 w-full h-full overflow-hidden z-0 pointer-events-none">
+        <div class="absolute -top-[20%] -right-[10%] w-[50rem] h-[50rem] bg-green-50 rounded-full mix-blend-multiply filter blur-3xl opacity-70"></div>
+        <div class="absolute -bottom-[20%] -left-[10%] w-[40rem] h-[40rem] bg-slate-50 rounded-full mix-blend-multiply filter blur-3xl opacity-70"></div>
+    </div>
+
+    <div class="max-w-7xl mx-auto relative z-10">
+        <div class="flex flex-col lg:flex-row items-center justify-between gap-16 lg:gap-24">
+            
+            <!-- Left Content: Typography & Description -->
+            <div class="w-full lg:w-1/2 text-left flex flex-col justify-center">
+                <!-- Eyebrow -->
+                <div class="inline-flex items-center gap-4 mb-6 md:mb-8">
+                    <div class="w-12 h-[2px] bg-custom-green"></div>
+                    <p class="text-sm font-montserrat font-bold tracking-[0.2em] text-custom-green uppercase">Global Recognition</p>
+                </div>
+                
+                <!-- Massive Headline -->
+                <h2 class="text-5xl md:text-6xl lg:text-7xl font-product-sans font-black text-gray-900 leading-[1.1] mb-6">
+                    TiE50 <span class="text-custom-green">2026</span><br>
+                    Winner.
+                </h2>
+                
+                <!-- Description -->
+                <p class="text-lg md:text-xl font-montserrat text-gray-600 leading-relaxed mb-10 max-w-lg">
+                    We are incredibly proud to be recognized among the top 50 startups globally by TiE. This prestigious award celebrates our relentless commitment to decarbonizing construction through innovation, sustainable impact, and scalable infrastructure.
+                </p>
+
+                <!-- Impact Stats / Highlights -->
+                <div class="flex items-center gap-8 border-t border-gray-200 pt-8">
+                    <div>
+                        <p class="text-3xl font-product-sans font-black text-gray-900">Top 50</p>
+                        <p class="text-sm font-montserrat text-gray-500 mt-1 uppercase tracking-wider font-semibold">Global Startups</p>
+                    </div>
+                    <div class="w-px h-12 bg-gray-300"></div>
+                    <div>
+                        <p class="text-3xl font-product-sans font-black text-gray-900">Innovation</p>
+                        <p class="text-sm font-montserrat text-gray-500 mt-1 uppercase tracking-wider font-semibold">Impact & Scale</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Content: The Award Image -->
+            <div class="w-full lg:w-1/2 flex justify-center lg:justify-end relative">
+                
+                <!-- Premium Dark Container to blend the black background of the logo -->
+                <div class="relative w-full max-w-md rounded-[2.5rem] bg-gray-900 shadow-[0_20px_50px_rgba(0,0,0,0.15)] overflow-hidden group">
+                    
+                    <!-- Ambient Inner Glow behind the image -->
+                    <div class="absolute inset-0 bg-gradient-to-br from-custom-green/20 to-blue-900/40 opacity-60 group-hover:opacity-100 transition-opacity duration-700"></div>
+                    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-emerald-500/20 blur-[80px] rounded-full"></div>
+
+                    <!-- Image Wrapper -->
+                    <div class="relative p-12 md:p-16 flex flex-col items-center justify-center h-full min-h-[400px] border border-white/10 rounded-[2.5rem]">
+                        <img src="{% static 'images/TiE50WinnerEcopath.webp' %}" alt="TiE50 2026 Award" class="relative z-10 w-full max-w-[220px] h-auto object-contain drop-shadow-[0_0_25px_rgba(255,255,255,0.1)] transition-transform duration-700 group-hover:scale-105">
+                    </div>
+                </div>
+                
+                <!-- Decorative floating glass element (optional, adds depth) -->
+                <div class="absolute -bottom-6 -right-6 lg:-right-10 w-24 h-24 bg-white/80 backdrop-blur-md border border-white rounded-2xl shadow-xl flex items-center justify-center z-20">
+                    <span class="text-4xl">🏆</span>
+                </div>
+                
+            </div>
+
+        </div>
+    </div>
+</section>
+
 <!-- Clientele Section -->
 <section class="w-100 pt-10">
     <div class="w-full h-full bg-[#E6E6DF] py-16 px-6 lg:px-12">
@@ -1502,6 +1573,7 @@
         </div>
     </div>
 </section>
+
 
 <script>
     document.addEventListener('DOMContentLoaded', () => {

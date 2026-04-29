@@ -130,6 +130,44 @@
     </div>
 </section>
 
+<!-- Recognition Section -->
+<section class="relative pb-20 px-4 overflow-hidden">
+  <!-- Decorative background elements to highlight the glass effect -->
+  
+  <div class="container relative z-10 mx-auto max-w-3xl text-center">
+
+    <!-- Label -->
+    <p class="text-xs font-bold tracking-[0.2em] text-emerald-700 uppercase mb-8">Recognition</p>
+
+    <!-- Glassmorphism Award Card -->
+    <div class="mx-auto max-w-sm rounded-[2rem] overflow-hidden bg-white/40 backdrop-blur-xl border border-white/60 shadow-[0_8px_30px_rgb(0,0,0,0.08)] transition-all duration-300 hover:shadow-[0_8px_40px_rgb(0,0,0,0.12)] hover:-translate-y-1">
+
+      <!-- Top Image Area (Dark to blend with the award's background) -->
+      <div class="relative w-full pt-12 pb-14 flex justify-center items-center bg-slate-900 overflow-hidden">
+        <!-- Subtle glow effect behind the logo -->
+        <div class="absolute inset-0 bg-blue-600/20 blur-[60px] rounded-full scale-150"></div>
+        
+        <!-- Award Image -->
+        <img src="{% static 'images/TiE50WinnerEcopath.webp' %}" alt="TiE50 2026 Award" class="relative z-10 h-40 w-auto object-contain drop-shadow-[0_0_15px_rgba(255,255,255,0.15)]">
+
+        <!-- Gradient fade to blend the dark top into the light glass bottom -->
+        <div class="absolute bottom-0 left-0 w-full h-12 bg-gradient-to-t from-white/40 to-transparent z-20"></div>
+      </div>
+
+      <!-- Bottom Text Area -->
+      <div class="px-8 pt-8 pb-10 text-center relative z-30">
+        <p class="text-xs tracking-[0.25em] uppercase text-slate-500 font-semibold mb-2">Winner</p>
+        <h2 class="text-3xl font-extrabold text-slate-800 tracking-tight mb-4 drop-shadow-sm">TiE50 2026</h2>
+        <p class="text-sm text-slate-600 leading-relaxed font-medium">
+          Recognised among the top 50 startups globally by TiE — for innovation, impact, and scale.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
 <!-- Timeline Section -->
 <section class="py-24"
     style="background-image: url('{% static 'images/About timeline background.webp' %}'); background-repeat: repeat-y; background-position: center top; background-size: cover;">
