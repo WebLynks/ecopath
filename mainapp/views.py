@@ -9,6 +9,7 @@ import logging
 from django.utils.decorators import method_decorator
 
 from .models import (
+    MediaCoverage,
     Project,
     ProjectImage,
     ProjectHomeBanner,
@@ -38,6 +39,7 @@ class HomepageView(TemplateView):
         context['featured_testimonials'] = Testimonial.objects.filter(is_featured=True)
         context['home_project_banners'] = ProjectHomeBanner.objects.all()
         context['homepage_testimonials'] = HomepageTestimonial.objects.all()
+        context['media_coverage'] = MediaCoverage.objects.filter(show_on_homepage=True).order_by('-publish_date')
         print(len(HomepageTestimonial.objects.all()))
         return context
 
@@ -76,6 +78,15 @@ class BlogListView(ListView):
 
     def get_queryset(self):
         return Blog.objects.filter(status='PUBLISHED').order_by('-published_date')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        
+        # Split media coverage by category for the grid layout
+        all_media = MediaCoverage.objects.all().order_by('-publish_date')
+        context['press_releases'] = all_media.filter(category='PR')
+        context['interviews'] = all_media.filter(category='INTERVIEW')
+        return context
 
 class BlogDetailView(DetailView):
     model = Blog

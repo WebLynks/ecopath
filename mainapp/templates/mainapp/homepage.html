@@ -1521,6 +1521,26 @@
     </div>
 </section>
 
+<!-- Media Coverage Section -->
+ <section class="py-16 md:py-24 bg-white border-t border-gray-100">
+    <div class="max-w-7xl mx-auto px-6 lg:px-12 text-center">
+        <div class="inline-flex items-center gap-4 mb-10 md:mb-16 justify-center w-full">
+            <div class="w-8 h-[2px] bg-custom-green"></div>
+            <p class="text-sm font-montserrat font-bold tracking-[0.2em] text-custom-green uppercase">As Featured In</p>
+            <div class="w-8 h-[2px] bg-custom-green"></div>
+        </div>
+
+        <div class="flex flex-wrap justify-center items-center gap-12 md:gap-20">
+            {% for media in media_coverage %}
+            <a href="{{ media.url }}" target="_blank" rel="noopener noreferrer" class="group block">
+                <img src="{{ media.publisher_logo.url }}" alt="{{ media.publisher_name }}"
+                     class="h-10 md:h-12 w-auto object-contain filter grayscale opacity-50 transition-all duration-500 ease-in-out group-hover:grayscale-0 group-hover:opacity-100">
+            </a>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
 <!-- Clientele Section -->
 <section class="w-100 pt-10">
     <div class="w-full h-full bg-[#E6E6DF] py-16 px-6 lg:px-12">

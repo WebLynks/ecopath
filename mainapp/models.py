@@ -262,3 +262,25 @@ class HitCount(models.Model):
         unique_together = ('content_type', 'object_id', 'created_at')
         verbose_name = 'Daily Hit Count'
         verbose_name_plural = 'Daily Hit Counts'
+
+# models.py
+class MediaCoverage(models.Model):
+    CATEGORY_CHOICES = [
+        ('PR', 'Press Release'),
+        ('INTERVIEW', 'Interview / Authored Article'),
+    ]
+
+    title = models.CharField(max_length=255)
+    url = models.URLField(max_length=500)
+    publisher_name = models.CharField(max_length=100)
+    publisher_logo = models.ImageField(upload_to='media_coverage_logos/')
+    publish_date = models.DateField()
+    category = models.CharField(max_length=20, choices=CATEGORY_CHOICES)
+    show_on_homepage = models.BooleanField(default=False)
+
+    class Meta:
+        ordering = ['-publish_date']
+        verbose_name_plural = "Media Coverage"
+
+    def __str__(self):
+        return f"{self.publisher_name} - {self.title[:30]}"

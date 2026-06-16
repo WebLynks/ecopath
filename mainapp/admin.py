@@ -3,7 +3,7 @@ from django.db.models import Sum
 from django.utils.html import format_html
 from .models import (
     ServiceCategory, Clientele, Testimonial, Testimonial, TeamMember, Leadership, HomepageTestimonial,
-    Project, ProjectImage, ProjectFact, Blog, ContactSubmission, HitCount, ProjectHomeBanner
+    Project, ProjectImage, ProjectFact, Blog, ContactSubmission, HitCount, ProjectHomeBanner, MediaCoverage
 )
 
 class ServiceCategoryAdmin(admin.ModelAdmin):
@@ -106,3 +106,10 @@ class ProjectHomeBannerAdmin(admin.ModelAdmin):
 class HomepageTestimonialAdmin(admin.ModelAdmin):
     list_display = ('customer_name', 'customer_designation')
     search_fields = ('customer_name', 'customer_designation', 'testimonial')
+
+
+@admin.register(MediaCoverage)
+class MediaCoverageAdmin(admin.ModelAdmin):
+    list_display = ('title', 'publisher_name', 'category', 'publish_date', 'show_on_homepage')
+    list_filter = ('category', 'show_on_homepage', 'publish_date')
+    search_fields = ('title', 'publisher_name')
